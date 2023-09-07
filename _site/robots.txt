@@ -1,1 +1,1 @@
-Sitemap: tobefilledin.com/sitemap.xml
+Sitemap: https://bioinfoguidebook.netlify.app/sitemap.xml

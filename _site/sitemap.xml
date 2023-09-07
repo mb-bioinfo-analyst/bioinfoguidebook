@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>tobefilledin.com/about.html</loc>
-    <lastmod>2023-09-07T06:17:55.842Z</lastmod>
+    <lastmod>2023-09-07T13:13:14.644Z</lastmod>
   </url>
   <url>
     <loc>tobefilledin.com/archive.html</loc>
@@ -10,7 +10,7 @@
   </url>
   <url>
     <loc>tobefilledin.com/index.html</loc>
-    <lastmod>2023-09-07T06:44:55.093Z</lastmod>
+    <lastmod>2023-09-07T13:13:09.219Z</lastmod>
   </url>
   <url>
     <loc>tobefilledin.com/posts/regression-bioinformatics/index.html</loc>
@@ -19,5 +19,25 @@
   <url>
     <loc>tobefilledin.com/posts/welcome/index.html</loc>
     <lastmod>2023-09-07T06:18:07.684Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
+    <lastmod>2023-09-07T14:17:38.995Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
+    <lastmod>2023-09-07T14:18:09.127Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/regression-bioinformatics/index.html</loc>
+    <lastmod>2023-09-07T14:17:32.329Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/welcome/index.html</loc>
+    <lastmod>2023-09-07T14:17:33.652Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
+    <lastmod>2023-09-07T14:17:35.071Z</lastmod>
   </url>
 </urlset>

@@ -56,21 +56,15 @@ $$Y = β0 + β1X1 + β2X2 + ... + ε$$ {#eq-regression}
 
 -   **Nonlinear Regression**: Suitable when the relationship between variables is nonlinear and can't be described by a simple linear equation.
 
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
+|                        |                                                                                       |                                                                         |
+|------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
 | **Type of Regression** | **Goals**                                                                             | **Equation**                                                            |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Linear Regression      | \- Predicting a continuous dependent variable.                                        | $$Y = β0 + β1X1 + β2X2 + ... + ε$$ {#eq-linearRegression}               |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |                        | \- Understanding the linear relationship between independent and dependent variables. |                                                                         |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Logistic Regression    | \- Predicting a binary or categorical dependent variable.                             | $$Logit(P(Y=1)) = β0 + β1X1 + β2X2 + ... + ε$$ {#eq-logisticRegression} |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |                        | \- Estimating the probability of an event occurring.                                  |                                                                         |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Nonlinear Regression   | \- Modeling complex, nonlinear relationships between variables.                       | $$Y = f(β0 + β1X1 + β2X2 + ... + ε)$$ {#eq-nonlinearRegression}         |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |                        | \- Predicting a continuous dependent variable when the relationship is not linear.    |                                                                         |
-+------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 : Types of regression {#tbl-regression_types}
 
@@ -121,7 +115,7 @@ For example, it can be used to predict the expression of specific genes based on
 
 : Types of regression Analysis {#tbl-regressionAnalysis_types}
 
----
+------------------------------------------------------------------------
 
 # Data Preparation in Regression Analysis and Bioinformatics:
 
@@ -180,7 +174,7 @@ Proper data preparation sets the stage for meaningful regression analysis in bio
 It helps mitigate the impact of noise, errors, and inconsistencies in your data, ensuring that your results are reliable and interpretable.
 Ultimately, the success of your regression analysis depends on the care and attention given to preparing your data.
 
----
+------------------------------------------------------------------------
 
 # Tools and Software:
 
@@ -293,7 +287,7 @@ The field of bioinformatics benefits immensely from a diverse array of tools and
 Whether using open-source programming languages like R and Python, specialized bioinformatics packages like Bioconductor, or user-friendly platforms like Galaxy, bioinformaticians have a rich toolbox at their disposal to uncover insights from complex biological data.
 The choice of tool ultimately depends on the specific research goals and the preferences of the researcher.
 
----
+------------------------------------------------------------------------
 
 # Emerging Trends:
 
@@ -306,35 +300,37 @@ Machine learning (ML) has gained prominence in bioinformatics for its ability to
 Within the context of regression analysis, several trends are emerging:
 
 -   Deep Learning Regression: Deep neural networks, a subset of ML, are increasingly applied to regression tasks in bioinformatics.
-These models can capture nonlinear relationships and hierarchical features in biological data, making them suitable for tasks such as gene expression prediction, protein-ligand binding affinity prediction, and disease risk assessment.
+    These models can capture nonlinear relationships and hierarchical features in biological data, making them suitable for tasks such as gene expression prediction, protein-ligand binding affinity prediction, and disease risk assessment.
 
 -   Ensemble Methods: Ensemble learning techniques, such as random forests and gradient boosting, are being used to improve the accuracy and robustness of regression models in bioinformatics.
-These methods combine multiple base models to produce more reliable predictions, which is especially useful when dealing with noisy biological data.
+    These methods combine multiple base models to produce more reliable predictions, which is especially useful when dealing with noisy biological data.
 
 -   Transfer Learning: Transfer learning, a technique where models trained on one dataset are adapted to perform well on a related but different dataset, is being explored to leverage pre-trained models in bioinformatics regression tasks.
-This approach can save time and resources in model development and fine-tuning.
+    This approach can save time and resources in model development and fine-tuning.
 
 2.  **Integration of Multi-Omics Data**:
 
 Multi-omics data integration is a critical area of research in bioinformatics, aiming to combine information from various biological data types, such as genomics, transcriptomics, proteomics, and metabolomics.
 In regression analysis, multi-omics data integration offers several advantages:
 
--   Systems Biology Approaches: Integrating multi-omics data allows researchers to develop holistic models of biological systems. Regression analysis can be used to identify relationships between different omics layers and elucidate complex interactions within biological pathways.
+-   Systems Biology Approaches: Integrating multi-omics data allows researchers to develop holistic models of biological systems.
+    Regression analysis can be used to identify relationships between different omics layers and elucidate complex interactions within biological pathways.
 
 -   Disease Biomarker Discovery: By combining diverse omics data, researchers can identify novel biomarkers for diseases, enabling early diagnosis and personalized treatment strategies.
-Regression models can help uncover predictive relationships between omics profiles and clinical outcomes.
+    Regression models can help uncover predictive relationships between omics profiles and clinical outcomes.
 
 -   Drug Discovery and Pharmacogenomics: Multi-omics data integration plays a pivotal role in drug discovery, as it can aid in predicting drug responses and identifying potential drug targets.
-Regression analysis can model the relationships between drug-induced changes in omics profiles and therapeutic outcomes.
+    Regression analysis can model the relationships between drug-induced changes in omics profiles and therapeutic outcomes.
 
 3.  **Bayesian Regression and Bayesian Networks**:
 
 Bayesian regression and Bayesian networks are gaining popularity in bioinformatics for their ability to handle uncertainty and incorporate prior knowledge:
 
 -   Bayesian Regression: Bayesian regression models provide a framework for quantifying uncertainty in regression analysis.
-They are particularly useful when dealing with small sample sizes and noisy biological data, as they can provide credible intervals for regression coefficients and model parameters.
+    They are particularly useful when dealing with small sample sizes and noisy biological data, as they can provide credible intervals for regression coefficients and model parameters.
 
--   Bayesian Networks: Bayesian networks enable the representation of probabilistic dependencies among variables in biological systems.They are used to model complex regulatory networks, pathways, and causal relationships. Regression analysis within Bayesian networks can help identify key nodes and interactions.
+-   Bayesian Networks: Bayesian networks enable the representation of probabilistic dependencies among variables in biological systems.They are used to model complex regulatory networks, pathways, and causal relationships.
+    Regression analysis within Bayesian networks can help identify key nodes and interactions.
 
 4.  **Spatial Regression Analysis**:
 
@@ -342,7 +338,7 @@ Spatial data is prevalent in bioinformatics, especially in fields like spatial t
 Emerging trends in spatial regression analysis include:
 
 -   Spatial Regression Models: Specialized spatial regression models, such as spatial autoregressive models and spatial error models, are being developed to account for spatial autocorrelation in biological data.
-These models are crucial for understanding the spatial organization of biological processes.
+    These models are crucial for understanding the spatial organization of biological processes.
 
 -   Spatial Omics Integration: Combining spatially resolved omics data (e.g., spatial transcriptomics and spatial proteomics) with traditional omics data allows for a deeper understanding of tissue-specific gene expression and protein localization, which can be achieved through regression analysis techniques.
 
@@ -354,12 +350,12 @@ Researchers are developing techniques to provide insights into why a model makes
 -   Feature Importance Analysis: Techniques like SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-Agnostic Explanations) are being applied to highlight the contributions of individual features or variables in regression models, aiding in the interpretation of results.
 
 -   Visual Analytics: Integrating visualization techniques with regression analysis outputs helps researchers explore and communicate the relationships discovered by the models.
-Visual representations of data and model explanations enhance the interpretability of complex results.
+    Visual representations of data and model explanations enhance the interpretability of complex results.
 
 These emerging trends and advancements in regression analysis within bioinformatics are driving innovation and expanding the capabilities of researchers to uncover valuable insights from biological data.
 By leveraging machine learning, multi-omics integration, Bayesian modeling, spatial analysis, and interpretability techniques, bioinformaticians are better equipped to address complex biological questions and contribute to advancements in personalized medicine, drug discovery, and our overall understanding of life sciences.
 
----
+------------------------------------------------------------------------
 
 # Conclusion:
 
@@ -392,12 +388,11 @@ It is an innovative discipline in which the integration of biology and data scie
 As we consider the future of bioinformatics, we are reminded that each regression model, each meticulously produced dataset, and each new trend brings us one step closer to unraveling the unfathomable mysteries concealed inside the biological world's complexity.
 So, since bioinformatics remains a beacon of hope and knowledge on the forefront of science, let us continue this voyage of research and discovery.
 
----
+------------------------------------------------------------------------
 
 # Resources & References:
 
 These resources & references cover a range of topics related to regression analysis, bioinformatics, and tools commonly used in the field.
-
 
 Hastie, T., Tibshirani, R., & Friedman, J.
 (2009).
@@ -459,4 +454,4 @@ Liberzon, A., Birger, C., Thorvaldsdóttir, H., Ghandi, M., Mesirov, J. P., & Ta
 The Molecular Signatures Database (MSigDB) hallmark gene set collection.
 Cell systems, 1(6), 417-425.
 
----
+------------------------------------------------------------------------

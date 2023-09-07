@@ -10,35 +10,39 @@ about:
   links:
     - icon: twitter
       text: Twitter
-      href: https://twitter.com
+      href: https://twitter.com/bmustafa122
     - icon: linkedin
       text: LinkedIn
-      href: https://linkedin.com
+      href: https://www.linkedin.com/in/bmustafa1/
     - icon: github
       text: Github
-      href: https://github.com
+      href: https://github.com/mb-bioinfo-analyst
+    - icon: orcid
+      text: ORCID
+      href: https://orcid.org/0000-0003-0865-7974 
 ---
 
-### This content appears above the formatted about page content.
 
-:::{#hero-heading}
 
-Finley Malloc is the Chief Data Scientist at Wengo Analytics. When not innovating on data platforms, Finley enjoys spending  time unicycling and playing with her pet iguana.
+::: {#hero-heading}
+Bilal Mustafa is a Data Scientist, highly skilled and experienced in the field of bioinformatics.
+When not innovating on data platforms, Bilal enjoys spending time gardening and traveling.
 
 ## Education
 
-University of California, San Diego | San Diego, CA
-PhD in Mathematics | Sept 2011 - June 2015
+Gachon University \| Incheon, South Korea, MS-PhD in Health Sciences and technology (Cancer Genomics) \| Feb 2017 - Feb 2021
 
-Macalester College | St. Paul MA
-B.A in Economics | Sept 2007 - June 2011
+COMSATS University \| ISlamabad, Pakistan, BS in Bioinformatics \| Sept 2010 - Sept 2014
 
 ## Experience
 
-Wengo Analytics | Head Data Scientist | April 2018 - present
+University of Eastern Finland, Kuopio, Finland \| Collaborative Researcher \| Nov 2022 - present
 
-GeoScynce | Chief Analyst | Sept 2012 - April 2018
+Quad-i-Azam University, Islamabad, Pakistan \| Collaborative Researcher \| Nov 2022 - present
 
+Incheon National University, Incheon, South Korea \| Postdoctoral Researcher \| Aug 2020 - March 2022
+
+Gachon University, Incheon, South Korea \| Bioinformatics Researcher \| Feb 2017 - Feb 2021
+
+National Testing Services, Pakistan \| Software Developer/Programmer \| Aug 2014 - Oct 2018
 :::
-
-### This content appears below the formatted about page content.

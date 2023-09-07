@@ -6,10 +6,9 @@ website:
   title: "Bioinfo Guide Book"
   image: profile.png
   page-navigation: true
-  google-analytics: "279631117"
   favicon: logo-no-background.png
-  site-url: tobefilledin.com
-  description: "This is a guide book for data analysis scripts and codes for data analysis"
+  site-url: https://bioinfoguidebook.netlify.app/
+  description: "This is a guide book is a resource bioinformatics"
   navbar:
     logo: logo-no-background.png
     search: true
@@ -19,14 +18,21 @@ website:
       - about.qmd
     right:
       - icon: github
-        href: https://github.com/
+        href: https://github.com/mb-bioinfo-analyst
         aria-label: GitHub
       - icon: twitter
-        href: https://twitter.com/
+        href: https://twitter.com/bmustafa122
         aria-label: twitter
+      - icon: linkedin
+        href: www.linkedin.com/in/bmustafa1/
+        aria-label: linkedin
       - icon: youtube
-        href: https://www.youtube.com/
+        href: https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q
         aria-label: youtube
+      - text: ORCID
+        href: https://orcid.org/0000-0003-0865-7974
+      - text: RG
+        href: https://www.researchgate.net/profile/Bilal-Mustafa-5
       - text: Archive
         href: archive.qmd
   
@@ -35,9 +41,17 @@ website:
       - text: "About"
         href: about.qmd
       - icon: github
-        href: https://github.com/
+        href: https://github.com/mb-bioinfo-analyst
       - icon: twitter
-        href: https://twitter.com/
+        href: https://twitter.com/bmustafa122
+      - icon: linkedin
+        href: www.linkedin.com/in/bmustafa1/
+      - icon: youtube
+        href: https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q
+      - text: ORCID
+        href: https://orcid.org/0000-0003-0865-7974
+      - text: RG
+        href: https://www.researchgate.net/profile/Bilal-Mustafa-5
     border: true
   
   
