@@ -1,0 +1,16 @@
+[
+  {
+    "listing": "/archive.html",
+    "items": [
+      "/posts/welcome/index.html",
+      "/posts/regression-bioinformatics/index.html"
+    ]
+  },
+  {
+    "listing": "/index.html",
+    "items": [
+      "/posts/regression-bioinformatics/index.html",
+      "/posts/welcome/index.html"
+    ]
+  }
+]

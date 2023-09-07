@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bilal Mustafa">
+<meta name="dcterms.date" content="2023-09-07">
+
+<title>Bioinfo Guide Book - Unlocking the Secrets of Bioinformatics with Regression Analysis</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo-no-background.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=279631117"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '279631117', { 'anonymize_ip': true});
+</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Bioinfo Guide Book - Unlocking the Secrets of Bioinformatics with Regression Analysis">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="tobefilledin.com/posts/regression-bioinformatics/image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Bioinfo Guide Book</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Unlocking the Secrets of Bioinformatics with Regression Analysis</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Regression</div>
+                <div class="quarto-category">analysis</div>
+                <div class="quarto-category">bioinformatics</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Bilal Mustafa </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">September 7, 2023</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#what-is-regression-analysis" id="toc-what-is-regression-analysis" class="nav-link" data-scroll-target="#what-is-regression-analysis">What is Regression Analysis?</a></li>
+  <li><a href="#data-preparation-in-regression-analysis-and-bioinformatics" id="toc-data-preparation-in-regression-analysis-and-bioinformatics" class="nav-link" data-scroll-target="#data-preparation-in-regression-analysis-and-bioinformatics">Data Preparation in Regression Analysis and Bioinformatics:</a></li>
+  <li><a href="#tools-and-software" id="toc-tools-and-software" class="nav-link" data-scroll-target="#tools-and-software">Tools and Software:</a></li>
+  <li><a href="#emerging-trends" id="toc-emerging-trends" class="nav-link" data-scroll-target="#emerging-trends">Emerging Trends:</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion:</a></li>
+  <li><a href="#resources-references" id="toc-resources-references" class="nav-link" data-scroll-target="#resources-references">Resources &amp; References:</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction:</h1>
+<p>The merger of biology with information technology, or bioinformatics, has brought about a revolutionary change in the complex web of life sciences. Bioinformatics’ fundamental goal is to use computer modeling and data analysis to unlock the secrets of life. Regression analysis is one statistical tool that stands out as a leader in this area.</p>
+<p>Imagine understanding the intricate interactions between variables, interpreting the genetic code of organisms, and accurately forecasting biological results. Regression analysis allows bioinformaticians to accomplish this exact goal. In this blog article, we examine the crucial part that regression analysis plays in revealing the life’s hidden mysteries.</p>
+<hr>
+</section>
+<section id="what-is-regression-analysis" class="level1">
+<h1>What is Regression Analysis?</h1>
+<p>A statistical technique called regression analysis is used to look at the relationship between independent variable(s) (predictors) and a dependent variable (outcome). It is frequently used in many different domains, including bioinformatics, to comprehend and quantify the relationships between diverse factors and create data-based predictions.</p>
+<p>Regression analysis is a powerful tool for uncovering insights from complex biological data, enabling researchers to better understand the mechanisms governing biological processes and make informed decisions in various areas of biology and genetics.</p>
+<p>At its core, regression analysis aims to answer questions like:</p>
+<ul>
+<li>How do changes in one or more variables affect another variable?</li>
+<li>Can we predict the value of a dependent variable based on the values of independent variables?</li>
+<li>What is the strength and direction of the relationship between these variables?</li>
+</ul>
+<p>Here are some key components and concepts of regression analysis:</p>
+<ol type="1">
+<li><p><strong>Dependent Variable (Y)</strong>: This is the variable you want to predict or explain. It’s also known as the response variable.</p></li>
+<li><p><strong>Independent Variable(s) (X)</strong>: These are the variables that you believe have an impact on the dependent variable. In bioinformatics, independent variables could be factors like gene expression levels, genetic mutations, or environmental conditions.</p></li>
+<li><p><strong>Regression Equation</strong>: The goal of regression analysis is to find a mathematical equation that best describes the relationship between the independent and dependent variables. The equation is typically of the form:</p></li>
+</ol>
+<p><span id="eq-regression"><span class="math display">\[Y = β0 + β1X1 + β2X2 + ... + ε \tag{1}\]</span></span></p>
+<p>β0 is the intercept, representing the value of Y when all independent variables are zero. β1, β2, etc., are the coefficients that quantify how changes in the independent variables affect Y. ε represents the error term, accounting for the variability in Y that is not explained by the independent variables.</p>
+<ol start="4" type="1">
+<li><strong>Types of Regression</strong>:</li>
+</ol>
+<ul>
+<li><p><strong>Linear Regression</strong>: Assumes a linear relationship between the independent and dependent variables.</p></li>
+<li><p><strong>Logistic Regression</strong>: Used when the dependent variable is binary (e.g., yes/no or 1/0).</p></li>
+<li><p><strong>Nonlinear Regression</strong>: Suitable when the relationship between variables is nonlinear and can’t be described by a simple linear equation.</p></li>
+</ul>
+<div id="tbl-regression_types" class="anchored">
+<table class="table">
+<caption>Table&nbsp;1: Types of regression</caption>
+<colgroup>
+<col style="width: 13%">
+<col style="width: 46%">
+<col style="width: 39%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Type of Regression</strong></td>
+<td><strong>Goals</strong></td>
+<td><strong>Equation</strong></td>
+</tr>
+<tr class="even">
+<td>Linear Regression</td>
+<td>- Predicting a continuous dependent variable.</td>
+<td><span id="eq-linearRegression"><span class="math display">\[Y = β0 + β1X1 + β2X2 + ... + ε \tag{2}\]</span></span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- Understanding the linear relationship between independent and dependent variables.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Logistic Regression</td>
+<td>- Predicting a binary or categorical dependent variable.</td>
+<td><span id="eq-logisticRegression"><span class="math display">\[Logit(P(Y=1)) = β0 + β1X1 + β2X2 + ... + ε \tag{3}\]</span></span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- Estimating the probability of an event occurring.</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>Nonlinear Regression</td>
+<td>- Modeling complex, nonlinear relationships between variables.</td>
+<td><span id="eq-nonlinearRegression"><span class="math display">\[Y = f(β0 + β1X1 + β2X2 + ... + ε) \tag{4}\]</span></span></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>- Predicting a continuous dependent variable when the relationship is not linear.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol start="5" type="1">
+<li><strong>Regression Analysis Goals</strong>:</li>
+</ol>
+<ul>
+<li>Prediction: You can use regression to make predictions about the dependent variable based on new values of the independent variables.</li>
+<li>Understanding Relationships: Regression helps quantify how changes in independent variables are associated with changes in the dependent variable.</li>
+<li>Hypothesis Testing: It allows you to test hypotheses about the relationships between variables and assess the statistical significance of those relationships.</li>
+</ul>
+<p>In bioinformatics, regression analysis is applied to various research questions. For example, it can be used to predict the expression of specific genes based on environmental factors, assess the impact of genetic mutations on disease risk, or model the relationship between drug doses and biological responses.</p>
+<p><strong>Types of Regression Analysis in Bioinformatics</strong>:</p>
+<div id="tbl-regressionAnalysis_types" class="anchored">
+<table class="table">
+<caption>Table&nbsp;2: Types of regression Analysis</caption>
+<colgroup>
+<col style="width: 6%">
+<col style="width: 31%">
+<col style="width: 61%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<td><strong>Type of Regression</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Goals</strong></td>
+</tr>
+<tr class="even">
+<td>Linear Regression</td>
+<td>Assumes a linear relationship between independent and dependent variables.</td>
+<td><p>1. Prediction: Predict the value of the dependent variable based on the values of independent variables.</p>
+<p>2. Understanding Relationships: Quantify how changes in independent variables affect the dependent variable. 3. Hypothesis Testing: Test hypotheses about the relationships between variables and assess statistical significance.</p></td>
+</tr>
+<tr class="odd">
+<td>Logistic Regression</td>
+<td>Used when the dependent variable is binary (e.g., yes/no, 1/0).</td>
+<td><p>1. Classification: Predict the probability of an event occurring (e.g., disease diagnosis).</p>
+<p>2. Understanding Associations: Determine how independent variables influence the likelihood of a binary outcome.</p></td>
+</tr>
+<tr class="even">
+<td>Nonlinear Regression</td>
+<td>Suitable when the relationship between variables is nonlinear and cannot be described by a simple linear equation.</td>
+<td><p>1. Modeling Nonlinear Relationships: Capture and describe complex, nonlinear relationships between variables.</p>
+<p>2. Prediction: Predict outcomes when linear models are inadequate.</p></td>
+</tr>
+<tr class="odd">
+<td>Poisson Regression</td>
+<td>Specifically designed for count data, where the dependent variable represents the number of occurrences of an event.</td>
+<td>1. Modeling Count Data: Describe relationships between independent variables and count outcomes (e.g., number of disease cases, traffic accidents).</td>
+</tr>
+<tr class="even">
+<td>Ridge Regression</td>
+<td>A variant of linear regression that includes regularization to prevent overfitting.</td>
+<td>1. Overfitting Prevention: Reduce the impact of multicollinearity and overfitting in linear regression models.</td>
+</tr>
+<tr class="odd">
+<td>Lasso Regression</td>
+<td>Another variant of linear regression with regularization, which can lead to variable selection.</td>
+<td>1. Variable Selection: Select a subset of important independent variables while shrinking the coefficients of less important variables.</td>
+</tr>
+<tr class="even">
+<td>Elastic Net Regression</td>
+<td>Combines features of both Ridge and Lasso regression to balance regularization and variable selection.</td>
+<td>1. Balanced Regularization: Achieve a balance between Ridge and Lasso regression, addressing multicollinearity and variable selection.</td>
+</tr>
+<tr class="odd">
+<td>Time Series Regression</td>
+<td>Applied when data is collected over time, with observations depending on previous time points.</td>
+<td><p>1. Time Series Forecasting: Predict future values based on historical time series data.</p>
+<p>2. Causal Inference: Understand how changes in independent variables influence time-dependent outcomes.</p></td>
+</tr>
+<tr class="even">
+<td>Bayesian Regression</td>
+<td>Uses Bayesian methods to estimate regression parameters and quantify uncertainty.</td>
+<td>1. Uncertainty Estimation: Provide probabilistic estimates of regression coefficients and predictions.</td>
+</tr>
+<tr class="odd">
+<td>Polynomial Regression</td>
+<td>Extends linear regression by introducing polynomial terms to model nonlinear relationships.</td>
+<td><p>1. Modeling Nonlinear Relationships: Capture and describe curved relationships between variables.</p>
+<p>2. Prediction: Predict outcomes using polynomial equations.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr>
+</section>
+<section id="data-preparation-in-regression-analysis-and-bioinformatics" class="level1">
+<h1>Data Preparation in Regression Analysis and Bioinformatics:</h1>
+<p>Data preparation is the foundation step in any data analysis, and it plays a pivotal role in regression analysis within the field of bioinformatics. It involves cleaning, transforming, and organizing raw data to ensure that it’s ready for statistical modeling. Proper data preparation is essential because the quality of your results depends on the quality of your data. Here’s why data preparation is crucial:</p>
+<ol type="1">
+<li><strong>Data Cleaning</strong>:</li>
+</ol>
+<p><strong>Outlier Detection and Handling</strong>: Identify and deal with outliers in your data. Outliers can skew results and lead to incorrect conclusions.</p>
+<p><strong>Missing Data Handling</strong>: Address missing values by imputation or removal, as missing data can disrupt the analysis.</p>
+<ol start="2" type="1">
+<li><strong>Data Transformation</strong>:</li>
+</ol>
+<p><strong>Normalization</strong>: In bioinformatics, data from various sources often need to be normalized to have the same scale and distribution. Common methods include z-score normalization or min-max scaling.</p>
+<p><strong>Feature Engineering</strong>: Create new features or transform existing ones to capture relevant information better. For example, you might calculate ratios or logarithms of variables to reveal underlying patterns.</p>
+<ol start="3" type="1">
+<li><strong>Data Encoding</strong>:</li>
+</ol>
+<p><strong>Categorical Variable Encoding</strong>: Convert categorical variables into numerical values through techniques like one-hot encoding or label encoding.</p>
+<p><strong>Time Series Transformation</strong>: If working with time series data, ensure it’s in the appropriate format with timestamps and intervals.</p>
+<ol start="4" type="1">
+<li><strong>Data Splitting</strong>:</li>
+</ol>
+<p><strong>Training and Testing Sets</strong>: Divide your dataset into two subsets: a training set used to build the regression model and a testing set used to evaluate its performance. Common ratios are 70-30 or 80-20 for training and testing, respectively. Other ratios such as 70:30, 60:40, and even 50:50 are also used in practice.</p>
+<ol start="5" type="1">
+<li><strong>Data Visualization</strong>:</li>
+</ol>
+<p><strong>Exploratory Data Analysis (EDA)</strong>: Create visualizations to explore the relationships between variables, identify patterns, and gain insights into the data’s characteristics.</p>
+<p><strong>Correlation Analysis</strong>: Calculate and visualize correlations between variables to understand their interdependencies.</p>
+<ol start="6" type="1">
+<li><strong>Data Quality Assurance</strong>:</li>
+</ol>
+<p>Ensure that the data is accurate, complete, and consistent. Verify that data entries make sense and align with the research objectives.</p>
+<ol start="7" type="1">
+<li><strong>Preprocessing for Specific Analysis</strong>:</li>
+</ol>
+<p>In bioinformatics, you may need to perform specialized data preprocessing, such as sequence alignment, filtering based on quality scores, or removing duplicates in DNA sequencing data.</p>
+<ol start="8" type="1">
+<li><strong>Ethical and Legal Considerations</strong>:</li>
+</ol>
+<p>Be mindful of data privacy and ethical considerations when handling sensitive biological data, especially if it involves human subjects.</p>
+<p>Proper data preparation sets the stage for meaningful regression analysis in bioinformatics. It helps mitigate the impact of noise, errors, and inconsistencies in your data, ensuring that your results are reliable and interpretable. Ultimately, the success of your regression analysis depends on the care and attention given to preparing your data.</p>
+<hr>
+</section>
+<section id="tools-and-software" class="level1">
+<h1>Tools and Software:</h1>
+<p>It’s critical to have access to the appropriate equipment and software. Regression analysis is frequently used to predict relationships between biological variables, and using the right tools can help you draw meaningful conclusions from large datasets. Here are some instruments and programs frequently used in bioinformatics for regression analysis:</p>
+<ol type="1">
+<li><strong>R</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: R is a powerful open-source programming language and environment for statistical computing and data analysis. It offers an extensive collection of packages specifically tailored for various types of regression analysis.</p></li>
+<li><p>Key Features: R provides comprehensive libraries for linear regression, logistic regression, and nonlinear regression. Packages like lm, glm, and nls are commonly used for regression modeling in bioinformatics.</p></li>
+<li><p>Benefits: R is highly customizable, with a large and active user community. It supports data visualization, data manipulation, and a wide range of statistical techniques, making it a versatile choice for regression analysis in bioinformatics.</p></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Bioconductor</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: Bioconductor is a collection of R packages specifically designed for the analysis of genomic and biological data. It is an invaluable resource for bioinformaticians working with high-throughput biological data.</p></li>
+<li><p>Key Features: Bioconductor offers packages for regression analysis in bioinformatics, particularly in the context of gene expression studies. Packages like limma and DESeq2 are commonly used for differential expression analysis, which often involves regression modeling.</p></li>
+<li><p>Benefits: Bioconductor packages are specialized for biological data and include tools for quality control, normalization, and visualization of high-throughput data, making it an indispensable resource for bioinformatics researchers.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Python</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: Python is another widely used programming language in bioinformatics, offering libraries and frameworks that support regression analysis and other data-related tasks.</p></li>
+<li><p>Key Features: Libraries like NumPy, pandas, and scikit-learn provide tools for data manipulation, preprocessing, and building regression models. Scikit-learn, in particular, offers a robust set of functions for linear and logistic regression.</p></li>
+<li><p>Benefits: Python’s simplicity and readability, along with its machine learning capabilities, make it suitable for bioinformatics tasks beyond regression analysis, such as classification and feature selection.</p></li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Galaxy</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: Galaxy is an open-source platform that provides a user-friendly interface for creating and executing workflows in bioinformatics. It integrates various tools and software, including those for regression analysis.</p></li>
+<li><p>Key Features: Galaxy supports the integration of tools like R, Python, and other bioinformatics-specific software to create and execute regression analysis workflows. It simplifies the process for researchers who may not be proficient in programming.</p></li>
+<li><p>Benefits: Galaxy is especially useful for researchers who prefer a graphical user interface (GUI) and want to create reproducible and shareable analysis pipelines.</p></li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Jupyter Notebooks</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: Jupyter Notebooks are interactive, web-based environments for data analysis and code execution. They support multiple programming languages, including Python and R.</p></li>
+<li><p>Key Features: Jupyter Notebooks allow bioinformaticians to document and execute regression analysis code step by step, making it easy to share and reproduce analyses. They are particularly popular for exploratory data analysis and report generation.</p></li>
+<li><p>Benefits: Jupyter Notebooks provide a flexible and collaborative environment for bioinformatics research, enabling researchers to combine code, visualizations, and explanations in a single document.</p></li>
+</ul>
+<ol start="6" type="1">
+<li><strong>SPSS</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: IBM SPSS Statistics is a commercial software package that offers a range of statistical analysis tools, including regression analysis.</p></li>
+<li><p>Key Features: SPSS provides a user-friendly interface for conducting various types of regression analysis, making it accessible to researchers without extensive programming experience. It supports linear, logistic, and other regression techniques.</p></li>
+<li><p>Benefits: SPSS is suitable for bioinformatics researchers who prefer a point-and-click interface for their statistical analysis needs. It also offers advanced features for data visualization and reporting.</p></li>
+</ul>
+<ol start="7" type="1">
+<li><strong>SAS</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: SAS (Statistical Analysis System) is a widely used commercial software suite for advanced analytics, including regression analysis.</p></li>
+<li><p>Key Features: SAS offers a comprehensive set of procedures and tools for regression modeling. It is known for its robustness and scalability, making it suitable for handling large-scale bioinformatics datasets.</p></li>
+<li><p>Benefits: SAS is often used in bioinformatics projects that require high-performance computing and large-scale data analysis. It provides extensive support for data management, modeling, and reporting.</p></li>
+</ul>
+<ol start="8" type="1">
+<li><strong>MATLAB</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: MATLAB is a proprietary programming language and environment commonly used in various scientific disciplines, including bioinformatics.</p></li>
+<li><p>Key Features: MATLAB offers a range of built-in functions and toolboxes for regression analysis, particularly for complex modeling tasks. It is known for its flexibility and scripting capabilities.</p></li>
+<li><p>Benefits: MATLAB is suitable for bioinformaticians who require advanced mathematical modeling and simulation capabilities alongside regression analysis. It is often used for signal processing and image analysis in bioinformatics.</p></li>
+</ul>
+<ol start="9" type="1">
+<li><strong>Statistical Software in the Cloud</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: Cloud-based statistical analysis platforms, such as Google Colab, Microsoft Azure Notebooks, and IBM Watson Studio, offer online access to popular programming languages and libraries for regression analysis.</p></li>
+<li><p>Key Features: These platforms provide the convenience of cloud computing and collaboration, allowing researchers to work on bioinformatics projects from anywhere with internet access.</p></li>
+<li><p>Benefits: Cloud-based platforms eliminate the need for local software installations and provide scalability for handling large datasets. They are particularly useful for collaborative research efforts and educational purposes.</p></li>
+</ul>
+<ol start="10" type="1">
+<li><strong>Custom Bioinformatics Software</strong>:</li>
+</ol>
+<ul>
+<li><p>Description: In some cases, bioinformatics researchers develop custom software tailored to specific research needs, including regression analysis.</p></li>
+<li><p>Key Features: Custom software allows for fine-tuning regression models and incorporating domain-specific knowledge. It can be designed to accommodate unique data formats and analysis requirements.</p></li>
+<li><p>Benefits: Custom software can offer a competitive advantage in bioinformatics research by enabling researchers to address complex and niche challenges that may not be fully addressed by existing tools.</p></li>
+</ul>
+<p>The choice of tool or software for regression analysis in bioinformatics depends on various factors, including the nature of the data, the specific research objectives, the researcher’s expertise, and the availability of computational resources. It’s often beneficial for bioinformaticians to be proficient in multiple tools and languages to adapt to different research scenarios.</p>
+<p>The field of bioinformatics benefits immensely from a diverse array of tools and software that facilitate regression analysis and other statistical tasks. Whether using open-source programming languages like R and Python, specialized bioinformatics packages like Bioconductor, or user-friendly platforms like Galaxy, bioinformaticians have a rich toolbox at their disposal to uncover insights from complex biological data. The choice of tool ultimately depends on the specific research goals and the preferences of the researcher.</p>
+<hr>
+</section>
+<section id="emerging-trends" class="level1">
+<h1>Emerging Trends:</h1>
+<p>Bioinformatics is a field that continuously evolves in response to the increasing complexity and volume of biological data generated through advances in sequencing, imaging, and other high-throughput technologies. In the realm of regression analysis, which plays a crucial role in modeling biological relationships, several emerging trends and advancements are reshaping the landscape of bioinformatics research:</p>
+<ol type="1">
+<li><strong>Machine Learning-Based Regression Models</strong>:</li>
+</ol>
+<p>Machine learning (ML) has gained prominence in bioinformatics for its ability to handle complex, high-dimensional data and discover intricate relationships among variables. Within the context of regression analysis, several trends are emerging:</p>
+<ul>
+<li><p>Deep Learning Regression: Deep neural networks, a subset of ML, are increasingly applied to regression tasks in bioinformatics. These models can capture nonlinear relationships and hierarchical features in biological data, making them suitable for tasks such as gene expression prediction, protein-ligand binding affinity prediction, and disease risk assessment.</p></li>
+<li><p>Ensemble Methods: Ensemble learning techniques, such as random forests and gradient boosting, are being used to improve the accuracy and robustness of regression models in bioinformatics. These methods combine multiple base models to produce more reliable predictions, which is especially useful when dealing with noisy biological data.</p></li>
+<li><p>Transfer Learning: Transfer learning, a technique where models trained on one dataset are adapted to perform well on a related but different dataset, is being explored to leverage pre-trained models in bioinformatics regression tasks. This approach can save time and resources in model development and fine-tuning.</p></li>
+</ul>
+<ol start="2" type="1">
+<li><strong>Integration of Multi-Omics Data</strong>:</li>
+</ol>
+<p>Multi-omics data integration is a critical area of research in bioinformatics, aiming to combine information from various biological data types, such as genomics, transcriptomics, proteomics, and metabolomics. In regression analysis, multi-omics data integration offers several advantages:</p>
+<ul>
+<li><p>Systems Biology Approaches: Integrating multi-omics data allows researchers to develop holistic models of biological systems. Regression analysis can be used to identify relationships between different omics layers and elucidate complex interactions within biological pathways.</p></li>
+<li><p>Disease Biomarker Discovery: By combining diverse omics data, researchers can identify novel biomarkers for diseases, enabling early diagnosis and personalized treatment strategies. Regression models can help uncover predictive relationships between omics profiles and clinical outcomes.</p></li>
+<li><p>Drug Discovery and Pharmacogenomics: Multi-omics data integration plays a pivotal role in drug discovery, as it can aid in predicting drug responses and identifying potential drug targets. Regression analysis can model the relationships between drug-induced changes in omics profiles and therapeutic outcomes.</p></li>
+</ul>
+<ol start="3" type="1">
+<li><strong>Bayesian Regression and Bayesian Networks</strong>:</li>
+</ol>
+<p>Bayesian regression and Bayesian networks are gaining popularity in bioinformatics for their ability to handle uncertainty and incorporate prior knowledge:</p>
+<ul>
+<li><p>Bayesian Regression: Bayesian regression models provide a framework for quantifying uncertainty in regression analysis. They are particularly useful when dealing with small sample sizes and noisy biological data, as they can provide credible intervals for regression coefficients and model parameters.</p></li>
+<li><p>Bayesian Networks: Bayesian networks enable the representation of probabilistic dependencies among variables in biological systems.They are used to model complex regulatory networks, pathways, and causal relationships. Regression analysis within Bayesian networks can help identify key nodes and interactions.</p></li>
+</ul>
+<ol start="4" type="1">
+<li><strong>Spatial Regression Analysis</strong>:</li>
+</ol>
+<p>Spatial data is prevalent in bioinformatics, especially in fields like spatial transcriptomics and spatial proteomics. Emerging trends in spatial regression analysis include:</p>
+<ul>
+<li><p>Spatial Regression Models: Specialized spatial regression models, such as spatial autoregressive models and spatial error models, are being developed to account for spatial autocorrelation in biological data. These models are crucial for understanding the spatial organization of biological processes.</p></li>
+<li><p>Spatial Omics Integration: Combining spatially resolved omics data (e.g., spatial transcriptomics and spatial proteomics) with traditional omics data allows for a deeper understanding of tissue-specific gene expression and protein localization, which can be achieved through regression analysis techniques.</p></li>
+</ul>
+<ol start="5" type="1">
+<li><strong>Interpretability and Explainability</strong>:</li>
+</ol>
+<p>As complex machine learning models are increasingly employed in bioinformatics regression tasks, there is a growing emphasis on model interpretability and explainability. Researchers are developing techniques to provide insights into why a model makes specific predictions:</p>
+<ul>
+<li><p>Feature Importance Analysis: Techniques like SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-Agnostic Explanations) are being applied to highlight the contributions of individual features or variables in regression models, aiding in the interpretation of results.</p></li>
+<li><p>Visual Analytics: Integrating visualization techniques with regression analysis outputs helps researchers explore and communicate the relationships discovered by the models. Visual representations of data and model explanations enhance the interpretability of complex results.</p></li>
+</ul>
+<p>These emerging trends and advancements in regression analysis within bioinformatics are driving innovation and expanding the capabilities of researchers to uncover valuable insights from biological data. By leveraging machine learning, multi-omics integration, Bayesian modeling, spatial analysis, and interpretability techniques, bioinformaticians are better equipped to address complex biological questions and contribute to advancements in personalized medicine, drug discovery, and our overall understanding of life sciences.</p>
+<hr>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion:</h1>
+<p>In the field of bioinformatics, where biology converges with data science, regression analysis emerges as a beacon of understanding. Through this text, we may understand the pivotal role that regression analysis plays in unraveling the secrets of life encoded in biological data.</p>
+<p>In this, we delved deep into the core of regression analysis, where data reveals its stories. We navigated through the types of regression, from linear to logistic and nonlinear, each illuminating a different facet of the intricate biological tapestry. We learned how these regression models allow us to understand, predict, and quantify the relationships between variables, from gene expression levels to genetic mutations.</p>
+<p>Yet, as the old saying goes, “With great power comes great responsibility.” The power of regression analysis can only be harnessed effectively when the data is meticulously prepared. We uncovered the significance of data cleaning, transformation, and encoding—each step ensuring that the data we analyze is trustworthy and aptly formatted for the tasks at hand. Through data splitting and visualization, we gained insights into the relationships within our data, setting the stage for robust regression analysis.</p>
+<p>With data in hand and a firm understanding of its preparation, we moved on to tools and softwares. The arsenal of options, from R and Python to specialized bioinformatics packages and cloud-based platforms, was unveiled. Each tool, with its unique capabilities, empowers bioinformaticians to perform regression analysis with precision and efficiency, aligning their chosen tool with the intricacies of their research.</p>
+<p>Nevertheless, the area of bioinformatics is constantly advancing and adapting to the changing nature of biological data. We found new patterns that have the potential to change how bioinformatics regression analysis is done. Regression models based on machine learning are at the forefront because of their capacity to delve into the depths of complex biological data. These models open the door to uncovering hidden patterns, discovering nonlinear relationships, and improving forecasts.</p>
+<p>The integration of multi-omics data, drawing from genomics, transcriptomics, proteomics, and metabolomics, reveals a panoramic view of biological systems. Regression analysis intertwines these layers, offering insights into the intricate web of molecular interactions, biomarker discovery, and personalized medicine. Bayesian regression, spatial analysis, and interpretability techniques further enrich the bioinformatician’s toolkit, providing nuanced perspectives and a deeper understanding of biological processes.</p>
+<p>Finally, bioinformatics, guided by regression analysis, starts on a never-ending search to interpret the language of life. It is an innovative discipline in which the integration of biology and data science pulls us forward, opening the way to personalized therapy, disease understanding, and new discoveries. As we consider the future of bioinformatics, we are reminded that each regression model, each meticulously produced dataset, and each new trend brings us one step closer to unraveling the unfathomable mysteries concealed inside the biological world’s complexity. So, since bioinformatics remains a beacon of hope and knowledge on the forefront of science, let us continue this voyage of research and discovery.</p>
+<hr>
+</section>
+<section id="resources-references" class="level1">
+<h1>Resources &amp; References:</h1>
+<p>These resources &amp; references cover a range of topics related to regression analysis, bioinformatics, and tools commonly used in the field.</p>
+<p>Hastie, T., Tibshirani, R., &amp; Friedman, J. (2009). The Elements of Statistical Learning: Data Mining, Inference, and Prediction. Springer.</p>
+<p>James, G., Witten, D., Hastie, T., &amp; Tibshirani, R. (2013). An Introduction to Statistical Learning. Springer.</p>
+<p>Baldi, P., &amp; Brunak, S. (2001). Bioinformatics: The Machine Learning Approach. MIT Press.</p>
+<p>Gentleman, R., Carey, V., Huber, W., Irizarry, R., &amp; Dudoit, S. (2005). Bioinformatics and Computational Biology Solutions Using R and Bioconductor. Springer.</p>
+<p>Pedregosa, F., Varoquaux, G., Gramfort, A., Michel, V., Thirion, B., Grisel, O., … &amp; Vanderplas, J. (2011). Scikit-learn: Machine learning in Python. Journal of Machine Learning Research, 12, 2825-2830.</p>
+<p>Love, M. I., Huber, W., &amp; Anders, S. (2014). Moderated estimation of fold change and dispersion for RNA-seq data with DESeq2. Genome biology, 15(12), 550.</p>
+<p>Chen, E. Y., Tan, C. M., Kou, Y., Duan, Q., Wang, Z., Meirelles, G. V., … &amp; Ma’ayan, A. (2013). Enrichr: interactive and collaborative HTML5 gene list enrichment analysis tool. BMC bioinformatics, 14(1), 128.</p>
+<p>Blighe, K., Rana, S., &amp; Lewis, M. (2019). EnhancedVolcano: Publication-ready volcano plots with enhanced colouring and labeling. R package version 1.6.0. Retrieved from https://github.com/kevinblighe/EnhancedVolcano</p>
+<p>Durinck, S., Moreau, Y., Kasprzyk, A., Davis, S., De Moor, B., Brazma, A., &amp; Huber, W. (2005). BioMart and Bioconductor: a powerful link between biological databases and microarray data analysis. Bioinformatics, 21(16), 3439-3440.</p>
+<p>Altman, N. S. (1992). An introduction to kernel and nearest-neighbor nonparametric regression. The American Statistician, 46(3), 175-185.</p>
+<p>Lundberg, S. M., &amp; Lee, S. I. (2017). A unified approach to interpreting model predictions. In Advances in neural information processing systems (pp.&nbsp;4765-4774).</p>
+<p>Liberzon, A., Birger, C., Thorvaldsdóttir, H., Ghandi, M., Mesirov, J. P., &amp; Tamayo, P. (2015). The Molecular Signatures Database (MSigDB) hallmark gene set collection. Cell systems, 1(6), 417-425.</p>
+<hr>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

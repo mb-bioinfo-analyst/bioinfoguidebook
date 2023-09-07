@@ -1,0 +1,54 @@
+project:
+  type: website
+
+website:
+  twitter-card: true
+  title: "Bioinfo Guide Book"
+  image: profile.png
+  page-navigation: true
+  google-analytics: "279631117"
+  favicon: logo-no-background.png
+  site-url: tobefilledin.com
+  description: "This is a guide book for data analysis scripts and codes for data analysis"
+  navbar:
+    logo: logo-no-background.png
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+    right:
+      - icon: github
+        href: https://github.com/
+        aria-label: GitHub
+      - icon: twitter
+        href: https://twitter.com/
+        aria-label: twitter
+      - icon: youtube
+        href: https://www.youtube.com/
+        aria-label: youtube
+      - text: Archive
+        href: archive.qmd
+  
+  page-footer:
+    center: 
+      - text: "About"
+        href: about.qmd
+      - icon: github
+        href: https://github.com/
+      - icon: twitter
+        href: https://twitter.com/
+    border: true
+  
+  
+
+  
+format:
+  html:
+    theme:
+      light: [flatly]
+      dark: [darkly]
+    toc: true
+
+editor: visual
+
