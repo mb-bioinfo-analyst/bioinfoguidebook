@@ -22,11 +22,11 @@
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2023-09-07T14:17:38.995Z</lastmod>
+    <lastmod>2023-09-07T22:27:45.182Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
-    <lastmod>2023-09-07T14:18:09.127Z</lastmod>
+    <lastmod>2023-09-07T22:16:44.663Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/regression-bioinformatics/index.html</loc>
@@ -38,6 +38,14 @@
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2023-09-07T14:17:35.071Z</lastmod>
+    <lastmod>2023-09-07T22:27:43.444Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/index.html</loc>
+    <lastmod>2023-09-07T22:26:37.203Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/index.html</loc>
+    <lastmod>2023-09-07T22:27:54.041Z</lastmod>
   </url>
 </urlset>

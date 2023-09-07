@@ -3,12 +3,16 @@
     "listing": "/archive.html",
     "items": [
       "/posts/welcome/index.html",
+      "/posts/ConditionalStatements_R/index.html",
+      "/posts/bioinfo-with-R/index.html",
       "/posts/regression-bioinformatics/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/bioinfo-with-R/index.html",
+      "/posts/ConditionalStatements_R/index.html",
       "/posts/regression-bioinformatics/index.html",
       "/posts/welcome/index.html"
     ]
