@@ -22,8 +22,6 @@ about:
       href: https://orcid.org/0000-0003-0865-7974 
 ---
 
-
-
 ::: {#hero-heading}
 Bilal Mustafa is a Data Scientist, highly skilled and experienced in the field of bioinformatics.
 When not innovating on data platforms, Bilal enjoys spending time gardening and traveling.
@@ -32,7 +30,7 @@ When not innovating on data platforms, Bilal enjoys spending time gardening and 
 
 Gachon University \| Incheon, South Korea, MS-PhD in Health Sciences and technology (Cancer Genomics) \| Feb 2017 - Feb 2021
 
-COMSATS University \| ISlamabad, Pakistan, BS in Bioinformatics \| Sept 2010 - Sept 2014
+COMSATS University \| Islamabad, Pakistan, BS in Bioinformatics \| Sept 2010 - Sept 2014
 
 ## Experience
 
