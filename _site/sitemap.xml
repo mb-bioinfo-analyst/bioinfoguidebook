@@ -22,7 +22,7 @@
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2023-09-07T22:27:45.182Z</lastmod>
+    <lastmod>2023-09-21T15:43:31.878Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
@@ -38,14 +38,22 @@
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2023-09-07T22:27:43.444Z</lastmod>
+    <lastmod>2023-09-21T15:43:29.874Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/index.html</loc>
-    <lastmod>2023-09-07T22:26:37.203Z</lastmod>
+    <lastmod>2023-09-21T13:57:49.470Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/index.html</loc>
-    <lastmod>2023-09-07T22:27:54.041Z</lastmod>
+    <lastmod>2023-09-21T13:52:09.385Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling_R/index.html</loc>
+    <lastmod>2023-09-21T13:56:43.479Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/index.html</loc>
+    <lastmod>2023-09-21T15:46:58.239Z</lastmod>
   </url>
 </urlset>

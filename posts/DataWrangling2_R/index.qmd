@@ -1,0 +1,236 @@
+---
+title: "Best Practices for Data Wrangling in R - Part 2"
+author: "Bilal Mustafa"
+date: "2023-09-21"
+categories: [R, Data wrangling, File Reading]
+image: "image.jpg"
+execute: 
+  output: true
+  echo: fenced
+  warning: false
+  error: false
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
+---
+
+## Introduction:
+
+Data wrangling is a crucial step in the data analysis process, and R provides a powerful set of tools and packages to help you clean, transform, and prepare your data for analysis.
+In this blog post, we will explore some best practices for effective data wrangling in R.
+Whether you are a beginner or an experienced data analyst, these tips will help you streamline your data preparation workflow and ensure the reliability of your analysis.
+
+Now continuing from the previous post (Best Practices for Data Wrangling in R - Part 1), we will use the airquality data from datasets library to further understand how data wrangling helps us to get the deeper and significant insights of our data.
+
+------------------------------------------------------------------------
+
+## **Reading Data**
+
+### Raw Input Data
+
+Firstly read your data into R.
+For this exercise I will be using a simulated dataset.
+
+```{r}
+
+library(datasets)
+
+data(airquality)
+
+```
+
+------------------------------------------------------------------------
+
+## **Understand Your Data**
+
+It's imperative to have a thorough understanding of your dataset before getting started with data wrangling.
+Knowing your data's structure, the significance of each variable, and any potential problems or abnormalities is part of this.
+To obtain an understanding of the data you're working with, start by analyzing it using functions like `head()`, `summary()`, and `str()`.
+
+```{r}
+
+# Example: Inspect the first few rows of a dataset
+head(airquality)
+```
+
+```{r}
+
+# Example: Get a summary of the dataset
+summary(airquality)
+```
+
+```{r}
+
+# Example: Display the structure of the dataset
+str(airquality)
+```
+
+This will help you make informed decisions during the wrangling process.
+
+------------------------------------------------------------------------
+
+## **Data Cleaning**
+
+Data cleaning involves checking the headers, handling missing values, outliers, and errors in your dataset.
+Here are some best practices for data cleaning in R:
+
+### **Handle Missing Values:**
+
+-   Identify missing values using functions like `is.na()` or `complete.cases()`.
+
+-   Decide whether to impute missing values, remove rows with missing data, or keep them, depending on the context.
+
+-   Use packages like `dplyr` or `tidyr` to perform missing data operations.
+
+```{r}
+
+library(dplyr)
+library(tidyr)
+
+# Example: Remove rows with missing values
+airquality_clean <- na.omit(airquality)
+
+head(airquality_clean)
+
+```
+
+Other methods to remove NA's include `na.omit()` , `complete.cases()`, `rowSums()`, `drop_na()`, and `filter()`.
+
+```{r}
+
+
+# #Remove rows with NA's using na.omit()
+# airquality_clean <- na.omit(airquality)
+# 
+# #Remove rows with NA's using complete.cases
+# airquality_clean <- airquality[complete.cases(airquality),]
+# 
+# #Remove rows with NA's using rowSums()
+# airquality_clean <- airquality[rowSums(is.na(airquality)) == 0,]
+# 
+# #Import the tidyr package
+# library("tidyr")
+# 
+# #Remove rows with NA's using drop_na()
+# airquality_clean <- airquality %>% drop_na()
+# 
+# #Remove rows that contains all NA's
+# airquality_clean <-
+#   airquality[rowSums(is.na(airquality)) != ncol(airquality),]
+# 
+# #Load the dplyr package
+# library("dplyr")
+# 
+# #Remove rows that contains all NA's
+# airquality_clean <-
+#   filter(airquality, rowSums(is.na(airquality)) != ncol(airquality))
+# 
+# airquality_clean <- airquality %>% filter(!is.na(Ozone))
+
+
+```
+
+------------------------------------------------------------------------
+
+### **Manage Outliers**
+
+-   Visualize data using boxplots, histograms, or scatter plots to detect outliers.
+
+-   Consider using statistical methods or domain knowledge to handle outliers, such as winsorization or transformation.
+
+```{r}
+
+# Example: Visualize outliers using a boxplot
+boxplot(airquality_clean)
+
+
+# # Remove outliers from the 'income' variable
+# airquality_clean <- airquality_clean %>%
+#   filter(Ozone >= 0)
+
+```
+
+### **Correct Errors**
+
+-   Check for data entry errors and inconsistencies.
+
+-   Use data validation rules or regular expressions to identify and correct errors.
+
+------------------------------------------------------------------------
+
+## **Data Transformation**
+
+To make your data acceptable for analysis, you must shape and reformat it through data transformation.
+The following are a few excellent practices for R's data transformation:
+
+### **Use Tidy Data Principles**
+
+-   Follow the principles of tidy data, where each variable is a column, each observation is a row, and each type of observational unit is a table.
+
+-   The `tidyr` package provides functions like `gather()` and `spread()` for reshaping data.
+
+```{r}
+
+# # Example: Convert data from wide to long format
+airquality_clean_long <- airquality_clean %>%
+  gather(key = "Column_name", value = "value")   
+
+head(airquality_clean_long)
+
+```
+
+### **Apply Data Type Conversions**
+
+-   Ensure that variables have the correct data types (e.g., numeric, character, factor) for analysis.
+
+-   Use functions like **`as.numeric()`**, **`as.character()`**, or **`as.factor()`** to convert data types.
+
+```{r}
+
+# Example: Convert a variable to numeric
+airquality_clean$Temp_numeric <- as.numeric(airquality_clean$Temp) 
+
+head(airquality_clean)
+
+```
+
+------------------------------------------------------------------------
+
+## **Data Validation**
+
+To ensure that your processed data satisfies the criteria of your study, validation is a crucial stage in the data wrangling process.
+Here are a few guidelines for using R's data validation features.
+
+### **Perform Sanity Checks**
+
+-   Check summary statistics, distributions, and relationships between variables to ensure they align with your expectations.
+
+```{r}
+
+# Example: Check summary statistics
+summary(airquality_clean)
+
+```
+
+### **Validate Data Integrity**
+
+-   Verify that data transformations have not introduced errors.
+
+-   Compare original and transformed data to identify discrepancies.
+
+### **Document Your Steps**
+
+For reproducibility and collaboration, it's essential to record your data manipulation procedures.
+To write a narrative that details the choices you made while handling the data, think about utilizing R Markdown or Jupyter Notebooks.
+Make your work accessible and understandable to others by using code comments, explanations, and visualizations.
+
+------------------------------------------------------------------------
+
+## **Conclusion**
+
+A crucial first step in data analysis is data wrangling; by using R's best practices, you can speed up the process and guarantee the accuracy of your findings.
+You may improve the efficiency of your data wrangling workflow and provide more reliable analyses by comprehending your data, putting effective cleaning and transformation strategies into practice, testing your findings, and documenting your approach.
+
+Always tailor these best practices to your unique needs, keeping in mind that the individual methods and packages you use may vary depending on your dataset and research goals.
