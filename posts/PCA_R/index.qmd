@@ -1,0 +1,260 @@
+---
+title: "Unveiling Data Insights with Principal Component Analysis (PCA) in R"
+author: "Bilal Mustafa"
+date: "2023-09-24"
+categories: [R, PCA, Feature Engineering, Dimentionality Reduction]
+image: "image.jpg"
+execute: 
+  output: true
+  echo: fenced
+  warning: false
+  error: false
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
+---
+
+## Introduction:
+
+The dimensionality reduction method known as Principal Component Analysis (PCA) is popular in the fields of data analysis and machine learning.
+It is a mathematical technique that aids in the simplification of complicated datasets while retaining the majority of the crucial details.
+In order to achieve this, PCA converts the initial data into a new coordinate system, known as the principle components, where the axes are linear combinations of the initial variables.
+
+------------------------------------------------------------------------
+
+# Basic Concepts
+
+## Data Preparation
+
+You normally begin with a dataset that comprises numerous variables or features before applying PCA.
+These traits, measures, or characteristics of the data points you're evaluating could be considered as these features.
+For each characteristic to have a mean of 0 and a standard deviation of 1, your data must be standardized or normalized.
+This stage makes sure that each feature is given the same weight in the analysis.
+
+------------------------------------------------------------------------
+
+## Covariance Matrix
+
+The covariance matrix of the standardized data is computed first in PCA.
+The associations between each pair of variables in your dataset are summarized in the covariance matrix.
+It explains how variables move in tandem or in opposition to one another.
+While a negative covariance suggests they move in the opposite directions, a positive covariance shows that two variables rise or fall together.
+
+------------------------------------------------------------------------
+
+## Eigenvalues and Eigenvectors
+
+The next step in PCA is to compute the eigenvalues and eigenvectors of the covariance matrix.
+
+-   **Eigenvalues**: The magnitude of variance along each principal component is shown by these scalar values.
+    Higher eigenvalues correspond to principal components that capture more variance in the data.
+    Eigenvalues are sorted in descending order.
+
+-   **Eigenvectors**: In the original feature space, these are the directions or vectors where data fluctuates the most.
+    Each eigenvector corresponds to a principal component.
+
+------------------------------------------------------------------------
+
+## Principal Components
+
+The principal components are linear combinations of the original features.
+Each principal component is formed by multiplying each feature by a weight (the corresponding eigenvector) and summing these weighted values.
+
+The first principal component (PC1), followed by PC2, PC3, and so on, explains the most variance in the data.
+Each following component collects less information than PC1, yet they are orthogonal (uncorrelated) to each other, indicating that they are not redundant.
+
+------------------------------------------------------------------------
+
+## Explained Variance Ratio
+
+The explained variance ratio can be used to determine how much variance each principal component captures.
+It indicates how much of the total variation in the data is explained by each major component.
+A cumulative explained variance plot is typically used to determine how many principal components to keep.
+
+------------------------------------------------------------------------
+
+## Dimensionality Reduction
+
+You can decide how many principal components to keep based on the cumulative explained variance and your desired degree of kept information (for example, retaining 95% of the variance).
+Data analysis, visualization, and modeling can be made simpler by reducing the number of dimensions by eliminating less significant elements/components.
+
+------------------------------------------------------------------------
+
+## Reconstruction
+
+You can use the retained principal components to project your data back into the original feature space if you choose to reduce the dimensionality.
+This helps you analyze the findings in light of your original data.
+
+------------------------------------------------------------------------
+
+## Applications
+
+PCA is used in various fields, including:
+
+-   **Data Visualization**: Reducing high-dimensional data to two or three dimensions for visualization purposes.
+-   **Noise Reduction**: Removing noise and redundancy in data.
+-   **Feature Engineering**: Creating new features that capture the most important information.
+-   **Machine Learning**: Reducing the number of features in machine learning models to improve performance and reduce overfitting.
+
+------------------------------------------------------------------------
+
+## Takeaway Note
+
+In summary, PCA is a potent method for dimensionality reduction that enables you to better understand your data by changing it into a form that is easier to read.
+It is frequently used in machine learning and data analysis to streamline complex datasets and make them easier to handle for additional/downstream analysis.
+
+------------------------------------------------------------------------
+
+# Practical Example: PCA in R
+
+We'll use a sample dataset to illustrate the process, but you can apply PCA to your own data with similar steps.
+
+### Step 1: Load and Preprocess Data
+
+In this example, we'll use the built-in "iris" dataset in R.
+However, for your real-world projects, you should load your data into a dataframe and preprocess it, including scaling if necessary.
+
+```{r}
+
+# Load the iris dataset
+data(iris)
+
+# Extract the features
+features <- iris[, 1:4]
+
+# Standardize the features (mean=0, variance=1)
+scaled_features <- scale(features)
+
+```
+
+In the histograms presented below, we aim to illustrate the fundamental differences between the original features and the scaled features of the Iris dataset.
+These visualizations are valuable for understanding the effects of standardization (mean = 0, variance = 1) on the distribution of data.
+
+**Feature Distribution (Original Features)**
+
+-   Feature 1 (Sepal Length): In the histogram for the original sepal length feature, we observe that the data is distributed across a relatively wide range of values.
+    The distribution appears somewhat skewed, with a majority of data points clustered towards the center.
+
+-   Feature 2 (Sepal Width): The original sepal width feature exhibits a distribution that appears approximately normal, with data points spread somewhat evenly across its range.
+
+-   Feature 3 (Petal Length): The petal length feature's histogram indicates a clear bimodal distribution, with two distinct peaks in the data.
+    This suggests that there may be two subpopulations within this feature.
+
+-   Feature 4 (Petal Width): The petal width feature, like petal length, also displays a bimodal distribution, albeit with slightly different characteristics.
+    These two peaks could signify different categories of data within this feature.
+
+**Scaled Feature Distribution (After Standardization)**\
+After standardizing the features to have a mean of 0 and a variance of 1, we observe the following changes:
+
+-   Scaled Feature 1 (Sepal Length): Standardization has shifted the distribution to have a mean of 0 and a unit variance.
+    The data is now centered around 0, and the scale has been adjusted accordingly.
+
+-   Scaled Feature 2 (Sepal Width): Similar to sepal length, standardization has centered the distribution around 0 and rescaled the data.
+    It maintains the approximate normality seen in the original feature.
+
+-   Scaled Feature 3 (Petal Length): Standardization retains the bimodal nature of the distribution, but the data now adheres to a mean of 0 and unit variance.
+    This transformation makes it easier to compare with other features.
+
+-   Scaled Feature 4 (Petal Width): Standardization has the same effect on petal width as on petal length.
+    The bimodal distribution is preserved, but the data is now on the same scale as the other features.
+
+These visualizations highlight the impact of standardization on the distribution of data.
+It's essential to standardize data before applying certain statistical techniques like Principal Component Analysis (PCA) to ensure that each feature contributes fairly to the analysis, regardless of its original scale or magnitude.
+By standardizing the features, we bring them to a common scale and remove the influence of the mean and variance, making them directly comparable and suitable for techniques like PCA.
+
+```{r, echo=FALSE, fig.cap="Feature vs. Scaled Feature Distribution", fig.align="center", out.width="80%", fig.height=15}
+par(mfrow = c(4, 2))  # Create a 4x2 grid of plots
+
+# Plot histograms for each original feature
+for (i in 1:4) {
+  hist(
+    features[, i],
+    main = paste("Feature", i),
+    xlab = "Value",
+    col = "lightblue",
+    border = "black"
+  )
+  hist(
+    scaled_features[, i],
+    main = paste("Scaled Feature", i),
+    xlab = "Value",
+    col = "lightgreen",
+    border = "black"
+  )
+}
+
+```
+
+### Step 2: Perform PCA
+
+Now, let's perform PCA on our standardized data.
+
+```{r}
+
+# Perform PCA
+pca_result <- prcomp(scaled_features)
+
+```
+
+### Step 3: Analyze Results
+
+You can now explore the results of the PCA, such as the variance explained by each principal component and their contributions.
+
+```{r}
+
+# Variance explained by each principal component
+variance_explained <- pca_result$sdev^2 / sum(pca_result$sdev^2)
+
+# Plot the variance explained
+barplot(variance_explained, names.arg = c("PC1", "PC2", "PC3", "PC4"),
+        xlab = "Principal Component", ylab = "Variance Explained",
+        main = "Variance Explained by Each Principal Component")
+
+```
+
+### Step 4: Interpretation
+
+Interpret the results by considering the variance explained by each principal component.
+You can choose a threshold (e.g., retaining 95% variance) to determine how many principal components to keep for further analysis.
+
+```{r, echo=FALSE, fig.align="center", out.width="80%"}
+
+# Create a biplot of PC1 and PC2
+biplot(
+  pca_result,
+  main = "Biplot of PC1 and PC2"
+)
+
+```
+
+The biplot above presents the data points projected onto the PC1 and PC2 axes, allowing you to observe the distribution of your data in this new two-dimensional space.
+Additionally, you'll see arrows indicating the contributions of the original features to PC1 and PC2.
+The length and direction of these arrows provide insights into which features have the most influence on each principal component.
+
+### Conclusion
+
+Principal Component Analysis (PCA) is a powerful technique for dimensionality reduction, noise reduction, and data visualization in data analysis.
+In this blog post, we've explored the core concepts of PCA and provided a hands-on example using R.
+By incorporating PCA into your data analysis toolkit, you can gain deeper insights from your high-dimensional datasets and make more informed decisions in your data-driven projects.
+
+------------------------------------------------------------------------
+
+## Packages used for PCA analysis in R
+
+Here's a table of some popular R packages commonly used for Principal Component Analysis (PCA) along with links to their respective documentation:
+
+| Package Name | Description                                                      | URL                                                                                                                                     |
+|:-------------|:-----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+| `prcomp`     | Part of the `stats` package, used for PCA.                       | [Documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/prcomp.html)                                                   |
+| `PCAtools`   | Comprehensive PCA toolkit with visualization and analysis tools. | [GitHub](https://github.com/kevinblighe/PCAtools) [bioconductor](https://www.bioconductor.org/packages/release/bioc/html/PCAtools.html) |
+| `FactoMineR` | Provides PCA, multiple correspondence analysis, and more.        | [CRAN](https://cran.r-project.org/package=FactoMineR)                                                                                   |
+| `ade4`       | Multivariate data analysis and graphical display.                | [CRAN](https://cran.r-project.org/package=ade4)                                                                                         |
+| `caret`      | General-purpose machine learning package with PCA support.       | [CRAN](https://cran.r-project.org/package=caret)                                                                                        |
+| `ggfortify`  | Enhances visualization of PCA results.                           | [CRAN](https://cran.r-project.org/package=ggfortify)                                                                                    |
+| `pcaPP`      | Principal component analysis with outlier detection.             | [CRAN](https://cran.r-project.org/package=pcaPP)                                                                                        |
+
+: R Packages for PCA Analysis
+
+Please note that R packages are frequently updated, so it's a good practice to visit the package documentation links for the most up-to-date information on package usage and functionality.

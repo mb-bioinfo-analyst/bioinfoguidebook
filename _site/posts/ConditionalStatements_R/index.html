@@ -7,9 +7,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Bilal Mustafa">
-<meta name="dcterms.date" content="2023-09-21">
+<meta name="dcterms.date" content="2023-09-07">
 
-<title>Bioinfo Guide Book - Best Practices for Data Wrangling in R</title>
+<title>Bioinfo Guide Book - Mastering Conditional Logic in R: A Comprehensive Guide to If-Else Statements and Advanced Techniques</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<meta name="twitter:title" content="Bioinfo Guide Book - Best Practices for Data Wrangling in R">
+<meta name="twitter:title" content="Bioinfo Guide Book - Mastering Conditional Logic in R: A Comprehensive Guide to If-Else Statements and Advanced Techniques">
 <meta name="twitter:description" content="">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/image.jpg">
 <meta name="twitter:card" content="summary_large_image">
@@ -179,11 +179,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Best Practices for Data Wrangling in R</h1>
+      <h1 class="title">Mastering Conditional Logic in R: A Comprehensive Guide to If-Else Statements and Advanced Techniques</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">R</div>
-                <div class="quarto-category">Data wrangling</div>
-                <div class="quarto-category">File Reading</div>
+                <div class="quarto-category">Conditional Statement</div>
               </div>
                   </div>
   </div>
@@ -201,7 +200,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">September 21, 2023</p>
+        <p class="date">September 7, 2023</p>
       </div>
     </div>
     
@@ -217,21 +216,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
-  <ul class="collapse">
-  <li><a href="#reading-data-from-a-file" id="toc-reading-data-from-a-file" class="nav-link" data-scroll-target="#reading-data-from-a-file"><strong>Reading Data from a File</strong></a>
-  <ul class="collapse">
-  <li><a href="#choose-the-right-file-format" id="toc-choose-the-right-file-format" class="nav-link" data-scroll-target="#choose-the-right-file-format"><strong>1. Choose the Right File Format</strong></a></li>
-  <li><a href="#check-for-missing-values" id="toc-check-for-missing-values" class="nav-link" data-scroll-target="#check-for-missing-values"><strong>2. Check for Missing Values</strong></a></li>
-  <li><a href="#set-correct-data-types" id="toc-set-correct-data-types" class="nav-link" data-scroll-target="#set-correct-data-types"><strong>3. Set Correct Data Types</strong></a></li>
-  </ul></li>
-  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><strong>Simulating Data</strong></a>
-  <ul class="collapse">
-  <li><a href="#set-a-seed-for-reproducibility" id="toc-set-a-seed-for-reproducibility" class="nav-link" data-scroll-target="#set-a-seed-for-reproducibility"><strong>1. Set a Seed for Reproducibility</strong></a></li>
-  <li><a href="#create-simulated-data" id="toc-create-simulated-data" class="nav-link" data-scroll-target="#create-simulated-data"><strong>2. Create Simulated Data</strong></a></li>
-  </ul></li>
-  <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><strong>Wrapping Up</strong></a></li>
-  </ul></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#basic-if-else-statements" id="toc-basic-if-else-statements" class="nav-link" data-scroll-target="#basic-if-else-statements">Basic If-Else Statements</a></li>
+  <li><a href="#multiple-conditions-with-else-if" id="toc-multiple-conditions-with-else-if" class="nav-link" data-scroll-target="#multiple-conditions-with-else-if">Multiple Conditions with else if</a></li>
+  <li><a href="#ternary-operator" id="toc-ternary-operator" class="nav-link" data-scroll-target="#ternary-operator">Ternary Operator</a></li>
+  <li><a href="#vectorized-if-else-statements" id="toc-vectorized-if-else-statements" class="nav-link" data-scroll-target="#vectorized-if-else-statements">Vectorized If-Else Statements</a></li>
+  <li><a href="#conclusion-on-basic-conditional-statements" id="toc-conclusion-on-basic-conditional-statements" class="nav-link" data-scroll-target="#conclusion-on-basic-conditional-statements">Conclusion on Basic Conditional Statements</a></li>
+  <li><a href="#advanced-conditional-statements-in-r" id="toc-advanced-conditional-statements-in-r" class="nav-link" data-scroll-target="#advanced-conditional-statements-in-r">Advanced Conditional Statements in R</a></li>
+  <li><a href="#switch-statement" id="toc-switch-statement" class="nav-link" data-scroll-target="#switch-statement">Switch Statement</a></li>
+  <li><a href="#the-ifelse-function" id="toc-the-ifelse-function" class="nav-link" data-scroll-target="#the-ifelse-function">The ifelse Function</a></li>
+  <li><a href="#using-dplyrcase_when" id="toc-using-dplyrcase_when" class="nav-link" data-scroll-target="#using-dplyrcase_when">Using dplyr::case_when</a></li>
+  <li><a href="#custom-functions" id="toc-custom-functions" class="nav-link" data-scroll-target="#custom-functions">Custom Functions</a></li>
+  <li><a href="#handling-2-level-nested-if-else-statements" id="toc-handling-2-level-nested-if-else-statements" class="nav-link" data-scroll-target="#handling-2-level-nested-if-else-statements">Handling 2-Level Nested If-Else Statements</a></li>
+  <li><a href="#handling-3-level-nested-if-else-statements" id="toc-handling-3-level-nested-if-else-statements" class="nav-link" data-scroll-target="#handling-3-level-nested-if-else-statements">Handling 3-Level Nested If-Else Statements</a></li>
+  <li><a href="#alternative-approaches" id="toc-alternative-approaches" class="nav-link" data-scroll-target="#alternative-approaches">Alternative Approaches</a></li>
   </ul>
 </nav>
     </div>
@@ -243,77 +241,220 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1">
 <h1>Introduction:</h1>
-<p>The process of data wrangling is crucial to data analysis. Your raw data must be cleaned up and transformed into an analysis-ready format. There are a number of best practices you can adhere to in R, a robust and flexible language for data analysis, to ensure successful and efficient data wrangling. We will go over these best practices in detail in this blog article, starting with reading data from a file and simulating data for our examples.</p>
+<p>Conditional logic is a fundamental concept in programming, allowing you to make decisions and control the flow of your code based on specific conditions. In R, the if-else statement is a powerful tool for implementing conditional logic. In this blog post, we will explore the various variations and techniques for using if-else statements in R to help you become a proficient R programmer.</p>
 <hr>
-<section id="reading-data-from-a-file" class="level2">
-<h2 class="anchored" data-anchor-id="reading-data-from-a-file"><strong>Reading Data from a File</strong></h2>
-<section id="choose-the-right-file-format" class="level3">
-<h3 class="anchored" data-anchor-id="choose-the-right-file-format"><strong>1. Choose the Right File Format</strong></h3>
-<p>You must first read your data into R before you can begin manipulating it. The type of data you have will determine which file format you use. CSV, Excel, and other text-based file types are frequently used to store data. To import data from these formats into R, use functions like <code>read.csv()</code>, <code>read_excel()</code>, or <code>read.table()</code>. When using these routines, be sure to supply the correct file location and format settings.</p>
+</section>
+<section id="basic-if-else-statements" class="level1">
+<h1>Basic If-Else Statements</h1>
+<p>The basic if-else statement in R allows you to execute different blocks of code depending on whether a specified condition is true or false. Here’s the basic syntax:</p>
+<blockquote class="blockquote">
+<p>if (condition) {<br>
+# Code to execute if the condition is TRUE<br>
+} else {<br>
+# Code to execute if the condition is FALSE<br>
+}</p>
+</blockquote>
 <p>Let’s look at an example:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading data from a CSV file</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"your_data.csv"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Reading data from an Excel file</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"your_data.xlsx"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is greater than 5"</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is less than or equal to 5"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, the if-else statement checks if x is greater than 5 and prints the appropriate message based on the condition.</p>
 <hr>
 </section>
-<section id="check-for-missing-values" class="level3">
-<h3 class="anchored" data-anchor-id="check-for-missing-values"><strong>2. Check for Missing Values</strong></h3>
-<p>After importing your data, the following step is to look for any missing values. Analyses that are skewed or erroneous can result from missing data. The <code>sum()</code> method can be used to count them, and the <code>is.na()</code> function can be used to identify missing values.</p>
+<section id="multiple-conditions-with-else-if" class="level1">
+<h1>Multiple Conditions with else if</h1>
+<p>Sometimes, you need to evaluate multiple conditions in a sequence. You can use the else if construct to handle such cases. Here’s how it works:</p>
+<blockquote class="blockquote">
+<p>if (condition1) {<br>
+# Code to execute if condition1 is TRUE<br>
+} else if (condition2) {<br>
+# Code to execute if condition2 is TRUE<br>
+} else {<br>
+# Code to execute if no conditions are TRUE<br>
+}</p>
+</blockquote>
 <p>Let’s see an example:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Check for missing values in the entire dataset</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="dv">75</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (grade <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"A"</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (grade <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"B"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (grade <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"C"</span>)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"F"</span>)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this case, the code determines a student’s grade based on their score.</p>
 <hr>
 </section>
-<section id="set-correct-data-types" class="level3">
-<h3 class="anchored" data-anchor-id="set-correct-data-types"><strong>3. Set Correct Data Types</strong></h3>
-<p>Make sure the column data types are adequate for your analysis. When importing data, R occasionally assigns the incorrect data types. To change a column’s data type, use a function like <code>as.numeric()</code>, <code>as.integer()</code>, or <code>as.Date()</code>.</p>
+<section id="ternary-operator" class="level1">
+<h1>Ternary Operator</h1>
+<p>R also supports a concise way of using if-else statements known as the ternary operator. It’s useful when you need to assign a value based on a condition. The syntax is as follows:</p>
+<blockquote class="blockquote">
+<p>variable &lt;- if (condition) value_if_true else value_if_false</p>
+</blockquote>
 <p>Here’s an example:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a column to numeric</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>numeric_column <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(data<span class="sc">$</span>numeric_column)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert a column to date</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>data<span class="sc">$</span>date_column <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(data<span class="sc">$</span>date_column, <span class="at">format =</span> <span class="st">"%Y-%m-%d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">8</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">5</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Pass"</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Fail"</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The ternary operator assigns the value “Pass” to the grade variable if x is greater than 5 and “Fail” otherwise.</p>
 <hr>
 </section>
-</section>
-<section id="simulating-data" class="level2">
-<h2 class="anchored" data-anchor-id="simulating-data"><strong>Simulating Data</strong></h2>
-<p>A useful exercise for testing your data wrangling abilities and analytical pipelines is simulating data. To verify your code, you can make synthetic datasets with well-known features. Although R provides a number of additional methods for producing data with different distributions, the <code>rnorm()</code> function is frequently used to produce random normal data.</p>
-<section id="set-a-seed-for-reproducibility" class="level3">
-<h3 class="anchored" data-anchor-id="set-a-seed-for-reproducibility"><strong>1. Set a Seed for Reproducibility</strong></h3>
-<p>To ensure that your simulated data is reproducible, set a random seed using the <code>set.seed()</code> function. This will make your results consistent across runs.z</p>
-<p>Here’s an example:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a random seed for reproducibility</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="vectorized-if-else-statements" class="level1">
+<h1>Vectorized If-Else Statements</h1>
+<p>In R, you can apply if-else statements to vectors or data frames for efficient and concise code. Here’s an example of vectorized if-else:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">95</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>grades <span class="ot">&lt;-</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(scores <span class="sc">&gt;=</span> <span class="dv">90</span>, <span class="st">"A"</span>, <span class="fu">ifelse</span>(scores <span class="sc">&gt;=</span> <span class="dv">80</span>, <span class="st">"B"</span>, <span class="fu">ifelse</span>(scores <span class="sc">&gt;=</span> <span class="dv">70</span>, <span class="st">"C"</span>, <span class="st">"F"</span>)))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we assign grades to a vector of scores using nested ifelse statements.</p>
 <hr>
 </section>
-<section id="create-simulated-data" class="level3">
-<h3 class="anchored" data-anchor-id="create-simulated-data"><strong>2. Create Simulated Data</strong></h3>
-<p>Let’s create a simple simulated dataset with two variables, <code>x</code> and <code>y</code>, following a normal distribution.</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Create simulated data</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100</span>  <span class="co"># Number of data points</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="dv">1</span>)</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> <span class="dv">0</span>, <span class="at">sd =</span> <span class="fl">0.5</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a data frame</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>simulated_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(x, y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="conclusion-on-basic-conditional-statements" class="level1">
+<h1>Conclusion on Basic Conditional Statements</h1>
+<p>Conditional logic is a crucial aspect of programming, and mastering if-else statements in R is essential for writing robust and flexible code. In this blog post, we explored the basics of if-else statements, handling multiple conditions with else if, using the ternary operator for concise assignments, and applying vectorized if-else statements. With these techniques at your disposal, you can make informed decisions and control the flow of your R programs effectively.</p>
 <hr>
 </section>
+<section id="advanced-conditional-statements-in-r" class="level1">
+<h1>Advanced Conditional Statements in R</h1>
+<p>In addition to the basic if-else statements and the variations mentioned above, there are more advanced conditional statements and techniques you can use in R. These advanced conditional statements can help you write more complex and expressive code. Here are some advanced conditional techniques in R:</p>
+<hr>
 </section>
-<section id="wrapping-up" class="level2">
-<h2 class="anchored" data-anchor-id="wrapping-up"><strong>Wrapping Up</strong></h2>
-<p>Data wrangling is a crucial step in the data analysis process, and following best practices is essential for ensuring the quality and integrity of your data. In this blog post, we covered the initial steps of reading data from a file and simulating data for testing purposes. Stay tuned for our next installment, where we will delve deeper into advanced data wrangling techniques in R. Until then, happy data wrangling!</p>
+<section id="switch-statement" class="level1">
+<h1>Switch Statement</h1>
+<p>The switch statement allows you to select one of several code blocks to execute based on the value of an expression. It’s particularly useful when you have multiple cases to handle. Here’s an example:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">"Monday"</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="cf">switch</span>(</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  day,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Monday"</span> <span class="ot">=</span> <span class="st">"It's the start of the week!"</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Friday"</span> <span class="ot">=</span> <span class="st">"It's almost the weekend!"</span>,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Saturday"</span> <span class="ot">=</span> <span class="st">"It's the weekend!"</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Default message"</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, the switch statement assigns a message based on the value of the day variable.</p>
+<hr>
+</section>
+<section id="the-ifelse-function" class="level1">
+<h1>The ifelse Function</h1>
+<p>The ifelse function is a vectorized version of the if-else statement, and it’s handy when you want to apply a condition to an entire vector. Here’s an example:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(vector <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">"Greater than 10"</span>, <span class="st">"Less than or equal to 10"</span>)</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The ifelse function applies the condition to each element in the vector.</p>
+<hr>
+</section>
+<section id="using-dplyrcase_when" class="level1">
+<h1>Using dplyr::case_when</h1>
+<p>In data manipulation tasks, you often need to create new variables based on complex conditions. The case_when function from the dplyr package is perfect for this purpose. It allows you to specify multiple conditions and their corresponding values concisely. Here’s an example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">95</span>))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade_category =</span> <span class="fu">case_when</span>(grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">"A"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                                    grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">"B"</span>,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>                                    grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">"C"</span>,</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">"F"</span>))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, case_when assigns a grade category based on the values in the “grade” column.</p>
+<hr>
+</section>
+<section id="custom-functions" class="level1">
+<h1>Custom Functions</h1>
+<p>In more advanced scenarios, you may need to create custom functions that use complex conditional logic. This allows you to encapsulate your logic and make your code more modular and reusable. Here’s a simplified example:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>calculate_discount <span class="ot">&lt;-</span> <span class="cf">function</span>(age, is_student) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (age <span class="sc">&lt;</span> <span class="dv">18</span>) {</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fl">0.2</span>)  <span class="co"># 20% discount for minors</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;&amp;</span> is_student) {</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fl">0.1</span>)  <span class="co"># 10% discount for students 18+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)    <span class="co"># No discount for others</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>discount <span class="ot">&lt;-</span> <span class="fu">calculate_discount</span>(<span class="dv">20</span>, <span class="cn">TRUE</span>)</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Discount percentage:"</span>, discount <span class="sc">*</span> <span class="dv">100</span>, <span class="st">"%"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we’ve created a custom function calculate_discount that calculates discounts based on age and student status.</p>
+<p>These advanced conditional techniques in R offer flexibility and expressiveness, allowing you to handle complex decision-making scenarios in your code efficiently. Depending on your specific use case, you can choose the most appropriate approach to implement conditional logic in your R programs.</p>
+<hr>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
+<p>Nested if-else statements can be used when you need to evaluate multiple conditions in a hierarchical or nested manner. Here’s how to work with 2 and 3 level nested if-else statements, along with alternative ways to handle complex scenarios in R.</p>
+</blockquote>
+</blockquote>
+<hr>
+</section>
+<section id="handling-2-level-nested-if-else-statements" class="level1">
+<h1>Handling 2-Level Nested If-Else Statements</h1>
+<p>Nested if-else statements involve using an if-else construct within another if-else block. This allows you to handle multiple conditions with varying levels of priority. Here’s an example of a 2-level nested if-else statement:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">20</span>) {</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"x is greater than y and greater than 20"</span>)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"x is greater than y but not greater than 20"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is not greater than y"</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, the outer if-else block checks if x is greater than y, and if it is, it enters the inner if-else block to check if x is greater than 20.</p>
+<hr>
+</section>
+<section id="handling-3-level-nested-if-else-statements" class="level1">
+<h1>Handling 3-Level Nested If-Else Statements</h1>
+<p>For even more complex scenarios, you can have 3-level nested if-else statements by adding another layer of conditional logic within the innermost block:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">25</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">30</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">20</span>) {</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (z <span class="sc">&gt;</span> <span class="dv">25</span>) {</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="st">"x is greater than y, greater than 20, and z is greater than 25"</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="st">"x is greater than y, greater than 20, but z is not greater than 25"</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">"x is greater than y but not greater than 20"</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">"x is not greater than y"</span>)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>In this example, we’ve added an additional condition involving the variable z within the innermost if-else block.</p>
+<hr>
+</section>
+<section id="alternative-approaches" class="level1">
+<h1>Alternative Approaches</h1>
+<p>While nested if-else statements are useful for handling complex logic, they can become unwieldy and hard to read when you have many conditions. Here are some alternative approaches to handling complex scenarios:</p>
+<ul>
+<li><p>Switch Statements: We discussed the switch statement earlier. It can be a cleaner way to handle multiple conditions, especially when you have many cases to consider.</p></li>
+<li><p>Lookup Tables: You can create lookup tables or data frames that map conditions to outcomes. This approach can be more readable and maintainable for complex scenarios.</p></li>
+<li><p>Custom Functions: As mentioned previously, you can encapsulate complex conditional logic within custom functions, making your code more modular and easier to understand.</p></li>
+<li><p>Vectorized Operations: In data manipulation tasks, consider using vectorized operations and functions like ifelse, case_when from the dplyr package, and other functions from the tidyverse ecosystem to handle complex conditions within data frames efficiently.</p></li>
+</ul>
+<p>Remember that the choice of approach depends on the specific requirements of your problem and the maintainability of your code. In some cases, using alternative techniques may lead to more concise and readable code, especially when dealing with multi-level nested conditions.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

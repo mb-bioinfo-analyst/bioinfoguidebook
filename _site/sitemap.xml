@@ -1,59 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>tobefilledin.com/about.html</loc>
-    <lastmod>2023-09-07T13:13:14.644Z</lastmod>
-  </url>
-  <url>
-    <loc>tobefilledin.com/archive.html</loc>
-    <lastmod>2023-09-07T06:17:58.623Z</lastmod>
-  </url>
-  <url>
-    <loc>tobefilledin.com/index.html</loc>
-    <lastmod>2023-09-07T13:13:09.219Z</lastmod>
-  </url>
-  <url>
-    <loc>tobefilledin.com/posts/regression-bioinformatics/index.html</loc>
-    <lastmod>2023-09-07T06:36:49.360Z</lastmod>
-  </url>
-  <url>
-    <loc>tobefilledin.com/posts/welcome/index.html</loc>
-    <lastmod>2023-09-07T06:18:07.684Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2023-09-21T16:09:08.407Z</lastmod>
-  </url>
-  <url>
     <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
-    <lastmod>2023-09-21T16:09:22.467Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bioinfoguidebook.netlify.app/posts/regression-bioinformatics/index.html</loc>
-    <lastmod>2023-09-07T14:17:32.329Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bioinfoguidebook.netlify.app/posts/welcome/index.html</loc>
-    <lastmod>2023-09-07T14:17:33.652Z</lastmod>
+    <lastmod>2023-09-25T17:30:25.618Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2023-09-21T16:07:30.420Z</lastmod>
+    <lastmod>2023-09-25T17:30:27.597Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
+    <lastmod>2023-09-25T17:30:29.598Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/index.html</loc>
-    <lastmod>2023-09-21T13:57:49.470Z</lastmod>
+    <lastmod>2023-09-25T17:30:33.371Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/index.html</loc>
-    <lastmod>2023-09-21T13:52:09.385Z</lastmod>
-  </url>
-  <url>
-    <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling_R/index.html</loc>
-    <lastmod>2023-09-21T13:56:43.479Z</lastmod>
+    <lastmod>2023-09-25T17:30:35.172Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/index.html</loc>
-    <lastmod>2023-09-21T16:07:26.055Z</lastmod>
+    <lastmod>2023-09-25T17:30:38.172Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling_R/index.html</loc>
+    <lastmod>2023-09-25T17:30:39.648Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/PCA_R/index.html</loc>
+    <lastmod>2023-09-25T17:30:43.258Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/regression-bioinformatics/index.html</loc>
+    <lastmod>2023-09-25T17:30:48.934Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/welcome/index.html</loc>
+    <lastmod>2023-09-25T17:30:50.806Z</lastmod>
   </url>
 </urlset>
