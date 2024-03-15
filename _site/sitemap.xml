@@ -6,11 +6,11 @@
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2023-09-25T17:30:27.597Z</lastmod>
+    <lastmod>2024-03-15T15:38:39.381Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2023-09-25T17:30:29.598Z</lastmod>
+    <lastmod>2024-03-15T15:38:41.899Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/index.html</loc>
@@ -39,5 +39,9 @@
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/welcome/index.html</loc>
     <lastmod>2023-09-25T17:30:50.806Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/cosine_similarity/index.html</loc>
+    <lastmod>2024-03-15T15:42:48.847Z</lastmod>
   </url>
 </urlset>

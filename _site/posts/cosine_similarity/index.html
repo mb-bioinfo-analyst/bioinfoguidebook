@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bilal Mustafa">
+<meta name="dcterms.date" content="2024-02-18">
+
+<title>Bioinfo Guide Book - Comparative Analysis of Gene Expression Using Cosine Similarity</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo-no-background.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="twitter:title" content="Bioinfo Guide Book - Comparative Analysis of Gene Expression Using Cosine Similarity">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/cosine_similarity/cosine_similarity_animation.gif">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Bioinfo Guide Book</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mb-bioinfo-analyst" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="../../www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974" rel="" target="">
+ <span class="menu-text">ORCID</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
+ <span class="menu-text">RG</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Comparative Analysis of Gene Expression Using Cosine Similarity</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">Cosine Similarity</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Bilal Mustafa </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 18, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#what-is-cosine-similarity" id="toc-what-is-cosine-similarity" class="nav-link" data-scroll-target="#what-is-cosine-similarity">What is Cosine Similarity?</a></li>
+  <li><a href="#how-does-cosine-similarity-work-in-biological-analysis" id="toc-how-does-cosine-similarity-work-in-biological-analysis" class="nav-link" data-scroll-target="#how-does-cosine-similarity-work-in-biological-analysis">How Does Cosine Similarity Work in Biological Analysis?</a></li>
+  <li><a href="#applications-of-cosine-similarity-in-biological-analysis" id="toc-applications-of-cosine-similarity-in-biological-analysis" class="nav-link" data-scroll-target="#applications-of-cosine-similarity-in-biological-analysis">Applications of Cosine Similarity in Biological Analysis:</a></li>
+  <li><a href="#advantages-of-cosine-similarity-in-biological-analysis" id="toc-advantages-of-cosine-similarity-in-biological-analysis" class="nav-link" data-scroll-target="#advantages-of-cosine-similarity-in-biological-analysis">Advantages of Cosine Similarity in Biological Analysis:</a></li>
+  <li><a href="#limitations-of-cosine-similarity-in-biological-analysis" id="toc-limitations-of-cosine-similarity-in-biological-analysis" class="nav-link" data-scroll-target="#limitations-of-cosine-similarity-in-biological-analysis">Limitations of Cosine Similarity in Biological Analysis:</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction:</h1>
+<p>Understanding the connections between different elements, including genes, proteins, and biological samples, is essential to deciphering the intricate workings of living beings in the broad field of biological sciences. In biological study, cosine similarity, a mathematical notion with broad applications across various domains, emerges as a potent tool that provides insights into molecular connections, functional linkages, and evolutionary patterns.</p>
+<p>Fundamentally, cosine similarity measures how similar two vectors are quantitatively, emphasizing the directional alignment of the vectors rather than their size. Vectors are frequently used in the biological sciences to symbolize biological phenomena including protein sequences, gene expression levels, and metabolic pathways. Through the calculation of the cosine of the angle formed by these vectors, scientists can identify patterns and differences in biological data, leading to a more profound comprehension of biological events.</p>
+<p>Cosine similarity has a wide range of uses in the biological sciences. When it comes to gene expression analysis, cosine similarity makes it possible to compare patterns of gene expression under various experimental settings, which makes it easier to identify genes that are co-regulated, disease markers, and medication responses. It is a flexible measure that can be applied to intricate biological networks and systems in addition to individual biological entities.</p>
+<p>We’ll look at how cosine similarity is used in biological sciences in this post, with particular emphasis on gene expression analysis.</p>
+<hr>
+</section>
+<section id="what-is-cosine-similarity" class="level1">
+<h1>What is Cosine Similarity?</h1>
+<p>Although cosine similarity seems complicated at first, it’s actually very easy to understand, especially when presented in an approachable way for beginners.</p>
+<p>Envision an array of arrows, each of which stands for a distinct piece of data, like the text within a document, the attributes of an image, or the user’s preferences. The lengths and directions of these arrows vary based on the significance of each piece of information. Suppose that you work as a scientist and you perform Differential Expression Gene (DEG) study to find out how the expression of a gene varies in response to various treatments or situations. A list of all the genes and the corresponding levels of expression for each treatment is provided by DEG analysis. You can depict each treatment as a vector, with the gene expression levels acting as the vector’s constituent parts, in order to compare the DEG analysis results between different treatments. The pattern of gene expression for that treatment is indicated by the vector’s orientation.</p>
+<p>Angle Between Treatment Vectors: The cosine of the angle between the treatment vectors is computed using cosine similarity. The cosine similarity score of two treatment vectors will be near to 1, signifying high similarity, if they point in comparable directions, suggesting similar patterns of gene expression across treatments. On the other hand, the cosine similarity score of the treatment vectors will be closer to 0 if they point in entirely different directions, indicating low similarity.</p>
+<p>Magnitude of Treatment Vectors: As in other applications, cosine similarity in DEG analysis only takes into account the direction of the treatment vectors rather than their magnitude, or the precise gene expression levels. This enables you to pay more attention to the general pattern of changes in gene expression than to the precise expression levels.</p>
+<p>To put it another way, cosine similarity in DEG analysis aids in measuring how similar gene expression patterns are to one another across various treatments. It makes it possible to find therapies that cause comparable modifications in gene expression, which may offer important new understandings of the underlying biological mechanisms. Biologists and researchers can learn more about how various treatments impact gene expression and may find novel therapeutic targets or approaches to cure a variety of illnesses and ailments by utilizing cosine similarity.</p>
+<p>This can be expressed in mathematical notation as;</p>
+<p><span class="math display">\[\underset{similarity}{cosine(\theta)} = \frac{A.B}{||A||.||B||}\]</span></p>
+<p>Where, <span class="math inline">\(A.B\)</span> is the dot product of the vectors A and B, and <span class="math inline">\(∥A∥\)</span> and <span class="math inline">\(∥B∥\)</span> are the magnitudes of vectors A and B, respectively.</p>
+<p>If the angle is small (close to 0 degrees), the cosine value is close to 1, indicating high similarity. Conversely, if the angle is close to 90 degrees, the cosine value is close to 0, indicating low similarity. This can be observed from the following animation,</p>
+<p><img src="cosine_similarity_animation.gif" class="img-fluid"></p>
+<hr>
+</section>
+<section id="how-does-cosine-similarity-work-in-biological-analysis" class="level1">
+<h1>How Does Cosine Similarity Work in Biological Analysis?</h1>
+<p>A closer examination of gene expression patterns under various treatment or condition scenarios is necessary to comprehend the operation of cosine similarity in the context of biological investigation, especially in Differential Expression Gene (DEG) studies. Assume you are researching how various medication regimens affect the expression of certain genes in cancer cells. Following DEG analysis, lists of genes and the corresponding levels of expression under each treatment are obtained. Every treatment can be conceptualized as a vector, with the gene expression levels acting as the vector’s constituent parts.</p>
+<p>Now, let’s get into how cosine similarity operates in this biological context:</p>
+<p>Angle Between Treatment Vectors: The cosine of the angle between the treatment vectors is computed using cosine similarity. The similarity in gene expression patterns between treatments is represented by this angle. The cosine similarity score of two treatment vectors will be near to 1, showing high similarity, if they point in comparable directions, reflecting similar patterns of gene expression across treatments. On the other hand, the cosine similarity score of the treatment vectors will be closer to 0 if they point in entirely different directions, indicating low similarity.</p>
+<p><img src="image.jpg" class="img-fluid"></p>
+<p>For instance, the treatment vectors for Treatments A and B will point in similar directions if they both cause comparable changes in gene expression, which would result in a high cosine similarity score. This would suggest that the effects of the two therapies on gene expression are similar.</p>
+<p>Magnitude of Treatment Vectors: It’s important to note that cosine similarity in DEG analysis only takes into account the direction of the treatment vectors, not their magnitude (i.e., the precise expression levels of genes). This means that the cosine similarity score of two treatments will stay high even if one causes greater changes in gene expression than the other, provided that the patterns of changes in gene expression are comparable.</p>
+<p>Examine the following two treatments: A and C. While Treatment C may cause more dramatic changes in expression levels but in a pattern comparable to Treatment A, Treatment A may cause moderate changes in gene expression across a wide range of genes. In this instance, the cosine similarity score between Treatment A and Treatment C would still be high despite the magnitude discrepancies, indicating similar gene expression patterns.</p>
+<hr>
+</section>
+<section id="applications-of-cosine-similarity-in-biological-analysis" class="level1">
+<h1>Applications of Cosine Similarity in Biological Analysis:</h1>
+<p>Despite having its roots in mathematics and computer science, cosine similarity has a wide range of uses in biological investigation, especially when interpreting high-dimensional data like gene expression profiles. Let’s examine the biological applications of cosine similarity;</p>
+<p>Comparative Analysis of Gene Expression: Comparing the patterns of gene expression in various biological samples or experimental settings is one of the main uses of cosine similarity in biology. Cosine similarity is a tool that allows researchers to assess the similarity of gene expression patterns by describing these profiles as vectors. This makes it possible to identify genes that, in similar expression patterns under particular circumstances, provide information on putative regulatory mechanisms or biological pathways.</p>
+<p>Biological Sample Clustering: Based on their gene expression profiles, biological samples can be more easily grouped together thanks to cosine similarity. Researchers can find underlying patterns or subtypes in complicated biological data sets by grouping similar samples together based on pairwise similarity. This clustering method is useful for distinguishing different biological states, describing therapy responses, and identifying disease subgroups.</p>
+<p>Finding Functionally Related Genes: Cosine similarity can be utilized in functional genomics research to find genes that are functionally related based on how they express themselves under various circumstances. High cosine similarity expression profile genes are probably part of similar biological pathways or activities. This information helps prioritize potential genes for additional experimental validation, analyze pathways, and clarify the roles of individual genes.</p>
+<p>Integration of Multi-Omics Data: Since high-throughput technologies have been available, a variety of omics data, including as transcriptomics, proteomics, metabolomics, and genomics, have been included in biological data sets. Cosine similarity, which measures the similarities between several molecular profiles, offers a foundation for integrating multi-omics data. Through the use of an integrated approach, researchers are able to fully understand biological systems and unearth intricate interactions between molecular components.</p>
+<p>Drug Re-purposing and Target Identification: By contrasting the gene expression profiles of potential compounds or medications with those of established pharmacological agents, cosine similarity can be utilized in drug discovery and re-purposing endeavors. Gene expression patterns that are similar among substances may indicate similar mechanisms of action or therapeutic benefits. Additionally, the identification of novel therapeutic targets or bio-markers for the diagnosis and prognosis of disease can be facilitated by cosine similarity analysis.</p>
+<hr>
+</section>
+<section id="advantages-of-cosine-similarity-in-biological-analysis" class="level1">
+<h1>Advantages of Cosine Similarity in Biological Analysis:</h1>
+<p>When evaluating biological data, cosine similarity is the method of choice due to its many benefits, especially when it comes to gene expression research and other omics investigations. following are a few of these benefits and their implications for biological research;</p>
+<p>Scale Invariance: The scale invariance property of cosine similarity is one of its main benefits. Cosine similarity is independent of the size of the vectors that reflect the gene expression profiles, in contrast to certain distance-based metrics. Scale invariance guarantees that cosine similarity focuses exclusively on the direction of gene expression changes, which enables meaningful comparisons across data sets in biological investigations where gene expression levels might vary greatly between experiments or situations.</p>
+<p>Cosine similarity is computationally efficient, especially in high-dimensional spaces that are frequently encountered in omics data analysis. The curse of dimensionality and computing complexity may befall standard distance measures because biological data sets can contain thousands of genes or molecular characteristics. Because cosine similarity measures the angle between vectors directly, it avoids these problems and is hence a good fit for high-throughput testing and large-scale studies.</p>
+<p>Simple explanation: In biological analysis, the cosine similarity score, which ranges from -1 to 1, has a simple explanation. High similarity across gene expression profiles, indicated by a score near 1, suggests shared regulatory mechanisms or functional links. On the other hand, a score that is near to 0 denotes dissimilarity and differing patterns of expression. This ease of interpretation makes it easier for researchers to intuitively comprehend the results and makes well-informed judgments on the design of experiments and the interpretation of data.</p>
+<p>Robustness to Noise and Outliers: The cosine similarity in biological data sets is naturally resistant to noise and outliers. Because of biological heterogeneity, technical errors, or experimental noise, gene expression data frequently show inherent variability. Cosine similarity reduces the impact of erratic data points and strengthens the statistical significance of analysis outcomes by emphasizing the direction rather than the quantity of changes in gene expression. Even in the face of faulty data, the findings’ dependability and reproducibility are guaranteed by their resilience to noise.</p>
+<p>Application to Sparse Data: Gene expression data matrices in biological research are frequently sparse, with many genes displaying essentially constant expression levels across samples. Because cosine similarity only takes into account the non-zero elements of the vectors that describe gene expression patterns, it is an excellent tool for assessing sparse data. This characteristic makes it possible to compute gene expression patterns accurately and efficiently, even in datasets with a high percentage of zero entries.</p>
+<hr>
+</section>
+<section id="limitations-of-cosine-similarity-in-biological-analysis" class="level1">
+<h1>Limitations of Cosine Similarity in Biological Analysis:</h1>
+<p>While there are many benefits to using cosine similarity in biological data analysis, it’s crucial to be aware of its limitations in order to ensure proper interpretation and insightful conclusions. In the context of biological analysis, cosine similarity has the following significant limitations;</p>
+<p>Sensitive to Vector Length: Cosine similarity only takes into account the vectors’ orientations, not their sizes, while analyzing gene expression profile vectors. Although this characteristic is helpful in many situations, it can also be a drawback, especially when comparing vectors with different lengths. Gene expression levels in biological data sets might change significantly between studies or situations, which can result in variations in vector magnitudes. These variations could be ignored by cosine similarity, which could lead to inaccurate similarity evaluations.</p>
+<p>Inability to Capture Non-Linear Relationships: Cosine similarity makes the assumption that related gene expression profiles match in a high-dimensional space and display linear relationships. However, because of the inherent complexity of biological systems, non-linear correlations are frequently involved in gene-gene interactions. Such non-linear relationships may go unnoticed by cosine similarity, which could result in erroneous comparisons of the similarity of gene expression patterns. Techniques for dimensionality reduction or other alternative similarity metrics may be more appropriate in situations where non-linear correlations are common.</p>
+<p>Limited Discriminative Power: The angle between vectors is measured by cosine similarity, which does not take the context or semantic significance of changes in gene expression into account. Therefore, even when genes fall into different biological pathways or functional categories, they may still be regarded as comparable if they have similar expression patterns. The discovery of physiologically significant similarities may be hampered by this lack of discriminative capacity, which may call for further investigations such as route enrichment or functional annotation.</p>
+<p>Vulnerability to Data Preprocessing: Cosine similarity’s usefulness in biological analysis is largely dependent on the caliber and preparation of the input data. Similarity evaluations can be greatly impacted by variables including batch correction, gene filtering, and data standardization. Cosine similarity results can be distorted by improper data preprocessing procedures or biases introduced during data handling, which can result in incorrect conclusions. To reduce biases and guarantee reliable similarity analysis, data preprocessing techniques must be thoroughly assessed and validated.</p>
+<p>Sparse Data Challenges: Although cosine similarity is effective in managing sparse data, it may not work well in data sets with very high sparsity, where the majority of the entries are zero. In these situations, a large number of zero values may predominate in the similarity computations, which may conceal significant similarities between the gene expression patterns. To lessen the impact of data sparsity on cosine similarity analysis, careful evaluation of sparsity and suitable preprocessing approaches are required.</p>
+<hr>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>To sum up, cosine similarity is a useful quantitative metric in biological research, especially in the context of Differential Expression Gene (DEG) investigations, since it allows evaluation of the degree of similarity between gene expression patterns under various conditions or treatments. Researchers can find treatments with similar effects on gene expression by focusing on the direction of changes in gene expression rather than specific expression levels. This helps uncover possible therapeutic interventions and provides insights into illness mechanisms.</p>
+<p>In addition, cosine similarity is a vital analytical technique in biology that makes it easier to explore, assess, and integrate high-dimensional biological data. It is useful in many molecular biology, genetics, and bio-medical research domains due to its advantages, which include scale invariance, computing efficiency, easy interpretation, resilience to noise, and adaptability to sparse data. By taking use of these benefits, scientists can further their understanding of intricate biological systems and hasten the advancement of bio-medical research.</p>
+<p>But it’s important to recognize the limitations of cosine similarity and take them into account when examining particular research questions and characteristics of the data. Through the use of supplementary methods to augment cosine similarity and the consideration of its constraints, investigators can augment the accuracy and robustness of similarity analysis in biological research.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mb-bioinfo-analyst">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="../../www.linkedin.com/in/bmustafa1/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q">
+      <i class="bi bi-youtube" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">ORCID</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

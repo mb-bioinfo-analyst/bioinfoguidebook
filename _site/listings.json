@@ -8,12 +8,14 @@
       "/posts/regression-bioinformatics/index.html",
       "/posts/DataWrangling_R/index.html",
       "/posts/DataWrangling2_R/index.html",
-      "/posts/PCA_R/index.html"
+      "/posts/PCA_R/index.html",
+      "/posts/cosine_similarity/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/cosine_similarity/index.html",
       "/posts/PCA_R/index.html",
       "/posts/DataWrangling2_R/index.html",
       "/posts/DataWrangling_R/index.html",
