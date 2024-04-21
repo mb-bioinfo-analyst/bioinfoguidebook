@@ -14,9 +14,6 @@ about:
     - icon: linkedin
       text: LinkedIn
       href: https://www.linkedin.com/in/bmustafa1/
-    - icon: github
-      text: Github
-      href: https://github.com/mb-bioinfo-analyst
     - icon: orcid
       text: ORCID
       href: https://orcid.org/0000-0003-0865-7974 
@@ -24,7 +21,7 @@ about:
 
 ::: {#hero-heading}
 Bilal Mustafa is a Data Scientist, highly skilled and experienced in the field of bioinformatics.
-When not innovating on data platforms, Bilal enjoys spending time gardening and traveling.
+When not innovating on data platforms, Bilal enjoys spending time gardening, traveling and exploring different foods.
 
 ## Education
 
@@ -34,9 +31,11 @@ COMSATS University \| Islamabad, Pakistan, BS in Bioinformatics \| Sept 2010 - S
 
 ## Experience
 
-University of Eastern Finland, Kuopio, Finland \| Collaborative Researcher \| Nov 2022 - present
+Leibniz Institute on Aging, Fritz Lipmann Institute, Jena, Germany \| Postdoc \| Jan 2024 - Present
 
-Quad-i-Azam University, Islamabad, Pakistan \| Collaborative Researcher \| Nov 2022 - present
+University of Eastern Finland, Kuopio, Finland \| Collaborative Researcher \| Nov 2022 - Nov 2023
+
+Quad-i-Azam University, Islamabad, Pakistan \| Collaborative Researcher \| Nov 2022 - Nov 2023
 
 Incheon National University, Incheon, South Korea \| Postdoctoral Researcher \| Aug 2020 - March 2022
 

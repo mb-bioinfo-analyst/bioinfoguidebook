@@ -2,15 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
-    <lastmod>2023-09-25T17:30:25.618Z</lastmod>
+    <lastmod>2024-04-21T17:22:51.997Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2024-03-17T10:36:57.640Z</lastmod>
+    <lastmod>2024-04-01T19:55:38.282Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2024-03-17T10:37:18.176Z</lastmod>
+    <lastmod>2024-04-21T17:22:22.193Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/index.html</loc>
@@ -43,5 +43,9 @@
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/cosine_similarity/index.html</loc>
     <lastmod>2024-03-17T10:36:52.314Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/NMD/nmd.html</loc>
+    <lastmod>2024-04-01T19:55:55.952Z</lastmod>
   </url>
 </urlset>

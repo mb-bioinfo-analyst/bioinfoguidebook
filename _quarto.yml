@@ -17,9 +17,6 @@ website:
         text: Home
       - about.qmd
     right:
-      - icon: github
-        href: https://github.com/mb-bioinfo-analyst
-        aria-label: GitHub
       - icon: twitter
         href: https://twitter.com/bmustafa122
         aria-label: twitter
@@ -40,8 +37,6 @@ website:
     center: 
       - text: "About"
         href: about.qmd
-      - icon: github
-        href: https://github.com/mb-bioinfo-analyst
       - icon: twitter
         href: https://twitter.com/bmustafa122
       - icon: linkedin

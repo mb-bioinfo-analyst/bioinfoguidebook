@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.353">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bilal Mustafa">
+<meta name="dcterms.date" content="2024-03-30">
+
+<title>Bioinfo Guide Book - Understanding Nonsense-Mediated Decay (NMD)</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../logo-no-background.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<meta name="twitter:title" content="Bioinfo Guide Book - Understanding Nonsense-Mediated Decay (NMD)">
+<meta name="twitter:description" content="">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/NMD/image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
+    </a>
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Bioinfo Guide Book</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
+ <span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../about.html" rel="" target="">
+ <span class="menu-text">About</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mb-bioinfo-analyst" rel="" target=""><i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974" rel="" target="">
+ <span class="menu-text">ORCID</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
+ <span class="menu-text">RG</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
+  </li>  
+</ul>
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Understanding Nonsense-Mediated Decay (NMD)</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">R</div>
+                <div class="quarto-category">NMD</div>
+                <div class="quarto-category">Nonsense Mediated Decay</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Bilal Mustafa </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 30, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#what-is-nmd" id="toc-what-is-nmd" class="nav-link" data-scroll-target="#what-is-nmd">What is NMD?</a>
+  <ul class="collapse">
+  <li><a href="#the-nmd-process" id="toc-the-nmd-process" class="nav-link" data-scroll-target="#the-nmd-process">The NMD process</a></li>
+  <li><a href="#the-nmd-pathway-involves-several-key-players." id="toc-the-nmd-pathway-involves-several-key-players." class="nav-link" data-scroll-target="#the-nmd-pathway-involves-several-key-players.">The NMD pathway involves several key players.</a></li>
+  </ul></li>
+  <li><a href="#mechanisms-and-regulation-of-nmd" id="toc-mechanisms-and-regulation-of-nmd" class="nav-link" data-scroll-target="#mechanisms-and-regulation-of-nmd">Mechanisms and Regulation of NMD</a>
+  <ul class="collapse">
+  <li><a href="#mechanisms-at-the-molecular-level-of-nmd" id="toc-mechanisms-at-the-molecular-level-of-nmd" class="nav-link" data-scroll-target="#mechanisms-at-the-molecular-level-of-nmd">Mechanisms at the molecular level of NMD</a></li>
+  <li><a href="#nmd-efficiency-regulation" id="toc-nmd-efficiency-regulation" class="nav-link" data-scroll-target="#nmd-efficiency-regulation">NMD Efficiency Regulation</a></li>
+  <li><a href="#the-function-of-nmd-in-post-transcriptional-gene-regulation" id="toc-the-function-of-nmd-in-post-transcriptional-gene-regulation" class="nav-link" data-scroll-target="#the-function-of-nmd-in-post-transcriptional-gene-regulation">The function of NMD in Post-transcriptional Gene Regulation</a></li>
+  </ul></li>
+  <li><a href="#applications-and-implications-of-nmd" id="toc-applications-and-implications-of-nmd" class="nav-link" data-scroll-target="#applications-and-implications-of-nmd">Applications and Implications of NMD</a></li>
+  <li><a href="#nmd-detection-and-analysis-tools" id="toc-nmd-detection-and-analysis-tools" class="nav-link" data-scroll-target="#nmd-detection-and-analysis-tools">NMD Detection and Analysis Tools</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="introduction" class="level1">
+<h1>Introduction:</h1>
+<p>Gene expression is a highly controlled process in cells that converts information stored in DNA into functional proteins. This regulation is essential for maintaining correct cellular function and responding to external stimuli. Nevertheless, mistakes can arise throughout the process of gene expression, resulting in the generation of abnormal transcripts that could potentially cause harm to the cell if they are translated into flawed proteins. Cells have developed quality control systems to detect and break down abnormal transcripts in order to preserve the integrity of the cellular transcriptome. <strong>Nonsense-Mediated Decay (NMD)</strong> is a crucial monitoring mechanism in this process.</p>
+<p>The mRNA surveillance process known as NMD is a conserved and highly efficient mechanism that is found in eukaryotic cells. This mechanism plays a crucial role in identifying and removing mRNA transcripts that include <strong>premature termination codons (PTCs)</strong>, commonly referred to as nonsense mutations. Premature truncation of the nascent mRNA molecule is a consequence of errors in transcription, splicing, or changes in the DNA sequence, leading to the emergence of these PTCs.</p>
+<p>The importance of NMD resides in its capacity to inhibit the translation of abnormal transcripts that contain PTCs, therefore diminishing the synthesis of potentially deleterious truncated proteins. NMD plays a vital function in preserving cellular homeostasis and safeguarding against the harmful consequences of aberrant protein production by specifically identifying and breaking down these faulty transcripts.</p>
+<p>This post aims to provide a comprehensive overview of Nonsense-Mediated Decay (NMD), encompassing its underlying mechanisms, regulatory systems, applications in disease research, and recent improvements in NMD detection and analysis techniques. This post attempts to offer a thorough comprehension of the essential mRNA monitoring route and its importance in the fields of cellular biology and human health.</p>
+<hr>
+</section>
+<section id="what-is-nmd" class="level1">
+<h1>What is NMD?</h1>
+<p>The process of NMD is an mRNA monitoring mechanism that is widely conserved in eukaryotic cells. It serves a vital function in preserving the integrity of the cellular transcriptome. The principal role of NMD is to detect and break down mRNA transcripts that encompass PTCs, sometimes referred to as nonsense mutations.</p>
+<section id="the-nmd-process" class="level2">
+<h2 class="anchored" data-anchor-id="the-nmd-process">The NMD process</h2>
+<p>The phenomenon of NMD can be summarized by a series of fundamental stages:</p>
+<ol type="1">
+<li><p>The initiation of NMD involves the <strong>identification of PTCs</strong> present in mRNA transcripts. Premature truncation of the mRNA molecule is a consequence of transcription errors, splicing problems, or mutations in the DNA sequence.</p></li>
+<li><p><strong>NMD Complex Assembly</strong>: When a PTC is detected, the mRNA proceeds through a sequence of molecular processes that result in the formation of the NMD complex. This complex comprises various essential components, including <em>Upf proteins (Upf1, Upf2, and Upf3)</em>, the <strong>exon-junction complex (EJC)</strong>, and ribosomes.</p></li>
+<li><p>The NMD complex is responsible for the <strong>surveillance of mRNA quality</strong> by scanning the mRNA molecule to detect the presence of PTCs and evaluating its overall quality. The activation of the NMD pathway is initiated by the presence of a PTC, whereas transcripts containing conventional termination codons are exempted from degradation.</p></li>
+<li><p><strong>mRNA Degradation</strong>: When a transcript is considered faulty because of the presence of a PTC, it is specifically targeted for degradation by the cellular machinery responsible for RNA degradation. The degradation process entails the recruitment of exonucleases that facilitate the degradation of mRNA starting from its 3’ end, ultimately resulting in its degradation.</p></li>
+</ol>
+</section>
+<section id="the-nmd-pathway-involves-several-key-players." class="level2">
+<h2 class="anchored" data-anchor-id="the-nmd-pathway-involves-several-key-players.">The NMD pathway involves several key players.</h2>
+<p>The Nonsense-Mediated Decay pathway involves the participation of various crucial components.</p>
+<ul>
+<li><p><strong>The Upf proteins</strong>, namely Upf1, Upf2, and Upf3, play a crucial role as integral constituents of the NMD complex. They have crucial functions in identifying and attaching to transcripts containing PTC, beginning the degradation of mRNA, and orchestrating subsequent processes in the NMD pathway.</p></li>
+<li><p>The <strong>EJC is a complex</strong> composed of many proteins that is deposited immediately before exon-exon junctions in the process of pre-mRNA splicing. It functions as a molecular indicator for the existence of introns in fully processed mRNA transcripts and contributes to NMD by augmenting the identification of PTCs.</p></li>
+<li><p><strong>Ribosomes</strong> are the intracellular organelles that carry out the process of converting mRNA into protein. Ribosomes are involved in the identification of PTC and are responsible for recruiting and activating Upf proteins in the context of NMD.</p></li>
+</ul>
+<p>****Diagram depicting the NMD process*****</p>
+<p>The provided diagram depicts the fundamental stages encompassed within the Nonsense-Mediated Decay pathway, commencing with the identification of premature termination codons and culminating with the destruction of mRNA.</p>
+<p>NMD is a crucial process of mRNA surveillance that plays a vital role in ensuring the integrity of translation by preventing the translation of abnormal transcripts that contain premature termination codons.NMD plays a vital role in preserving cellular homeostasis and protecting against the detrimental consequences of aberrant protein production by specifically identifying and breaking down these faulty transcripts.</p>
+<hr>
+</section>
+</section>
+<section id="mechanisms-and-regulation-of-nmd" class="level1">
+<h1>Mechanisms and Regulation of NMD</h1>
+<p>The NMD pathway is an intricate mRNA surveillance process that encompasses various biochemical processes and regulatory elements to guarantee its effectiveness and precision.</p>
+<section id="mechanisms-at-the-molecular-level-of-nmd" class="level2">
+<h2 class="anchored" data-anchor-id="mechanisms-at-the-molecular-level-of-nmd">Mechanisms at the molecular level of NMD</h2>
+<p>NMD can be succinctly described by the molecular mechanisms involved:</p>
+<ol type="1">
+<li><p>The initiation of NMD involves the <strong>identification of PTCs</strong> present in mRNA transcripts. Premature truncation of the mRNA molecule is a consequence of transcription errors, splicing errors, or changes in the DNA sequence, resulting in the emergence of these PTCs.</p></li>
+<li><p><strong>Formation of Upf Protein Complex</strong>: When a PTC is detected, Upf proteins (Upf1, Upf2, and Upf3) come together to form a complex that attaches to the abnormal mRNA molecule. The Upf complex functions as the central apparatus responsible for setting up and carrying out the NMD pathway.</p></li>
+<li><p>The <strong>deposition of the EJC</strong> is a crucial process in pre-mRNA splicing, as it serves to enhance the identification of PTCs by the NMD machinery. The EJC is deposited upstream of EJCs. An EJC located downstream of a PTC enhances the efficacy of NMD.</p></li>
+<li><p>The process of <strong>ribosome stalling and disassembly</strong> occurs during the termination of translation, wherein ribosomes separate from the mRNA upon encountering a stop codon. Nevertheless, when a PTC is present, ribosomes may experience a halt and incur premature termination. The initiation of mRNA degradation is triggered by the recruitment of Upf proteins in response to ribosome stalling.</p></li>
+<li><p><strong>mRNA degradation</strong> occurs when the aberrant mRNA transcript is targeted by the NMD machinery and then undergoes degradation through cellular RNA degradation pathways. The recruitment of exonucleases to the mRNA molecule results in its breakdown via the 3’ end, ultimately leading to its clearance from the cell.</p></li>
+</ol>
+</section>
+<section id="nmd-efficiency-regulation" class="level2">
+<h2 class="anchored" data-anchor-id="nmd-efficiency-regulation">NMD Efficiency Regulation</h2>
+<p>The effectiveness and specificity of Nonsense-Mediated Decay are influenced by various circumstances.</p>
+<ul>
+<li><p>The efficacy of NMD is significantly influenced by the <strong>distance between the PTC and the closest EJC</strong>. Transcripts with PTCs situated at a greater distance upstream of EJCs have a higher probability of experiencing NMD.</p></li>
+<li><p>The efficacy of NMD is influenced by the <strong>composition and sequence context of EJC</strong>. The identification of PTCs by the NMD machinery can be either enhanced or inhibited by specific sequences or structural elements present in EJCs.</p></li>
+<li><p>The <strong>effectiveness of translation termination</strong> can be influenced by various factors, including the kinetics of ribosome stalling and the presence of translation termination enhancers or suppressors.</p></li>
+</ul>
+<p>These factors have the potential to affect the efficiency of NMD.The recruitment of Upf proteins and the beginning of NMD are facilitated by ribosome stalling events occurring at PTCs.</p>
+</section>
+<section id="the-function-of-nmd-in-post-transcriptional-gene-regulation" class="level2">
+<h2 class="anchored" data-anchor-id="the-function-of-nmd-in-post-transcriptional-gene-regulation">The function of NMD in Post-transcriptional Gene Regulation</h2>
+<p>NMD not only serves as a quality control mechanism, but also plays a function in post-transcriptional gene regulation by impacting the stability and abundance of mRNA. NMD has the ability to modulate the cellular transcriptome and proteome by targeting transcripts containing PTCs for degradation, hence regulating the expression of certain genes.</p>
+<p>The process of NMD is regulated by complex molecular mechanisms and regulatory variables that guarantee its effectiveness and selectivity in the detection and degradation of abnormal mRNA transcripts that include PTCs. Comprehending these mechanisms and regulatory cues is crucial in order to decipher the intricacies of NMD and its influence on the control of gene expression.</p>
+<hr>
+</section>
+</section>
+<section id="applications-and-implications-of-nmd" class="level1">
+<h1>Applications and Implications of NMD</h1>
+<p>The utilization of NMD in biological research and clinical medicine is extensive, as it provides significant contributions to the understanding of gene expression regulation, cause of disease, and therapeutic advancement.</p>
+<ol type="1">
+<li><p><strong>Comprehending Genetic Disorders</strong> Nonsense mutations, in which PTCs are introduced into mRNA transcripts, are linked to a range of hereditary diseases such as cystic fibrosis, Duchenne muscular dystrophy (DMD), and several types of cancer. NMD functions as a crucial quality control mechanism by specifically targeting and breaking down mRNA transcripts that include PTCs. This helps to prevent the synthesis of truncated proteins that could be detrimental. The examination of the processes and regulation of NMD offers valuable insights into the development of hereditary diseases and contributes to the formulation of treatment interventions.</p></li>
+<li><p><strong>Detection of Mutations Responsible for Disease</strong> Nonsense mutations are commonly observed in numerous hereditary disorders and play a substantial role in the severity and advancement of the disease. The utilization of NMD in genome-wide investigations has greatly improved the process of identifying and characterizing disease-causing mutations in individuals with genetic diseases. Through the examination of transcriptomes to identify transcripts harboring PTC, scientists can precisely identify pathogenic mutations and clarify their functional implications, hence assisting in the identification and treatment of genetic disorders.</p></li>
+<li><p>Identifying NMD for <strong>Targeted Treatment</strong> NMD dysregulation has been linked to a range of illnesses, such as cancer and neurodegenerative disorders. The modulation of NMD activity holds significant potential as a therapeutic approach to address disease pathophysiology and reinstate cellular equilibrium. Therapeutic treatments for disorders caused by nonsense mutations have demonstrated promise in the form of small compounds and antisense oligonucleotides (ASOs) that specifically target crucial components of the NMD pathway. Furthermore, the utilization of pharmacological inhibitors targeting NMD has the potential to augment the effectiveness of nonsense mutation readthrough therapies. These therapies are designed to reduce PTCs and reinstate protein expression.</p></li>
+<li><p>Study of <strong>Functional Genomics and Analysis of Gene Expression</strong> NMD affects the stability and amount of mRNA, which in turn affects the patterns of gene expression and the characteristics of cells. The incorporation of NMD data into functional genomics analysis yields significant understanding of gene regulatory networks, alternative splicing occurrences, and the dynamics of transcript isoforms. Through the analysis of the overall impact of NMD on the transcriptome, scientists can understand the intricacies of gene regulation after transcription and pinpoint new areas for therapeutic intervention.</p></li>
+<li><p><strong>Modelling and Drug Discovery</strong> Cellular and animal models of NMDs provide significant utility in the investigation of disease mechanisms and the assessment of prospective treatment interventions. Researchers are able to examine the effects of NMD dysregulation on cellular function and disease phenotypes by utilising engineered cell lines that have modified NMD activity. In addition, the utilisation of high-throughput screening assays that specifically target NMD components enables the identification of small molecules and compounds that have the ability to regulate NMD activity. This presents novel opportunities for the advancement of drug development and the field of personalised medicine.</p></li>
+</ol>
+<p>NMD is crucial in various fields of research and clinical application, encompassing the understanding of disease causes and the creation of innovative treatments. Through the utilisation of NMD, scientists can enhance our comprehension of genetic abnormalities, detect mutations that lead to diseases, and investigate novel approaches for treating and controlling diseases.</p>
+<hr>
+</section>
+<section id="nmd-detection-and-analysis-tools" class="level1">
+<h1>NMD Detection and Analysis Tools</h1>
+<p>Specialized instruments and methodologies are necessary for the detection and analysis of NMD activity in biological systems. Scholars employ a diverse range of experimental and computational methodologies to examine the processes, regulation, and functional implications of NMDs.</p>
+<ol type="1">
+<li><p><strong>RNA sequencing</strong>, often known as RNA-seq, is a highly effective experimental method employed for the comprehensive characterization of the transcriptome and the detection of mRNA transcripts that are experiencing NMD. Researchers can quantify gene expression levels, discover alternative splicing events, and analyse the number of transcripts containing PTCs by sequencing RNA molecules collected from cells or tissues. The examination of differential expression between wild-type and NMD-deficient cells offers valuable insights into the influence of NMD on patterns of gene expression.</p></li>
+<li><p><strong>Quantitative polymerase chain reaction (qPCR)</strong> is a highly sensitive and extensively employed technique for measuring gene expression levels and verifying RNA-seq data. qPCR tests can be developed to quantify the prevalence of mRNA transcripts that contain PTCs in comparison to transcripts of the wild-type variety. Researchers can evaluate the effectiveness of NMD and understand the impact of NMD dysregulation on gene expression by comparing transcripts containing PTC in cells that are both NMD-proficient and NMD-deficient.</p></li>
+<li><p><strong>Analysis of Ribosomes (Ribo-seq)</strong> Ribosome profiling, is a powerful sequencing method that allows for the comprehensive monitoring of translation kinetics and ribosome occupancy on mRNA transcripts on a global scale. Researchers have the ability to identify translational stalling events at PTCs and evaluate the effectiveness of NMD by mapping ribosome-protected fragments (RPFs) to the transcriptome. Ribo-seq data offer valuable information about the behavior of ribosomes and the kinetics of mRNA translation in relation to the regulation of NMD.</p></li>
+<li><p><strong>Tools for mathematical modelling and bioinformatics</strong> The analysis of Nonsense-Mediated Decay (NMD) data and the prediction of NMD targets are significantly facilitated by the utilization of computational modelling and bioinformatics technologies. There exists a wide range of algorithms and software packages that can be utilized for the purpose of identifying PTCs, forecasting the efficacy of NMD, and analysing gene expression profiles. The use of transcriptome sequencing data, sequence characteristics, and structural aspects of mRNA transcripts is employed by these techniques to deduce susceptibility to NMD and elucidate the regulatory mechanisms that govern NMD activity.</p></li>
+<li><p><strong>Genome Editing with CRISPR/Cas9</strong> The precision modulation of gene expression and functional study of NMD components in cellular models is made possible by the CRISPR/Cas9 genome editing technology. Scientists have the ability to utilize CRISPR/Cas9 technology to remove or reduce the activity of important NMD genes, such as UPF1, UPF2, and UPF3. They can then evaluate the effects of NMD disruption on the stability of mRNA, the makeup of the transcriptome, and the characteristics of cells. CRISPR-based screening methodologies enable the implementation of extensive genomic screens to detect previously unknown regulators of NMDs and gain insights into their regulatory network.</p></li>
+<li><p><strong>Assays for NMD Reporter</strong> NMD reporter assays are commonly employed experimental methodologies for quantifying the activity of NMD in cell-based systems. The conventional procedure for these tests entails the temporary introduction of reporter constructs that incorporate PTCs coupled to reporter genes, such as GFP or luciferase. The evaluation of NMD efficiency under various experimental conditions and the assessment of the effects of genetic or pharmacological manipulations on NMD activity can be achieved by the monitoring of reporter protein expression levels by researchers.</p></li>
+</ol>
+<p>There exists a wide range of experimental and computational methodologies that can be utilised to identify, examine, and control NMD inside biological systems. This set of tools offers significant contributions to our comprehension of the processes, control, and functional implications of NMD, hence facilitating continued progress in our knowledge of this essential mRNA surveillance system.</p>
+<hr>
+</section>
+<section id="conclusion" class="level1">
+<h1>Conclusion</h1>
+<p>The NMD pathway is an essential mechanism for monitoring mRNA activity, which is crucial for preserving physiological equilibrium. Its primary function is to detect and break down abnormal mRNA transcripts that contain PTCs. NMD maintains the accuracy of gene expression and prevents the buildup of potentially dangerous truncated proteins by coordinating many molecular mechanisms and regulatory variables. NMD research has extensive ramifications in both basic science and clinical medicine, ranging from comprehending the genetic foundation of inherited disorders to devising inventive therapeutic approaches.</p>
+<p>The complicated molecular mechanisms behind NMD have been investigated, encompassing the identification of PTCs, the formation of the NMD complex, and the breakdown of abnormal mRNA transcripts. In addition, researchers have investigated the regulatory factors that impact the efficacy of NMD, including the distance between exons, the efficiency of translation termination, and the presence of RNA-binding proteins.</p>
+<p>The utilization of NMD goes beyond the study of disease development to encompass functional genomics analysis, drug discovery, and personalized medicine. Researchers can analyse the intricacies of NMD regulation and uncover new therapeutic targets for disease intervention by utilizing experimental techniques such as RNA sequencing, quantitative PCR, and ribosome profiling.</p>
+<p>In addition, the utilization of computer modelling and bioinformatics tools offers significant contributions to the understanding of NMD dynamics and aids in the anticipation of NMD targets and regulatory networks. The use of CRISPR/Cas9 genome editing technology and NMD reporter assays provides valuable experimental frameworks for investigating the constituents of NMD and evaluating its functionality in cellular models.</p>
+<p>In summary, the investigation of NMD encompasses a diverse range of fields including molecular biology, genetics, bioinformatics, and translational medicine. Through the process of unraveling the intricacies of NMD, scientists are positioned to enhance our comprehension of gene expression control, disease mechanisms, and therapeutic approaches. This will ultimately facilitate the development of enhanced diagnostics and treatments for various genetic disorders and other related conditions.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item">
+    <a class="nav-link" href="../../about.html">About</a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/mb-bioinfo-analyst">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/">
+      <i class="bi bi-linkedin" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q">
+      <i class="bi bi-youtube" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">ORCID</a>
+  </li>  
+    <li class="nav-item">
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
+  </li>  
+</ul>
+    </div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

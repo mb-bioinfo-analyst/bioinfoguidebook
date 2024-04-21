@@ -9,12 +9,14 @@
       "/posts/DataWrangling_R/index.html",
       "/posts/DataWrangling2_R/index.html",
       "/posts/PCA_R/index.html",
-      "/posts/cosine_similarity/index.html"
+      "/posts/cosine_similarity/index.html",
+      "/posts/NMD/nmd.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/NMD/nmd.html",
       "/posts/cosine_similarity/index.html",
       "/posts/PCA_R/index.html",
       "/posts/DataWrangling2_R/index.html",
