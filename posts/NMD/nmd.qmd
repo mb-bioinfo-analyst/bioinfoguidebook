@@ -3,7 +3,7 @@ title: "Understanding Nonsense-Mediated Decay (NMD)"
 author: "Bilal Mustafa"
 date: "2024-03-30"
 categories: [R, NMD, Nonsense Mediated Decay]
-image: "image.jpg"
+image: "nonsense_mediated_decay_with_legend.gif"
 format:
   html:
     code-link: true
@@ -29,6 +29,10 @@ NMD plays a vital function in preserving cellular homeostasis and safeguarding a
 
 This post aims to provide a comprehensive overview of Nonsense-Mediated Decay (NMD), encompassing its underlying mechanisms, regulatory systems, applications in disease research, and recent improvements in NMD detection and analysis techniques.
 This post attempts to offer a thorough comprehension of the essential mRNA monitoring route and its importance in the fields of cellular biology and human health.
+
+![](nonsense_mediated_decay_with_legend.gif)
+
+
 
 ------------------------------------------------------------------------
 
