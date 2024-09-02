@@ -10,12 +10,22 @@
       "/posts/DataWrangling2_R/index.html",
       "/posts/PCA_R/index.html",
       "/posts/cosine_similarity/index.html",
-      "/posts/NMD/nmd.html"
+      "/posts/NMD/nmd.html",
+      "/posts/centrality_R/index.html",
+      "/posts/variability_R/index.html",
+      "/posts/confidenceI_R/index.html",
+      "/posts/T_test_R/index.html",
+      "/posts/Anova_lm_R/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/Anova_lm_R/index.html",
+      "/posts/T_test_R/index.html",
+      "/posts/confidenceI_R/index.html",
+      "/posts/variability_R/index.html",
+      "/posts/centrality_R/index.html",
       "/posts/NMD/nmd.html",
       "/posts/cosine_similarity/index.html",
       "/posts/PCA_R/index.html",

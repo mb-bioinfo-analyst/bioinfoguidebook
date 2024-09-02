@@ -1,0 +1,105 @@
+---
+title: "Understanding Centrality: Key Measures in Descriptive Statistics Using R"
+author: "Bilal Mustafa"
+date: "2024-08-10"
+categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics, Central Tendency, Mean, Median, Mode, Geometric Mean, Harmonic Mean, Statistical Measures]
+image: "image.jpg"
+---
+
+# Introduction:
+
+Descriptive statistics are an essential element of data analysis, offering concise descriptions of the sample and measures.
+These summaries serve as the foundation for further investigating allowing researchers and analysts to better comprehend the data's distribution, central tendency, and variability.
+In bioinformatics, where data sets can be large and complicated, descriptive statistics aid in simplifying and making sense of the underlying patterns.
+In this post, we'll look at the key measures of centrality---mean, median, mode, geometric mean, and harmonic mean---and discuss their significance and how to calculate them with R.
+
+Measures of centrality characterize a data set's central point, providing information about where the majority of data points congregate.
+Let's look at each of these measures.
+
+------------------------------------------------------------------------
+
+## Mean
+
+The mean, or average, is the most widely used metric of centrality.
+It is calculated by adding all of the data entries and dividing by the number of entries.
+The mean is extremely sensitive to outliers, making it unreliable for skewed distributions.
+In R, you may calculate the mean using the mean() function.
+
+```{r}
+data <- seq(10, 200, 5)
+mean_value <- mean(data)
+mean_value
+```
+
+------------------------------------------------------------------------
+
+## Median
+
+The median is the middle value of the collected data, whether presented in ascending or descending order.
+It is especially effective with skewed distributions because it is unaffected by outliers.
+If the number of observations is odd, the median is simply the middle value.
+If the number of observations is even, the median is calculated as the average of the two middle numbers.
+In R, the median is calculated using the median() function.
+
+```{r}
+
+median_value <- median(data)
+median_value
+```
+
+For example, if your data set has an odd number of entries, such as {3, 5, 7}, the median is 5.
+If it has an even number of entries, such as {3, 5, 7, 9}, the median would be the average of 5 and 7, which is 6.
+
+------------------------------------------------------------------------
+
+## Mode
+
+The mode is the value that occurs the most frequently in a data set.
+It is the only measure of centrality that is applicable to nominal data (data that can be classified but not sorted).
+Unlike mean and median, a data set may have multiple modes, or none if all values are unique.
+In R, the mode is not computed directly by a single function, however it may be found using the following code:
+
+```{r}
+mode_value <- as.numeric(names(sort(table(data), decreasing = TRUE)[1]))
+mode_value
+```
+
+------------------------------------------------------------------------
+
+## Geometric mean
+
+The geometric mean is used to deal with data that has been multiplied or divided, such as growth rates.
+It is calculated by multiplying all of the numbers together and then getting the nth root (n being the total number of values).
+This measure is less impacted by large outliers than the mean.
+In R, the geometric mean can be calculated by combining the exp() and mean() functions:
+
+```{r}
+geometric_mean <- exp(mean(log(data)))
+geometric_mean
+```
+
+------------------------------------------------------------------------
+
+## Harmonic mean
+
+The harmonic mean is very useful in circumstances requiring average rates, such as average speeds or ratios.
+It is calculated by taking the reciprocal of the arithmetic mean of the data points' reciprocals.
+The harmonic mean is always the lowest of the three means (arithmetic, geometric, and harmonic), and it is highly influenced by small values.
+In R, it may be calculated like this:
+
+```{r}
+harmonic_mean <- 1 / mean(1 / data)
+harmonic_mean
+```
+
+------------------------------------------------------------------------
+
+# Notes on Measures of Centrality
+
+Choosing the appropriate measure of centrality depends on the nature of your data and the specific questions you're addressing.
+The mean provides a simple average but is sensitive to outliers.
+The median is more robust in the presence of skewed data, while the mode is best for categorical data.
+The geometric mean is ideal for multiplicative processes, and the harmonic mean is crucial when averaging rates.
+Understanding these measures and how to compute them in R will enhance your ability to summarize and interpret data effectively.
+
+------------------------------------------------------------------------

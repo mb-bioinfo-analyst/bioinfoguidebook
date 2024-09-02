@@ -1,0 +1,165 @@
+---
+title: "Understanding Basic Statistical Concepts with R"
+author: "Bilal Mustafa"    
+date: "2024-08-14"     
+categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics, Hypothesis Testing, Data Visualization, T-Test, Statistical Methods, Beginners Guide, Quantitative Analysis]
+image: "image.jpg"
+---
+
+# Introduction:
+
+Statistics are a very important part of data analysis because they turn raw data into ideas that can be used.
+Statistical tools can help you make smart choices whether you're summarizing data, seeing patterns, or testing theories.
+This guide teaches you basic statistical ideas using R.
+It focuses on t-tests, data visualization, and descriptive statistics, all while using a single dataset.
+
+------------------------------------------------------------------------
+
+# Dataset: mtcars
+
+We will use the mtcars dataset that comes with R for this guide.
+There are factors like miles per gallon (mpg), number of cylinders, horsepower, and weight for 32 different car models in this dataset.
+This dataset is great for learning about basic statistical ideas and trying hypotheses.
+
+First, let's quickly look at the dataset:
+
+```{r}
+# Load and view the mtcars dataset
+data("mtcars")
+head(mtcars)
+```
+
+------------------------------------------------------------------------
+
+# Getting to Know the Data
+
+It's important to understand the material we're working with before we start the analysis.
+The following factors are in the mtcars dataset:
+
+-   mpg: Miles per gallon
+-   cyl: Number of cylinders
+-   hp: Horsepower
+-   wt: Weight (1000 lbs)
+-   am: Transmission (0 = automatic, 1 = manual)
+
+------------------------------------------------------------------------
+
+# Descriptive Statistics
+
+Descriptive statistics give an overview of the shape, central trend, and dispersion of a dataset's distribution.
+Let's figure out some important numbers that describe mpg, hp, and wt.
+
+```{r}
+# Calculate descriptive statistics
+summary(mtcars[, c("mpg", "hp", "wt")])
+```
+
+As you can see, this summary shows the mean, median, minimum, maximum, and quartiles for each measure.
+That is, the cars in this group get about 20.09 miles per gallon on average, with a range of 10.4 to 33.9.
+
+------------------------------------------------------------------------
+
+# Data Visualization
+
+Visualizing data is an important part of figuring out how it is spread out and how different factors are related.
+To look into the mtcars collection, we'll make a number of plots.
+
+1.  Histogram of mpg A histogram shows how a single numerical value is spread out.
+
+```{r}
+# Histogram of miles per gallon (mpg)
+hist(mtcars$mpg, main = "Distribution of Miles Per Gallon (mpg)", xlab = "Miles Per Gallon", col = "lightblue")
+```
+
+2.  Boxplot of mpg by Transmission You can compare distributions between groups with a boxplot. We will now compare the mpg of cars with automatic and manual engines.
+
+```{r}
+# Boxplot of mpg by transmission type
+boxplot(mpg ~ am, data = mtcars, main = "MPG by Transmission Type", xlab = "Transmission (0 = Automatic, 1 = Manual)", ylab = "Miles Per Gallon", col = c("orange", "lightgreen"))
+```
+
+------------------------------------------------------------------------
+
+# Comparing Means with T-Tests
+
+You can compare the means of different groups very well with T-tests.
+One-Sample, Independent Two-Sample, and Paired t-tests are the three main types of t-tests.
+Let's use the mtcars dataset to look into each type.
+
+------------------------------------------------------------------------
+
+## One-Sample T-Test
+
+One-Sample T-Test checks if the mean of a single sample is the same as a number that is already known.
+We might want to see if the mtcars dataset's average miles per gallon (mpg) is significantly different from 20 mpg.
+
+```{r}
+# One-sample t-test
+t_test_one_sample <- t.test(mtcars$mpg, mu = 20)
+print(t_test_one_sample)
+```
+
+The main idea (H₀) here is that the average mpg is 20.
+If the p-value is less than the level of significance, which is usually 0.05, we disagree with the null hypothesis.
+
+## Independent Two-Sample T-Test
+
+When you use the Independent Two-Sample T-Test, you compare the means of two separate groups.
+Let's look at how many miles per gallon cars with automatic (am = 0) and manual (am = 1) engines get.
+
+```{r}
+# Independent Two-Sample T-Test
+t_test_independent <- t.test(mpg ~ am, data = mtcars)
+print(t_test_independent)
+```
+
+What does H₀ mean?
+It means that there is no change in the average mpg between the two types of transmission.
+There is a difference between the groups if the p-value is significant.
+
+## Paired T-Test
+
+The Paired T-Test looks at how the means of the same group of people changed over time.
+Even though mtcars doesn't have a built-in matched structure, let's say we want to compare the mpg of two identical cars before and after a change.
+We don't have this data, so let's make it up to show what we mean.
+
+```{r}
+# Simulating mpg before and after modification
+set.seed(123)
+mpg_before <- mtcars$mpg
+mpg_after <- mpg_before + rnorm(length(mpg_before), 0, 2)  # Adding small random noise
+
+# Paired t-test
+t_test_paired <- t.test(mpg_before, mpg_after, paired = TRUE)
+print(t_test_paired)
+```
+
+There is no difference in mpg before and after the change, which is the null hypothesis (H₀).
+If the p-value is significant, it means that the change made a meaningful difference.
+
+------------------------------------------------------------------------
+
+# Conclusion
+
+Using the mtcars dataset, this guide has shown you how to use basic statistical ideas in R.
+We began with summary statistics, made a graph of the data, and used different t-tests to compare means.
+These tools give you a solid base for looking at data and coming to useful conclusions.
+As you learn more advanced statistical methods, keep in mind that these basic skills will still help you a lot as you go through your data analysis experience.
+
+------------------------------------------------------------------------
+
+# Resources & References:
+
+1.  **"R for Data Science"** by Garrett Grolemund and Hadley Wickham
+
+    The book is available for free online.
+    [Link to the book](https://r4ds.hadley.nz/)
+
+2.  **"An Introduction to Statistical Learning"** by Gareth James, Daniela Witten, Trevor Hastie, and Robert Tibshirani
+
+3.  **"R Documentation - t.test Function"**\
+
+It's a great resource for understanding how to perform various t-tests in R.
+[Link to the documentation](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test)
+
+------------------------------------------------------------------------
