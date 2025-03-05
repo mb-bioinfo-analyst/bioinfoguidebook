@@ -15,12 +15,14 @@
       "/posts/variability_R/index.html",
       "/posts/confidenceI_R/index.html",
       "/posts/T_test_R/index.html",
-      "/posts/Anova_lm_R/index.html"
+      "/posts/Anova_lm_R/index.html",
+      "/posts/SignificanceValue/index.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/SignificanceValue/index.html",
       "/posts/Anova_lm_R/index.html",
       "/posts/T_test_R/index.html",
       "/posts/confidenceI_R/index.html",
