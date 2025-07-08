@@ -7,7 +7,8 @@ website:
   image: profile.png
   page-navigation: true
   favicon: logo-no-background.png
-  site-url: https://bioinfoguidebook.netlify.app/
+  site-url: https://bioinfoguidebook.netlify.app
+  site-path: '/'
   description: "This is a guide book is a resource bioinformatics"
   navbar:
     logo: logo-no-background.png

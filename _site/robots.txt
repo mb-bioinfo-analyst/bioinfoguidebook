@@ -1,1 +1,5 @@
+# Allow All
+User-agent: *
+Allow: /
+
 Sitemap: https://bioinfoguidebook.netlify.app/sitemap.xml
