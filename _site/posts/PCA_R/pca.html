@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-24">
-
-<title>Bioinfo Guide Book - Unveiling Data Insights with Principal Component Analysis (PCA) in R</title>
+<meta name="description" content="A practical guide to using Principal Component Analysis (PCA) in R for dimensionality reduction and feature engineering. Learn how to preprocess data, compute principal components, interpret scree plots, and visualize PCA results with reproducible code examples.">
+<title>Bioinfo Guide Book - Principal Component Analysis in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,28 +92,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><!-- Responsive & author info --><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page --><link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script><!-- Google site verification --><meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script><!-- Google tag (gtag.js) --><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
-<meta name="twitter:title" content="Bioinfo Guide Book - Unveiling Data Insights with Principal Component Analysis (PCA) in R">
-<meta name="twitter:description" content="">
+  gtag('config', 'G-WVW2JZXF40');
+</script>
+<meta property="og:title" content="PCA Insights in R | Bioinfo Guide Book">
+<meta property="og:description" content="Master Principal Component Analysis in R for dimensionality reduction and feature engineering with practical code examples.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/PCA_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Visualization of PCA on a dataset in R">
+<meta name="twitter:title" content="PCA in R: Dimensionality Reduction &amp; Feature Engineering">
+<meta name="twitter:description" content="Step-by-step tutorial on applying PCA in R, from data preprocessing to visualization and interpretation of principal components.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/PCA_R/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="Visualization of PCA on a dataset in R">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
@@ -128,17 +146,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
@@ -161,24 +179,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Unveiling Data Insights with Principal Component Analysis (PCA) in R</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Principal Component Analysis in R</h1>
+            <p class="subtitle lead">Dimensionality Reduction &amp; Feature Engineering with PCA</p>
+                  <div>
+        <div class="description">
+          <p>A practical guide to using Principal Component Analysis (PCA) in R for dimensionality reduction and feature engineering. Learn how to preprocess data, compute principal components, interpret scree plots, and visualize PCA results with reproducible code examples.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">R</div>
                 <div class="quarto-category">PCA</div>
                 <div class="quarto-category">Feature Engineering</div>
@@ -212,14 +228,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
-  <li><a href="#basic-concepts" id="toc-basic-concepts" class="nav-link" data-scroll-target="#basic-concepts">Basic Concepts</a>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li>
+<a href="#basic-concepts" id="toc-basic-concepts" class="nav-link" data-scroll-target="#basic-concepts">Basic Concepts</a>
   <ul class="collapse">
-  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+<li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
   <li><a href="#covariance-matrix" id="toc-covariance-matrix" class="nav-link" data-scroll-target="#covariance-matrix">Covariance Matrix</a></li>
   <li><a href="#eigenvalues-and-eigenvectors" id="toc-eigenvalues-and-eigenvectors" class="nav-link" data-scroll-target="#eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</a></li>
   <li><a href="#principal-components" id="toc-principal-components" class="nav-link" data-scroll-target="#principal-components">Principal Components</a></li>
@@ -228,94 +244,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#reconstruction" id="toc-reconstruction" class="nav-link" data-scroll-target="#reconstruction">Reconstruction</a></li>
   <li><a href="#applications" id="toc-applications" class="nav-link" data-scroll-target="#applications">Applications</a></li>
   <li><a href="#takeaway-note" id="toc-takeaway-note" class="nav-link" data-scroll-target="#takeaway-note">Takeaway Note</a></li>
-  </ul></li>
-  <li><a href="#practical-example-pca-in-r" id="toc-practical-example-pca-in-r" class="nav-link" data-scroll-target="#practical-example-pca-in-r">Practical Example: PCA in R</a>
+  </ul>
+</li>
+  <li>
+<a href="#practical-example-pca-in-r" id="toc-practical-example-pca-in-r" class="nav-link" data-scroll-target="#practical-example-pca-in-r">Practical Example: PCA in R</a>
   <ul class="collapse">
-  <li><a href="#step-1-load-and-preprocess-data" id="toc-step-1-load-and-preprocess-data" class="nav-link" data-scroll-target="#step-1-load-and-preprocess-data">Step 1: Load and Preprocess Data</a></li>
+<li><a href="#step-1-load-and-preprocess-data" id="toc-step-1-load-and-preprocess-data" class="nav-link" data-scroll-target="#step-1-load-and-preprocess-data">Step 1: Load and Preprocess Data</a></li>
   <li><a href="#step-2-perform-pca" id="toc-step-2-perform-pca" class="nav-link" data-scroll-target="#step-2-perform-pca">Step 2: Perform PCA</a></li>
   <li><a href="#step-3-analyze-results" id="toc-step-3-analyze-results" class="nav-link" data-scroll-target="#step-3-analyze-results">Step 3: Analyze Results</a></li>
   <li><a href="#step-4-interpretation" id="toc-step-4-interpretation" class="nav-link" data-scroll-target="#step-4-interpretation">Step 4: Interpretation</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#packages-used-for-pca-analysis-in-r" id="toc-packages-used-for-pca-analysis-in-r" class="nav-link" data-scroll-target="#packages-used-for-pca-analysis-in-r">Packages used for PCA analysis in R</a></li>
-  </ul></li>
   </ul>
-</nav>
+</li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>The dimensionality reduction method known as Principal Component Analysis (PCA) is popular in the fields of data analysis and machine learning. It is a mathematical technique that aids in the simplification of complicated datasets while retaining the majority of the crucial details. In order to achieve this, PCA converts the initial data into a new coordinate system, known as the principle components, where the axes are linear combinations of the initial variables.</p>
-<hr>
-</section>
-<section id="basic-concepts" class="level1">
-<h1>Basic Concepts</h1>
-<section id="data-preparation" class="level2">
-<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+<hr></section><section id="basic-concepts" class="level1"><h1>Basic Concepts</h1>
+<section id="data-preparation" class="level2"><h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
 <p>You normally begin with a dataset that comprises numerous variables or features before applying PCA. These traits, measures, or characteristics of the data points you’re evaluating could be considered as these features. For each characteristic to have a mean of 0 and a standard deviation of 1, your data must be standardized or normalized. This stage makes sure that each feature is given the same weight in the analysis.</p>
-<hr>
-</section>
-<section id="covariance-matrix" class="level2">
-<h2 class="anchored" data-anchor-id="covariance-matrix">Covariance Matrix</h2>
+<hr></section><section id="covariance-matrix" class="level2"><h2 class="anchored" data-anchor-id="covariance-matrix">Covariance Matrix</h2>
 <p>The covariance matrix of the standardized data is computed first in PCA. The associations between each pair of variables in your dataset are summarized in the covariance matrix. It explains how variables move in tandem or in opposition to one another. While a negative covariance suggests they move in the opposite directions, a positive covariance shows that two variables rise or fall together.</p>
-<hr>
-</section>
-<section id="eigenvalues-and-eigenvectors" class="level2">
-<h2 class="anchored" data-anchor-id="eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</h2>
+<hr></section><section id="eigenvalues-and-eigenvectors" class="level2"><h2 class="anchored" data-anchor-id="eigenvalues-and-eigenvectors">Eigenvalues and Eigenvectors</h2>
 <p>The next step in PCA is to compute the eigenvalues and eigenvectors of the covariance matrix.</p>
 <ul>
 <li><p><strong>Eigenvalues</strong>: The magnitude of variance along each principal component is shown by these scalar values. Higher eigenvalues correspond to principal components that capture more variance in the data. Eigenvalues are sorted in descending order.</p></li>
 <li><p><strong>Eigenvectors</strong>: In the original feature space, these are the directions or vectors where data fluctuates the most. Each eigenvector corresponds to a principal component.</p></li>
 </ul>
-<hr>
-</section>
-<section id="principal-components" class="level2">
-<h2 class="anchored" data-anchor-id="principal-components">Principal Components</h2>
+<hr></section><section id="principal-components" class="level2"><h2 class="anchored" data-anchor-id="principal-components">Principal Components</h2>
 <p>The principal components are linear combinations of the original features. Each principal component is formed by multiplying each feature by a weight (the corresponding eigenvector) and summing these weighted values.</p>
 <p>The first principal component (PC1), followed by PC2, PC3, and so on, explains the most variance in the data. Each following component collects less information than PC1, yet they are orthogonal (uncorrelated) to each other, indicating that they are not redundant.</p>
-<hr>
-</section>
-<section id="explained-variance-ratio" class="level2">
-<h2 class="anchored" data-anchor-id="explained-variance-ratio">Explained Variance Ratio</h2>
+<hr></section><section id="explained-variance-ratio" class="level2"><h2 class="anchored" data-anchor-id="explained-variance-ratio">Explained Variance Ratio</h2>
 <p>The explained variance ratio can be used to determine how much variance each principal component captures. It indicates how much of the total variation in the data is explained by each major component. A cumulative explained variance plot is typically used to determine how many principal components to keep.</p>
-<hr>
-</section>
-<section id="dimensionality-reduction" class="level2">
-<h2 class="anchored" data-anchor-id="dimensionality-reduction">Dimensionality Reduction</h2>
+<hr></section><section id="dimensionality-reduction" class="level2"><h2 class="anchored" data-anchor-id="dimensionality-reduction">Dimensionality Reduction</h2>
 <p>You can decide how many principal components to keep based on the cumulative explained variance and your desired degree of kept information (for example, retaining 95% of the variance). Data analysis, visualization, and modeling can be made simpler by reducing the number of dimensions by eliminating less significant elements/components.</p>
-<hr>
-</section>
-<section id="reconstruction" class="level2">
-<h2 class="anchored" data-anchor-id="reconstruction">Reconstruction</h2>
+<hr></section><section id="reconstruction" class="level2"><h2 class="anchored" data-anchor-id="reconstruction">Reconstruction</h2>
 <p>You can use the retained principal components to project your data back into the original feature space if you choose to reduce the dimensionality. This helps you analyze the findings in light of your original data.</p>
-<hr>
-</section>
-<section id="applications" class="level2">
-<h2 class="anchored" data-anchor-id="applications">Applications</h2>
+<hr></section><section id="applications" class="level2"><h2 class="anchored" data-anchor-id="applications">Applications</h2>
 <p>PCA is used in various fields, including:</p>
 <ul>
-<li><strong>Data Visualization</strong>: Reducing high-dimensional data to two or three dimensions for visualization purposes.</li>
-<li><strong>Noise Reduction</strong>: Removing noise and redundancy in data.</li>
-<li><strong>Feature Engineering</strong>: Creating new features that capture the most important information.</li>
-<li><strong>Machine Learning</strong>: Reducing the number of features in machine learning models to improve performance and reduce overfitting.</li>
+<li>
+<strong>Data Visualization</strong>: Reducing high-dimensional data to two or three dimensions for visualization purposes.</li>
+<li>
+<strong>Noise Reduction</strong>: Removing noise and redundancy in data.</li>
+<li>
+<strong>Feature Engineering</strong>: Creating new features that capture the most important information.</li>
+<li>
+<strong>Machine Learning</strong>: Reducing the number of features in machine learning models to improve performance and reduce overfitting.</li>
 </ul>
-<hr>
-</section>
-<section id="takeaway-note" class="level2">
-<h2 class="anchored" data-anchor-id="takeaway-note">Takeaway Note</h2>
+<hr></section><section id="takeaway-note" class="level2"><h2 class="anchored" data-anchor-id="takeaway-note">Takeaway Note</h2>
 <p>In summary, PCA is a potent method for dimensionality reduction that enables you to better understand your data by changing it into a form that is easier to read. It is frequently used in machine learning and data analysis to streamline complex datasets and make them easier to handle for additional/downstream analysis.</p>
-<hr>
-</section>
-</section>
-<section id="practical-example-pca-in-r" class="level1">
-<h1>Practical Example: PCA in R</h1>
+<hr></section></section><section id="practical-example-pca-in-r" class="level1"><h1>Practical Example: PCA in R</h1>
 <p>We’ll use a sample dataset to illustrate the process, but you can apply PCA to your own data with similar steps.</p>
-<section id="step-1-load-and-preprocess-data" class="level3">
-<h3 class="anchored" data-anchor-id="step-1-load-and-preprocess-data">Step 1: Load and Preprocess Data</h3>
+<section id="step-1-load-and-preprocess-data" class="level3"><h3 class="anchored" data-anchor-id="step-1-load-and-preprocess-data">Step 1: Load and Preprocess Data</h3>
 <p>In this example, we’ll use the built-in “iris” dataset in R. However, for your real-world projects, you should load your data into a dataframe and preprocess it, including scaling if necessary.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -349,16 +332,12 @@ After standardizing the features to have a mean of 0 and a variance of 1, we obs
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pca_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
-<figcaption class="figure-caption">Feature vs.&nbsp;Scaled Feature Distribution</figcaption>
-</figure>
+<figure class="figure"><p><img src="pca_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" style="width:80.0%" alt="Feature vs. Scaled Feature Distribution"></p>
+<figcaption class="figure-caption">Feature vs.&nbsp;Scaled Feature Distribution</figcaption></figure>
 </div>
 </div>
 </div>
-</section>
-<section id="step-2-perform-pca" class="level3">
-<h3 class="anchored" data-anchor-id="step-2-perform-pca">Step 2: Perform PCA</h3>
+</section><section id="step-2-perform-pca" class="level3"><h3 class="anchored" data-anchor-id="step-2-perform-pca">Step 2: Perform PCA</h3>
 <p>Now, let’s perform PCA on our standardized data.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -366,12 +345,10 @@ After standardizing the features to have a mean of 0 and a variance of 1, we obs
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pca_result <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(scaled_features)</span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</section>
-<section id="step-3-analyze-results" class="level3">
-<h3 class="anchored" data-anchor-id="step-3-analyze-results">Step 3: Analyze Results</h3>
+</section><section id="step-3-analyze-results" class="level3"><h3 class="anchored" data-anchor-id="step-3-analyze-results">Step 3: Analyze Results</h3>
 <p>You can now explore the results of the PCA, such as the variance explained by each principal component and their contributions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, fig.cap="variance explained by each principal component", fig.alt="variance explained by each principal component"}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Variance explained by each principal component</span></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>variance_explained <span class="ot">&lt;-</span> pca_result<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sum</span>(pca_result<span class="sc">$</span>sdev<span class="sc">^</span><span class="dv">2</span>)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -381,41 +358,34 @@ After standardizing the features to have a mean of 0 and a variance of 1, we obs
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>        <span class="at">main =</span> <span class="st">"Variance Explained by Each Principal Component"</span>)</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="pca_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" width="672"></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure"><p><img src="pca_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" alt="variance explained by each principal component" width="672"></p>
+<figcaption class="figure-caption">variance explained by each principal component</figcaption></figure>
 </div>
 </div>
-</section>
-<section id="step-4-interpretation" class="level3">
-<h3 class="anchored" data-anchor-id="step-4-interpretation">Step 4: Interpretation</h3>
+</div>
+</section><section id="step-4-interpretation" class="level3"><h3 class="anchored" data-anchor-id="step-4-interpretation">Step 4: Interpretation</h3>
 <p>Interpret the results by considering the variance explained by each principal component. You can choose a threshold (e.g., retaining 95% variance) to determine how many principal components to keep for further analysis.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="pca_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figure class="figure"><p><img src="pca_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" style="width:80.0%" alt="biplot"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The biplot above presents the data points projected onto the PC1 and PC2 axes, allowing you to observe the distribution of your data in this new two-dimensional space. Additionally, you’ll see arrows indicating the contributions of the original features to PC1 and PC2. The length and direction of these arrows provide insights into which features have the most influence on each principal component.</p>
-</section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+</section><section id="conclusion" class="level3"><h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
 <p>Principal Component Analysis (PCA) is a powerful technique for dimensionality reduction, noise reduction, and data visualization in data analysis. In this blog post, we’ve explored the core concepts of PCA and provided a hands-on example using R. By incorporating PCA into your data analysis toolkit, you can gain deeper insights from your high-dimensional datasets and make more informed decisions in your data-driven projects.</p>
-<hr>
-</section>
-<section id="packages-used-for-pca-analysis-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="packages-used-for-pca-analysis-in-r">Packages used for PCA analysis in R</h2>
+<hr></section><section id="packages-used-for-pca-analysis-in-r" class="level2"><h2 class="anchored" data-anchor-id="packages-used-for-pca-analysis-in-r">Packages used for PCA analysis in R</h2>
 <p>Here’s a table of some popular R packages commonly used for Principal Component Analysis (PCA) along with links to their respective documentation:</p>
 <table class="table">
 <caption>R Packages for PCA Analysis</caption>
-<thead>
-<tr class="header">
+<thead><tr class="header">
 <th style="text-align: left;">Package Name</th>
 <th style="text-align: left;">Description</th>
 <th style="text-align: left;">URL</th>
-</tr>
-</thead>
+</tr></thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: left;"><code>prcomp</code></td>
@@ -425,7 +395,9 @@ After standardizing the features to have a mean of 0 and a variance of 1, we obs
 <tr class="even">
 <td style="text-align: left;"><code>PCAtools</code></td>
 <td style="text-align: left;">Comprehensive PCA toolkit with visualization and analysis tools.</td>
-<td style="text-align: left;"><a href="https://github.com/kevinblighe/PCAtools">GitHub</a> <a href="https://www.bioconductor.org/packages/release/bioc/html/PCAtools.html">bioconductor</a></td>
+<td style="text-align: left;">
+<a href="https://github.com/kevinblighe/PCAtools">GitHub</a> <a href="https://www.bioconductor.org/packages/release/bioc/html/PCAtools.html">bioconductor</a>
+</td>
 </tr>
 <tr class="odd">
 <td style="text-align: left;"><code>FactoMineR</code></td>
@@ -455,13 +427,11 @@ After standardizing the features to have a mean of 0 and a variance of 1, we obs
 </tbody>
 </table>
 <p>Please note that R packages are frequently updated, so it’s a good practice to visit the package documentation links for the most up-to-date information on package usage and functionality.</p>
+<hr>
+<p>visit the post <a href="../../posts/cosine_similarity/cosinesimilarity.html">Cosine Similarity</a></p>
 
 
-</section>
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section></section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -808,18 +778,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
@@ -847,13 +815,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
-    </div>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 </body></html>

@@ -1,9 +1,32 @@
 ---
-title: "Best Practices for Data Wrangling in R - Part 2"
+title: "Data Wrangling Best Practices in R"
+subtitle: "Advanced File Transformation & Reshaping – Part 2"
 author: "Bilal Mustafa"
 date: "2023-09-21"
-categories: [R, Data wrangling, File Reading]
+slug: "data-wrangling-best-practices-part-2"
+description: >
+  Part 2 of our R data-wrangling series dives into advanced techniques:
+  reshaping data with pivoting, joining tables, string manipulation, and
+  functional programming with purrr—complete with reproducible code examples.
+categories: [R, Data Wrangling]
+tags: [pivot_longer, pivot_wider, joins, dplyr, tidyr, stringr, purrr, tidyverse, data transformation, R programming]
 image: "image.jpg"
+image-alt: "Advanced File Transformation & Reshaping"
+twitter-card:
+  title: "Data Wrangling Best Practices in R – Part 2"
+  description: >
+    Deepen your R data-wrangling skills with pivot, join, and string-processing
+    workflows—practical code and tips included.
+  image: "image.jpg"
+  image-alt: "Twitter card thumbnail for data wrangling part 2"
+
+open-graph:
+  title: "Data Wrangling Best Practices in R | Part 2"
+  description: >
+    Learn advanced data-wrangling workflows in R—reshaping, merging, and
+    string manipulation—through clear examples and best practices.
+  image: "image.jpg"
+  image-alt: "Open Graph image for R data wrangling part 2 guide"
 execute: 
   output: true
   echo: fenced
@@ -15,6 +38,7 @@ format:
     df-print: paged
     code-copy: true
 ---
+
 
 ## Introduction:
 
@@ -141,6 +165,8 @@ Other methods to remove NA's include `na.omit()` , `complete.cases()`, `rowSums(
 -   Consider using statistical methods or domain knowledge to handle outliers, such as winsorization or transformation.
 
 ```{r}
+#| label: Boxplot of air wauality data set
+#| fig-alt: "Boxplot of air wauality data set"
 
 # Example: Visualize outliers using a boxplot
 boxplot(airquality_clean)
@@ -234,3 +260,7 @@ A crucial first step in data analysis is data wrangling; by using R's best pract
 You may improve the efficiency of your data wrangling workflow and provide more reliable analyses by comprehending your data, putting effective cleaning and transformation strategies into practice, testing your findings, and documenting your approach.
 
 Always tailor these best practices to your unique needs, keeping in mind that the individual methods and packages you use may vary depending on your dataset and research goals.
+
+------------------------------------------------------------------------
+
+visit the post [Descriptive Statistics - Centrality](../../posts/centrality_R/centrality.html)

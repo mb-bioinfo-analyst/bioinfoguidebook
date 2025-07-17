@@ -1,10 +1,53 @@
 ---
-title: "Understanding Centrality: Key Measures in Descriptive Statistics Using R"
+title: "Centrality Measures in R"
+subtitle: "Calculating and Comparing Mean, Median, Mode, and Advanced Averages"
+
 author: "Bilal Mustafa"
 date: "2024-08-10"
-categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics, Central Tendency, Mean, Median, Mode, Geometric Mean, Harmonic Mean, Statistical Measures]
+slug: "understanding-centrality-key-measures"
+
+description: >
+  A hands-on tutorial on computing and interpreting central tendency measures 
+  in R. Learn how to calculate the arithmetic mean, median, mode, geometric mean, 
+  and harmonic mean—and decide which measure best summarizes your data.
+
+# High-level grouping for site navigation
+categories: [Statistics, Descriptive Statistics]
+
+# More granular filtering and SEO
+tags: [R Programming, Data Analysis, Central Tendency, Mean, Median, Mode, Geometric Mean, Harmonic Mean, Statistical Measures]
+
+# Featured image for blog listings
 image: "image.jpg"
+image-alt: "Illustration of central tendency measures in R"
+
+# Enable per-page social-card metadata
+
+twitter-card:
+  title: "Centrality Measures in R: Mean, Median, Mode & More"
+  description: >
+    Step through examples of computing mean, median, mode, geometric mean, 
+    and harmonic mean in R—and discover which measure is right for your data.
+  image: "image.jpg"
+  image-alt: "Twitter card for central tendency tutorial"
+
+open-graph:
+  title: "Understanding Centrality: Key Measures in Descriptive Statistics Using R"
+  description: >
+    Explore how to calculate and interpret various central tendency statistics 
+    in R, complete with code snippets and real-world examples.
+  image: "image.jpg"
+  image-alt: "Open Graph image for central tendency measures guide"
+
+# Keep your existing HTML format settings
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
 ---
+
+
 
 # Introduction:
 
@@ -103,3 +146,5 @@ The geometric mean is ideal for multiplicative processes, and the harmonic mean 
 Understanding these measures and how to compute them in R will enhance your ability to summarize and interpret data effectively.
 
 ------------------------------------------------------------------------
+
+visit the post [Descriptive Statistics - Variability](../../posts/variability_r/variabilityr.html)

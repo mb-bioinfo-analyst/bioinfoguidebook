@@ -1,9 +1,30 @@
 ---
 title: "Understanding Nonsense-Mediated Decay (NMD)"
+subtitle: "Exploring mRNA Surveillance Mechanisms and Events"
 author: "Bilal Mustafa"
 date: "2024-03-30"
-categories: [R, NMD, Nonsense Mediated Decay]
+categories: [NMD, Nonsense Mediated Decay, Bioinformatics]
+tags: [NMD, mRNA Surveillance, RNA Biology]
+slug: "nonsense-mediated-decay-nmd"
+description: >
+  A practical guide to studying nonsense-mediated mRNA decay (NMD).
+  Learn the biological mechanism, and NMD events.
 image: "nonsense_mediated_decay_with_legend.gif"
+image-alt: Thumbnail animation
+twitter-card:
+  title: "NMD Analysis in R: Mechanisms & Workflows"
+  description: >
+    Detailed note on nonsense-mediated decay from biological 
+    overview.
+  image: "nonsense_mediated_decay_with_legend.gif"
+  image-alt: "Twitter card for NMD tutorial"
+open-graph:
+  title: "NMD in R: Bioinfo Guide Book Tutorial"
+  description: >
+    Detailed note on nonsense-mediated decay from biological 
+    overview.
+  image: "nonsense_mediated_decay_with_legend.gif"
+  image-alt: "Open Graph image for NMD tutorial"
 format:
   html:
     code-link: true
@@ -11,6 +32,7 @@ format:
     code-copy: true
     fig-align: center
 ---
+
 
 # Introduction:
 
@@ -30,9 +52,7 @@ NMD plays a vital function in preserving cellular homeostasis and safeguarding a
 This post aims to provide a comprehensive overview of Nonsense-Mediated Decay (NMD), encompassing its underlying mechanisms, regulatory systems, applications in disease research, and recent improvements in NMD detection and analysis techniques.
 This post attempts to offer a thorough comprehension of the essential mRNA monitoring route and its importance in the fields of cellular biology and human health.
 
-![](nonsense_mediated_decay_with_legend.gif)
-
-
+![](nonsense_mediated_decay_with_legend.gif){fig-alt="NMD animation"}
 
 ------------------------------------------------------------------------
 
@@ -215,3 +235,7 @@ The use of CRISPR/Cas9 genome editing technology and NMD reporter assays provide
 In summary, the investigation of NMD encompasses a diverse range of fields including molecular biology, genetics, bioinformatics, and translational medicine.
 Through the process of unraveling the intricacies of NMD, scientists are positioned to enhance our comprehension of gene expression control, disease mechanisms, and therapeutic approaches.
 This will ultimately facilitate the development of enhanced diagnostics and treatments for various genetic disorders and other related conditions.
+
+------------------------------------------------------------------------
+
+visit the post [Regression Analysis](../../posts/regression-bioinformatics/regression.html)

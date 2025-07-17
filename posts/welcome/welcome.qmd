@@ -1,10 +1,40 @@
 ---
-title: "Welcome To Bioinfo Guide Book"
+title: "Welcome to Bioinfo Guide Book"
+subtitle: "Your Go-To Resource for Bioinformatics Tutorials & References"
 author: "Bilal Mustafa"
 date: "2023-07-26"
+slug: "welcome"
+description: >
+  An introduction to Bioinfo Guide Book: a free, open-access site offering
+  step-by-step bioinformatics tutorials, reproducible R & python code
+  examples, and reference materials for students and researchers.
 categories: [Welcome]
+tags: [introduction, overview, bioinformatics guide, tutorials, resources]
 image: "profile.png"
+image-alt: "Bioinfo Guide Book logo"
+twitter-card:
+  title: "Welcome to Bioinfo Guide Book"
+  description: >
+    Explore our open-access bioinformatics tutorials, R & python code examples,
+    and comprehensive reference materials.
+  image: "profile.png"
+  image-alt: "Logo for Bioinfo Guide Book"
+
+open-graph:
+  title: "Welcome to Bioinfo Guide Book | Bioinfo Guide Book"
+  description: >
+    Discover stepwise tutorials, reproducible code, and reference guides in
+    bioinformatics, genomics, and computational biology.
+  image: "profile.png"
+  image-alt: "Logo and welcome banner for Bioinfo Guide Book"
+
+format:
+  html:
+    code-copy: true
+    df-print: paged
+    code-link: true
 ---
+
 
 🔬 Welcome to Bioinfo Guide Book - Exploring the Frontier of Bioinformatics!
 🔬
@@ -12,7 +42,7 @@ image: "profile.png"
 Hello and welcome to the exciting world of bioinformatics!
 We're thrilled to have you join us here at Bioinfo Guide Book, where we're dedicated to unraveling the mysteries of life through the lens of data, algorithms, and cutting-edge research.
 
-![](profile.png)
+![](profile.png){fig-alt="Logo image"}
 
 # What is Bioinformatics?
 
@@ -57,3 +87,5 @@ Bilal Mustafa\
 Founder, Bioinfo Guide Book
 
 ------------------------------------------------------------------------
+
+visit the post [Getting Started](../../posts/bioinfo-with-R/bioinfoR.html)

@@ -1,10 +1,42 @@
 ---
-title: "Understanding Basic Statistical Concepts with R"
+title: "Basic Statistical Concepts in R"
+subtitle: "Overview of Descriptive Measures, Hypothesis Testing & Visualization"
 author: "Bilal Mustafa"    
 date: "2024-08-14"     
-categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics, Hypothesis Testing, Data Visualization, T-Test, Statistical Methods, Beginners Guide, Quantitative Analysis]
+slug: "basic-statistical-concepts-in-r"
+description: >
+  An introductory guide to fundamental statistical concepts in R.
+  Learn how to compute descriptive measures, conduct t-tests,
+  construct confidence intervals, and create informative visualizations
+  with practical R code examples.
+categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics]
+tags: [Descriptive Statistics, Hypothesis Testing, T-Test, Confidence Intervals, Data Visualization, Beginners Guide, Quantitative Analysis, Statistical Methods]
 image: "image.jpg"
+image-alt: "Graphical illustration of basic statistical concepts in R"
+
+twitter-card:
+  title: "Core Statistical Concepts in R"
+  description: >
+    A hands-on tutorial to learn descriptive statistics, t-tests,
+    confidence intervals, and visualization techniques in R.
+  image: "image.jpg"
+  image-alt: "Twitter thumbnail for basic statistics tutorial"
+
+open-graph:
+  title: "Basic Statistical Concepts in R | Bioinfo Guide Book"
+  description: >
+    Explore essential statistical methods in R—descriptives, hypothesis testing,
+    and plotting—through clear examples and code.
+  image: "image.jpg"
+  image-alt: "Open Graph image for basic statistics guide"
+
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
 ---
+
 
 # Introduction:
 
@@ -66,14 +98,14 @@ To look into the mtcars collection, we'll make a number of plots.
 
 1.  Histogram of mpg A histogram shows how a single numerical value is spread out.
 
-```{r}
+```{r, fig.alt="Histogram of miles per gallon (mpg)"}
 # Histogram of miles per gallon (mpg)
 hist(mtcars$mpg, main = "Distribution of Miles Per Gallon (mpg)", xlab = "Miles Per Gallon", col = "lightblue")
 ```
 
 2.  Boxplot of mpg by Transmission You can compare distributions between groups with a boxplot. We will now compare the mpg of cars with automatic and manual engines.
 
-```{r}
+```{r, fig.alt="Boxplot of mpg by transmission type"}
 # Boxplot of mpg by transmission type
 boxplot(mpg ~ am, data = mtcars, main = "MPG by Transmission Type", xlab = "Transmission (0 = Automatic, 1 = Manual)", ylab = "Miles Per Gallon", col = c("orange", "lightgreen"))
 ```
@@ -163,3 +195,5 @@ It's a great resource for understanding how to perform various t-tests in R.
 [Link to the documentation](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test)
 
 ------------------------------------------------------------------------
+
+visit the post [Analysis of Variance - ANOVA](../../posts/anova_lm_r/anova_lm.html)

@@ -1,10 +1,39 @@
 ---
-title: "Understanding Confidence Intervals: Estimating Precision in Descriptive Statistics Using R"   
+title: "Understanding Confidence Intervals in R"
+subtitle: "Calculating and Visualizing Precision Bounds for Mean Estimates"
 author: "Bilal Mustafa"   
 date: "2024-08-12"    
-categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics, Hypothesis Testing, Data Visualization, T-Test, Statistical Methods, Beginners Guide, Quantitative Analysis]   
+slug: "understanding-confidence-intervals"
+description: >
+  A comprehensive tutorial on computing and interpreting confidence intervals in R.
+  Learn how to calculate z‐ and t‐based intervals, visualize confidence bounds,
+  and determine sample sizes for precise estimates with practical code examples.
+categories: [Statistics, Descriptive Statistics]
+tags: [R Programming, Confidence Intervals, Hypothesis Testing, T-Test, Data Visualization, Precision Estimation, Quantitative Analysis, Beginners Guide]   
 image: "image.jpg"
+image-alt: Thumbnail
+twitter-card:
+  title: "Confidence Intervals in R: Calculate & Visualize Precision"
+  description: >
+    Step-by-step guide to computing and interpreting confidence intervals in R,
+    including z/t methods, plotting techniques, and sample size tips.
+  image: "image.jpg"
+  image-alt: "Twitter card thumbnail for confidence interval tutorial"
+open-graph:
+  title: "Understanding Confidence Intervals in R | Bioinfo Guide Book"
+  description: >
+    Explore how to estimate and interpret confidence intervals in R with practical
+    examples, visualizations, and best practices.
+  image: "image.jpg"
+  image-alt: "Open Graph image for confidence intervals guide"
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
 ---
+
+
 
 # Introduction:
 
@@ -109,9 +138,11 @@ This package calculates the confidence intervals for the proportion of each cate
 
 ------------------------------------------------------------------------
 
-# Notes on Measures of Variability
+# Notes on Confidence Intervals
 
 Confidence intervals are a critical tool in descriptive statistics, allowing you to quantify the uncertainty of your estimates and providing a range within which the true population parameter is likely to fall.
 Whether you're working with simple numeric data, grouped data, or categorical data, understanding how to compute and interpret confidence intervals using R will enhance the accuracy and reliability of your data analysis.
 
 ------------------------------------------------------------------------
+
+visit the post [t-Test](../../posts/t_test_r/t_test.html)

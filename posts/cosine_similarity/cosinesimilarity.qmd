@@ -1,9 +1,33 @@
 ---
-title: "Comparative Analysis of Gene Expression Using Cosine Similarity"
+title: "Cosine Similarity for Gene Expression"
+subtitle: "Comparing Gene Expression Profiles in R with Cosine Metrics"
 author: "Bilal Mustafa"
 date: "2024-02-18"
-categories: [R, Cosine Similarity]
+slug: "cosine-similarity-gene-expression"
+description: >
+  Learn how to compare gene expression profiles using cosine similarity in R.
+  This tutorial covers data preprocessing, computing similarity metrics, and
+  interpreting results with code examples and visualizations.
+categories: [R, Cosine Similarity, Bioinformatics]
+tags: [gene expression, cosine similarity, similarity metrics, R programming, data analysis, omics, bioinformatics]
 image: "cosine_similarity_animation.gif"
+image-alt: "Animated demonstration of cosine similarity for gene expression"
+twitter-card:
+  title: "Gene Expression via Cosine Similarity in R"
+  description: >
+    A step-by-step guide to computing and interpreting cosine similarity
+    between gene expression profiles in R, complete with code and visuals.
+  image: "cosine_similarity_animation.gif"
+  image-alt: "Twitter card thumbnail for cosine similarity tutorial"
+
+open-graph:
+  title: "Cosine Similarity for Gene Expression | Bioinfo Guide Book"
+  description: >
+    Master the use of cosine similarity to assess gene expression similarity
+    in R, including data prep, computation, and interpretation.
+  image: "cosine_similarity_animation.gif"
+  image-alt: "Open Graph image for cosine similarity gene expression guide"
+
 format:
   html:
     code-link: true
@@ -11,6 +35,8 @@ format:
     code-copy: true
     fig-align: center
 ---
+
+
 
 # Introduction:
 
@@ -58,10 +84,10 @@ $$\underset{similarity}{cosine(\theta)} = \frac{A.B}{||A||.||B||}$$
 Where, $A.B$ is the dot product of the vectors A and B, and $∥A∥$ and $∥B∥$ are the magnitudes of vectors A and B, respectively.
 
 If the angle is small (close to 0 degrees), the cosine value is close to 1, indicating high similarity.
-Conversely, if the angle is close to 90 degrees, the cosine value is close to 0, indicating low similarity. This can be observed from the following animation,
+Conversely, if the angle is close to 90 degrees, the cosine value is close to 0, indicating low similarity.
+This can be observed from the following animation,
 
-
-![](cosine_similarity_animation.gif)
+![](cosine_similarity_animation.gif){fig-alt="Cosine similarity animation"}
 
 ------------------------------------------------------------------------
 
@@ -79,7 +105,7 @@ The similarity in gene expression patterns between treatments is represented by 
 The cosine similarity score of two treatment vectors will be near to 1, showing high similarity, if they point in comparable directions, reflecting similar patterns of gene expression across treatments.
 On the other hand, the cosine similarity score of the treatment vectors will be closer to 0 if they point in entirely different directions, indicating low similarity.
 
-![](image.jpg)
+![](image.jpg){fig-alt="Cosine similarity concept visualization"}
 
 For instance, the treatment vectors for Treatments A and B will point in similar directions if they both cause comparable changes in gene expression, which would result in a high cosine similarity score.
 This would suggest that the effects of the two therapies on gene expression are similar.
@@ -191,3 +217,7 @@ By taking use of these benefits, scientists can further their understanding of i
 
 But it's important to recognize the limitations of cosine similarity and take them into account when examining particular research questions and characteristics of the data.
 Through the use of supplementary methods to augment cosine similarity and the consideration of its constraints, investigators can augment the accuracy and robustness of similarity analysis in biological research.
+
+------------------------------------------------------------------------
+
+visit the post [Non-sense Mediated Decay](../../posts/nmd/nmd.html)

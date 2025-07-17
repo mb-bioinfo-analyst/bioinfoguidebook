@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-07">
-
-<title>Bioinfo Guide Book - Getting Started with Bioinformatics in R: Setup, Syntax, and Examples</title>
+<meta name="description" content="A beginner’s guide to installing and configuring R for bioinformatics, understanding essential R syntax, and executing your first example workflows with practical code snippets and tips.">
+<title>Bioinfo Guide Book - Getting Started with Bioinformatics in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,25 +92,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><!-- Responsive & author info --><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page --><link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script><!-- Google site verification --><meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script><!-- Google tag (gtag.js) --><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-
-<meta name="twitter:title" content="Bioinfo Guide Book - Getting Started with Bioinformatics in R: Setup, Syntax, and Examples">
-<meta name="twitter:description" content="">
+  gtag('config', 'G-WVW2JZXF40');
+</script>
+<meta property="og:title" content="Getting Started with Bioinformatics in R | Bioinfo Guide Book">
+<meta property="og:description" content="Hands-on walkthrough for installing R, mastering syntax, and executing your first bioinformatics workflows in R.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="R console running bioinformatics code">
+<meta name="twitter:title" content="Getting Started with Bioinformatics in R">
+<meta name="twitter:description" content="Step-by-step tutorial on setting up R for bioinformatics, writing R code, and running your first analyses.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="R console running bioinformatics code">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
@@ -125,17 +146,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
@@ -158,24 +179,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Getting Started with Bioinformatics in R: Setup, Syntax, and Examples</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Getting Started with Bioinformatics in R</h1>
+            <p class="subtitle lead">Install R, learn basic syntax, and run your first bioinformatics workflows</p>
+                  <div>
+        <div class="description">
+          <p>A beginner’s guide to installing and configuring R for bioinformatics, understanding essential R syntax, and executing your first example workflows with practical code snippets and tips.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">R</div>
                 <div class="quarto-category">setup</div>
                 <div class="quarto-category">bioinformatics</div>
@@ -208,196 +227,205 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li>
+<a href="#setting-up-your-environment" id="toc-setting-up-your-environment" class="nav-link" data-scroll-target="#setting-up-your-environment">Setting Up Your Environment</a>
   <ul class="collapse">
-  <li><a href="#installing-packages-in-r" id="toc-installing-packages-in-r" class="nav-link" data-scroll-target="#installing-packages-in-r">Installing Packages in R</a></li>
+<li><a href="#installing-packages-in-r" id="toc-installing-packages-in-r" class="nav-link" data-scroll-target="#installing-packages-in-r">Installing Packages in R</a></li>
   <li><a href="#installing-bioconductor-packages" id="toc-installing-bioconductor-packages" class="nav-link" data-scroll-target="#installing-bioconductor-packages">Installing Bioconductor Packages</a></li>
   <li><a href="#checking-installed-packages" id="toc-checking-installed-packages" class="nav-link" data-scroll-target="#checking-installed-packages">Checking Installed Packages</a></li>
-  </ul></li>
+  </ul>
+</li>
   <li><a href="#basic-syntax-in-r-for-bioinformatics" id="toc-basic-syntax-in-r-for-bioinformatics" class="nav-link" data-scroll-target="#basic-syntax-in-r-for-bioinformatics">Basic Syntax in R for Bioinformatics</a></li>
   <li><a href="#examples-in-bioinformatics" id="toc-examples-in-bioinformatics" class="nav-link" data-scroll-target="#examples-in-bioinformatics">Examples in Bioinformatics</a></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul>
-</nav>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<section id="introduction" class="level1">
-<h1>Introduction</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction</h1>
 <p>Bioinformatics is a rapidly evolving field that combines biology and computer science to analyze and interpret biological data. R, a powerful and versatile programming language, is widely used in bioinformatics for its data analysis and visualization capabilities. In this blog post, we will explore the fundamentals of bioinformatics in R, including how to set up your environment, understand basic syntax, and provide practical examples to get you started on your bioinformatics journey.</p>
-<hr>
-</section>
-<section id="setting-up-your-environment" class="level1">
-<h1>Setting Up Your Environment</h1>
+<hr></section><section id="setting-up-your-environment" class="level1"><h1>Setting Up Your Environment</h1>
 <p>Before diving into bioinformatics in R, you need to set up your environment. Here are the essential steps:</p>
 <ul>
 <li><p><strong>Install R</strong>: If you haven’t already, download and install R from the official website (https://cran.r-project.org/).</p></li>
 <li><p><strong>Install RStudio (Optional but Recommended)</strong>: RStudio is a popular integrated development environment (IDE) for R. It provides a user-friendly interface and makes working with R much more convenient. You can download it from https://www.rstudio.com/products/rstudio/download/.</p></li>
 <li><p><strong>Install Bioconductor</strong>: Bioconductor is a collection of R packages specifically designed for bioinformatics. You can install it by running the following commands in R or RStudio:</p></li>
 </ul>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span>)</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span><span class="op">)</span></span>
+<span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span></span>
+<span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Install Bioinformatics Packages</strong>: Depending on your specific bioinformatics tasks, you may need to install additional packages. Some commonly used packages include Bioconductor, Bioconductor-core, DESeq2, and biomaRt.</li>
+<li>
+<strong>Install Bioinformatics Packages</strong>: Depending on your specific bioinformatics tasks, you may need to install additional packages. Some commonly used packages include Bioconductor, Bioconductor-core, DESeq2, and biomaRt.</li>
 </ul>
 <p>Installing packages in R is a crucial step for adding additional functionality to your R environment. Bioconductor is a specialized repository of R packages and tools for bioinformatics and computational biology. Below, I’ll provide you with information on how to install packages in R and specifically how to install Bioconductor packages.</p>
 <hr>
-<section id="installing-packages-in-r" class="level2">
-<h2 class="anchored" data-anchor-id="installing-packages-in-r">Installing Packages in R</h2>
+<section id="installing-packages-in-r" class="level2"><h2 class="anchored" data-anchor-id="installing-packages-in-r">Installing Packages in R</h2>
 <p>You can install packages in R using the install.packages() function. Here’s how to do it:</p>
 <ul>
-<li><strong>Installing a CRAN Package</strong>:</li>
+<li>
+<strong>Installing a CRAN Package</strong>:</li>
 </ul>
 <p>To install a package from the Comprehensive R Archive Network (CRAN), use the install.packages() function followed by the package name in quotes:</p>
 <p>install.packages(“package_name”)</p>
 <p>For example, if you want to install the ggplot2 package for data visualization:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span>, repos <span class="op">=</span> <span class="st">"http://cran.us.r-project.org"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Loading a Package</strong>:</li>
+<li>
+<strong>Loading a Package</strong>:</li>
 </ul>
 <p>Once the package is installed, you can load it into your R session using the library() function:</p>
 <p>library(package_name)</p>
 <p>For example:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="installing-bioconductor-packages" class="level2">
-<h2 class="anchored" data-anchor-id="installing-bioconductor-packages">Installing Bioconductor Packages</h2>
+<div class="cell">
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr></section><section id="installing-bioconductor-packages" class="level2"><h2 class="anchored" data-anchor-id="installing-bioconductor-packages">Installing Bioconductor Packages</h2>
 <p>Bioconductor is a specialized repository for bioinformatics packages in R. To install Bioconductor and Bioconductor packages, follow these steps:</p>
 <ul>
-<li><strong>Install BiocManager</strong>:</li>
+<li>
+<strong>Install BiocManager</strong>:</li>
 </ul>
 <p>BiocManager is a package that makes it easy to install and manage Bioconductor packages. If you haven’t already installed it, you can do so using CRAN as follows:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">requireNamespace</span>(<span class="st">"BiocManager"</span>, <span class="at">quietly =</span> <span class="cn">TRUE</span>))</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">install.packages</span>(<span class="st">"BiocManager"</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="fu"><a href="https://rdrr.io/r/base/ns-load.html">requireNamespace</a></span><span class="op">(</span><span class="st">"BiocManager"</span>, quietly <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"BiocManager"</span></span>
+<span>  <span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Install Bioconductor Packages</strong>:</li>
+<li>
+<strong>Install Bioconductor Packages</strong>:</li>
 </ul>
 <p>You can install Bioconductor packages using the BiocManager::install() function. Specify the package name you want to install within quotes.</p>
 <p>BiocManager::install(“package_name”)</p>
 <p>For example, if you want to install the DESeq2 package for differential gene expression analysis:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>BiocManager<span class="sc">::</span><span class="fu">install</span>(<span class="st">"DESeq2"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">BiocManager</span><span class="fu">::</span><span class="fu"><a href="https://bioconductor.github.io/BiocManager/reference/install.html">install</a></span><span class="op">(</span><span class="st">"DESeq2"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Load Bioconductor Packages</strong>:</li>
+<li>
+<strong>Load Bioconductor Packages</strong>:</li>
 </ul>
 <p>Once the Bioconductor package is installed, load it into your R session using the library() function:</p>
 <p>library(package_name)</p>
 <p>For example:</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DESeq2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="checking-installed-packages" class="level2">
-<h2 class="anchored" data-anchor-id="checking-installed-packages">Checking Installed Packages</h2>
+<div class="cell">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/thelovelab/DESeq2">DESeq2</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr></section><section id="checking-installed-packages" class="level2"><h2 class="anchored" data-anchor-id="checking-installed-packages">Checking Installed Packages</h2>
 <p>To check which packages are currently installed in your R environment, you can use the installed.packages() function:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">installed.packages</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>This will provide a list of all installed packages along with their versions and other information.</p>
 <p>That’s it! You now have the information you need to install both standard CRAN packages and Bioconductor packages in R. Installing the right packages can greatly expand the capabilities of R for bioinformatics and other data analysis tasks.</p>
-<hr>
-</section>
-</section>
-<section id="basic-syntax-in-r-for-bioinformatics" class="level1">
-<h1>Basic Syntax in R for Bioinformatics</h1>
+<hr></section></section><section id="basic-syntax-in-r-for-bioinformatics" class="level1"><h1>Basic Syntax in R for Bioinformatics</h1>
 <p>R has a straightforward syntax that is easy to learn. Here are some basic concepts and syntax rules to keep in mind:</p>
 <ul>
-<li><strong>Variables</strong>: You can assign values to variables using the &lt;- operator or =. For example:</li>
+<li>
+<strong>Variables</strong>: You can assign values to variables using the &lt;- operator or =. For example:</li>
 </ul>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>sequence <span class="ot">&lt;-</span> <span class="st">"ATCG"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sequence</span> <span class="op">&lt;-</span> <span class="st">"ATCG"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>In R, both the &lt;- operator and the = operator are used for assignment, but they have some differences in how they are typically used and their behavior in certain contexts:</p>
 <ul>
-<li><strong>Assignment Operator (&lt;-)</strong>:</li>
+<li>
+<strong>Assignment Operator (&lt;-)</strong>:</li>
 </ul>
 <p>The &lt;- operator is the more commonly used assignment operator in R. It is considered good practice to use &lt;- for variable assignment. It is less likely to be confused with other operators and is preferred for clarity in code.</p>
 <p>Example:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Assigns the value 10 to the variable x</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Assigns the value 10 to the variable x</span></span>
+<span></span>
+<span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <ul>
-<li><strong>Equals Operator (=)</strong>:</li>
+<li>
+<strong>Equals Operator (=)</strong>:</li>
 </ul>
 <p>The = operator is also used for assignment in R but is often used in function arguments or data frame definitions. It is commonly used in function calls to specify named arguments, making code more readable.</p>
 <p>Example:</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Passing the value 10 to the function foo with the argument named x</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">foo</span>(<span class="at">x =</span> <span class="dv">10</span>)  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Passing the value 10 to the function foo with the argument named x</span></span>
+<span></span>
+<span><span class="fu">foo</span><span class="op">(</span>x <span class="op">=</span> <span class="fl">10</span><span class="op">)</span>  </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>It is also used when defining data frames to assign column names.</p>
 <p>Example:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(<span class="at">Name =</span> <span class="fu">c</span>(<span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span>),</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">Age =</span> <span class="fu">c</span>(<span class="dv">25</span>, <span class="dv">30</span>, <span class="dv">22</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Name <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Alice"</span>, <span class="st">"Bob"</span>, <span class="st">"Charlie"</span><span class="op">)</span>,</span>
+<span>             Age <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">25</span>, <span class="fl">30</span>, <span class="fl">22</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Both &lt;- and = operators can be used for assignment in R, but &lt;- is more commonly used for variable assignment, while = is often used for specifying named arguments in function calls and assigning column names in data frames. However, it’s essential to be aware of the context in which you are using these operators to ensure code clarity and readability.</p>
 <ul>
 <li><p><strong>Data Structures</strong>: R supports various data structures such as vectors, matrices, and data frames. These are crucial for handling biological data.</p></li>
 <li><p><strong>Functions</strong>: R has a vast library of functions that you can use to perform various operations. For example, to calculate the mean of a vector x, you can use mean(x).</p></li>
 <li><p><strong>Control Structures</strong>: R supports control structures like if-else statements and loops (e.g., for and while) for more complex operations.</p></li>
 </ul>
-<hr>
-</section>
-<section id="examples-in-bioinformatics" class="level1">
-<h1>Examples in Bioinformatics</h1>
+<hr></section><section id="examples-in-bioinformatics" class="level1"><h1>Examples in Bioinformatics</h1>
 <p>Let’s explore some practical examples of bioinformatics tasks in R:</p>
 <p>Example 1: DNA Sequence Analysis</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a DNA sequence</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>sequence <span class="ot">&lt;-</span> <span class="st">"ATCGATCGTAGC"</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the length of the sequence</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>seq_length <span class="ot">&lt;-</span> <span class="fu">nchar</span>(sequence)</span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Sequence Length:"</span>, seq_length))</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of adenines (A)</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>a_count <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">str_count</span>(sequence, <span class="st">"A"</span>))</span>
-<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Number of Adenines (A):"</span>, a_count))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Define a DNA sequence</span></span>
+<span><span class="va">sequence</span> <span class="op">&lt;-</span> <span class="st">"ATCGATCGTAGC"</span></span>
+<span></span>
+<span><span class="co"># Calculate the length of the sequence</span></span>
+<span><span class="va">seq_length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="va">sequence</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Sequence Length:"</span>, <span class="va">seq_length</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Sequence Length: 12"</code></pre>
+</div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Count the number of adenines (A)</span></span>
+<span><span class="va">a_count</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://stringr.tidyverse.org/reference/str_count.html">str_count</a></span><span class="op">(</span><span class="va">sequence</span>, <span class="st">"A"</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Number of Adenines (A):"</span>, <span class="va">a_count</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Number of Adenines (A): 3"</code></pre>
+</div>
+</div>
 <p>Example 2: Reading and Manipulating Data</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Read a FASTA file containing DNA sequences</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(seqinr)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>sequences <span class="ot">&lt;-</span> <span class="fu">read.fasta</span>(<span class="st">"sequences.fasta"</span>)</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract the first sequence</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>first_sequence <span class="ot">&lt;-</span> sequences[[<span class="dv">1</span>]]</span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate its length</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>first_seq_length <span class="ot">&lt;-</span> <span class="fu">nchar</span>(<span class="fu">as.character</span>(first_sequence))</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"Length of the First Sequence:"</span>, first_seq_length))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Read a FASTA file containing DNA sequences</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://seqinr.r-forge.r-project.org/">seqinr</a></span><span class="op">)</span></span>
+<span><span class="va">sequences</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/seqinr/man/read.fasta.html">read.fasta</a></span><span class="op">(</span><span class="st">"sequences.fasta"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extract the first sequence</span></span>
+<span><span class="va">first_sequence</span> <span class="op">&lt;-</span> <span class="va">sequences</span><span class="op">[[</span><span class="fl">1</span><span class="op">]</span><span class="op">]</span></span>
+<span></span>
+<span><span class="co"># Calculate its length</span></span>
+<span><span class="va">first_seq_length</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">first_sequence</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Length of the First Sequence:"</span>, <span class="va">first_seq_length</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <p>Example 3: Visualization</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize sequence lengths using a histogram</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>seq_lengths <span class="ot">&lt;-</span></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sapply</span>(sequences, <span class="cf">function</span>(seq)</span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">nchar</span>(<span class="fu">as.character</span>(seq)))</span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">Length =</span> seq_lengths), <span class="fu">aes</span>(<span class="at">x =</span> Length)) <span class="sc">+</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">10</span>,</span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>                 <span class="at">fill =</span> <span class="st">"blue"</span>,</span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>                 <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of Sequence Lengths"</span>, <span class="at">x =</span> <span class="st">"Length"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<hr>
-</section>
-<section id="conclusion" class="level1">
-<h1>Conclusion</h1>
+<div class="cell">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Visualize sequence lengths using a histogram</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">seq_lengths</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/lapply.html">sapply</a></span><span class="op">(</span><span class="va">sequences</span>, <span class="kw">function</span><span class="op">(</span><span class="va">seq</span><span class="op">)</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/nchar.html">nchar</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/character.html">as.character</a></span><span class="op">(</span><span class="va">seq</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>Length <span class="op">=</span> <span class="va">seq_lengths</span><span class="op">)</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">Length</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span>,</span>
+<span>                 fill <span class="op">=</span> <span class="st">"blue"</span>,</span>
+<span>                 color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribution of Sequence Lengths"</span>, x <span class="op">=</span> <span class="st">"Length"</span>, y <span class="op">=</span> <span class="st">"Frequency"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<hr></section><section id="conclusion" class="level1"><h1>Conclusion</h1>
 <p>R is a powerful tool for bioinformatics, providing a wide range of packages and functions to analyze and visualize biological data. In this blog post, we covered the basics of setting up your environment, understanding basic syntax, and provided practical examples to get you started. With these fundamentals in hand, you can delve deeper into the world of bioinformatics and tackle more complex biological data analysis tasks.</p>
+<hr>
+<p>visit the post <a href="../../posts/ConditionalStatements_R/conditionalstatements.html">Conditional Statements</a></p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -744,18 +772,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
@@ -783,13 +809,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
-    </div>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 </body></html>

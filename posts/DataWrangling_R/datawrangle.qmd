@@ -1,15 +1,41 @@
 ---
-title: "Best Practices for Data Wrangling in R - Part 1"
+title: "Data Wrangling Best Practices in R"
+subtitle: "Efficient File Reading, Cleaning & Transformation Workflows"
 author: "Bilal Mustafa"
 date: "2023-09-19"
-categories: [R, Data wrangling, File Reading]
+slug: "data-wrangling-best-practices-part-1"
+description: >
+  Part 1 of a series on data wrangling in R: learn efficient file reading,
+  data cleaning, and initial transformation techniques using readr, dplyr, and
+  tidyr—complete with reproducible code examples.
+categories: [R, Data Wrangling]
+tags: [file reading, data cleaning, data transformation, dplyr, tidyr, tidyverse, R programming]
 image: "image.jpg"
+image-alt: "R console showing a data wrangling pipeline with dplyr"
+twitter-card:
+  title: "Data Wrangling Best Practices in R"
+  description: >
+    Discover best practices for file import, cleaning, and transformation
+    in R with readr and dplyr—reproducible code included.
+  image: "image.jpg"
+  image-alt: "Twitter preview for data wrangling tutorial"
+
+open-graph:
+  title: "Data Wrangling Best Practices in R | Bioinfo Guide Book"
+  description: >
+    Master data import and cleaning workflows in R with this first installment
+    of our data wrangling series—practical code and techniques included.
+  image: "image.jpg"
+  image-alt: "Open Graph image for R data wrangling guide"
 format:
   html:
     code-link: true
     df-print: paged
     code-copy: true
 ---
+
+
+
 
 # Introduction:
 
@@ -32,7 +58,7 @@ When using these routines, be sure to supply the correct file location and forma
 
 Let's look at an example:
 
-``` r
+```{r, eval=FALSE}
 
 # Reading data from a CSV file
 data <- read.csv("your_data.csv")
@@ -52,7 +78,7 @@ The `sum()` method can be used to count them, and the `is.na()` function can be 
 
 Let's see an example:
 
-``` r
+```{r, eval=FALSE}
 
 # Check for missing values in the entire dataset
 sum(is.na(data))
@@ -68,7 +94,7 @@ To change a column's data type, use a function like `as.numeric()`, `as.integer(
 
 Here's an example:
 
-``` r
+```{r, eval=FALSE}
 
 # Convert a column to numeric
 data$numeric_column <- as.numeric(data$numeric_column)
@@ -92,7 +118,7 @@ This will make your results consistent across runs.z
 
 Here's an example:
 
-``` r
+```{r, eval=FALSE}
 
 # Set a random seed for reproducibility
 set.seed(123)
@@ -104,7 +130,7 @@ set.seed(123)
 
 Let's create a simple simulated dataset with two variables, `x` and `y`, following a normal distribution.
 
-``` r
+```{r, eval=FALSE}
 
 # Create simulated data
 n <- 100  # Number of data points
@@ -123,3 +149,7 @@ Data wrangling is a crucial step in the data analysis process, and following bes
 In this blog post, we covered the initial steps of reading data from a file and simulating data for testing purposes.
 Stay tuned for our next installment, where we will delve deeper into advanced data wrangling techniques in R.
 Until then, happy data wrangling!
+
+------------------------------------------------------------------------
+
+visit the post [Data Wrangling Part 2](../../posts/DataWrangling2_R/datawrangle2.html)

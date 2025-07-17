@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-10">
-
-<title>Bioinfo Guide Book - Understanding Centrality: Key Measures in Descriptive Statistics Using R</title>
+<meta name="description" content="A hands-on tutorial on computing and interpreting central tendency measures in R. Learn how to calculate the arithmetic mean, median, mode, geometric mean, and harmonic mean—and decide which measure best summarizes your data.">
+<title>Bioinfo Guide Book - Centrality Measures in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,25 +92,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><!-- Responsive & author info --><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page --><link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script><!-- Google site verification --><meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script><!-- Google tag (gtag.js) --><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-
-<meta name="twitter:title" content="Bioinfo Guide Book - Understanding Centrality: Key Measures in Descriptive Statistics Using R">
-<meta name="twitter:description" content="">
+  gtag('config', 'G-WVW2JZXF40');
+</script>
+<meta property="og:title" content="Understanding Centrality: Key Measures in Descriptive Statistics Using R">
+<meta property="og:description" content="Explore how to calculate and interpret various central tendency statistics in R, complete with code snippets and real-world examples.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/centrality_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Illustration of central tendency measures in R">
+<meta name="twitter:title" content="Centrality Measures in R: Mean, Median, Mode &amp; More">
+<meta name="twitter:description" content="Step through examples of computing mean, median, mode, geometric mean, and harmonic mean in R—and discover which measure is right for your data.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/centrality_R/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="Illustration of central tendency measures in R">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
@@ -125,17 +146,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
@@ -158,35 +179,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Understanding Centrality: Key Measures in Descriptive Statistics Using R</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Centrality Measures in R</h1>
+            <p class="subtitle lead">Calculating and Comparing Mean, Median, Mode, and Advanced Averages</p>
+                  <div>
+        <div class="description">
+          <p>A hands-on tutorial on computing and interpreting central tendency measures in R. Learn how to calculate the arithmetic mean, median, mode, geometric mean, and harmonic mean—and decide which measure best summarizes your data.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">Statistics</div>
-                <div class="quarto-category">R Programming</div>
-                <div class="quarto-category">Data Analysis</div>
                 <div class="quarto-category">Descriptive Statistics</div>
-                <div class="quarto-category">Central Tendency</div>
-                <div class="quarto-category">Mean</div>
-                <div class="quarto-category">Median</div>
-                <div class="quarto-category">Mode</div>
-                <div class="quarto-category">Geometric Mean</div>
-                <div class="quarto-category">Harmonic Mean</div>
-                <div class="quarto-category">Statistical Measures</div>
               </div>
                   </div>
   </div>
@@ -216,106 +226,81 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
   <ul class="collapse">
-  <li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a></li>
+<li><a href="#mean" id="toc-mean" class="nav-link" data-scroll-target="#mean">Mean</a></li>
   <li><a href="#median" id="toc-median" class="nav-link" data-scroll-target="#median">Median</a></li>
   <li><a href="#mode" id="toc-mode" class="nav-link" data-scroll-target="#mode">Mode</a></li>
   <li><a href="#geometric-mean" id="toc-geometric-mean" class="nav-link" data-scroll-target="#geometric-mean">Geometric mean</a></li>
   <li><a href="#harmonic-mean" id="toc-harmonic-mean" class="nav-link" data-scroll-target="#harmonic-mean">Harmonic mean</a></li>
-  </ul></li>
-  <li><a href="#notes-on-measures-of-centrality" id="toc-notes-on-measures-of-centrality" class="nav-link" data-scroll-target="#notes-on-measures-of-centrality">Notes on Measures of Centrality</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#notes-on-measures-of-centrality" id="toc-notes-on-measures-of-centrality" class="nav-link" data-scroll-target="#notes-on-measures-of-centrality">Notes on Measures of Centrality</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<section id="introduction" class="level1">
-<h1>Introduction:</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
 <p>Descriptive statistics are an essential element of data analysis, offering concise descriptions of the sample and measures. These summaries serve as the foundation for further investigating allowing researchers and analysts to better comprehend the data’s distribution, central tendency, and variability. In bioinformatics, where data sets can be large and complicated, descriptive statistics aid in simplifying and making sense of the underlying patterns. In this post, we’ll look at the key measures of centrality—mean, median, mode, geometric mean, and harmonic mean—and discuss their significance and how to calculate them with R.</p>
 <p>Measures of centrality characterize a data set’s central point, providing information about where the majority of data points congregate. Let’s look at each of these measures.</p>
 <hr>
-<section id="mean" class="level2">
-<h2 class="anchored" data-anchor-id="mean">Mean</h2>
+<section id="mean" class="level2"><h2 class="anchored" data-anchor-id="mean">Mean</h2>
 <p>The mean, or average, is the most widely used metric of centrality. It is calculated by adding all of the data entries and dividing by the number of entries. The mean is extremely sensitive to outliers, making it unreliable for skewed distributions. In R, you may calculate the mean using the mean() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">200</span>, <span class="dv">5</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>mean_value <span class="ot">&lt;-</span> <span class="fu">mean</span>(data)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>mean_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">200</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">mean_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="va">mean_value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 105</code></pre>
 </div>
 </div>
-<hr>
-</section>
-<section id="median" class="level2">
-<h2 class="anchored" data-anchor-id="median">Median</h2>
+<hr></section><section id="median" class="level2"><h2 class="anchored" data-anchor-id="median">Median</h2>
 <p>The median is the middle value of the collected data, whether presented in ascending or descending order. It is especially effective with skewed distributions because it is unaffected by outliers. If the number of observations is odd, the median is simply the middle value. If the number of observations is even, the median is calculated as the average of the two middle numbers. In R, the median is calculated using the median() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>median_value <span class="ot">&lt;-</span> <span class="fu">median</span>(data)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>median_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">median_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="va">median_value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 105</code></pre>
 </div>
 </div>
 <p>For example, if your data set has an odd number of entries, such as {3, 5, 7}, the median is 5. If it has an even number of entries, such as {3, 5, 7, 9}, the median would be the average of 5 and 7, which is 6.</p>
-<hr>
-</section>
-<section id="mode" class="level2">
-<h2 class="anchored" data-anchor-id="mode">Mode</h2>
+<hr></section><section id="mode" class="level2"><h2 class="anchored" data-anchor-id="mode">Mode</h2>
 <p>The mode is the value that occurs the most frequently in a data set. It is the only measure of centrality that is applicable to nominal data (data that can be classified but not sorted). Unlike mean and median, a data set may have multiple modes, or none if all values are unique. In R, the mode is not computed directly by a single function, however it may be found using the following code:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>mode_value <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">names</span>(<span class="fu">sort</span>(<span class="fu">table</span>(data), <span class="at">decreasing =</span> <span class="cn">TRUE</span>)[<span class="dv">1</span>]))</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>mode_value</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mode_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">mode_value</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
-<hr>
-</section>
-<section id="geometric-mean" class="level2">
-<h2 class="anchored" data-anchor-id="geometric-mean">Geometric mean</h2>
+<hr></section><section id="geometric-mean" class="level2"><h2 class="anchored" data-anchor-id="geometric-mean">Geometric mean</h2>
 <p>The geometric mean is used to deal with data that has been multiplied or divided, such as growth rates. It is calculated by multiplying all of the numbers together and then getting the nth root (n being the total number of values). This measure is less impacted by large outliers than the mean. In R, the geometric mean can be calculated by combining the exp() and mean() functions:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>geometric_mean <span class="ot">&lt;-</span> <span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(data)))</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>geometric_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">geometric_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">geometric_mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 84.62014</code></pre>
 </div>
 </div>
-<hr>
-</section>
-<section id="harmonic-mean" class="level2">
-<h2 class="anchored" data-anchor-id="harmonic-mean">Harmonic mean</h2>
+<hr></section><section id="harmonic-mean" class="level2"><h2 class="anchored" data-anchor-id="harmonic-mean">Harmonic mean</h2>
 <p>The harmonic mean is very useful in circumstances requiring average rates, such as average speeds or ratios. It is calculated by taking the reciprocal of the arithmetic mean of the data points’ reciprocals. The harmonic mean is always the lowest of the three means (arithmetic, geometric, and harmonic), and it is highly influenced by small values. In R, it may be calculated like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>harmonic_mean <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">/</span> <span class="fu">mean</span>(<span class="dv">1</span> <span class="sc">/</span> data)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>harmonic_mean</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">harmonic_mean</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="va">data</span><span class="op">)</span></span>
+<span><span class="va">harmonic_mean</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 59.47764</code></pre>
 </div>
 </div>
-<hr>
-</section>
-</section>
-<section id="notes-on-measures-of-centrality" class="level1">
-<h1>Notes on Measures of Centrality</h1>
+<hr></section></section><section id="notes-on-measures-of-centrality" class="level1"><h1>Notes on Measures of Centrality</h1>
 <p>Choosing the appropriate measure of centrality depends on the nature of your data and the specific questions you’re addressing. The mean provides a simple average but is sensitive to outliers. The median is more robust in the presence of skewed data, while the mode is best for categorical data. The geometric mean is ideal for multiplicative processes, and the harmonic mean is crucial when averaging rates. Understanding these measures and how to compute them in R will enhance your ability to summarize and interpret data effectively.</p>
 <hr>
+<p>visit the post <a href="../../posts/variability_r/variabilityr.html">Descriptive Statistics - Variability</a></p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -662,18 +647,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
@@ -701,13 +684,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
-    </div>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 </body></html>

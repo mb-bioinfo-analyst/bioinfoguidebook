@@ -1,9 +1,41 @@
 ---
 title: "Introduction to ANOVA and Linear Models"
+subtitle: "A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R"
 author: "Bilal Mustafa"
 date: "2024-08-15"
-categories: [Statistics, Data Analysis, R Programming, Statistical Methods, ANOVA, Linear Regression, Machine Learning, Data Science, Quantitative Analysis, Statistical Modeling]
+slug: "intro-to-anova-linear-models"
+description: >
+  Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. 
+  This tutorial covers hypothesis testing, model diagnostics, and interpretation—
+  complete with working code examples and visualizations.
+
+# Categories are higher-level; tags allow for more detailed filtering/search
+categories: [Statistics, Data Analysis]
+
+tags: [ANOVA, Linear Models, R Programming, Hypothesis Testing, Statistical Modeling, Data Science] 
+
+# Featured image for the post (used in listings)
 image: "image.jpg"
+image-alt: "Diagram of ANOVA and linear regression in R"
+
+# Enable per-page social cards
+#twitter-card: true
+twitter-card:
+  title: "Intro to ANOVA & Linear Models in R"
+  description: >
+    A step-by-step guide to ANOVA and linear regression analysis in R,
+    with code you can copy & run yourself.
+  image: "image.jpg"
+  image-alt: "Twitter card thumbnail for ANOVA tutorial"
+
+open-graph:
+  title: "Introduction to ANOVA & Linear Models | Bioinfo Guide Book"
+  description: >
+    In-depth tutorial on performing ANOVA and fitting linear regression models in R—
+    complete with diagnostics and interpretation.
+  image: "image.jpg"
+  image-alt: "Open Graph image for ANOVA & Linear Models guide"
+
 ---
 
 # Introduction:
@@ -116,7 +148,7 @@ Sorting the data by treatment group helps us see how it is spread out across the
 
 #### Visualization
 
-```{r}
+```{r, fig.alt="Boxplot of plant weight by group"}
 # Boxplot of plant weight by group
 PlantGrowth %>%
   ggplot(aes(x = group, y = weight, fill = group)) +
@@ -185,7 +217,7 @@ tukey_result
 
 #### Visualization
 
-```{r}
+```{r, fig.alt="Visualize Tukey's HSD results"}
 # Visualize Tukey's HSD results
 plot(tukey_result)
 ```
@@ -210,7 +242,7 @@ The plot shows these similarities graphically by showing which pairs of groups a
 ### Side-by-Side Comparison
 
 | Aspect        | ANOVA                                  | Linear Modeling                                  |
-|---------------|----------------------------------------|--------------------------------------------------|
+|----------------|-------------------------|-------------------------------|
 | **Question**  | Are the group means different?         | How does the outcome change with each predictor? |
 | **Variables** | Categorical independent variables only | Both categorical and continuous predictors       |
 | **Output**    | F-statistic, p-value                   | Coefficients, p-values, R²                       |
@@ -229,7 +261,7 @@ The linear model gives you factors that show how each treatment group changed th
 
 ### Diagnostic Plots
 
-```{r}
+```{r, fig.alt="Diagnostic plots for the linear model"}
 # Diagnostic plots for the linear model
 par(mfrow = c(2, 2))  # Arrange plots in a 2x2 grid
 plot(lm_result)
@@ -261,3 +293,5 @@ Leave a comment below or reach out to us on social media.
 We're here to help you on your data analysis journey!
 
 ------------------------------------------------------------------------
+
+visit the post [Significance Value - p-Values](../../posts/significancevalue/significancevalue.html)

@@ -1,0 +1,340 @@
+---
+title: "Understanding Set Operations"
+subtitle: "Conceptual Overview of Set Operations"
+author: "Bilal Mustafa"
+date: "2025-07-18"
+slug: "intro-to-set-operations"
+description: >
+  A conceptual overview of set operations. Learn the definitions, properties,
+  and relationships of union, intersection, difference, and symmetric difference
+  using illustrative examples and Venn diagrams.
+# Categories are higher-level; tags allow for more detailed filtering/search
+categories: [Statistics, Data Analysis]
+tags: [Set Theory, union, intersect, setdiff, symmetric difference, Venn Diagram, R Programming, Vector Operations]
+# Featured image for the post (used in listings)
+image: "setoperations.png"
+image-alt: "Diagram of set operations."
+# Enable per-page social cards
+#twitter-card: true
+twitter-card:
+  title: "Learn set operations in R"
+  description: >
+    Conceptual Overview of Set Operations.
+  image: "setoperations.png"
+  image-alt: "Twitter card thumbnail for set operations tutorial"
+open-graph:
+  title: "Introduction to set operations. | Bioinfo Guide Book"
+  description: >
+    Conceptual Overview of Set Operations.
+  image: "setoperations.png"
+  image-alt: "Open Graph image for set operations guide"
+---
+
+# Introduction:
+
+Set theory serves as a foundation for many fields of mathematics and data analysis.
+Understanding sets and their operations is critical for a wide range of scientific and computational applications.
+In this post, we will define the essential set operations in abstract terms: union, intersection, difference, symmetric difference, subset, and complement.
+We'll describe each operation using standard notation and basic examples (mathematical notation for precision).
+Venn diagrams are a valuable visual tool throughout, demonstrating how various operations combine or relate sets.
+By the end, you should have a good idea of what each operation represents.
+(In Part II, we will look at how these abstract procedures may be applied to real biological data; a hint is provided at the conclusion!)
+
+------------------------------------------------------------------------
+
+# Union
+
+![Figure: Venn diagram illustrating the union of two sets A and B. The shaded region represents A∪B, which includes any element that lies in either set (or both sets).](unions.png){fig-alt="Figure of unions representation"}
+
+The union of two sets $A$ and $B$ (denoted $A \cup B$) is the set containing all elements that are in either $A$ or $B$ (or both).
+In set‐builder notation:
+
+$$
+A \cup B = \{\,x \mid x \in A \text{ or } x \in B\}.
+$$
+
+In this case, the term "or" is inclusive, which means that $x$ can belong to either $A$ or $B$, or both.
+For example, if
+
+$$
+A = \{1,2,3\}
+\quad\text{and}\quad
+B = \{3,4\},
+$$
+
+then
+
+$$
+A \cup B = \{1,2,3,4\},
+$$
+
+(the number $3$ exists in both, but in the union it is listed once as every distinct element is included).
+The union operation is analogous to logical OR in that an element is in $A \cup B$ if it is in at least one of the sets.
+Union is also commutative and associative, thus
+
+$$
+A \cup B = B \cup A,
+$$
+
+and
+
+$$
+A \cup (B \cup C) = (A \cup B) \cup C.
+$$
+
+In practice, the union joins two sets into a single larger set that has all of their unique components.
+
+------------------------------------------------------------------------
+
+# Intersection
+
+![Figure: Venn diagram for the intersection of A and B. The shaded region (where the circles overlap) represents A∩B, containing elements that both sets have in common.](Intersections.png){fig-alt="Figure of intersections representation"}
+
+The intersection of sets $A$ and $B$ (denoted $A \cap B$) is the set of all elements that belong to both $A$ and $B$.
+Using set‐builder notation:
+
+$$
+A \cap B = \{\,x \mid x \in A \text{ and } x \in B\}.
+$$
+
+Only elements from both sets appear in the intersection.
+For example, if
+
+$$
+A = \{1,2,3\}
+\quad\text{and}\quad
+B = \{3,4,5\},
+$$
+
+then
+
+$$
+A \cap B = \{3\},
+$$
+
+since $3$ is the single element contained in both sets.
+If the two sets have no elements in common, the intersection is the empty set, $\varnothing$.
+(We then term the sets *disjoint*.) Intersection, like union, is commutative and associative.
+For example,
+
+$$
+A \cap B = B \cap A.
+$$
+
+Importantly, any intersection $A \cap B$ will always be a subset of each set $A$ and $B$, capturing exactly what the two sets share.
+
+------------------------------------------------------------------------
+
+# Difference (Relative Complement)
+
+![Figure: Venn diagram for the difference A−B (also denoted A∖B). The shaded area is the part of set A that lies outside set B, representing elements in A that are not in B](Difference.png){fig-alt="Figure of Differences representation"}
+
+The difference between two sets $A$ and $B$, denoted as $A - B$ (or $A \setminus B$), consists of all elements in $A$ but not in $B$.
+Formally:
+
+$$
+A - B = \{\,x \mid x \in A \text{ and } x \notin B\}.
+$$
+
+In other words, we "subtract" set $B$ from $A$, removing all elements that $A$ and $B$ share.
+For example, if
+
+$$
+A = \{a,b,c,d\}
+\quad\text{and}\quad
+B = \{b,d,f\},
+$$
+
+then
+
+$$
+A - B = \{a,c\},
+$$
+
+since we eliminate $b$ and $d$ because they also belong to $B$.
+
+It is important to note that set difference is not commutative.
+That is, $A - B$ does not generally equal $B - A$.
+In our example,
+
+$$
+B - A = \{f\},
+$$
+
+which is not the same as $A - B$.
+The difference operation is also known as the *relative complement* of $B$ in $A$, since it yields all elements of $A$ that are not in $B$.
+
+-   If $B$ and $A$ have no overlap, then $A - B = A$ (nothing is removed).\
+-   If $B$ contains all elements of $A$, then $A - B = \varnothing$.
+
+------------------------------------------------------------------------
+
+# Symmetric Difference
+
+![Figure: Venn diagram for the symmetric difference of A and B. The shaded regions represent A△B, which includes elements in either set but not in the overlap. Equivalently, it is everything in A or B except the intersection.](symmetericDifference.png){fig-alt="Figure of Differences representation"}
+
+The symmetric difference between sets $A$ and $B$ (denoted $A\triangle B$, or occasionally $A\oplus B$) is the set of elements that are in exactly one of the two sets, but not in both.
+You can characterize it in two equivalent ways:
+
+-   **Using difference**:\
+    $$
+    A\triangle B = (A \setminus B)\,\cup\,(B \setminus A).
+    $$
+
+-   **Using union and intersection**:\
+    $$
+    A\triangle B = (A \cup B)\,\setminus\,(A \cap B).
+    $$
+
+For example, if\
+$$
+A = \{1,2,3,4\}
+\quad\text{and}\quad
+B = \{3,4,5\},
+$$\
+then\
+- $A \setminus B = \{1,2\}$,\
+- $B \setminus A = \{5\}$,
+
+so\
+$$
+A\triangle B = \{1,2,5\}.
+$$
+
+Symmetric difference corresponds to the logical "exclusive or" (XOR):\
+$$
+x \in A\triangle B \quad\iff\quad (x\in A)\oplus(x\in B).
+$$\
+It is **commutative** and **associative**, for instance
+
+$$
+A\triangle B = B\triangle A,
+\qquad
+A\triangle (B\triangle C) = (A\triangle B)\triangle C.
+$$
+
+In summary, $A\triangle B$ yields precisely those elements that belong to one set or the other, but not to their intersection.
+
+------------------------------------------------------------------------
+
+# Subset and Superset
+
+A **subset** describes the relationship between two sets rather than creating a new one.
+Set $A$ is a subset of set $B$ (written $A \subseteq B$) if **every** element of $A$ is also in $B$.
+In logical form:
+
+$$ 
+A \subseteq B \quad\Longleftrightarrow\quad \forall x,\; (x \in A \implies x \in B).
+$$
+
+For example, if
+
+$$ 
+A = \{\mathtt{dog},\;\mathtt{cat}\}
+\quad\text{and}\quad
+B = \{\mathtt{dog},\;\mathtt{cat},\;\mathtt{elephant}\},
+$$
+
+then $A \subseteq B$ because all members of $A$ (dog and cat) are contained in $B$.
+A Venn diagram typically shows this by drawing the circle for $A$ entirely inside the circle for $B$.
+Every set is a subset of itself, so $A \subseteq A$ always holds.
+If $A \subseteq B$ but $A \neq B$, we call $A$ a **proper subset** of $B$, written $A \subset B$, indicating that $B$ has at least one element not in $A$.
+Dually, $B$ is a **superset** of $A$ (written $B \supseteq A$) whenever $A \subseteq B$.
+
+It's worth noting how subset relations affect union and intersection.
+If $A \subseteq B$, then
+
+$$ 
+A \cup B = B,
+\qquad
+A \cap B = A,
+$$
+
+since adding a smaller set to a larger one brings nothing new, and their overlap is exactly the smaller set.
+These identities follow directly from the definitions of union and intersection.
+
+------------------------------------------------------------------------
+
+# Complement
+
+In set theory, a **complement** is defined as all elements that are not part of a set, relative to a **universal set** $U$, which represents the complete collection under consideration.
+The complement of $A$ (denoted $A^c$, also written $A'$ or $\overline{A}$) is the set of all elements in $U$ that are not in $A$.
+In formula terms:
+
+$$
+A^c = U - A \;=\; \{\,x \mid x \in U \text{ and } x \notin A\}.
+$$
+
+Simply put, $A^c$ is the "opposite" of $A$ within the universe $U$, containing everything $A$ does not.
+For example, if
+
+$$
+U = \{1,2,3,4,5,6,7\}
+\quad\text{and}\quad
+A = \{3,4,5\},
+$$
+
+then
+
+$$
+A^c = \{1,2,6,7\},
+$$
+
+which are exactly the elements of $U$ not in $A$.
+
+Complements share several fundamental properties:
+
+-   **Partition of the universe**:\
+    $$
+    A \cup A^c = U,
+    \qquad
+    A \cap A^c = \varnothing.
+    $$
+
+-   **Double complement**:\
+    $$
+    (A^c)^c = A.
+    $$
+
+-   **De Morgan's laws**:\
+    $$
+    (A \cup B)^c = A^c \cap B^c,
+    \qquad
+    (A \cap B)^c = A^c \cup B^c.
+    $$
+
+These identities follow directly from the logic of "not (A or B)" versus "not A and not B," and vice versa.
+Complements thus invert membership and, combined with union and intersection, complete the basic algebra of sets.
+
+------------------------------------------------------------------------
+
+# Closing teaser
+
+While we have explored these set operations in abstract mathematical terms, they are far from being purely theoretical.
+When combined with real-world data, they become extremely effective tools.
+In biology, for example, set operations may be used to compare groups of genes or proteins: the intersection of two gene lists may reveal common genes associated with two conditions, a difference may isolate unique genes expressed only in one experiment, and a union may combine all genes discovered in multiple studies.
+Subsets can form hierarchies such as species within a genus, whereas complements can represent "everything not in a given list" (for example, all genes except those in a specific pathway).
+These biological applications (and others) will be discussed in Part II, where we will see set operations used to make sense of complex biological data.
+Stay tuned!
+
+------------------------------------------------------------------------
+
+# References
+
+Number Analytics.
+Set theory definitions and properties.
+Retrieved July 16, 2025, from https://numberanalytics.com
+
+MathMonks.
+Comprehensive guide to set operations.
+Retrieved July 16, 2025, from https://mathmonks.com
+
+------------------------------------------------------------------------
+
+coming soon: Part II: Why set operations are crucial in biological data analysis
+
+```{r, results='hide', echo=FALSE, eval=FALSE}
+
+#visit the post [Set Operations](../../posts/set_operation/set_operation.html)
+
+```

@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-21">
-
-<title>Bioinfo Guide Book - Best Practices for Data Wrangling in R - Part 2</title>
+<meta name="description" content="Part 2 of our R data-wrangling series dives into advanced techniques: reshaping data with pivoting, joining tables, string manipulation, and functional programming with purrr—complete with reproducible code examples.">
+<title>Bioinfo Guide Book - Data Wrangling Best Practices in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,28 +92,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><!-- Responsive & author info --><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page --><link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script><!-- Google site verification --><meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script><!-- Google tag (gtag.js) --><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-<link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script>
-
-
-<meta name="twitter:title" content="Bioinfo Guide Book - Best Practices for Data Wrangling in R - Part 2">
-<meta name="twitter:description" content="">
+  gtag('config', 'G-WVW2JZXF40');
+</script>
+<meta property="og:title" content="Data Wrangling Best Practices in R | Part 2">
+<meta property="og:description" content="Learn advanced data-wrangling workflows in R—reshaping, merging, and string manipulation—through clear examples and best practices.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Advanced File Transformation &amp; Reshaping">
+<meta name="twitter:title" content="Data Wrangling Best Practices in R – Part 2">
+<meta name="twitter:description" content="Deepen your R data-wrangling skills with pivot, join, and string-processing workflows—practical code and tips included.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="Advanced File Transformation &amp; Reshaping">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
@@ -128,17 +146,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
@@ -161,27 +179,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Best Practices for Data Wrangling in R - Part 2</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Data Wrangling Best Practices in R</h1>
+            <p class="subtitle lead">Advanced File Transformation &amp; Reshaping – Part 2</p>
+                  <div>
+        <div class="description">
+          <p>Part 2 of our R data-wrangling series dives into advanced techniques: reshaping data with pivoting, joining tables, string manipulation, and functional programming with purrr—complete with reproducible code examples.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">R</div>
-                <div class="quarto-category">Data wrangling</div>
-                <div class="quarto-category">File Reading</div>
+                <div class="quarto-category">Data Wrangling</div>
               </div>
                   </div>
   </div>
@@ -211,53 +226,49 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
-  <li><a href="#reading-data" id="toc-reading-data" class="nav-link" data-scroll-target="#reading-data"><strong>Reading Data</strong></a>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li>
+<a href="#reading-data" id="toc-reading-data" class="nav-link" data-scroll-target="#reading-data"><strong>Reading Data</strong></a>
   <ul class="collapse">
-  <li><a href="#raw-input-data" id="toc-raw-input-data" class="nav-link" data-scroll-target="#raw-input-data">Raw Input Data</a></li>
-  </ul></li>
+<li><a href="#raw-input-data" id="toc-raw-input-data" class="nav-link" data-scroll-target="#raw-input-data">Raw Input Data</a></li>
+  </ul>
+</li>
   <li><a href="#understand-your-data" id="toc-understand-your-data" class="nav-link" data-scroll-target="#understand-your-data"><strong>Understand Your Data</strong></a></li>
-  <li><a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><strong>Data Cleaning</strong></a>
+  <li>
+<a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><strong>Data Cleaning</strong></a>
   <ul class="collapse">
-  <li><a href="#handle-missing-values" id="toc-handle-missing-values" class="nav-link" data-scroll-target="#handle-missing-values"><strong>Handle Missing Values:</strong></a></li>
+<li><a href="#handle-missing-values" id="toc-handle-missing-values" class="nav-link" data-scroll-target="#handle-missing-values"><strong>Handle Missing Values:</strong></a></li>
   <li><a href="#manage-outliers" id="toc-manage-outliers" class="nav-link" data-scroll-target="#manage-outliers"><strong>Manage Outliers</strong></a></li>
   <li><a href="#correct-errors" id="toc-correct-errors" class="nav-link" data-scroll-target="#correct-errors"><strong>Correct Errors</strong></a></li>
-  </ul></li>
-  <li><a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation"><strong>Data Transformation</strong></a>
+  </ul>
+</li>
+  <li>
+<a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation"><strong>Data Transformation</strong></a>
   <ul class="collapse">
-  <li><a href="#use-tidy-data-principles" id="toc-use-tidy-data-principles" class="nav-link" data-scroll-target="#use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></a></li>
+<li><a href="#use-tidy-data-principles" id="toc-use-tidy-data-principles" class="nav-link" data-scroll-target="#use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></a></li>
   <li><a href="#apply-data-type-conversions" id="toc-apply-data-type-conversions" class="nav-link" data-scroll-target="#apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></a></li>
-  </ul></li>
-  <li><a href="#data-validation" id="toc-data-validation" class="nav-link" data-scroll-target="#data-validation"><strong>Data Validation</strong></a>
+  </ul>
+</li>
+  <li>
+<a href="#data-validation" id="toc-data-validation" class="nav-link" data-scroll-target="#data-validation"><strong>Data Validation</strong></a>
   <ul class="collapse">
-  <li><a href="#perform-sanity-checks" id="toc-perform-sanity-checks" class="nav-link" data-scroll-target="#perform-sanity-checks"><strong>Perform Sanity Checks</strong></a></li>
+<li><a href="#perform-sanity-checks" id="toc-perform-sanity-checks" class="nav-link" data-scroll-target="#perform-sanity-checks"><strong>Perform Sanity Checks</strong></a></li>
   <li><a href="#validate-data-integrity" id="toc-validate-data-integrity" class="nav-link" data-scroll-target="#validate-data-integrity"><strong>Validate Data Integrity</strong></a></li>
   <li><a href="#document-your-steps" id="toc-document-your-steps" class="nav-link" data-scroll-target="#document-your-steps"><strong>Document Your Steps</strong></a></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>Conclusion</strong></a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>Conclusion</strong></a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>Data wrangling is a crucial step in the data analysis process, and R provides a powerful set of tools and packages to help you clean, transform, and prepare your data for analysis. In this blog post, we will explore some best practices for effective data wrangling in R. Whether you are a beginner or an experienced data analyst, these tips will help you streamline your data preparation workflow and ensure the reliability of your analysis.</p>
 <p>Now continuing from the previous post (Best Practices for Data Wrangling in R - Part 1), we will use the airquality data from datasets library to further understand how data wrangling helps us to get the deeper and significant insights of our data.</p>
-<hr>
-</section>
-<section id="reading-data" class="level2">
-<h2 class="anchored" data-anchor-id="reading-data"><strong>Reading Data</strong></h2>
-<section id="raw-input-data" class="level3">
-<h3 class="anchored" data-anchor-id="raw-input-data">Raw Input Data</h3>
+<hr></section><section id="reading-data" class="level2"><h2 class="anchored" data-anchor-id="reading-data"><strong>Reading Data</strong></h2>
+<section id="raw-input-data" class="level3"><h3 class="anchored" data-anchor-id="raw-input-data">Raw Input Data</h3>
 <p>Firstly read your data into R. For this exercise I will be using a simulated dataset.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -266,12 +277,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(airquality)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-</section>
-<section id="understand-your-data" class="level2">
-<h2 class="anchored" data-anchor-id="understand-your-data"><strong>Understand Your Data</strong></h2>
-<p>It’s imperative to have a thorough understanding of your dataset before getting started with data wrangling. Knowing your data’s structure, the significance of each variable, and any potential problems or abnormalities is part of this. To obtain an understanding of the data you’re working with, start by analyzing it using functions like <code>head()</code>, <code>summary()</code>, and <code>str()</code>.</p>
+<hr></section></section><section id="understand-your-data" class="level2"><h2 class="anchored" data-anchor-id="understand-your-data"><strong>Understand Your Data</strong></h2>
+<p>It’s imperative to have a thorough understanding of your dataset before getting started with data wrangling. Knowing your data’s structure, the significance of each variable, and any potential problems or abnormalities is part of this. To obtain an understanding of the data you’re working with, start by analyzing it using functions like <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>, and <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Inspect the first few rows of a dataset</span></span>
@@ -326,15 +333,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>This will help you make informed decisions during the wrangling process.</p>
-<hr>
-</section>
-<section id="data-cleaning" class="level2">
-<h2 class="anchored" data-anchor-id="data-cleaning"><strong>Data Cleaning</strong></h2>
+<hr></section><section id="data-cleaning" class="level2"><h2 class="anchored" data-anchor-id="data-cleaning"><strong>Data Cleaning</strong></h2>
 <p>Data cleaning involves checking the headers, handling missing values, outliers, and errors in your dataset. Here are some best practices for data cleaning in R:</p>
-<section id="handle-missing-values" class="level3">
-<h3 class="anchored" data-anchor-id="handle-missing-values"><strong>Handle Missing Values:</strong></h3>
+<section id="handle-missing-values" class="level3"><h3 class="anchored" data-anchor-id="handle-missing-values"><strong>Handle Missing Values:</strong></h3>
 <ul>
-<li><p>Identify missing values using functions like <code>is.na()</code> or <code>complete.cases()</code>.</p></li>
+<li><p>Identify missing values using functions like <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> or <code><a href="https://rdrr.io/r/stats/complete.cases.html">complete.cases()</a></code>.</p></li>
 <li><p>Decide whether to impute missing values, remove rows with missing data, or keep them, depending on the context.</p></li>
 <li><p>Use packages like <code>dplyr</code> or <code>tidyr</code> to perform missing data operations.</p></li>
 </ul>
@@ -357,7 +360,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<p>Other methods to remove NA’s include <code>na.omit()</code> , <code>complete.cases()</code>, <code>rowSums()</code>, <code>drop_na()</code>, and <code>filter()</code>.</p>
+<p>Other methods to remove NA’s include <code><a href="https://rdrr.io/r/stats/na.fail.html">na.omit()</a></code> , <code><a href="https://rdrr.io/r/stats/complete.cases.html">complete.cases()</a></code>, <code><a href="https://rdrr.io/r/base/colSums.html">rowSums()</a></code>, <code>drop_na()</code>, and <code><a href="https://rdrr.io/r/stats/filter.html">filter()</a></code>.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># #Remove rows with NA's using na.omit()</span></span>
@@ -389,43 +392,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality_clean &lt;- airquality %&gt;% filter(!is.na(Ozone))</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-<section id="manage-outliers" class="level3">
-<h3 class="anchored" data-anchor-id="manage-outliers"><strong>Manage Outliers</strong></h3>
+<hr></section><section id="manage-outliers" class="level3"><h3 class="anchored" data-anchor-id="manage-outliers"><strong>Manage Outliers</strong></h3>
 <ul>
 <li><p>Visualize data using boxplots, histograms, or scatter plots to detect outliers.</p></li>
 <li><p>Consider using statistical methods or domain knowledge to handle outliers, such as winsorization or transformation.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Visualize outliers using a boxplot</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(airquality_clean)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#| label: Boxplot of air wauality data set</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-alt: "Boxplot of air wauality data set"</span></span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># # Remove outliers from the 'income' variable</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality_clean &lt;- airquality_clean %&gt;%</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(Ozone &gt;= 0)</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Visualize outliers using a boxplot</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(airquality_clean)</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co"># # Remove outliers from the 'income' variable</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality_clean &lt;- airquality_clean %&gt;%</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#   filter(Ozone &gt;= 0)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="datawrangle2_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid" width="672"></p>
+<p><img src="datawrangle2_files/figure-html/Boxplot of air wauality data set-1.png" class="img-fluid" alt="Boxplot of air wauality data set" width="672"></p>
 </div>
 </div>
-</section>
-<section id="correct-errors" class="level3">
-<h3 class="anchored" data-anchor-id="correct-errors"><strong>Correct Errors</strong></h3>
+</section><section id="correct-errors" class="level3"><h3 class="anchored" data-anchor-id="correct-errors"><strong>Correct Errors</strong></h3>
 <ul>
 <li><p>Check for data entry errors and inconsistencies.</p></li>
 <li><p>Use data validation rules or regular expressions to identify and correct errors.</p></li>
 </ul>
-<hr>
-</section>
-</section>
-<section id="data-transformation" class="level2">
-<h2 class="anchored" data-anchor-id="data-transformation"><strong>Data Transformation</strong></h2>
+<hr></section></section><section id="data-transformation" class="level2"><h2 class="anchored" data-anchor-id="data-transformation"><strong>Data Transformation</strong></h2>
 <p>To make your data acceptable for analysis, you must shape and reformat it through data transformation. The following are a few excellent practices for R’s data transformation:</p>
-<section id="use-tidy-data-principles" class="level3">
-<h3 class="anchored" data-anchor-id="use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></h3>
+<section id="use-tidy-data-principles" class="level3"><h3 class="anchored" data-anchor-id="use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></h3>
 <ul>
 <li><p>Follow the principles of tidy data, where each variable is a column, each observation is a row, and each type of observational unit is a table.</p></li>
 <li><p>The <code>tidyr</code> package provides functions like <code>gather()</code> and <code>spread()</code> for reshaping data.</p></li>
@@ -447,12 +443,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-</section>
-<section id="apply-data-type-conversions" class="level3">
-<h3 class="anchored" data-anchor-id="apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></h3>
+</section><section id="apply-data-type-conversions" class="level3"><h3 class="anchored" data-anchor-id="apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></h3>
 <ul>
 <li><p>Ensure that variables have the correct data types (e.g., numeric, character, factor) for analysis.</p></li>
-<li><p>Use functions like <strong><code>as.numeric()</code></strong>, <strong><code>as.character()</code></strong>, or <strong><code>as.factor()</code></strong> to convert data types.</p></li>
+<li><p>Use functions like <strong><code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code></strong>, <strong><code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code></strong>, or <strong><code><a href="https://rdrr.io/r/base/factor.html">as.factor()</a></code></strong> to convert data types.</p></li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
@@ -470,14 +464,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<hr>
-</section>
-</section>
-<section id="data-validation" class="level2">
-<h2 class="anchored" data-anchor-id="data-validation"><strong>Data Validation</strong></h2>
+<hr></section></section><section id="data-validation" class="level2"><h2 class="anchored" data-anchor-id="data-validation"><strong>Data Validation</strong></h2>
 <p>To ensure that your processed data satisfies the criteria of your study, validation is a crucial stage in the data wrangling process. Here are a few guidelines for using R’s data validation features.</p>
-<section id="perform-sanity-checks" class="level3">
-<h3 class="anchored" data-anchor-id="perform-sanity-checks"><strong>Perform Sanity Checks</strong></h3>
+<section id="perform-sanity-checks" class="level3"><h3 class="anchored" data-anchor-id="perform-sanity-checks"><strong>Perform Sanity Checks</strong></h3>
 <ul>
 <li>Check summary statistics, distributions, and relationships between variables to ensure they align with your expectations.</li>
 </ul>
@@ -503,30 +492,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  Max.   :9.000   Max.   :31.00   Max.   :97.00  </code></pre>
 </div>
 </div>
-</section>
-<section id="validate-data-integrity" class="level3">
-<h3 class="anchored" data-anchor-id="validate-data-integrity"><strong>Validate Data Integrity</strong></h3>
+</section><section id="validate-data-integrity" class="level3"><h3 class="anchored" data-anchor-id="validate-data-integrity"><strong>Validate Data Integrity</strong></h3>
 <ul>
 <li><p>Verify that data transformations have not introduced errors.</p></li>
 <li><p>Compare original and transformed data to identify discrepancies.</p></li>
-</ul>
-</section>
-<section id="document-your-steps" class="level3">
-<h3 class="anchored" data-anchor-id="document-your-steps"><strong>Document Your Steps</strong></h3>
+</ul></section><section id="document-your-steps" class="level3"><h3 class="anchored" data-anchor-id="document-your-steps"><strong>Document Your Steps</strong></h3>
 <p>For reproducibility and collaboration, it’s essential to record your data manipulation procedures. To write a narrative that details the choices you made while handling the data, think about utilizing R Markdown or Jupyter Notebooks. Make your work accessible and understandable to others by using code comments, explanations, and visualizations.</p>
-<hr>
-</section>
-</section>
-<section id="conclusion" class="level2">
-<h2 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong></h2>
+<hr></section></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong></h2>
 <p>A crucial first step in data analysis is data wrangling; by using R’s best practices, you can speed up the process and guarantee the accuracy of your findings. You may improve the efficiency of your data wrangling workflow and provide more reliable analyses by comprehending your data, putting effective cleaning and transformation strategies into practice, testing your findings, and documenting your approach.</p>
 <p>Always tailor these best practices to your unique needs, keeping in mind that the individual methods and packages you use may vary depending on your dataset and research goals.</p>
+<hr>
+<p>visit the post <a href="../../posts/centrality_R/centrality.html">Descriptive Statistics - Centrality</a></p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -873,18 +852,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
@@ -912,13 +889,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
-    </div>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 </body></html>

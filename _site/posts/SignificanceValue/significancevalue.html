@@ -8,8 +8,9 @@
 
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2025-03-05">
+<meta name="description" content="A detailed guide to computing and interpreting p-values, adjusted p-values, and the False Discovery Rate (FDR) in biological experiments.">
 
-<title>Bioinfo Guide Book - Understanding p-values, Adjusted p-values, and the False Discovery Rate in Biological Experiments</title>
+<title>Bioinfo Guide Book - p-Values &amp; FDR in Biological Experiments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -63,11 +64,51 @@ ul.task-list li input[type="checkbox"] {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<!-- Responsive & author info -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page -->
+<link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script>
+<!-- Google site verification -->
+<meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification -->
+<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WVW2JZXF40');
+</script>
 
 
-<meta name="twitter:title" content="Bioinfo Guide Book - Understanding p-values, Adjusted p-values, and the False Discovery Rate in Biological Experiments">
-<meta name="twitter:description" content="">
+<meta property="og:title" content="p-Values &amp; FDR in Biological Experiments | Bioinfo Guide Book">
+<meta property="og:description" content="Learn to compute, adjust, and interpret p-values and control the false discovery rate in biological experiments.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/SignificanceValue/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="p-values and FDR thresholds">
+<meta name="twitter:title" content="p-Values &amp; FDR in Biological Experiments">
+<meta name="twitter:description" content="Master p-value computation, adjustment methods, and FDR control for reliable biological data analysis.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/SignificanceValue/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="p-values and FDR thresholds">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -96,8 +137,8 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -124,10 +165,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -140,16 +177,16 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Understanding p-values, Adjusted p-values, and the False Discovery Rate in Biological Experiments</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">p-Values &amp; FDR in Biological Experiments</h1>
+            <p class="subtitle lead">Interpreting p-Values, Adjusted p-Values &amp; False Discovery Rate in R</p>
+                  <div>
+        <div class="description">
+          <p>A detailed guide to computing and interpreting p-values, adjusted p-values, and the False Discovery Rate (FDR) in biological experiments.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">Statistics</div>
                 <div class="quarto-category">Data Analysis</div>
-                <div class="quarto-category">Statistical Methods</div>
-                <div class="quarto-category">ANOVA</div>
-                <div class="quarto-category">Linear Regression</div>
-                <div class="quarto-category">Data Science</div>
-                <div class="quarto-category">Quantitative Analysis</div>
-                <div class="quarto-category">Statistical Modeling</div>
               </div>
                   </div>
   </div>
@@ -227,12 +264,13 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="putting-it-all-together">Putting It All Together:</h2>
 <p>In conclusion, the false discovery rate, adjusted p-values, and p-values provide a system of checks and balances that assist researchers in appropriately interpreting the findings of their experiments. The p-value, which is a crucial starting point but can be deceptive if numerous tests are conducted, shows whether an observed effect is likely to be real or the result of random chance. The multiple-testing issue is taken into consideration by adjusted p-values, which guarantee that what seems “significant” is not merely an unintentional outlier. Lastly, the false discovery rate recognizes that if the objective is to find potentially significant leads in high-throughput or large-scale studies, permitting a small percentage of false positives may be a necessary and practical trade-off. These statistical tools can help you get the most accurate results whether you’re testing the newest possible cancer treatment, examining fruit fly gene expression, or screening compounds for antibiotic qualities. They also serve as a reminder that no single figure, including an FDR cutoff, adjusted p-value, or p-value, can adequately convey the intricacy and biological significance of an experimental finding. Researchers frequently combine statistical significance with replication studies, biological context, effect sizes, and confidence intervals to arrive at strong conclusions. By doing this, they guarantee that their findings are pertinent to the issues they are trying to address and are also statistically sound.</p>
 <hr>
+<p>visit the post <a href="../../posts/pca_r/pca.html">Principal Component Analysis</a></p>
 
 
 </section>
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

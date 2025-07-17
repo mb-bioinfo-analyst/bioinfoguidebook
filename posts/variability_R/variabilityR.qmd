@@ -1,10 +1,40 @@
 ---
-title: "Understanding Variability: Key Measures in Descriptive Statistics Using R"
+title: "Variability Measures in R"
+subtitle: "Calculating Variance, SD, IQR & Coefficient of Variation"
 author: "Bilal Mustafa"   
 date: "2024-08-11"    
-categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics, Hypothesis Testing, Data Visualization, T-Test, Statistical Methods, Beginners Guide, Quantitative Analysis]    
+slug: "variability-measures-in-r"
+description: >
+  A hands-on guide to measuring variability in R. Learn to compute variance,
+  standard deviation, interquartile range, and coefficient of variation—
+  complete with code examples and visualizations.
+categories: [Statistics, Data Analysis, Descriptive Statistics]    
+tags: [R Programming, Data Analysis, Variability, Variance, Standard Deviation, Interquartile Range, Coefficient of Variation, Statistical Measures]
 image: "image.jpg"
+image-alt: "Chart illustrating variance and standard deviation in R"
+twitter-card:
+  title: "Variability Measures in R: Variance, SD & IQR"
+  description: >
+    Step through computing and interpreting key variability statistics in R,
+    including variance, SD, IQR, and coefficient of variation.
+  image: "image.jpg"
+  image-alt: "Twitter card for variability tutorial"
+
+open-graph:
+  title: "Variability Measures in R | Bioinfo Guide Book"
+  description: >
+    Master the calculation and interpretation of variability statistics
+    in R with practical examples and plots.
+  image: "image.jpg"
+  image-alt: "Open Graph image for variability measures guide"
+
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
 ---
+
 
 # Introduction:
 
@@ -98,3 +128,5 @@ While centrality metrics indicate where the majority of data points are located,
 Incorporating these measures; Range, IQR, Variance, Standard Deviation, and Standard Error, into your descriptive statistics analysis in R allows you to acquire a more comprehensive picture of your data and make more informed research or analytical decisions.
 
 ------------------------------------------------------------------------
+
+visit the post [Confidence interval](../../posts/confidencei_r/confidenceinterval.html)

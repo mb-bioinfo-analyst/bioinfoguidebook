@@ -8,6 +8,7 @@
 
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-15">
+<meta name="description" content="Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.">
 
 <title>Bioinfo Guide Book - Introduction to ANOVA and Linear Models</title>
 <style>
@@ -97,11 +98,51 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit"
   }
 }</script>
+<!-- Responsive & author info -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page -->
+<link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script>
+<!-- Google site verification -->
+<meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification -->
+<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WVW2JZXF40');
+</script>
 
 
-<meta name="twitter:title" content="Bioinfo Guide Book - Introduction to ANOVA and Linear Models">
-<meta name="twitter:description" content="">
+<meta property="og:title" content="Introduction to ANOVA &amp; Linear Models | Bioinfo Guide Book">
+<meta property="og:description" content="In-depth tutorial on performing ANOVA and fitting linear regression models in R— complete with diagnostics and interpretation.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Diagram of ANOVA and linear regression in R">
+<meta name="twitter:title" content="Intro to ANOVA &amp; Linear Models in R">
+<meta name="twitter:description" content="A step-by-step guide to ANOVA and linear regression analysis in R, with code you can copy &amp; run yourself.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="Diagram of ANOVA and linear regression in R">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -130,8 +171,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -158,10 +199,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
             <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
@@ -175,17 +212,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Introduction to ANOVA and Linear Models</h1>
-                                <div class="quarto-categories">
+            <p class="subtitle lead">A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R</p>
+                  <div>
+        <div class="description">
+          <p>Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">Statistics</div>
                 <div class="quarto-category">Data Analysis</div>
-                <div class="quarto-category">R Programming</div>
-                <div class="quarto-category">Statistical Methods</div>
-                <div class="quarto-category">ANOVA</div>
-                <div class="quarto-category">Linear Regression</div>
-                <div class="quarto-category">Machine Learning</div>
-                <div class="quarto-category">Data Science</div>
-                <div class="quarto-category">Quantitative Analysis</div>
-                <div class="quarto-category">Statistical Modeling</div>
               </div>
                   </div>
   </div>
@@ -337,7 +372,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.2     ✔ readr     2.1.5
 ✔ forcats   1.0.0     ✔ stringr   1.5.1
-✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+✔ ggplot2   3.5.2     ✔ tibble    3.2.1
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
@@ -417,7 +452,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>) <span class="sc">+</span></span>
 <span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="anova_lm_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" width="672"></p>
+<p><img src="anova_lm_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" alt="Boxplot of plant weight by group" width="672"></p>
 </div>
 </div>
 <p>This boxplot shows how the plant weights changed in the different treatment groups. Find places where the boxes meet or clear gaps between them to see how the groups compare.</p>
@@ -514,7 +549,7 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Tukey's HSD results</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="anova_lm_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" width="672"></p>
+<p><img src="anova_lm_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" alt="Visualize Tukey's HSD results" width="672"></p>
 </div>
 </div>
 <p>If the ANOVA shows that there are significant differences, Tukey’s HSD test helps figure out which groups are different. The plot shows these similarities graphically by showing which pairs of groups are very different from each other.</p>
@@ -546,9 +581,9 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 <h3 class="anchored" data-anchor-id="side-by-side-comparison">Side-by-Side Comparison</h3>
 <table class="table">
 <colgroup>
-<col style="width: 14%">
-<col style="width: 38%">
-<col style="width: 47%">
+<col style="width: 22%">
+<col style="width: 34%">
+<col style="width: 43%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -615,7 +650,7 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># Arrange plots in a 2x2 grid</span></span>
 <span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="anova_lm_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" width="672"></p>
+<p><img src="anova_lm_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" alt="Diagnostic plots for the linear model" width="672"></p>
 </div>
 </div>
 <p>You can use diagnostic plots to make sure that the linear model’s assumptions are met, like that the residuals are normal and that the model is linear. You might not be able to trust the model’s results if these assumptions are voilated.</p>
@@ -646,11 +681,12 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
 </ul>
 <p>Have questions or feedback? Leave a comment below or reach out to us on social media. We’re here to help you on your data analysis journey!</p>
 <hr>
+<p>visit the post <a href="../../posts/significancevalue/significancevalue.html">Significance Value - p-Values</a></p>
 
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {

@@ -1,9 +1,36 @@
 ---
-title: "Mastering Conditional Logic in R: A Comprehensive Guide to If-Else Statements and Advanced Techniques"
+title: "Mastering Conditional Logic in R"
+subtitle: "Implement If-Else, Nested Logic & Vectorized Conditions"
 author: "Bilal Mustafa"
 date: "2023-09-07"
-categories: [R, Conditional Statement]
+slug: "mastering-conditional-logic-r"
+description: >
+  A comprehensive tutorial on conditional programming in R. Learn how to use
+  if-else statements, nested logic, switch functions, and vectorized operations
+  to write clean, efficient code.
+
+categories: [R, Programming, Conditional Statement]
+tags: [Conditional Logic, If-Else, Nested If, Switch, Vectorized Operations]
+
 image: "image.jpg"
+image-alt: Thumbnail
+
+twitter-card:
+  title: "Conditional Logic in R: If-Else & Beyond"
+  description: >
+    Dive into if-else statements, nested conditions, and advanced logical
+    operations for robust R programming.
+  image: "image.jpg"
+  image-alt: "Twitter card for conditional logic tutorial"
+
+open-graph:
+  title: "Mastering Conditional Logic in R"
+  description: >
+    Explore comprehensive examples of conditional structures—from simple if-else
+    to complex vectorized logic—in R.
+  image: "image.jpg"
+  image-alt: "Open Graph image for R conditional logic guide"
+
 format:
   html:
     code-link: true
@@ -11,7 +38,9 @@ format:
     code-copy: true
 ---
 
-# Introduction:
+
+
+## Introduction:
 
 Conditional logic is a fundamental concept in programming, allowing you to make decisions and control the flow of your code based on specific conditions.
 In R, the if-else statement is a powerful tool for implementing conditional logic.
@@ -19,7 +48,7 @@ In this blog post, we will explore the various variations and techniques for usi
 
 ------------------------------------------------------------------------
 
-# Basic If-Else Statements
+### Basic If-Else Statements
 
 The basic if-else statement in R allows you to execute different blocks of code depending on whether a specified condition is true or false.
 Here's the basic syntax:
@@ -32,7 +61,7 @@ Here's the basic syntax:
 
 Let's look at an example:
 
-``` r
+```{r}
 x <- 10
 
 if (x > 5) {
@@ -46,7 +75,7 @@ In this example, the if-else statement checks if x is greater than 5 and prints 
 
 ------------------------------------------------------------------------
 
-# Multiple Conditions with else if
+### Multiple Conditions with else if
 
 Sometimes, you need to evaluate multiple conditions in a sequence.
 You can use the else if construct to handle such cases.
@@ -62,7 +91,7 @@ Here's how it works:
 
 Let's see an example:
 
-``` r
+```{r}
 grade <- 75
 
 if (grade >= 90) {
@@ -80,7 +109,7 @@ In this case, the code determines a student's grade based on their score.
 
 ------------------------------------------------------------------------
 
-# Ternary Operator
+### Ternary Operator
 
 R also supports a concise way of using if-else statements known as the ternary operator.
 It's useful when you need to assign a value based on a condition.
@@ -90,27 +119,32 @@ The syntax is as follows:
 
 Here's an example:
 
-``` r
+```{r}
 x <- 8
 
-grade <- if (x > 5)
+grade <- if (x > 5) {
   "Pass"
-else
+} else {
   "Fail"
+}
 
 print(grade)
+
+# Or as a one liner
+# grade <- if (x > 5) "Pass" else "Fail"
+
 ```
 
 The ternary operator assigns the value "Pass" to the grade variable if x is greater than 5 and "Fail" otherwise.
 
 ------------------------------------------------------------------------
 
-# Vectorized If-Else Statements
+### Vectorized If-Else Statements
 
 In R, you can apply if-else statements to vectors or data frames for efficient and concise code.
 Here's an example of vectorized if-else:
 
-``` r
+```{r}
 scores <- c(85, 92, 78, 60, 95)
 grades <-
   ifelse(scores >= 90, "A", ifelse(scores >= 80, "B", ifelse(scores >= 70, "C", "F")))
@@ -122,7 +156,7 @@ In this example, we assign grades to a vector of scores using nested ifelse stat
 
 ------------------------------------------------------------------------
 
-# Conclusion on Basic Conditional Statements
+### Conclusion on Basic Conditional Statements
 
 Conditional logic is a crucial aspect of programming, and mastering if-else statements in R is essential for writing robust and flexible code.
 In this blog post, we explored the basics of if-else statements, handling multiple conditions with else if, using the ternary operator for concise assignments, and applying vectorized if-else statements.
@@ -130,7 +164,7 @@ With these techniques at your disposal, you can make informed decisions and cont
 
 ------------------------------------------------------------------------
 
-# Advanced Conditional Statements in R
+## Advanced Conditional Statements in R
 
 In addition to the basic if-else statements and the variations mentioned above, there are more advanced conditional statements and techniques you can use in R.
 These advanced conditional statements can help you write more complex and expressive code.
@@ -138,13 +172,13 @@ Here are some advanced conditional techniques in R:
 
 ------------------------------------------------------------------------
 
-# Switch Statement
+## Switch Statement
 
 The switch statement allows you to select one of several code blocks to execute based on the value of an expression.
 It's particularly useful when you have multiple cases to handle.
 Here's an example:
 
-``` r
+```{r}
 day <- "Monday"
 
 result <- switch(
@@ -162,12 +196,12 @@ In this example, the switch statement assigns a message based on the value of th
 
 ------------------------------------------------------------------------
 
-# The ifelse Function
+## The ifelse Function
 
 The ifelse function is a vectorized version of the if-else statement, and it's handy when you want to apply a condition to an entire vector.
 Here's an example:
 
-``` r
+```{r}
 vector <- c(5, 10, 15, 20)
 result <-
   ifelse(vector > 10, "Greater than 10", "Less than or equal to 10")
@@ -179,14 +213,14 @@ The ifelse function applies the condition to each element in the vector.
 
 ------------------------------------------------------------------------
 
-# Using dplyr::case_when
+## Using dplyr::case_when
 
 In data manipulation tasks, you often need to create new variables based on complex conditions.
 The case_when function from the dplyr package is perfect for this purpose.
 It allows you to specify multiple conditions and their corresponding values concisely.
 Here's an example:
 
-``` r
+```{r}
 
 library(dplyr)
 
@@ -205,13 +239,13 @@ In this example, case_when assigns a grade category based on the values in the "
 
 ------------------------------------------------------------------------
 
-# Custom Functions
+## Custom Functions
 
 In more advanced scenarios, you may need to create custom functions that use complex conditional logic.
 This allows you to encapsulate your logic and make your code more modular and reusable.
 Here's a simplified example:
 
-``` r
+```{r}
 calculate_discount <- function(age, is_student) {
   if (age < 18) {
     return(0.2)  # 20% discount for minors
@@ -238,13 +272,13 @@ Depending on your specific use case, you can choose the most appropriate approac
 
 ------------------------------------------------------------------------
 
-# Handling 2-Level Nested If-Else Statements
+## Handling 2-Level Nested If-Else Statements
 
 Nested if-else statements involve using an if-else construct within another if-else block.
 This allows you to handle multiple conditions with varying levels of priority.
 Here's an example of a 2-level nested if-else statement:
 
-``` r
+```{r}
 x <- 25
 y <- 10
 
@@ -263,11 +297,11 @@ In this example, the outer if-else block checks if x is greater than y, and if i
 
 ------------------------------------------------------------------------
 
-# Handling 3-Level Nested If-Else Statements
+## Handling 3-Level Nested If-Else Statements
 
 For even more complex scenarios, you can have 3-level nested if-else statements by adding another layer of conditional logic within the innermost block:
 
-``` r
+```{r}
 x <- 25
 y <- 10
 z <- 30
@@ -291,7 +325,7 @@ In this example, we've added an additional condition involving the variable z wi
 
 ------------------------------------------------------------------------
 
-# Alternative Approaches
+## Alternative Approaches
 
 While nested if-else statements are useful for handling complex logic, they can become unwieldy and hard to read when you have many conditions.
 Here are some alternative approaches to handling complex scenarios:
@@ -308,3 +342,7 @@ Here are some alternative approaches to handling complex scenarios:
 
 Remember that the choice of approach depends on the specific requirements of your problem and the maintainability of your code.
 In some cases, using alternative techniques may lead to more concise and readable code, especially when dealing with multi-level nested conditions.
+
+------------------------------------------------------------------------
+
+visit the post [Data Wrangling](../../posts/DataWrangling_R/datawrangle.html)

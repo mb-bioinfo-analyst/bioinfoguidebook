@@ -16,12 +16,14 @@
       "/posts/confidenceI_R/confidenceinterval.html",
       "/posts/T_test_R/t_test.html",
       "/posts/Anova_lm_R/anova_lm.html",
-      "/posts/SignificanceValue/significancevalue.html"
+      "/posts/SignificanceValue/significancevalue.html",
+      "/posts/set_operation/set_operation.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/set_operation/set_operation.html",
       "/posts/SignificanceValue/significancevalue.html",
       "/posts/Anova_lm_R/anova_lm.html",
       "/posts/T_test_R/t_test.html",

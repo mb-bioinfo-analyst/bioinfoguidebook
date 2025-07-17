@@ -1,9 +1,33 @@
 ---
-title: "Unveiling Data Insights with Principal Component Analysis (PCA) in R"
+title: "Principal Component Analysis in R"
+subtitle: "Dimensionality Reduction & Feature Engineering with PCA"
 author: "Bilal Mustafa"
 date: "2023-09-24"
+slug: "principal-component-analysis-r"
+description: >
+  A practical guide to using Principal Component Analysis (PCA) in R for
+  dimensionality reduction and feature engineering. Learn how to preprocess data,
+  compute principal components, interpret scree plots, and visualize PCA results
+  with reproducible code examples.
 categories: [R, PCA, Feature Engineering, Dimentionality Reduction]
+tags: [PCA, Feature Engineering, Principal Components, Data Analysis, Machine Learning, Dimensionality Reduction, R Programming]
 image: "image.jpg"
+image-alt: "Visualization of PCA on a dataset in R"
+twitter-card:
+  title: "PCA in R: Dimensionality Reduction & Feature Engineering"
+  description: >
+    Step-by-step tutorial on applying PCA in R, from data preprocessing to
+    visualization and interpretation of principal components.
+  image: "image.jpg"
+  image-alt: "Twitter card thumbnail for PCA tutorial"
+
+open-graph:
+  title: "PCA Insights in R | Bioinfo Guide Book"
+  description: >
+    Master Principal Component Analysis in R for dimensionality reduction and
+    feature engineering with practical code examples.
+  image: "image.jpg"
+  image-alt: "Open Graph image for PCA tutorial"
 execute: 
   output: true
   echo: fenced
@@ -164,7 +188,7 @@ These visualizations highlight the impact of standardization on the distribution
 It's essential to standardize data before applying certain statistical techniques like Principal Component Analysis (PCA) to ensure that each feature contributes fairly to the analysis, regardless of its original scale or magnitude.
 By standardizing the features, we bring them to a common scale and remove the influence of the mean and variance, making them directly comparable and suitable for techniques like PCA.
 
-```{r, echo=FALSE, fig.cap="Feature vs. Scaled Feature Distribution", fig.align="center", out.width="80%", fig.height=15}
+```{r, echo=FALSE, fig.cap="Feature vs. Scaled Feature Distribution", fig.align="center", out.width="80%", fig.height=15, fig.alt="Feature vs. Scaled Feature Distribution"}
 par(mfrow = c(4, 2))  # Create a 4x2 grid of plots
 
 # Plot histograms for each original feature
@@ -202,7 +226,7 @@ pca_result <- prcomp(scaled_features)
 
 You can now explore the results of the PCA, such as the variance explained by each principal component and their contributions.
 
-```{r}
+```{r, fig.cap="variance explained by each principal component", fig.alt="variance explained by each principal component"}
 
 # Variance explained by each principal component
 variance_explained <- pca_result$sdev^2 / sum(pca_result$sdev^2)
@@ -219,7 +243,7 @@ barplot(variance_explained, names.arg = c("PC1", "PC2", "PC3", "PC4"),
 Interpret the results by considering the variance explained by each principal component.
 You can choose a threshold (e.g., retaining 95% variance) to determine how many principal components to keep for further analysis.
 
-```{r, echo=FALSE, fig.align="center", out.width="80%"}
+```{r, echo=FALSE, fig.align="center", out.width="80%", fig.alt="biplot"}
 
 # Create a biplot of PC1 and PC2
 biplot(
@@ -246,7 +270,7 @@ By incorporating PCA into your data analysis toolkit, you can gain deeper insigh
 Here's a table of some popular R packages commonly used for Principal Component Analysis (PCA) along with links to their respective documentation:
 
 | Package Name | Description                                                      | URL                                                                                                                                     |
-|:-------------|:-----------------------------------------------------------------|:----------------------------------------------------------------------------------------------------------------------------------------|
+|:-------------|:-----------------|:---------------------------------------|
 | `prcomp`     | Part of the `stats` package, used for PCA.                       | [Documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/prcomp.html)                                                   |
 | `PCAtools`   | Comprehensive PCA toolkit with visualization and analysis tools. | [GitHub](https://github.com/kevinblighe/PCAtools) [bioconductor](https://www.bioconductor.org/packages/release/bioc/html/PCAtools.html) |
 | `FactoMineR` | Provides PCA, multiple correspondence analysis, and more.        | [CRAN](https://cran.r-project.org/package=FactoMineR)                                                                                   |
@@ -258,3 +282,7 @@ Here's a table of some popular R packages commonly used for Principal Component 
 : R Packages for PCA Analysis
 
 Please note that R packages are frequently updated, so it's a good practice to visit the package documentation links for the most up-to-date information on package usage and functionality.
+
+------------------------------------------------------------------------
+
+visit the post [Cosine Similarity](../../posts/cosine_similarity/cosinesimilarity.html)

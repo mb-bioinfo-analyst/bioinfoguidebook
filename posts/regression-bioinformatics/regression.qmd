@@ -1,9 +1,32 @@
 ---
-title: "Unlocking the Secrets of Bioinformatics with Regression Analysis"
+title: "Regression Analysis in Bioinformatics"
+subtitle: "Applying Regression to Decode Biological Data Patterns"
 author: "Bilal Mustafa"
 date: "2023-09-07"
-categories: [Regression, analysis, bioinformatics]
+slug: "regression-analysis-bioinformatics"
+description: >
+  Explore how regression techniques can uncover relationships in biological
+  datasets. Learn to fit and interpret linear, multiple, and logistic regression
+  models.
+categories: [Regression, Bioinformatics, Statistical Modeling]
+tags: [Regression Analysis, Linear Regression, Multiple Regression, Logistic Regression, Model Diagnostics, R Programming, Data Visualization, Biological Data]
 image: "image.jpg"
+image-alt: "regression model fit on bioinformatics data"
+twitter-card:
+  title: "Regression Analysis in Bioinformatics"
+  description: >
+    A practical guide to fitting and interpreting regression models on
+    biological data.
+  image: "image.jpg"
+  image-alt: "Twitter card thumbnail for regression tutorial"
+
+open-graph:
+  title: "Regression Analysis in Bioinformatics | Bioinfo Guide Book"
+  description: >
+    Master linear, multiple, and logistic regression techniques to reveal
+    insights from bioinformatics datasets.
+  image: "image.jpg"
+  image-alt: "Open Graph image for regression in bioinformatics guide"
 ---
 
 # Introduction:
@@ -56,15 +79,21 @@ $$Y = β0 + β1X1 + β2X2 + ... + ε$$ {#eq-regression}
 
 -   **Nonlinear Regression**: Suitable when the relationship between variables is nonlinear and can't be described by a simple linear equation.
 
-|                        |                                                                                       |                                                                         |
-|------------------------|---------------------------------------------------------------------------------------|-------------------------------------------------------------------------|
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | **Type of Regression** | **Goals**                                                                             | **Equation**                                                            |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Linear Regression      | \- Predicting a continuous dependent variable.                                        | $$Y = β0 + β1X1 + β2X2 + ... + ε$$ {#eq-linearRegression}               |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |                        | \- Understanding the linear relationship between independent and dependent variables. |                                                                         |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Logistic Regression    | \- Predicting a binary or categorical dependent variable.                             | $$Logit(P(Y=1)) = β0 + β1X1 + β2X2 + ... + ε$$ {#eq-logisticRegression} |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |                        | \- Estimating the probability of an event occurring.                                  |                                                                         |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 | Nonlinear Regression   | \- Modeling complex, nonlinear relationships between variables.                       | $$Y = f(β0 + β1X1 + β2X2 + ... + ε)$$ {#eq-nonlinearRegression}         |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 |                        | \- Predicting a continuous dependent variable when the relationship is not linear.    |                                                                         |
++------------------------+---------------------------------------------------------------------------------------+-------------------------------------------------------------------------+
 
 : Types of regression {#tbl-regression_types}
 
@@ -455,3 +484,5 @@ The Molecular Signatures Database (MSigDB) hallmark gene set collection.
 Cell systems, 1(6), 417-425.
 
 ------------------------------------------------------------------------
+
+visit the post [Set Operations](../../posts/set_operation/set_operation.html)

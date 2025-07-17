@@ -1,15 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.3.353">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-11">
-
-<title>Bioinfo Guide Book - Understanding Variability: Key Measures in Descriptive Statistics Using R</title>
+<meta name="description" content="A hands-on guide to measuring variability in R. Learn to compute variance, standard deviation, interquartile range, and coefficient of variation— complete with code examples and visualizations.">
+<title>Bioinfo Guide Book - Variability Measures in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -58,7 +56,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }
 </style>
 
-
 <script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
@@ -77,8 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<script id="quarto-search-options" type="application/json">{
+<link href="../../site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark"><script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -96,25 +92,50 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit"
   }
-}</script>
+}</script><link href="../../site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
+<script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><!-- Responsive & author info --><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="author" content="Bilal Mustafa">
+<meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+<!-- Canonical URL for each page --><link rel="canonical" href="https://bioinfoguidebook.netlify.app">
+<!-- Structured data for rich search results --><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Bioinfo Guide Book",
+  "url": "https://bioinfoguidebook.netlify.app",
+  "description": "Open-access guide to bioinformatics tutorials and reference in R & Python.",
+  "publisher": {
+    "@type": "Person",
+    "name": "Bilal Mustafa"
+  }
+}
+</script><!-- Google site verification --><meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Google site verification --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script><!-- Google tag (gtag.js) --><script async="" src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script><script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-
-<meta name="twitter:title" content="Bioinfo Guide Book - Understanding Variability: Key Measures in Descriptive Statistics Using R">
-<meta name="twitter:description" content="">
+  gtag('config', 'G-WVW2JZXF40');
+</script>
+<meta property="og:title" content="Variability Measures in R | Bioinfo Guide Book">
+<meta property="og:description" content="Master the calculation and interpretation of variability statistics in R with practical examples and plots.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/variability_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Chart illustrating variance and standard deviation in R">
+<meta name="twitter:title" content="Variability Measures in R: Variance, SD &amp; IQR">
+<meta name="twitter:description" content="Step through computing and interpreting key variability statistics in R, including variance, SD, IQR, and coefficient of variation.">
 <meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/variability_R/image.jpg">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:image:alt" content="Chart illustrating variance and standard deviation in R">
 <meta name="twitter:card" content="summary_large_image">
 </head>
-
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="" class="navbar-logo">
-    </a>
+    <img src="../../logo-no-background.png" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
@@ -125,17 +146,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../archive.html" rel="" target="">
+ <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
@@ -158,34 +179,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5" rel="" target="">
  <span class="menu-text">RG</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
- <span class="menu-text">Archive</span></a>
-  </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-</header>
-<!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
+    </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Understanding Variability: Key Measures in Descriptive Statistics Using R</h1>
-                                <div class="quarto-categories">
+      <h1 class="title">Variability Measures in R</h1>
+            <p class="subtitle lead">Calculating Variance, SD, IQR &amp; Coefficient of Variation</p>
+                  <div>
+        <div class="description">
+          <p>A hands-on guide to measuring variability in R. Learn to compute variance, standard deviation, interquartile range, and coefficient of variation— complete with code examples and visualizations.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
                 <div class="quarto-category">Statistics</div>
-                <div class="quarto-category">R Programming</div>
                 <div class="quarto-category">Data Analysis</div>
                 <div class="quarto-category">Descriptive Statistics</div>
-                <div class="quarto-category">Hypothesis Testing</div>
-                <div class="quarto-category">Data Visualization</div>
-                <div class="quarto-category">T-Test</div>
-                <div class="quarto-category">Statistical Methods</div>
-                <div class="quarto-category">Beginners Guide</div>
-                <div class="quarto-category">Quantitative Analysis</div>
               </div>
                   </div>
   </div>
@@ -215,86 +227,61 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
   <ul class="collapse">
-  <li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
+<li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
   <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr" class="nav-link" data-scroll-target="#interquartile-range-iqr">Interquartile range (IQR)</a></li>
   <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance">Variance</a></li>
   <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard deviation</a></li>
   <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard Error</a></li>
-  </ul></li>
-  <li><a href="#notes-on-measures-of-variability" id="toc-notes-on-measures-of-variability" class="nav-link" data-scroll-target="#notes-on-measures-of-variability">Notes on Measures of Variability</a></li>
   </ul>
-</nav>
+</li>
+  <li><a href="#notes-on-measures-of-variability" id="toc-notes-on-measures-of-variability" class="nav-link" data-scroll-target="#notes-on-measures-of-variability">Notes on Measures of Variability</a></li>
+  </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
-<section id="introduction" class="level1">
-<h1>Introduction:</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
 <p>In our previous post, we looked into measures of centrality, which help identify the central point of a data set. However, recognizing the central tendency is insufficient to properly explain the distribution of your data. Measures of variability provide information about the spread or dispersion of data points around the center value. In this post, we’ll look at the key measures of variability, Range, Interquartile Range (IQR), Variance, Standard Deviation, and Standard Error, and show how to compute them with R.</p>
 <p>Measures of variability describe how far data points in a dataset deviate from the mean value. These measures are critical for understanding the spread of the distribution, since they can have a substantial impact on data interpretation.</p>
 <hr>
-<section id="range" class="level2">
-<h2 class="anchored" data-anchor-id="range">Range</h2>
+<section id="range" class="level2"><h2 class="anchored" data-anchor-id="range">Range</h2>
 <p>The range is the most basic measure of variability. It is calculated as the difference between the dataset’s highest and lowest values. The range provides an overview of the distribution of data, but it is extremely sensitive to outliers. In R, you can compute the range using the range() function, and you get the range value by subtracting the minimum from the maximum:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">200</span>, <span class="dv">5</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>range_values <span class="ot">&lt;-</span> <span class="fu">range</span>(data)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>range_value <span class="ot">&lt;-</span> <span class="fu">diff</span>(range_values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">200</span>, <span class="fl">5</span><span class="op">)</span></span>
+<span><span class="va">range_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
+<span><span class="va">range_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">range_values</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-<section id="interquartile-range-iqr" class="level2">
-<h2 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile range (IQR)</h2>
+<hr></section><section id="interquartile-range-iqr" class="level2"><h2 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile range (IQR)</h2>
 <p>The Interquartile Range (IQR) is a measure of the distribution of the middle 50% of data. It is computed by subtracting the 75th percentile (Q3) from the 25th percentile (Q1). The IQR is more resistant against outliers than the range and provides a more accurate sense of variability for skewed distributions. In R, you may calculate the IQR using the IQR() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>iqr_value <span class="ot">&lt;-</span> <span class="fu">IQR</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">iqr_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-<section id="variance" class="level2">
-<h2 class="anchored" data-anchor-id="variance">Variance</h2>
+<hr></section><section id="variance" class="level2"><h2 class="anchored" data-anchor-id="variance">Variance</h2>
 <p>Variance represents the average squared deviation of each data point from the mean. It provides information on the degree of spread in the data, with higher variances suggesting greater spread. Variance is important for evaluating the variability of different datasets, but it is expressed in squared units of the original data, making it difficult to interpret on its own. In R, variance is determined using the var() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>variance_value <span class="ot">&lt;-</span> <span class="fu">var</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">variance_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-<section id="standard-deviation" class="level2">
-<h2 class="anchored" data-anchor-id="standard-deviation">Standard deviation</h2>
+<hr></section><section id="standard-deviation" class="level2"><h2 class="anchored" data-anchor-id="standard-deviation">Standard deviation</h2>
 <p>Standard deviation is the square root of variance and measures each data point’s average distance from the mean. It is one of the most commonly used measures of variability since it is expressed in the same units as the data, making it easier to read than variance. A lower standard deviation implies that the data points are close to the mean, whereas a higher standard deviation indicates a wider range. In R, you can calculate the standard deviation using the sd() function.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sd_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sd_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-<section id="standard-error" class="level2">
-<h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
+<hr></section><section id="standard-error" class="level2"><h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
 <p>The Standard Error (SE) computes the standard deviation of the sample mean from the population mean. It gives an estimate of how much the sample mean is likely to differ from the true population mean, given repeated sampling. A lower SE suggests that the sample mean is more representative of the population mean. To compute the standard error, divide the standard deviation by the square root of the sample size. In R, it may be calculated like this:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>se_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(data))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">se_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr>
-</section>
-</section>
-<section id="notes-on-measures-of-variability" class="level1">
-<h1>Notes on Measures of Variability</h1>
+<hr></section></section><section id="notes-on-measures-of-variability" class="level1"><h1>Notes on Measures of Variability</h1>
 <p>Understanding measures of variability is critical for comprehending the distribution and spread of your data. While centrality metrics indicate where the majority of data points are located, variability measures indicate how widely distributed those data points are around the central value. Incorporating these measures; Range, IQR, Variance, Standard Deviation, and Standard Error, into your descriptive statistics analysis in R allows you to acquire a more comprehensive picture of your data and make more informed research or analytical decisions.</p>
 <hr>
+<p>visit the post <a href="../../posts/confidencei_r/confidenceinterval.html">Confidence interval</a></p>
 
 
-</section>
-
-</main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -641,18 +628,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
 });
-</script>
-<script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
+</script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
 </div> <!-- /content -->
-<footer class="footer">
-  <div class="nav-footer">
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
-    <li class="nav-item">
+<li class="nav-item">
     <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
@@ -680,13 +665,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
-    </div>
+</div>
     <div class="nav-footer-right">
       &nbsp;
     </div>
   </div>
 </footer>
-
 
 
 </body></html>
