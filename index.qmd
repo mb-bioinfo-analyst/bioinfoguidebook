@@ -12,4 +12,9 @@ listing:
   
 page-layout: full
 title-block-banner: true
+
+include-in-header:
+      - text: |
+          <meta name="description" content="Bioinfo Guide Book is a free, open-access online resource offering step-by-step tutorials, code examples, and reference materials in bioinformatics, genomics, and computational biology using R and python.">
+
 ---
