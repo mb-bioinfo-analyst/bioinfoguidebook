@@ -39,6 +39,7 @@ website:
   
   navbar:
     logo: logo-no-background.png
+    logo-alt: "logo image"
     
     left:
       - href: index.qmd
@@ -88,9 +89,9 @@ format:
     include-in-header:
       - text: |
           <!-- Responsive & author info -->
-          <meta name="viewport" content="width=device-width, initial-scale=1">
           <meta name="author" content="Bilal Mustafa">
           <meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">
+          <meta name="description" content="Bioinfo Guide Book is a free, open-access online resource offering step-by-step tutorials, code examples, and reference materials in bioinformatics, genomics, and computational biology using R and python.">
           <!-- Canonical URL for each page -->
           <link rel="canonical" href="https://bioinfoguidebook.netlify.app">
       - text: |

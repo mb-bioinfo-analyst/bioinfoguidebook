@@ -11,7 +11,7 @@ description: >
 categories: [Statistics, Descriptive Statistics]
 tags: [R Programming, Confidence Intervals, Hypothesis Testing, T-Test, Data Visualization, Precision Estimation, Quantitative Analysis, Beginners Guide]   
 image: "image.jpg"
-image-alt: Thumbnail
+image-alt: Confidence Intervals Thumbnail
 twitter-card:
   title: "Confidence Intervals in R: Calculate & Visualize Precision"
   description: >
@@ -32,8 +32,6 @@ format:
     df-print: paged
     code-copy: true
 ---
-
-
 
 # Introduction:
 
