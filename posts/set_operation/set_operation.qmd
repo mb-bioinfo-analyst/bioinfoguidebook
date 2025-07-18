@@ -1,5 +1,6 @@
 ---
 title: "Understanding Set Operations"
+pagetitle: "{{< meta title >}}"
 subtitle: "Conceptual Overview of Set Operations"
 author: "Bilal Mustafa"
 date: "2025-07-18"

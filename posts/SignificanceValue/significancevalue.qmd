@@ -1,5 +1,6 @@
 ---
 title: "p-Values & FDR in Biological Experiments"
+pagetitle: "{{< meta title >}}"
 subtitle: "Interpreting p-Values, Adjusted p-Values & False Discovery Rate in R"
 author: "Bilal Mustafa"
 date: "2025-03-05"

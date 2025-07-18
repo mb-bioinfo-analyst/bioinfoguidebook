@@ -1,5 +1,6 @@
 ---
 title: "Centrality Measures in R"
+pagetitle: "{{< meta title >}}"
 subtitle: "Calculating and Comparing Mean, Median, Mode, and Advanced Averages"
 
 author: "Bilal Mustafa"
@@ -46,8 +47,6 @@ format:
     df-print: paged
     code-copy: true
 ---
-
-
 
 # Introduction:
 

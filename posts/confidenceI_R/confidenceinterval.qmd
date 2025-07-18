@@ -1,5 +1,6 @@
 ---
 title: "Understanding Confidence Intervals in R"
+pagetitle: "{{< meta title >}}"
 subtitle: "Calculating and Visualizing Precision Bounds for Mean Estimates"
 author: "Bilal Mustafa"   
 date: "2024-08-12"    

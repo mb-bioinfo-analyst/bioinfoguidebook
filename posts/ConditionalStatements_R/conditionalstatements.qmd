@@ -1,5 +1,6 @@
 ---
 title: "Mastering Conditional Logic in R"
+pagetitle: "{{< meta title >}}"
 subtitle: "Implement If-Else, Nested Logic & Vectorized Conditions"
 author: "Bilal Mustafa"
 date: "2023-09-07"
@@ -37,8 +38,6 @@ format:
     df-print: paged
     code-copy: true
 ---
-
-
 
 ## Introduction:
 

@@ -1,5 +1,6 @@
 ---
 title: "Regression Analysis in Bioinformatics"
+pagetitle: "{{< meta title >}}"
 subtitle: "Applying Regression to Decode Biological Data Patterns"
 author: "Bilal Mustafa"
 date: "2023-09-07"

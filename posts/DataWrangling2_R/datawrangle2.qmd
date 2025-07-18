@@ -1,5 +1,6 @@
 ---
-title: "Data Wrangling Best Practices in R"
+title: "Data Wrangling Best Practices in R - Part 2"
+pagetitle: "{{< meta title >}}"
 subtitle: "Advanced File Transformation & Reshaping – Part 2"
 author: "Bilal Mustafa"
 date: "2023-09-21"
@@ -38,7 +39,6 @@ format:
     df-print: paged
     code-copy: true
 ---
-
 
 ## Introduction:
 

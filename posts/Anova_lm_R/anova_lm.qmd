@@ -1,5 +1,6 @@
 ---
 title: "Introduction to ANOVA and Linear Models"
+pagetitle: "{{< meta title >}}"
 subtitle: "A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R"
 author: "Bilal Mustafa"
 date: "2024-08-15"
@@ -35,7 +36,6 @@ open-graph:
     complete with diagnostics and interpretation.
   image: "image.jpg"
   image-alt: "Open Graph image for ANOVA & Linear Models guide"
-
 ---
 
 # Introduction:
@@ -242,7 +242,7 @@ The plot shows these similarities graphically by showing which pairs of groups a
 ### Side-by-Side Comparison
 
 | Aspect        | ANOVA                                  | Linear Modeling                                  |
-|----------------|-------------------------|-------------------------------|
+|------------------|------------------------|------------------------------|
 | **Question**  | Are the group means different?         | How does the outcome change with each predictor? |
 | **Variables** | Categorical independent variables only | Both categorical and continuous predictors       |
 | **Output**    | F-statistic, p-value                   | Coefficients, p-values, R²                       |

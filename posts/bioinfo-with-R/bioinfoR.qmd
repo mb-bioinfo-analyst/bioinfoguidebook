@@ -1,5 +1,6 @@
 ---
 title: "Getting Started with Bioinformatics in R"
+pagetitle: "{{< meta title >}}"
 subtitle: "Install R, learn basic syntax, and run your first bioinformatics workflows"
 author: "Bilal Mustafa"
 date: "2023-09-07"

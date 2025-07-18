@@ -1,5 +1,6 @@
 ---
 title: "Welcome to Bioinfo Guide Book"
+pagetitle: "{{< meta title >}}"
 subtitle: "Your Go-To Resource for Bioinformatics Tutorials & References"
 author: "Bilal Mustafa"
 date: "2023-07-26"
@@ -34,7 +35,6 @@ format:
     df-print: paged
     code-link: true
 ---
-
 
 🔬 Welcome to Bioinfo Guide Book - Exploring the Frontier of Bioinformatics!
 🔬

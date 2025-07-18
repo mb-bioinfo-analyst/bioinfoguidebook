@@ -1,5 +1,6 @@
 ---
 title: "Principal Component Analysis in R"
+pagetitle: "{{< meta title >}}"
 subtitle: "Dimensionality Reduction & Feature Engineering with PCA"
 author: "Bilal Mustafa"
 date: "2023-09-24"
@@ -270,7 +271,7 @@ By incorporating PCA into your data analysis toolkit, you can gain deeper insigh
 Here's a table of some popular R packages commonly used for Principal Component Analysis (PCA) along with links to their respective documentation:
 
 | Package Name | Description                                                      | URL                                                                                                                                     |
-|:-------------|:-----------------|:---------------------------------------|
+|:----------------|:----------------|:-------------------------------------|
 | `prcomp`     | Part of the `stats` package, used for PCA.                       | [Documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/prcomp.html)                                                   |
 | `PCAtools`   | Comprehensive PCA toolkit with visualization and analysis tools. | [GitHub](https://github.com/kevinblighe/PCAtools) [bioconductor](https://www.bioconductor.org/packages/release/bioc/html/PCAtools.html) |
 | `FactoMineR` | Provides PCA, multiple correspondence analysis, and more.        | [CRAN](https://cran.r-project.org/package=FactoMineR)                                                                                   |
