@@ -2,23 +2,39 @@ project:
   type: website
   resources:
     - robots.txt
+    - posts/**
 website:
   # Basic site info
   title: "Bioinfo Guide Book"
   site-url: https://bioinfoguidebook.netlify.app
+  #sitemap: true
   site-path: '/'
+  description: "Open-access bioinformatics guide with R & Python tutorials, from statistical basics to genomics and data visualization."
   favicon: logo-no-background.png
-  search: true
   image: BGBprofile.png
+  #image-alt: "Bioinfo Guide Book cover image"
+  search: true
   page-navigation: true
   back-to-top-navigation: true
+  
+  google-analytics: "G-WVW2JZXF40"
+
+  sidebar:
+    search: true
+    contents:
+      - section: "All Posts"
+        contents: posts
+  
   # Twitter Card settings
   twitter-card:
     site: "@bmustafa122"
+    creator: "@bmustafa122"
     title: "Bioinfo Guide Book"
     description: "Your go-to bioinformatics guide with R & Python tutorials, from genome analysis to data visualization."
     image: "BGBprofile.png"
     image-alt: "Cover thumbnail of Bioinfo Guide Book"
+    card-style: summary_large_image
+  
   # Open Graph for Facebook, LinkedIn, etc.
   open-graph:
     #type: "website"
@@ -26,7 +42,9 @@ website:
     description: "In-depth tutorials, reproducible code examples, and reference materials for bioinformatics and genomics analysis in R and python."
     image: "BGBprofile.png"
     image-alt: "Bioinfo Guide Book cover image"
+    site-name: "Bioinfo Guide Book"
     #url: "https://bioinfoguidebook.netlify.app"
+
   navbar:
     logo: logo-no-background.png
     logo-alt: "logo image"
@@ -49,6 +67,7 @@ website:
         href: https://orcid.org/0000-0003-0865-7974
       - text: RG
         href: https://www.researchgate.net/profile/Bilal-Mustafa-5
+  
   page-footer:
     center: 
       - text: "About"
@@ -64,18 +83,28 @@ website:
       - text: RG
         href: https://www.researchgate.net/profile/Bilal-Mustafa-5
     border: true
+
 format:
   html:
+    
     theme:
       light: [flatly]
       dark: [darkly]
     toc: true
+    
+    # Add canonical tags to every page (critical for SEO)
+    canonical-url: true
+    
     include-in-header:
+      # Basic meta tags + Search Console verification
       - text: |
-          <!-- Responsive & author info -->
+          <!-- Basic SEO meta -->
           <meta name="author" content="Bilal Mustafa">
-          <meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials">          
-          
+          <meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials, statistics, data analysis">
+
+          <!-- Google site verification -->
+          <meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+
       - text: |
           <!-- Structured data for rich search results -->
           <script type="application/ld+json">
@@ -91,17 +120,6 @@ format:
             }
           }
           </script>
-          <!-- Google site verification -->
-          <meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
-          <!-- mapmyvisitors -->
-          <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=080808&w=206&t=tt&d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353'></script>
-          <!-- Google tag (gtag.js) -->
-          <script async src="https://www.googletagmanager.com/gtag/js?id=G-WVW2JZXF40"></script>
-          <script>
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-WVW2JZXF40');
-          </script>
+          
 editor: visual
 

@@ -17,12 +17,14 @@
       "/posts/T_test_R/t_test.html",
       "/posts/Anova_lm_R/anova_lm.html",
       "/posts/SignificanceValue/significancevalue.html",
-      "/posts/set_operation/set_operation.html"
+      "/posts/set_operation/set_operation.html",
+      "/posts/biostatistics_0/biostat_intro.html"
     ]
   },
   {
     "listing": "/index.html",
     "items": [
+      "/posts/biostatistics_0/biostat_intro.html",
       "/posts/set_operation/set_operation.html",
       "/posts/SignificanceValue/significancevalue.html",
       "/posts/Anova_lm_R/anova_lm.html",

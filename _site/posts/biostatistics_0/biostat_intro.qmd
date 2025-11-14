@@ -1,0 +1,196 @@
+---
+title: "Introduction to Biostatistics"
+pagetitle: "{{< meta title >}}"
+subtitle: "A Beginner’s Guide to the Science of Data in Life Sciences"
+author: "Bilal Mustafa"
+date: "2025-11-12"
+
+description: >
+  An accessible introduction to biostatistics, explaining what it is, why it matters, 
+  and how statistical thinking supports biological and biomedical research.
+
+slug: "intro-to-biostats"
+
+categories: [biostatistics, statistics, data-science, biology]
+
+tags: [biostatistics, data analysis, introduction, tutorials]
+
+image: "image.jpg"
+image-alt: "intro to biostatistics"
+
+# Per-page social cards
+
+twitter-card:
+  title: "A Beginner’s Guide to the Science of Data in Life Sciences"
+  description: >
+    An accessible introduction to biostatistics, explaining what it is, why it matters, 
+    and how statistical thinking supports biological and biomedical research.
+    
+  image: "image.jpg"
+  image-alt: "Twitter card thumbnail for Biostatistics intro"
+
+open-graph:
+  title: "A Beginner’s Guide to the Science of Data in Life Sciences | Bioinfo Guide Book"
+  description: >
+    An accessible introduction to biostatistics, explaining what it is, why it matters, 
+    and how statistical thinking supports biological and biomedical research.
+  image: "image.jpg"
+  image-alt: "Open Graph image for Biostatistics intro"
+
+# Keep your existing HTML format settings
+format:
+  html:
+    code-link: true
+    df-print: paged
+    code-copy: true
+---
+
+# What Is Biostatistics?
+
+Biostatistics is the branch of statistics that applies statistical reasoning, methods, and tools to biological and health-related problems.
+
+In simple terms, biostatistics turns biological data into understanding.
+It helps researchers summarize information, test hypotheses, and make conclusions that are scientifically and ethically sound.
+
+## Biostatistics connects:
+
+-   Biology → the study of life
+
+-   Statistics → the science of data\
+    to draw reliable conclusions about living systems.
+
+## Example Scenarios
+
+-   Estimating the average blood pressure in a population.
+    
+
+-   Comparing treatment outcomes between two patient groups.
+    
+
+-   Exploring whether gene expression correlates with disease severity.
+    
+
+-   Studying the effect of pollutants on aquatic species.
+    
+
+Each of these examples involves data, variability, and uncertainty --- all core to biostatistics.
+
+## The Role of Biostatistics in Research
+
+Biostatistics supports every stage of scientific inquiry:
+
+| Stage                  | Purpose                                     | Example                                    |
+|-----------------|----------------------------|---------------------------|
+| **Study Design**       | Plan how to collect and compare data        | Randomized control trial design            |
+| **Data Collection**    | Ensure representative and unbiased sampling | Clinical data, lab assays                  |
+| **Data Visualization** | Display trends and patterns                 | Boxplots, histograms                       |
+| **Analysis**           | Apply statistical tests and models          | t-tests, regression                        |
+| **Interpretation**     | Draw conclusions based on probability       | "This result is statistically significant" |
+
+```{r}
+#| label: fig-statistics-biostatistics
+#| fig-cap: "Statistics deals with data in general, while biostatistics applies those principles to living systems."
+#| out-width: "80%"
+#| echo: false
+#| message: false
+#| warning: false
+
+library(ggplot2)
+library(ggforce)
+
+# Basic schematic using circles to show overlap between Statistics and Biology
+
+data <- data.frame(
+x = c(0, 1),
+y = c(0, 0),
+label = c("Statistics", "Biology")
+)
+
+ggplot(data) +
+geom_circle(aes(x0 = 0, y0 = 0, r = 1), fill = "skyblue", alpha = 0.5, color = "black") +
+geom_circle(aes(x0 = 1, y0 = 0, r = 1), fill = "palegreen3", alpha = 0.5, color = "black") +
+annotate("text", x = -0.6, y = 0.9, label = "Collect\nAnalyze\nInterpret", size = 4.2) +
+annotate("text", x = 1.6, y = 0.9, label = "Genes\nCells\nOrganisms", size = 4.2) +
+annotate("text", x = 0.5, y = 0, label = "Biostatistics\n(Application of Statistics to Biology)", size = 4.5, fontface = "bold") +
+coord_fixed(xlim = c(-1.5, 2.5), ylim = c(-1.5, 1.5)) +
+theme_void()
+```
+
+## Why Biostatistics Matters
+
+1.  Understanding Variability 
+
+Biological data are inherently variable.
+Biostatistics helps separate real biological effects from random noise.
+
+
+2.  Making Evidence-Based Decisions 
+
+In medicine, public health, and life sciences, decisions must be supported by statistical evidence and not just intuition.
+
+
+3.  Ensuring Reproducibility 
+
+A statistically sound analysis ensures that results are reproducible and generalizable to larger populations.
+
+
+4.  Ethical Efficiency 
+
+Good statistical design avoids wasted resources and unnecessary use of animals or patients in research.
+
+
+```{r}
+#| label: fig-data-to-decision
+#| fig-cap: "The biostatistical process: turning raw data into meaningful biological conclusions."
+#| out-width: "90%"
+#| echo: false
+#| message: false
+#| warning: false
+
+library(DiagrammeR)
+
+grViz("
+digraph flow {
+graph [layout = dot, rankdir = LR]
+
+node [shape = rectangle, style = filled, color = '#4C7D7E', fillcolor = '#B7E4C7', fontsize = 11]
+A [label = 'Collect Data']
+B [label = 'Organize & Clean']
+C [label = 'Analyze Statistically']
+D [label = 'Interpret & Conclude']
+E [label = 'Apply Findings to Biology / Medicine']
+
+edge [color = '#555555']
+A -> B -> C -> D -> E
+}
+")
+
+
+```
+
+## Key Takeaways
+
+-   Biostatistics bridges biology and data science.
+
+-   It provides structure and rigor to scientific inquiry.
+
+-   Good statistical reasoning ensures valid, reproducible, and ethical conclusions.
+
+-   In an era of "big data," the ability to think statistically is essential for every biologist.
+
+## Further Reading
+
+-   Motulsky, H.
+    (2018).
+    Intuitive Biostatistics (4th ed.).
+    Oxford University Press.
+
+-   Rosner, B.
+    (2015).
+    Fundamentals of Biostatistics.
+    Cengage Learning.
+
+-   Altman, D. G.
+    (1991).
+    Practical Statistics for Medical Research.
+    Chapman & Hall.

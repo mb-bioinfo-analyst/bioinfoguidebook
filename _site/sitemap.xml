@@ -2,78 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
-    <lastmod>2025-07-18T10:07:49.785Z</lastmod>
+    <lastmod>2025-11-14T10:55:57.224Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2025-07-18T10:07:54.218Z</lastmod>
+    <lastmod>2025-11-14T11:04:30.661Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2025-07-18T10:07:57.514Z</lastmod>
+    <lastmod>2025-11-14T11:04:33.234Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/anova_lm.html</loc>
-    <lastmod>2025-07-18T10:08:01.132Z</lastmod>
+    <lastmod>2025-11-14T10:56:04.732Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/bioinfoR.html</loc>
-    <lastmod>2025-07-18T10:08:19.447Z</lastmod>
+    <lastmod>2025-11-14T10:56:18.485Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bioinfoguidebook.netlify.app/posts/biostatistics_0/biostat_intro.html</loc>
+    <lastmod>2025-11-14T11:04:55.698Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/centrality_R/centrality.html</loc>
-    <lastmod>2025-07-18T10:08:24.415Z</lastmod>
+    <lastmod>2025-11-14T10:56:29.258Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/conditionalstatements.html</loc>
-    <lastmod>2025-07-18T10:08:31.084Z</lastmod>
+    <lastmod>2025-11-14T10:56:34.915Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/confidenceI_R/confidenceinterval.html</loc>
-    <lastmod>2025-07-18T10:08:36.455Z</lastmod>
+    <lastmod>2025-11-14T10:56:40.975Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/cosine_similarity/cosinesimilarity.html</loc>
-    <lastmod>2025-07-18T10:08:39.000Z</lastmod>
+    <lastmod>2025-11-14T10:56:44.163Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/datawrangle2.html</loc>
-    <lastmod>2025-07-18T10:08:42.727Z</lastmod>
+    <lastmod>2025-11-14T10:56:52.629Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling_R/datawrangle.html</loc>
-    <lastmod>2025-07-18T10:08:46.728Z</lastmod>
+    <lastmod>2025-11-14T10:56:58.823Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/NMD/nmd.html</loc>
-    <lastmod>2025-07-18T10:08:48.813Z</lastmod>
+    <lastmod>2025-11-14T10:57:01.691Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/PCA_R/pca.html</loc>
-    <lastmod>2025-07-18T10:08:52.829Z</lastmod>
+    <lastmod>2025-11-14T10:57:06.663Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/regression-bioinformatics/regression.html</loc>
-    <lastmod>2025-07-18T10:08:58.047Z</lastmod>
+    <lastmod>2025-11-14T10:57:13.700Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/set_operation/set_operation.html</loc>
-    <lastmod>2025-07-18T10:09:00.268Z</lastmod>
+    <lastmod>2025-11-14T10:57:57.533Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/SignificanceValue/significancevalue.html</loc>
-    <lastmod>2025-07-18T10:09:01.884Z</lastmod>
+    <lastmod>2025-11-14T10:57:18.358Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/T_test_R/t_test.html</loc>
-    <lastmod>2025-07-18T10:09:07.862Z</lastmod>
+    <lastmod>2025-11-14T10:57:26.568Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/variability_R/variabilityR.html</loc>
-    <lastmod>2025-07-18T10:09:11.938Z</lastmod>
+    <lastmod>2025-11-14T10:57:31.104Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/welcome/welcome.html</loc>
-    <lastmod>2025-07-18T10:09:13.138Z</lastmod>
+    <lastmod>2025-11-14T10:57:32.982Z</lastmod>
   </url>
 </urlset>
