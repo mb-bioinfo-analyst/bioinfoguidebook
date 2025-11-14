@@ -3,6 +3,7 @@ project:
   resources:
     - robots.txt
     - posts/**
+    - ba8c37b13b3c436fa255ff0dcf52e90b.txt
 website:
   # Basic site info
   title: "Bioinfo Guide Book"
