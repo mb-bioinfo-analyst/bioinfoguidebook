@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-03-05">
 <meta name="description" content="A detailed guide to computing and interpreting p-values, adjusted p-values, and the False Discovery Rate (FDR) in biological experiments.">
 
-<title>p-Values &amp; FDR in Biological Experiments</title>
+<title>Bioinfo Guide Book – p-Values &amp; FDR in Biological Experiments</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,6 +81,9 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 
 <!-- Google site verification -->
 <meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+
+<!-- Bing Webmaster Tools verification -->
+<meta name="msvalidate.01" content="ba8c37b13b3c436fa255ff0dcf52e90b">
 <!-- Structured data for rich search results -->
 <script type="application/ld+json">
 {
@@ -94,65 +97,66 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     "name": "Bilal Mustafa"
   }
 }
-</script>
 
 
-<meta property="og:title" content="p-Values &amp; FDR in Biological Experiments | Bioinfo Guide Book">
-<meta property="og:description" content="Learn to compute, adjust, and interpret p-values and control the false discovery rate in biological experiments.">
-<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/SignificanceValue/image.jpg">
-<meta property="og:site-name" content="Bioinfo Guide Book">
-<meta property="og:image:alt" content="p-values and FDR thresholds">
-<meta name="twitter:title" content="p-Values &amp; FDR in Biological Experiments">
-<meta name="twitter:description" content="Master p-value computation, adjustment methods, and FDR control for reliable biological data analysis.">
-<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/SignificanceValue/image.jpg">
-<meta name="twitter:creator" content="@bmustafa122">
-<meta name="twitter:site" content="@bmustafa122">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="p-values and FDR thresholds">
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="logo image" class="navbar-logo">
+    <a href="/index.html" class="navbar-brand navbar-brand-logo">
+    <img src="/logo-no-background.png" alt="logo image" class="navbar-logo" />
     </a>
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="/index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+    <a class="nav-link" href="/index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
+    <a class="nav-link" href="/archive.html" rel="" target="">
  <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i 
+  class="bi bi-twitter" 
+  role="img" 
+  aria-label="twitter" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i 
+  class="bi bi-linkedin" 
+  role="img" 
+  aria-label="linkedin" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i 
+  class="bi bi-youtube" 
+  role="img" 
+  aria-label="youtube" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -173,11 +177,16 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn"
+      data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">All Posts</li><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/SignificanceValue/significancevalue.html">SignificanceValue</a></li><li class="breadcrumb-item"><a href="../../posts/SignificanceValue/significancevalue.html">p-Values &amp; FDR in Biological Experiments</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <h1 class="quarto-secondary-nav-title"></h1>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -186,45 +195,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   </nav>
 </header>
 <!-- content -->
-<header id="title-block-header" class="quarto-title-block default page-columns page-full">
-  <div class="quarto-title-banner page-columns page-full">
-    <div class="quarto-title column-body">
-      <h1 class="title">p-Values &amp; FDR in Biological Experiments</h1>
-            <p class="subtitle lead">Interpreting p-Values, Adjusted p-Values &amp; False Discovery Rate in R</p>
-                  <div>
-        <div class="description">
-          <p>A detailed guide to computing and interpreting p-values, adjusted p-values, and the False Discovery Rate (FDR) in biological experiments.</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Statistics</div>
-                <div class="quarto-category">Data Analysis</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Bilal Mustafa </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">March 5, 2025</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -263,7 +234,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
   </div>
 </li>
@@ -280,7 +251,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
   </div>
 </li>
@@ -297,7 +268,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Biostatistics</span></a>
   </div>
 </li>
@@ -314,7 +285,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Centrality Measures in R</span></a>
   </div>
 </li>
@@ -331,7 +302,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Mastering Conditional Logic in R</span></a>
   </div>
 </li>
@@ -348,7 +319,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Confidence Intervals in R</span></a>
   </div>
 </li>
@@ -365,7 +336,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
   </div>
 </li>
@@ -382,7 +353,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
   </div>
 </li>
@@ -399,7 +370,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
   </div>
 </li>
@@ -416,7 +387,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
   </div>
 </li>
@@ -433,7 +404,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Principal Component Analysis in R</span></a>
   </div>
 </li>
@@ -450,7 +421,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
   </div>
 </li>
@@ -467,7 +438,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Set Operations</span></a>
   </div>
 </li>
@@ -484,8 +455,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">p-Values &amp; FDR in Biological Experiments</span></a>
+  <a href="/posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">p-Values & FDR in Biological Experiments</span></a>
   </div>
 </li>
       </ul>
@@ -501,7 +472,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Statistical Concepts in R</span></a>
   </div>
 </li>
@@ -518,7 +489,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variability Measures in R</span></a>
   </div>
 </li>
@@ -535,7 +506,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
+  <a href="/posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
   </div>
 </li>
@@ -548,64 +519,106 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
+        <div id="quarto-toc-target"></div>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+  <div class="quarto-title-banner">
+    <div class="quarto-title column-body">
+      <h1 class="title">p-Values &amp; FDR in Biological Experiments</h1>
+            <p class="subtitle lead">Interpreting p-Values, Adjusted p-Values &amp; False Discovery Rate in R</p>
+                  <div>
+        <div class="description">
+          <p>A detailed guide to computing and interpreting p-values, adjusted p-values, and the False Discovery Rate (FDR) in biological experiments.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Statistics</div>
+                <div class="quarto-category">Data Analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Bilal Mustafa </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">March 5, 2025</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header>
+<nav id="TOC" role="doc-toc">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
-  <ul class="collapse">
-  <li><a href="#the-role-of-p-values" id="toc-the-role-of-p-values" class="nav-link" data-scroll-target="#the-role-of-p-values">The Role of p-values:</a></li>
-  <li><a href="#why-we-need-adjusted-p-values" id="toc-why-we-need-adjusted-p-values" class="nav-link" data-scroll-target="#why-we-need-adjusted-p-values">Why We Need Adjusted p-values?</a></li>
-  <li><a href="#the-significance-of-the-false-discovery-rate-fdr" id="toc-the-significance-of-the-false-discovery-rate-fdr" class="nav-link" data-scroll-target="#the-significance-of-the-false-discovery-rate-fdr">The Significance of the False Discovery Rate (FDR):</a></li>
-  <li><a href="#choosing-cutoff-points-a-balance-between-strictness-and-exploration" id="toc-choosing-cutoff-points-a-balance-between-strictness-and-exploration" class="nav-link" data-scroll-target="#choosing-cutoff-points-a-balance-between-strictness-and-exploration">Choosing Cutoff Points: A Balance Between Strictness and Exploration</a></li>
-  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together" class="nav-link" data-scroll-target="#putting-it-all-together">Putting It All Together:</a></li>
+  <li><a href="#introduction" id="toc-introduction">Introduction:</a>
+  <ul>
+  <li><a href="#the-role-of-p-values" id="toc-the-role-of-p-values">The Role of p-values:</a></li>
+  <li><a href="#why-we-need-adjusted-p-values" id="toc-why-we-need-adjusted-p-values">Why We Need Adjusted p-values?</a></li>
+  <li><a href="#the-significance-of-the-false-discovery-rate-fdr" id="toc-the-significance-of-the-false-discovery-rate-fdr">The Significance of the False Discovery Rate (FDR):</a></li>
+  <li><a href="#choosing-cutoff-points-a-balance-between-strictness-and-exploration" id="toc-choosing-cutoff-points-a-balance-between-strictness-and-exploration">Choosing Cutoff Points: A Balance Between Strictness and Exploration</a></li>
+  <li><a href="#putting-it-all-together" id="toc-putting-it-all-together">Putting It All Together:</a></li>
   </ul></li>
   </ul>
 </nav>
-    </div>
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content">
-
-
-
-
 <section id="introduction" class="level1">
 <h1>Introduction:</h1>
 <p>In order to interpret the outcomes of biological experiments, statistical analyses are essential. Scientists can ascertain whether the patterns they see are real signals or just the result of pure chance by employing statistical tools. The p-value, adjusted p-value, and false discovery rate (FDR) are three particularly crucial ideas in these analyses. Researchers and readers of scientific studies can assess the validity of the reported results more easily if they are aware of the meanings of these terms and how they are used.</p>
-<hr>
+<hr />
 <section id="the-role-of-p-values" class="level2">
-<h2 class="anchored" data-anchor-id="the-role-of-p-values">The Role of p-values:</h2>
+<h2>The Role of p-values:</h2>
 <p>The p-value is frequently used to express the likelihood that data would be at least as extreme as those observed in the event that there were no true underlying effect—a scenario known as the “null hypothesis” being true. A small p-value indicates that it would be extremely uncommon to observe such a large difference if the drug actually had no effect at all, for instance, if your experiment demonstrates a strong difference—for instance, a discernible increase in the growth rate of cells treated with a new drug compared to a control group. Many researchers have traditionally used a cutoff of 0.05 for the p-value, which indicates that the observed result has a probability of less than 5% that it would occur by chance. A 0.01 cutoff, on the other hand, is stricter and suggests a more stringent limitation on false positives; researchers who use this threshold are indicating that they only accept a 1 percent chance of mistakenly detecting a significant result. Conversely, some studies may employ a 0.1 (10 percent) threshold, typically when they wish to be more accommodating and are prepared to accept a greater likelihood of false positives. Rarely, thresholds as high as 0.25 might be thought of as casting a wider net in exploratory settings or large-scale screenings, but doing so also raises the possibility of including spurious findings. It is crucial to keep in mind that a p-value by itself does not indicate the size of an effect in a biological sense, regardless of the p-value threshold you select. All it suggests is that the effect is not likely to be entirely coincidental. In order to determine whether the effect of a medication or intervention is both statistically and biologically significant, researchers in practical research consider a variety of metrics in addition to the p-value, such as effect sizes and confidence intervals.</p>
-<hr>
+<hr />
 </section>
 <section id="why-we-need-adjusted-p-values" class="level2">
-<h2 class="anchored" data-anchor-id="why-we-need-adjusted-p-values">Why We Need Adjusted p-values?</h2>
+<h2>Why We Need Adjusted p-values?</h2>
 <p>Many biological disciplines, especially proteomics, genomics, and other high-throughput investigations, routinely perform thousands or even millions of statistical tests. In a gene expression experiment, for example, you could track changes in the expression levels of thousands of genes. Testing each gene separately significantly raises the likelihood of discovering “significant” results by pure chance. Adjusted p-values become significant at this point. You can lessen the possibility of false positives—results that seem significant but are actually the result of random chance—by modifying the p-values for the total number of comparisons. When multiple tests are being conducted simultaneously, the Bonferroni correction is a simple adjustment technique that effectively makes each test more stringent. However, in large-scale studies, Bonferroni may be overly stringent, possibly omitting meaningful results. The Benjamini-Hochberg procedure is another popular approach that focuses on managing the false discovery rate (FDR). The goal is to strike a balance between finding real effects and preventing spurious results by allowing a specific small percentage of false positives rather than trying to eradicate all of them. To demonstrate the potential application of adjusted p-values, consider a microbiologist who is looking into the antibiotic potential of 10,000 distinct bacterial strains. Many strains that seem to have antibiotic potential but actually don’t are likely to be found if all p-values are treated the standard way (using a straightforward 0.05 cutoff). By modifying those p-values using techniques like Bonferroni correction or Benjamini-Hochberg correction, you can make sure that you don’t pursue too many false leads. The expense of investigating false positives may also lead you to conclude that an even stricter cutoff of 0.01 is necessary. To be more inclusive and prevent missing a potentially useful lead, you could also set the threshold at 0.1 if this is an exploratory project in its early stages.</p>
-<hr>
+<hr />
 </section>
 <section id="the-significance-of-the-false-discovery-rate-fdr" class="level2">
-<h2 class="anchored" data-anchor-id="the-significance-of-the-false-discovery-rate-fdr">The Significance of the False Discovery Rate (FDR):</h2>
+<h2>The Significance of the False Discovery Rate (FDR):</h2>
 <p>Though it is worth emphasizing separately, the idea of the false discovery rate (FDR) is closely related to adjusted p-values. In essence, the FDR calculates the expected percentage of results that are false positives but are classified as “significant.”. For instance, you acknowledge that roughly 5% of the results you consider significant may be false alarms if you set the FDR to 5%, which is commonly expressed as 0.05. Knowing the FDR aids researchers in determining the level of confidence they should have in any one gene on a large screen, where hundreds of genes may be classified as “differentially expressed.”. The field of cancer genomics provides a practical illustration of FDR. Researchers may examine tens of thousands of genetic variants simultaneously in studies intended to identify particular mutations or genes that propel the development of cancer. They risk being overloaded with false positives if the FDR is not controlled, squandering time and money searching for mutations that eventually have no effect on the illness. Scientists can more successfully focus on the genetic alterations that are actually deserving of more research by choosing a realistic FDR threshold, such as 0.01, 0.05, or 0.1, depending on the project’s error tolerance.</p>
 </section>
 <section id="choosing-cutoff-points-a-balance-between-strictness-and-exploration" class="level2">
-<h2 class="anchored" data-anchor-id="choosing-cutoff-points-a-balance-between-strictness-and-exploration">Choosing Cutoff Points: A Balance Between Strictness and Exploration</h2>
+<h2>Choosing Cutoff Points: A Balance Between Strictness and Exploration</h2>
 <p>Selecting a threshold to apply when analyzing FDR and p-values can be difficult. While an overly stringent threshold may deter researchers from making untrue claims, it may also obscure important discoveries. A lower threshold, on the other hand, might lead to more original discoveries, but at the risk of inadvertently emphasizing results that aren’t actually important. Various experiments require varying degrees of prudence. In order to ensure patient safety, researchers frequently gravitate toward stricter cutoffs like 0.01 when a clinical decision hinges on determining the absolute safest solution, such as determining whether a novel medication may have detrimental side effects. Although there is a greater chance of false positives in more exploratory settings, a threshold of 0.1 or even 0.25 might enable researchers to cast a wider net and collect leads for additional research. Consider a fisherman putting a net into a river that is teeming with different sized fish. Almost all fish are caught by a net with tiny holes, but a lot of debris is also brought in. Large holes in the net prevent too much debris from entering, but some smaller fish may be lost. Determining the size of these holes depends on whether you can live with some debris (false positives) or if you have to catch every valuable fish (true positive) at all costs. This is similar to adjusted p-values, FDR, and p-value thresholds.</p>
-<hr>
+<hr />
 </section>
 <section id="putting-it-all-together" class="level2">
-<h2 class="anchored" data-anchor-id="putting-it-all-together">Putting It All Together:</h2>
+<h2>Putting It All Together:</h2>
 <p>In conclusion, the false discovery rate, adjusted p-values, and p-values provide a system of checks and balances that assist researchers in appropriately interpreting the findings of their experiments. The p-value, which is a crucial starting point but can be deceptive if numerous tests are conducted, shows whether an observed effect is likely to be real or the result of random chance. The multiple-testing issue is taken into consideration by adjusted p-values, which guarantee that what seems “significant” is not merely an unintentional outlier. Lastly, the false discovery rate recognizes that if the objective is to find potentially significant leads in high-throughput or large-scale studies, permitting a small percentage of false positives may be a necessary and practical trade-off. These statistical tools can help you get the most accurate results whether you’re testing the newest possible cancer treatment, examining fruit fly gene expression, or screening compounds for antibiotic qualities. They also serve as a reminder that no single figure, including an FDR cutoff, adjusted p-value, or p-value, can adequately convey the intricacy and biological significance of an experimental finding. Researchers frequently combine statistical significance with replication studies, biological context, effect sizes, and confidence intervals to arrive at strong conclusions. By doing this, they guarantee that their findings are pertinent to the issues they are trying to address and are also statistically sound.</p>
-<hr>
-
-
+<hr />
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-next">Basic Statistical Concepts in R</span> <span class="hidden" data-render-id="quarto-int-prev">Understanding Set Operations</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">All Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2">Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-3">Anova Lm R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/Anova_lm_R/anova_lm.html">Introduction to ANOVA and Linear Models</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-4">Bioinfo with R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/bioinfo-with-R/bioinfoR.html">Getting Started with Bioinformatics in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-5">Biostatistics 0</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/biostatistics_0/biostat_intro.html">Introduction to Biostatistics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-6">Centrality R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/centrality_R/centrality.html">Centrality Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-7">ConditionalStatements R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/ConditionalStatements_R/conditionalstatements.html">Mastering Conditional Logic in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-8">ConfidenceI R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/confidenceI_R/confidenceinterval.html">Understanding Confidence Intervals in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-9">Cosine Similarity</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/cosine_similarity/cosinesimilarity.html">Cosine Similarity for Gene Expression</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-10">DataWrangling R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling_R/datawrangle.html">Data Wrangling Best Practices in R - Part 1</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-11">DataWrangling2 R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling2_R/datawrangle2.html">Data Wrangling Best Practices in R - Part 2</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-12">NMD</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/NMD/nmd.html">Understanding Nonsense-Mediated Decay (NMD)</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-13">PCA R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/PCA_R/pca.html">Principal Component Analysis in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-14">Regression Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/regression-bioinformatics/regression.html">Regression Analysis in Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-15">Set Operation</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/set_operation/set_operation.html">Understanding Set Operations</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-16">SignificanceValue</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/SignificanceValue/significancevalue.html">p-Values &amp; FDR in Biological Experiments</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-17">T Test R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/T_test_R/t_test.html">Basic Statistical Concepts in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-18">Variability R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/variability_R/variabilityR.html">Variability Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-19">Welcome</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/welcome/welcome.html">Welcome to Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Archive">Archive</span> <span class="hidden" data-render-id="quarto-int-navbar:/archive.html">/archive.html</span> <span class="hidden" data-render-id="quarto-int-navbar:https://twitter.com/bmustafa122">https://twitter.com/bmustafa122</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.linkedin.com/in/bmustafa1/">https://www.linkedin.com/in/bmustafa1/</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q">https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q</span> <span class="hidden" data-render-id="quarto-int-navbar:ORCID">ORCID</span> <span class="hidden" data-render-id="quarto-int-navbar:https://orcid.org/0000-0003-0865-7974">https://orcid.org/0000-0003-0865-7974</span> <span class="hidden" data-render-id="quarto-int-navbar:RG">RG</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.researchgate.net/profile/Bilal-Mustafa-5">https://www.researchgate.net/profile/Bilal-Mustafa-5</span> <span class="hidden" data-render-id="footer-center-/about.html">About</span> <span class="hidden" data-render-id="footer-center-https://orcid.org/0000-0003-0865-7974">ORCID</span> <span class="hidden" data-render-id="footer-center-https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</span> <span class="hidden" data-render-id="quarto-breadcrumbs-76b9c2f5e2ea8a61a0803dae4d42ca7f">All Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-5dc52ca9ffdc26147075682c92a0a853">Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-a700fdfd69c1b21f9c0ca5e82bbc5331">SignificanceValue</span> <span class="hidden" data-render-id="quarto-breadcrumbs-16f5cc75def926e95a6f4510df74a6cd">p-Values &amp; FDR in Biological Experiments</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">p-Values &amp; FDR in Biological Experiments</span> <span class="hidden" data-render-id="quarto-twittercardtitle">p-Values &amp; FDR in Biological Experiments</span> <span class="hidden" data-render-id="quarto-ogcardtitle">p-Values &amp; FDR in Biological Experiments | Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-metasitename">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-twittercarddesc">Master p-value computation, adjustment methods, and FDR control for reliable biological data analysis.</span> <span class="hidden" data-render-id="quarto-ogcardddesc">Learn to compute, adjust, and interpret p-values and control the false discovery rate in biological experiments.</span></p>
+</div>
 </section>
 </section>
 
-<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -955,7 +968,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
-<nav class="page-navigation">
+<meta property="og:title" content="p-Values &amp; FDR in Biological Experiments | Bioinfo Guide Book">
+<meta property="og:description" content="Learn to compute, adjust, and interpret p-values and control the false discovery rate in biological experiments.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/SignificanceValue/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="p-values and FDR thresholds">
+<meta name="twitter:title" content="p-Values &amp; FDR in Biological Experiments">
+<meta name="twitter:description" content="Master p-value computation, adjustment methods, and FDR control for reliable biological data analysis.">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/SignificanceValue/image.jpg">
+<meta name="twitter:creator" content="@bmustafa122">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="p-values and FDR thresholds">
+</head><body class="nav-sidebar"><nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="../../posts/set_operation/set_operation.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Understanding Set Operations</span>
@@ -967,7 +992,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav>
-</div> <!-- /content -->
+ <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
@@ -976,7 +1001,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../about.html">
+ About
+    </a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122">
@@ -997,10 +1024,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">ORCID</a>
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">
+ ORCID
+    </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">
+ RG
+    </a>
   </li>  
 </ul>
     </div>
@@ -1009,6 +1040,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
+<!-- mapmyvisitors -->
+<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
 
 
 

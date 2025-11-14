@@ -7,7 +7,7 @@
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-11">
 <meta name="description" content="A hands-on guide to measuring variability in R. Learn to compute variance, standard deviation, interquartile range, and coefficient of variation— complete with code examples and visualizations.">
-<title>Variability Measures in R</title>
+<title>Bioinfo Guide Book – Variability Measures in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,6 +104,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <script src="../../site_libs/pagedtable-1.1/js/pagedtable.js"></script><!-- Basic SEO meta --><meta name="author" content="Bilal Mustafa">
 <meta name="keywords" content="bioinformatics, computational biology, genomics, R programming, Python, tutorials, statistics, data analysis">
 <!-- Google site verification --><meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+<!-- Bing Webmaster Tools verification --><meta name="msvalidate.01" content="ba8c37b13b3c436fa255ff0dcf52e90b">
 <!-- Structured data for rich search results --><script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,59 +117,66 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     "name": "Bilal Mustafa"
   }
 }
-</script>
-<meta property="og:title" content="Variability Measures in R | Bioinfo Guide Book">
-<meta property="og:description" content="Master the calculation and interpretation of variability statistics in R with practical examples and plots.">
-<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/variability_R/image.jpg">
-<meta property="og:site-name" content="Bioinfo Guide Book">
-<meta property="og:image:alt" content="Chart illustrating variance and standard deviation in R">
-<meta name="twitter:title" content="Variability Measures in R: Variance, SD &amp; IQR">
-<meta name="twitter:description" content="Step through computing and interpreting key variability statistics in R, including variance, SD, IQR, and coefficient of variation.">
-<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/variability_R/image.jpg">
-<meta name="twitter:creator" content="@bmustafa122">
-<meta name="twitter:site" content="@bmustafa122">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="Chart illustrating variance and standard deviation in R">
+
+
 </head>
-<body class="nav-sidebar floating nav-fixed">
+
+<body>
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    <img src="../../logo-no-background.png" alt="logo image" class="navbar-logo"></a>
-    <a class="navbar-brand" href="../../index.html">
+    <a href="/index.html" class="navbar-brand navbar-brand-logo">
+    <img src="/logo-no-background.png" alt="logo image" class="navbar-logo" />
+    </a>
+    <a class="navbar-brand" href="/index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="../../index.html" rel="" target="">
+  <li class="nav-item">
+    <a class="nav-link" href="/index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../archive.html" rel="" target="">
+    <a class="nav-link" href="/archive.html" rel="" target="">
  <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-<ul class="navbar-nav navbar-nav-scroll ms-auto">
-<li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i 
+  class="bi bi-twitter" 
+  role="img" 
+  aria-label="twitter" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i 
+  class="bi bi-linkedin" 
+  role="img" 
+  aria-label="linkedin" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i 
+  class="bi bi-youtube" 
+  role="img" 
+  aria-label="youtube" 
+>
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -181,23 +189,367 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
  <span class="menu-text">RG</span></a>
   </li>  
 </ul>
-<div class="quarto-navbar-tools">
+            <div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn"
+      data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">All Posts</li><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/variability_R/variabilityR.html">Variability R</a></li><li class="breadcrumb-item"><a href="../../posts/variability_R/variabilityR.html">Variability Measures in R</a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <h1 class="quarto-secondary-nav-title"></h1>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
+      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
+      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">All Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Anova Lm R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Bioinfo with R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Biostatistics 0</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Biostatistics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Centrality R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Centrality Measures in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">ConditionalStatements R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mastering Conditional Logic in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">ConfidenceI R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Confidence Intervals in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Cosine Similarity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">DataWrangling R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">DataWrangling2 R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">NMD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text">PCA R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text">Regression Bioinformatics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+ <span class="menu-text">Set Operation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Set Operations</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
+ <span class="menu-text">SignificanceValue</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">p-Values & FDR in Biological Experiments</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
+ <span class="menu-text">T Test R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Statistical Concepts in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true">
+ <span class="menu-text">Variability R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Variability Measures in R</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
+ <span class="menu-text">Welcome</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="/posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <div id="quarto-toc-target"></div>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+  <div class="quarto-title-banner">
     <div class="quarto-title column-body">
       <h1 class="title">Variability Measures in R</h1>
             <p class="subtitle lead">Calculating Variance, SD, IQR &amp; Coefficient of Variation</p>
@@ -235,386 +587,85 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </div>
     
   
-  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-<li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">All Posts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
-<li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Posts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
-<li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Anova Lm R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Bioinfo with R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Biostatistics 0</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Biostatistics</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Centrality R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Centrality Measures in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">ConditionalStatements R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mastering Conditional Logic in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
- <span class="menu-text">ConfidenceI R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Confidence Intervals in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Cosine Similarity</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text">DataWrangling R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">DataWrangling2 R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">NMD</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
- <span class="menu-text">PCA R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principal Component Analysis in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Regression Bioinformatics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
- <span class="menu-text">Set Operation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Set Operations</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
- <span class="menu-text">SignificanceValue</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">p-Values &amp; FDR in Biological Experiments</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
- <span class="menu-text">T Test R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic Statistical Concepts in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true">
- <span class="menu-text">Variability R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 show">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Variability Measures in R</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
- <span class="menu-text">Welcome</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">
-<li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../../posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
-  </div>
-</li>
-      </ul>
-</li>
-      </ul>
-</li>
-      </ul>
-</li>
-    </ul>
-</div>
-</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+  </header>
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li>
-<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
-  <ul class="collapse">
-<li><a href="#range" id="toc-range" class="nav-link" data-scroll-target="#range">Range</a></li>
-  <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr" class="nav-link" data-scroll-target="#interquartile-range-iqr">Interquartile range (IQR)</a></li>
-  <li><a href="#variance" id="toc-variance" class="nav-link" data-scroll-target="#variance">Variance</a></li>
-  <li><a href="#standard-deviation" id="toc-standard-deviation" class="nav-link" data-scroll-target="#standard-deviation">Standard deviation</a></li>
-  <li><a href="#standard-error" id="toc-standard-error" class="nav-link" data-scroll-target="#standard-error">Standard Error</a></li>
+  <li><a href="#introduction" id="toc-introduction">Introduction:</a>
+  <ul>
+  <li><a href="#range" id="toc-range">Range</a></li>
+  <li><a href="#interquartile-range-iqr" id="toc-interquartile-range-iqr">Interquartile range (IQR)</a></li>
+  <li><a href="#variance" id="toc-variance">Variance</a></li>
+  <li><a href="#standard-deviation" id="toc-standard-deviation">Standard deviation</a></li>
+  <li><a href="#standard-error" id="toc-standard-error">Standard Error</a></li>
+  </ul></li>
+  <li><a href="#notes-on-measures-of-variability" id="toc-notes-on-measures-of-variability">Notes on Measures of Variability</a></li>
   </ul>
-</li>
-  <li><a href="#notes-on-measures-of-variability" id="toc-notes-on-measures-of-variability" class="nav-link" data-scroll-target="#notes-on-measures-of-variability">Notes on Measures of Variability</a></li>
-  </ul></nav>
-    </div>
-<!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
+</nav>
+<section id="introduction" class="level1">
+<h1>Introduction:</h1>
 <p>In our previous post, we looked into measures of centrality, which help identify the central point of a data set. However, recognizing the central tendency is insufficient to properly explain the distribution of your data. Measures of variability provide information about the spread or dispersion of data points around the center value. In this post, we’ll look at the key measures of variability, Range, Interquartile Range (IQR), Variance, Standard Deviation, and Standard Error, and show how to compute them with R.</p>
 <p>Measures of variability describe how far data points in a dataset deviate from the mean value. These measures are critical for understanding the spread of the distribution, since they can have a substantial impact on data interpretation.</p>
-<hr>
-<section id="range" class="level2"><h2 class="anchored" data-anchor-id="range">Range</h2>
+<hr />
+<section id="range" class="level2">
+<h2>Range</h2>
 <p>The range is the most basic measure of variability. It is calculated as the difference between the dataset’s highest and lowest values. The range provides an overview of the distribution of data, but it is extremely sensitive to outliers. In R, you can compute the range using the range() function, and you get the range value by subtracting the minimum from the maximum:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">200</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span><span class="va">range_values</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
-<span><span class="va">range_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/diff.html">diff</a></span><span class="op">(</span><span class="va">range_values</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">10</span>, <span class="dv">200</span>, <span class="dv">5</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>range_values <span class="ot">&lt;-</span> <span class="fu">range</span>(data)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>range_value <span class="ot">&lt;-</span> <span class="fu">diff</span>(range_values)</span></code></pre></div>
 </div>
-<hr></section><section id="interquartile-range-iqr" class="level2"><h2 class="anchored" data-anchor-id="interquartile-range-iqr">Interquartile range (IQR)</h2>
+<hr />
+</section>
+<section id="interquartile-range-iqr" class="level2">
+<h2>Interquartile range (IQR)</h2>
 <p>The Interquartile Range (IQR) is a measure of the distribution of the middle 50% of data. It is computed by subtracting the 75th percentile (Q3) from the 25th percentile (Q1). The IQR is more resistant against outliers than the range and provides a more accurate sense of variability for skewed distributions. In R, you may calculate the IQR using the IQR() function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">iqr_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>iqr_value <span class="ot">&lt;-</span> <span class="fu">IQR</span>(data)</span></code></pre></div>
 </div>
-<hr></section><section id="variance" class="level2"><h2 class="anchored" data-anchor-id="variance">Variance</h2>
+<hr />
+</section>
+<section id="variance" class="level2">
+<h2>Variance</h2>
 <p>Variance represents the average squared deviation of each data point from the mean. It provides information on the degree of spread in the data, with higher variances suggesting greater spread. Variance is important for evaluating the variability of different datasets, but it is expressed in squared units of the original data, making it difficult to interpret on its own. In R, variance is determined using the var() function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">variance_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>variance_value <span class="ot">&lt;-</span> <span class="fu">var</span>(data)</span></code></pre></div>
 </div>
-<hr></section><section id="standard-deviation" class="level2"><h2 class="anchored" data-anchor-id="standard-deviation">Standard deviation</h2>
+<hr />
+</section>
+<section id="standard-deviation" class="level2">
+<h2>Standard deviation</h2>
 <p>Standard deviation is the square root of variance and measures each data point’s average distance from the mean. It is one of the most commonly used measures of variability since it is expressed in the same units as the data, making it easier to read than variance. A lower standard deviation implies that the data points are close to the mean, whereas a higher standard deviation indicates a wider range. In R, you can calculate the standard deviation using the sd() function.</p>
 <div class="cell">
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">sd_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>sd_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(data)</span></code></pre></div>
 </div>
-<hr></section><section id="standard-error" class="level2"><h2 class="anchored" data-anchor-id="standard-error">Standard Error</h2>
+<hr />
+</section>
+<section id="standard-error" class="level2">
+<h2>Standard Error</h2>
 <p>The Standard Error (SE) computes the standard deviation of the sample mean from the population mean. It gives an estimate of how much the sample mean is likely to differ from the true population mean, given repeated sampling. A lower SE suggests that the sample mean is more representative of the population mean. To compute the standard error, divide the standard deviation by the square root of the sample size. In R, it may be calculated like this:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">se_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">sqrt</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/length.html">length</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>se_value <span class="ot">&lt;-</span> <span class="fu">sd</span>(data) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(data))</span></code></pre></div>
 </div>
-<hr></section></section><section id="notes-on-measures-of-variability" class="level1"><h1>Notes on Measures of Variability</h1>
+<hr />
+</section>
+</section>
+<section id="notes-on-measures-of-variability" class="level1">
+<h1>Notes on Measures of Variability</h1>
 <p>Understanding measures of variability is critical for comprehending the distribution and spread of your data. While centrality metrics indicate where the majority of data points are located, variability measures indicate how widely distributed those data points are around the central value. Incorporating these measures; Range, IQR, Variance, Standard Deviation, and Standard Error, into your descriptive statistics analysis in R allows you to acquire a more comprehensive picture of your data and make more informed research or analytical decisions.</p>
-<hr>
+<hr />
 <p>visit the post <a href="../../posts/confidencei_r/confidenceinterval.html">Confidence interval</a></p>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-next">Welcome to Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-prev">Basic Statistical Concepts in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">All Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2">Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-3">Anova Lm R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/Anova_lm_R/anova_lm.html">Introduction to ANOVA and Linear Models</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-4">Bioinfo with R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/bioinfo-with-R/bioinfoR.html">Getting Started with Bioinformatics in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-5">Biostatistics 0</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/biostatistics_0/biostat_intro.html">Introduction to Biostatistics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-6">Centrality R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/centrality_R/centrality.html">Centrality Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-7">ConditionalStatements R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/ConditionalStatements_R/conditionalstatements.html">Mastering Conditional Logic in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-8">ConfidenceI R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/confidenceI_R/confidenceinterval.html">Understanding Confidence Intervals in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-9">Cosine Similarity</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/cosine_similarity/cosinesimilarity.html">Cosine Similarity for Gene Expression</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-10">DataWrangling R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling_R/datawrangle.html">Data Wrangling Best Practices in R - Part 1</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-11">DataWrangling2 R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling2_R/datawrangle2.html">Data Wrangling Best Practices in R - Part 2</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-12">NMD</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/NMD/nmd.html">Understanding Nonsense-Mediated Decay (NMD)</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-13">PCA R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/PCA_R/pca.html">Principal Component Analysis in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-14">Regression Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/regression-bioinformatics/regression.html">Regression Analysis in Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-15">Set Operation</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/set_operation/set_operation.html">Understanding Set Operations</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-16">SignificanceValue</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/SignificanceValue/significancevalue.html">p-Values &amp; FDR in Biological Experiments</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-17">T Test R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/T_test_R/t_test.html">Basic Statistical Concepts in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-18">Variability R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/variability_R/variabilityR.html">Variability Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-19">Welcome</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/welcome/welcome.html">Welcome to Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Archive">Archive</span> <span class="hidden" data-render-id="quarto-int-navbar:/archive.html">/archive.html</span> <span class="hidden" data-render-id="quarto-int-navbar:https://twitter.com/bmustafa122">https://twitter.com/bmustafa122</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.linkedin.com/in/bmustafa1/">https://www.linkedin.com/in/bmustafa1/</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q">https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q</span> <span class="hidden" data-render-id="quarto-int-navbar:ORCID">ORCID</span> <span class="hidden" data-render-id="quarto-int-navbar:https://orcid.org/0000-0003-0865-7974">https://orcid.org/0000-0003-0865-7974</span> <span class="hidden" data-render-id="quarto-int-navbar:RG">RG</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.researchgate.net/profile/Bilal-Mustafa-5">https://www.researchgate.net/profile/Bilal-Mustafa-5</span> <span class="hidden" data-render-id="footer-center-/about.html">About</span> <span class="hidden" data-render-id="footer-center-https://orcid.org/0000-0003-0865-7974">ORCID</span> <span class="hidden" data-render-id="footer-center-https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</span> <span class="hidden" data-render-id="quarto-breadcrumbs-76b9c2f5e2ea8a61a0803dae4d42ca7f">All Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-5dc52ca9ffdc26147075682c92a0a853">Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-850f7b8384b5947e8d21141e4b78905b">Variability R</span> <span class="hidden" data-render-id="quarto-breadcrumbs-bb3b4c487809232c10e400be0f2021bf">Variability Measures in R</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden" data-render-id="quarto-metatitle">Variability Measures in R</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Variability Measures in R: Variance, SD &amp; IQR</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Variability Measures in R | Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-metasitename">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-twittercarddesc">Step through computing and interpreting key variability statistics in R, including variance, SD, IQR, and coefficient of variation.</span> <span class="hidden" data-render-id="quarto-ogcardddesc">Master the calculation and interpretation of variability statistics in R with practical examples and plots.</span></p>
+</div>
+</section>
 
-
-</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -962,7 +1013,19 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
+</script><meta property="og:title" content="Variability Measures in R | Bioinfo Guide Book">
+<meta property="og:description" content="Master the calculation and interpretation of variability statistics in R with practical examples and plots.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/variability_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Chart illustrating variance and standard deviation in R">
+<meta name="twitter:title" content="Variability Measures in R: Variance, SD &amp; IQR">
+<meta name="twitter:description" content="Step through computing and interpreting key variability statistics in R, including variance, SD, IQR, and coefficient of variation.">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/variability_R/image.jpg">
+<meta name="twitter:creator" content="@bmustafa122">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Chart illustrating variance and standard deviation in R">
+</head><body class="nav-sidebar"><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../posts/T_test_R/t_test.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Basic Statistical Concepts in R</span>
       </a>          
@@ -972,16 +1035,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">Welcome to Bioinfo Guide Book</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav>
-</div> <!-- /content -->
-<footer class="footer"><div class="nav-footer">
+</nav><!-- /content --><footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
-    <a class="nav-link" href="../../about.html">About</a>
+    <a class="nav-link" href="../../about.html">
+ About
+    </a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122">
@@ -1002,10 +1065,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">ORCID</a>
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">
+ ORCID
+    </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">
+ RG
+    </a>
   </li>  
 </ul>
 </div>
@@ -1013,7 +1080,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
   </div>
-</footer>
-
+</footer><!-- mapmyvisitors --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
 
 </body></html>
