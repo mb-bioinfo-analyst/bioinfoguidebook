@@ -104,6 +104,9 @@ format:
 
           <!-- Google site verification -->
           <meta name="google-site-verification" content="DM-UlQt0sZ6x57-pYdLidTWgKZnZeIQefyFAOJvFISI">
+          
+          <!-- Bing Webmaster Tools verification -->
+          <meta name="msvalidate.01" content="ba8c37b13b3c436fa255ff0dcf52e90b">
 
       - text: |
           <!-- Structured data for rich search results -->
@@ -119,6 +122,8 @@ format:
               "name": "Bilal Mustafa"
             }
           }
+    include-after-body:
+      - text: |
           </script>
           <!-- mapmyvisitors -->
           <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=080808&w=206&t=tt&d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353'></script>
