@@ -120,17 +120,13 @@ format:
             }
           }
           </script>
-<<<<<<< HEAD
     
     include-after-body:
       - text: |
           <!-- mapmyvisitors -->
           <script type='text/javascript' id='mapmyvisitors'
                   src='https://mapmyvisitors.com/map.js?cl=080808&w=206&t=tt&d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353'>
-=======
-          <!-- mapmyvisitors --> <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=080808&w=206&t=tt&d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&co=ffffff&ct=808080&cmo=3acc3a&cmn=ff5353'>
->>>>>>> b883e16c20f3f902447ea76324f45581ed5df0b7
           </script>
-          
+
 editor: visual
 
