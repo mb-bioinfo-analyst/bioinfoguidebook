@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Advanced File Transformation & Reshaping – Part 2"
 author: "Bilal Mustafa"
 date: "2023-09-21"
-slug: "data-wrangling-best-practices-part-2"
+#slug: "data-wrangling-best-practices-part-2"
 description: >
   Part 2 of our R data-wrangling series dives into advanced techniques:
   reshaping data with pivoting, joining tables, string manipulation, and
@@ -262,6 +262,3 @@ You may improve the efficiency of your data wrangling workflow and provide more 
 Always tailor these best practices to your unique needs, keeping in mind that the individual methods and packages you use may vary depending on your dataset and research goals.
 
 ------------------------------------------------------------------------
-
-
-

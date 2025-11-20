@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Install R, learn basic syntax, and run your first bioinformatics workflows"
 author: "Bilal Mustafa"
 date: "2023-09-07"
-slug: "getting-started-bioinformatics-r-setup-syntax-examples"
+#slug: "getting-started-bioinformatics-r-setup-syntax-examples"
 description: >
   A beginner’s guide to installing and configuring R for bioinformatics,
   understanding essential R syntax, and executing your first example workflows
@@ -301,6 +301,3 @@ In this blog post, we covered the basics of setting up your environment, underst
 With these fundamentals in hand, you can delve deeper into the world of bioinformatics and tackle more complex biological data analysis tasks.
 
 ------------------------------------------------------------------------
-
-
-

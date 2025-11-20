@@ -5,7 +5,7 @@ subtitle: "Calculating and Comparing Mean, Median, Mode, and Advanced Averages"
 
 author: "Bilal Mustafa"
 date: "2024-08-10"
-slug: "understanding-centrality-key-measures"
+#slug: "understanding-centrality-key-measures"
 
 description: >
   A hands-on tutorial on computing and interpreting central tendency measures 
@@ -145,5 +145,3 @@ The geometric mean is ideal for multiplicative processes, and the harmonic mean 
 Understanding these measures and how to compute them in R will enhance your ability to summarize and interpret data effectively.
 
 ------------------------------------------------------------------------
-
-

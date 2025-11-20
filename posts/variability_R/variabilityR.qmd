@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Calculating Variance, SD, IQR & Coefficient of Variation"
 author: "Bilal Mustafa"   
 date: "2024-08-11"    
-slug: "variability-measures-in-r"
+#slug: "variability-measures-in-r"
 description: >
   A hands-on guide to measuring variability in R. Learn to compute variance,
   standard deviation, interquartile range, and coefficient of variation—
@@ -128,5 +128,3 @@ While centrality metrics indicate where the majority of data points are located,
 Incorporating these measures; Range, IQR, Variance, Standard Deviation, and Standard Error, into your descriptive statistics analysis in R allows you to acquire a more comprehensive picture of your data and make more informed research or analytical decisions.
 
 ------------------------------------------------------------------------
-
-

@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Efficient File Reading, Cleaning & Transformation Workflows"
 author: "Bilal Mustafa"
 date: "2023-09-19"
-slug: "data-wrangling-best-practices-part-1"
+#slug: "data-wrangling-best-practices-part-1"
 description: >
   Part 1 of a series on data wrangling in R: learn efficient file reading,
   data cleaning, and initial transformation techniques using readr, dplyr, and
@@ -149,6 +149,3 @@ Stay tuned for our next installment, where we will delve deeper into advanced da
 Until then, happy data wrangling!
 
 ------------------------------------------------------------------------
-
-
-

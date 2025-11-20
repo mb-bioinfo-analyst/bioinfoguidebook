@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Your Go-To Resource for Bioinformatics Tutorials & References"
 author: "Bilal Mustafa"
 date: "2023-07-26"
-slug: "welcome"
+#slug: "welcome"
 description: >
   An introduction to Bioinfo Guide Book: a free, open-access site offering
   step-by-step bioinformatics tutorials, reproducible R & python code
@@ -87,4 +87,3 @@ Bilal Mustafa\
 Founder, Bioinfo Guide Book
 
 ------------------------------------------------------------------------
-

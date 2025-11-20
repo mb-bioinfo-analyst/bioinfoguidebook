@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Interpreting p-Values, Adjusted p-Values & False Discovery Rate in R"
 author: "Bilal Mustafa"
 date: "2025-03-05"
-slug: "p-values-adjusted-fdr-biological-experiments"
+#slug: "p-values-adjusted-fdr-biological-experiments"
 description: >
   A detailed guide to computing and interpreting p-values, adjusted p-values,
   and the False Discovery Rate (FDR) in biological experiments.
@@ -111,5 +111,3 @@ Researchers frequently combine statistical significance with replication studies
 By doing this, they guarantee that their findings are pertinent to the issues they are trying to address and are also statistically sound.
 
 ------------------------------------------------------------------------
-
-

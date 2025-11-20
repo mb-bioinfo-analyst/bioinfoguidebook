@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Conceptual Overview of Set Operations"
 author: "Bilal Mustafa"
 date: "2025-07-18"
-slug: "intro-to-set-operations"
+#slug: "intro-to-set-operations"
 description: >
   A conceptual overview of set operations. Learn the definitions, properties,
   and relationships of union, intersection, difference, and symmetric difference
@@ -331,5 +331,3 @@ Comprehensive guide to set operations.
 Retrieved July 16, 2025, from https://mathmonks.com
 
 ------------------------------------------------------------------------
-
-

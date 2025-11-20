@@ -9,7 +9,7 @@ description: >
   An accessible introduction to biostatistics, explaining what it is, why it matters, 
   and how statistical thinking supports biological and biomedical research.
 
-slug: "intro-to-biostats"
+#slug: "intro-to-biostats"
 
 categories: [biostatistics, statistics, data-science, biology]
 
@@ -62,16 +62,12 @@ It helps researchers summarize information, test hypotheses, and make conclusion
 ## Example Scenarios
 
 -   Estimating the average blood pressure in a population.
-    
 
 -   Comparing treatment outcomes between two patient groups.
-    
 
 -   Exploring whether gene expression correlates with disease severity.
-    
 
 -   Studying the effect of pollutants on aquatic species.
-    
 
 Each of these examples involves data, variability, and uncertainty --- all core to biostatistics.
 
@@ -80,7 +76,7 @@ Each of these examples involves data, variability, and uncertainty --- all core 
 Biostatistics supports every stage of scientific inquiry:
 
 | Stage                  | Purpose                                     | Example                                    |
-|-----------------|----------------------------|---------------------------|
+|------------------|----------------------------|---------------------------|
 | **Study Design**       | Plan how to collect and compare data        | Randomized control trial design            |
 | **Data Collection**    | Ensure representative and unbiased sampling | Clinical data, lab assays                  |
 | **Data Visualization** | Display trends and patterns                 | Boxplots, histograms                       |
@@ -118,26 +114,22 @@ theme_void()
 
 ## Why Biostatistics Matters
 
-1.  Understanding Variability 
+1.  Understanding Variability
 
 Biological data are inherently variable.
 Biostatistics helps separate real biological effects from random noise.
 
-
-2.  Making Evidence-Based Decisions 
+2.  Making Evidence-Based Decisions
 
 In medicine, public health, and life sciences, decisions must be supported by statistical evidence and not just intuition.
 
-
-3.  Ensuring Reproducibility 
+3.  Ensuring Reproducibility
 
 A statistically sound analysis ensures that results are reproducible and generalizable to larger populations.
 
-
-4.  Ethical Efficiency 
+4.  Ethical Efficiency
 
 Good statistical design avoids wasted resources and unnecessary use of animals or patients in research.
-
 
 ```{r}
 #| label: fig-data-to-decision

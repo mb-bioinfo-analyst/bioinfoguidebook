@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Applying Regression to Decode Biological Data Patterns"
 author: "Bilal Mustafa"
 date: "2023-09-07"
-slug: "regression-analysis-bioinformatics"
+#slug: "regression-analysis-bioinformatics"
 description: >
   Explore how regression techniques can uncover relationships in biological
   datasets. Learn to fit and interpret linear, multiple, and logistic regression
@@ -485,6 +485,3 @@ The Molecular Signatures Database (MSigDB) hallmark gene set collection.
 Cell systems, 1(6), 417-425.
 
 ------------------------------------------------------------------------
-
-
-

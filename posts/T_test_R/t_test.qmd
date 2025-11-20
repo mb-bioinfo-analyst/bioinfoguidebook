@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Overview of Descriptive Measures, Hypothesis Testing & Visualization"
 author: "Bilal Mustafa"    
 date: "2024-08-14"     
-slug: "basic-statistical-concepts-in-r"
+#slug: "basic-statistical-concepts-in-r"
 description: >
   An introductory guide to fundamental statistical concepts in R.
   Learn how to compute descriptive measures, conduct t-tests,
@@ -195,5 +195,3 @@ It's a great resource for understanding how to perform various t-tests in R.
 [Link to the documentation](https://www.rdocumentation.org/packages/stats/versions/3.6.2/topics/t.test)
 
 ------------------------------------------------------------------------
-
-

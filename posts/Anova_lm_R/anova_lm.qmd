@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R"
 author: "Bilal Mustafa"
 date: "2024-08-15"
-slug: "intro-to-anova-linear-models"
+#slug: "intro-to-anova-linear-models"
 description: >
   Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. 
   This tutorial covers hypothesis testing, model diagnostics, and interpretation—
@@ -293,6 +293,3 @@ Leave a comment below or reach out to us on social media.
 We're here to help you on your data analysis journey!
 
 ------------------------------------------------------------------------
-
-
-

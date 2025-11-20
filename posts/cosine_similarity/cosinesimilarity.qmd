@@ -4,7 +4,7 @@ pagetitle: "{{< meta title >}}"
 subtitle: "Comparing Gene Expression Profiles in R with Cosine Metrics"
 author: "Bilal Mustafa"
 date: "2024-02-18"
-slug: "cosine-similarity-gene-expression"
+#slug: "cosine-similarity-gene-expression"
 description: >
   Learn how to compare gene expression profiles using cosine similarity in R.
   This tutorial covers data preprocessing, computing similarity metrics, and

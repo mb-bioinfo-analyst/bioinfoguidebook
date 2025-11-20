@@ -6,7 +6,7 @@ author: "Bilal Mustafa"
 date: "2024-03-30"
 categories: [NMD, Nonsense Mediated Decay, Bioinformatics]
 tags: [NMD, mRNA Surveillance, RNA Biology]
-slug: "nonsense-mediated-decay-nmd"
+#slug: "nonsense-mediated-decay-nmd"
 description: >
   A practical guide to studying nonsense-mediated mRNA decay (NMD).
   Learn the biological mechanism, and NMD events.
@@ -237,6 +237,3 @@ Through the process of unraveling the intricacies of NMD, scientists are positio
 This will ultimately facilitate the development of enhanced diagnostics and treatments for various genetic disorders and other related conditions.
 
 ------------------------------------------------------------------------
-
-
-
