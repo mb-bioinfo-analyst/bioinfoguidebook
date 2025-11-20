@@ -218,5 +218,3 @@ But it's important to recognize the limitations of cosine similarity and take th
 Through the use of supplementary methods to augment cosine similarity and the consideration of its constraints, investigators can augment the accuracy and robustness of similarity analysis in biological research.
 
 ------------------------------------------------------------------------
-
-

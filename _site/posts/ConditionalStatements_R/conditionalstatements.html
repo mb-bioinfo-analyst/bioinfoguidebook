@@ -7,7 +7,7 @@
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-07">
 <meta name="description" content="A comprehensive tutorial on conditional programming in R. Learn how to use if-else statements, nested logic, switch functions, and vectorized operations to write clean, efficient code.">
-<title>Bioinfo Guide Book – Mastering Conditional Logic in R</title>
+<title>Mastering Conditional Logic in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,66 +117,59 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     "name": "Bilal Mustafa"
   }
 }
-
-
+</script>
+<meta property="og:title" content="Mastering Conditional Logic in R">
+<meta property="og:description" content="Explore comprehensive examples of conditional structures—from simple if-else to complex vectorized logic—in R.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Thumbnail">
+<meta name="twitter:title" content="Conditional Logic in R: If-Else &amp; Beyond">
+<meta name="twitter:description" content="Dive into if-else statements, nested conditions, and advanced logical operations for robust R programming.">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/image.jpg">
+<meta name="twitter:creator" content="@bmustafa122">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Thumbnail">
 </head>
-
-<body>
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/logo-no-background.png" alt="logo image" class="navbar-logo" />
-    </a>
-    <a class="navbar-brand" href="/index.html">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-no-background.png" alt="logo image" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
-  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="/index.html" rel="" target="">
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/archive.html" rel="" target="">
+    <a class="nav-link" href="../../archive.html" rel="" target="">
  <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i 
-  class="bi bi-twitter" 
-  role="img" 
-  aria-label="twitter" 
->
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i 
-  class="bi bi-linkedin" 
-  role="img" 
-  aria-label="linkedin" 
->
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i 
-  class="bi bi-youtube" 
-  role="img" 
-  aria-label="youtube" 
->
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -189,367 +182,23 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
  <span class="menu-text">RG</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <h1 class="quarto-secondary-nav-title"></h1>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">All Posts</li><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/ConditionalStatements_R/conditionalstatements.html">ConditionalStatements R</a></li><li class="breadcrumb-item"><a href="../../posts/ConditionalStatements_R/conditionalstatements.html">Mastering Conditional Logic in R</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">All Posts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Posts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Anova Lm R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Bioinfo with R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Biostatistics 0</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Biostatistics</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Centrality R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Centrality Measures in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
- <span class="menu-text">ConditionalStatements R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Mastering Conditional Logic in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
- <span class="menu-text">ConfidenceI R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Confidence Intervals in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Cosine Similarity</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text">DataWrangling R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
- <span class="menu-text">DataWrangling2 R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">NMD</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
- <span class="menu-text">PCA R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principal Component Analysis in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Regression Bioinformatics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
- <span class="menu-text">Set Operation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Set Operations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
- <span class="menu-text">SignificanceValue</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">p-Values & FDR in Biological Experiments</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
- <span class="menu-text">T Test R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic Statistical Concepts in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false">
- <span class="menu-text">Variability R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variability Measures in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
- <span class="menu-text">Welcome</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-  <div class="quarto-title-banner">
+  </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
       <h1 class="title">Mastering Conditional Logic in R</h1>
             <p class="subtitle lead">Implement If-Else, Nested Logic &amp; Vectorized Conditions</p>
@@ -587,211 +236,510 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </div>
     
   
-  </header>
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">All Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Anova Lm R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Bioinfo with R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Biostatistics 0</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Biostatistics</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Centrality R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Centrality Measures in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true">
+ <span class="menu-text">ConditionalStatements R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Mastering Conditional Logic in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">ConfidenceI R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Confidence Intervals in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Cosine Similarity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">DataWrangling R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false">
+ <span class="menu-text">DataWrangling2 R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">NMD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text">PCA R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text">Regression Bioinformatics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+ <span class="menu-text">Set Operation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Set Operations</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
+ <span class="menu-text">SignificanceValue</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">p-Values &amp; FDR in Biological Experiments</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
+ <span class="menu-text">T Test R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Statistical Concepts in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false">
+ <span class="menu-text">Variability R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variability Measures in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
+ <span class="menu-text">Welcome</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction">Introduction:</a>
-  <ul>
-  <li><a href="#basic-if-else-statements" id="toc-basic-if-else-statements">Basic If-Else Statements</a></li>
-  <li><a href="#multiple-conditions-with-else-if" id="toc-multiple-conditions-with-else-if">Multiple Conditions with else if</a></li>
-  <li><a href="#ternary-operator" id="toc-ternary-operator">Ternary Operator</a></li>
-  <li><a href="#vectorized-if-else-statements" id="toc-vectorized-if-else-statements">Vectorized If-Else Statements</a></li>
-  <li><a href="#conclusion-on-basic-conditional-statements" id="toc-conclusion-on-basic-conditional-statements">Conclusion on Basic Conditional Statements</a></li>
-  </ul></li>
-  <li><a href="#advanced-conditional-statements-in-r" id="toc-advanced-conditional-statements-in-r">Advanced Conditional Statements in R</a></li>
-  <li><a href="#switch-statement" id="toc-switch-statement">Switch Statement</a></li>
-  <li><a href="#the-ifelse-function" id="toc-the-ifelse-function">The ifelse Function</a></li>
-  <li><a href="#using-dplyrcase_when" id="toc-using-dplyrcase_when">Using dplyr::case_when</a></li>
-  <li><a href="#custom-functions" id="toc-custom-functions">Custom Functions</a></li>
-  <li><a href="#handling-2-level-nested-if-else-statements" id="toc-handling-2-level-nested-if-else-statements">Handling 2-Level Nested If-Else Statements</a></li>
-  <li><a href="#handling-3-level-nested-if-else-statements" id="toc-handling-3-level-nested-if-else-statements">Handling 3-Level Nested If-Else Statements</a></li>
-  <li><a href="#alternative-approaches" id="toc-alternative-approaches">Alternative Approaches</a></li>
+<li>
+<a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
+  <ul class="collapse">
+<li><a href="#basic-if-else-statements" id="toc-basic-if-else-statements" class="nav-link" data-scroll-target="#basic-if-else-statements">Basic If-Else Statements</a></li>
+  <li><a href="#multiple-conditions-with-else-if" id="toc-multiple-conditions-with-else-if" class="nav-link" data-scroll-target="#multiple-conditions-with-else-if">Multiple Conditions with else if</a></li>
+  <li><a href="#ternary-operator" id="toc-ternary-operator" class="nav-link" data-scroll-target="#ternary-operator">Ternary Operator</a></li>
+  <li><a href="#vectorized-if-else-statements" id="toc-vectorized-if-else-statements" class="nav-link" data-scroll-target="#vectorized-if-else-statements">Vectorized If-Else Statements</a></li>
+  <li><a href="#conclusion-on-basic-conditional-statements" id="toc-conclusion-on-basic-conditional-statements" class="nav-link" data-scroll-target="#conclusion-on-basic-conditional-statements">Conclusion on Basic Conditional Statements</a></li>
   </ul>
-</nav>
-<section id="introduction" class="level2">
-<h2>Introduction:</h2>
+</li>
+  <li><a href="#advanced-conditional-statements-in-r" id="toc-advanced-conditional-statements-in-r" class="nav-link" data-scroll-target="#advanced-conditional-statements-in-r">Advanced Conditional Statements in R</a></li>
+  <li><a href="#switch-statement" id="toc-switch-statement" class="nav-link" data-scroll-target="#switch-statement">Switch Statement</a></li>
+  <li><a href="#the-ifelse-function" id="toc-the-ifelse-function" class="nav-link" data-scroll-target="#the-ifelse-function">The ifelse Function</a></li>
+  <li><a href="#using-dplyrcase_when" id="toc-using-dplyrcase_when" class="nav-link" data-scroll-target="#using-dplyrcase_when">Using dplyr::case_when</a></li>
+  <li><a href="#custom-functions" id="toc-custom-functions" class="nav-link" data-scroll-target="#custom-functions">Custom Functions</a></li>
+  <li><a href="#handling-2-level-nested-if-else-statements" id="toc-handling-2-level-nested-if-else-statements" class="nav-link" data-scroll-target="#handling-2-level-nested-if-else-statements">Handling 2-Level Nested If-Else Statements</a></li>
+  <li><a href="#handling-3-level-nested-if-else-statements" id="toc-handling-3-level-nested-if-else-statements" class="nav-link" data-scroll-target="#handling-3-level-nested-if-else-statements">Handling 3-Level Nested If-Else Statements</a></li>
+  <li><a href="#alternative-approaches" id="toc-alternative-approaches" class="nav-link" data-scroll-target="#alternative-approaches">Alternative Approaches</a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>Conditional logic is a fundamental concept in programming, allowing you to make decisions and control the flow of your code based on specific conditions. In R, the if-else statement is a powerful tool for implementing conditional logic. In this blog post, we will explore the various variations and techniques for using if-else statements in R to help you become a proficient R programmer.</p>
-<hr />
-<section id="basic-if-else-statements" class="level3">
-<h3>Basic If-Else Statements</h3>
+<hr>
+<section id="basic-if-else-statements" class="level3"><h3 class="anchored" data-anchor-id="basic-if-else-statements">Basic If-Else Statements</h3>
 <p>The basic if-else statement in R allows you to execute different blocks of code depending on whether a specified condition is true or false. Here’s the basic syntax:</p>
-<blockquote>
-<p>if (condition) {<br />
-# Code to execute if the condition is TRUE<br />
-} else {<br />
-# Code to execute if the condition is FALSE<br />
+<blockquote class="blockquote">
+<p>if (condition) {<br>
+# Code to execute if the condition is TRUE<br>
+} else {<br>
+# Code to execute if the condition is FALSE<br>
 }</p>
 </blockquote>
 <p>Let’s look at an example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is greater than 5&quot;</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is less than or equal to 5&quot;</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is greater than 5"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is less than or equal to 5"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;x is greater than 5&quot;</code></pre>
+<pre><code>[1] "x is greater than 5"</code></pre>
 </div>
 </div>
 <p>In this example, the if-else statement checks if x is greater than 5 and prints the appropriate message based on the condition.</p>
-<hr />
-</section>
-<section id="multiple-conditions-with-else-if" class="level3">
-<h3>Multiple Conditions with else if</h3>
+<hr></section><section id="multiple-conditions-with-else-if" class="level3"><h3 class="anchored" data-anchor-id="multiple-conditions-with-else-if">Multiple Conditions with else if</h3>
 <p>Sometimes, you need to evaluate multiple conditions in a sequence. You can use the else if construct to handle such cases. Here’s how it works:</p>
-<blockquote>
-<p>if (condition1) {<br />
-# Code to execute if condition1 is TRUE<br />
-} else if (condition2) {<br />
-# Code to execute if condition2 is TRUE<br />
-} else {<br />
-# Code to execute if no conditions are TRUE<br />
+<blockquote class="blockquote">
+<p>if (condition1) {<br>
+# Code to execute if condition1 is TRUE<br>
+} else if (condition2) {<br>
+# Code to execute if condition2 is TRUE<br>
+} else {<br>
+# Code to execute if no conditions are TRUE<br>
 }</p>
 </blockquote>
 <p>Let’s see an example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="dv">75</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (grade <span class="sc">&gt;=</span> <span class="dv">90</span>) {</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;A&quot;</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (grade <span class="sc">&gt;=</span> <span class="dv">80</span>) {</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;B&quot;</span>)</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> <span class="cf">if</span> (grade <span class="sc">&gt;=</span> <span class="dv">70</span>) {</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;C&quot;</span>)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;F&quot;</span>)</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">grade</span> <span class="op">&lt;-</span> <span class="fl">75</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">grade</span> <span class="op">&gt;=</span> <span class="fl">90</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"A"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">grade</span> <span class="op">&gt;=</span> <span class="fl">80</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"B"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">grade</span> <span class="op">&gt;=</span> <span class="fl">70</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"C"</span><span class="op">)</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"F"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;C&quot;</code></pre>
+<pre><code>[1] "C"</code></pre>
 </div>
 </div>
 <p>In this case, the code determines a student’s grade based on their score.</p>
-<hr />
-</section>
-<section id="ternary-operator" class="level3">
-<h3>Ternary Operator</h3>
+<hr></section><section id="ternary-operator" class="level3"><h3 class="anchored" data-anchor-id="ternary-operator">Ternary Operator</h3>
 <p>R also supports a concise way of using if-else statements known as the ternary operator. It’s useful when you need to assign a value based on a condition. The syntax is as follows:</p>
-<blockquote>
+<blockquote class="blockquote">
 <p>variable &lt;- if (condition) value_if_true else value_if_false</p>
 </blockquote>
 <p>Here’s an example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">8</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>grade <span class="ot">&lt;-</span> <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">5</span>) {</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Pass&quot;</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Fail&quot;</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grade)</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">8</span></span>
+<span></span>
+<span><span class="va">grade</span> <span class="op">&lt;-</span> <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">5</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="st">"Pass"</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="st">"Fail"</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">grade</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Pass&quot;</code></pre>
+<pre><code>[1] "Pass"</code></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Or as a one liner</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># grade &lt;- if (x &gt; 5) &quot;Pass&quot; else &quot;Fail&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Or as a one liner</span></span>
+<span><span class="co"># grade &lt;- if (x &gt; 5) "Pass" else "Fail"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>The ternary operator assigns the value “Pass” to the grade variable if x is greater than 5 and “Fail” otherwise.</p>
-<hr />
-</section>
-<section id="vectorized-if-else-statements" class="level3">
-<h3>Vectorized If-Else Statements</h3>
+<hr></section><section id="vectorized-if-else-statements" class="level3"><h3 class="anchored" data-anchor-id="vectorized-if-else-statements">Vectorized If-Else Statements</h3>
 <p>In R, you can apply if-else statements to vectors or data frames for efficient and concise code. Here’s an example of vectorized if-else:</p>
 <div class="cell">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>scores <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">95</span>)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>grades <span class="ot">&lt;-</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(scores <span class="sc">&gt;=</span> <span class="dv">90</span>, <span class="st">&quot;A&quot;</span>, <span class="fu">ifelse</span>(scores <span class="sc">&gt;=</span> <span class="dv">80</span>, <span class="st">&quot;B&quot;</span>, <span class="fu">ifelse</span>(scores <span class="sc">&gt;=</span> <span class="dv">70</span>, <span class="st">&quot;C&quot;</span>, <span class="st">&quot;F&quot;</span>)))</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(grades)</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">scores</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">85</span>, <span class="fl">92</span>, <span class="fl">78</span>, <span class="fl">60</span>, <span class="fl">95</span><span class="op">)</span></span>
+<span><span class="va">grades</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">scores</span> <span class="op">&gt;=</span> <span class="fl">90</span>, <span class="st">"A"</span>, <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">scores</span> <span class="op">&gt;=</span> <span class="fl">80</span>, <span class="st">"B"</span>, <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">scores</span> <span class="op">&gt;=</span> <span class="fl">70</span>, <span class="st">"C"</span>, <span class="st">"F"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">grades</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;B&quot; &quot;A&quot; &quot;C&quot; &quot;F&quot; &quot;A&quot;</code></pre>
+<pre><code>[1] "B" "A" "C" "F" "A"</code></pre>
 </div>
 </div>
 <p>In this example, we assign grades to a vector of scores using nested ifelse statements.</p>
-<hr />
-</section>
-<section id="conclusion-on-basic-conditional-statements" class="level3">
-<h3>Conclusion on Basic Conditional Statements</h3>
+<hr></section><section id="conclusion-on-basic-conditional-statements" class="level3"><h3 class="anchored" data-anchor-id="conclusion-on-basic-conditional-statements">Conclusion on Basic Conditional Statements</h3>
 <p>Conditional logic is a crucial aspect of programming, and mastering if-else statements in R is essential for writing robust and flexible code. In this blog post, we explored the basics of if-else statements, handling multiple conditions with else if, using the ternary operator for concise assignments, and applying vectorized if-else statements. With these techniques at your disposal, you can make informed decisions and control the flow of your R programs effectively.</p>
-<hr />
-</section>
-</section>
-<section id="advanced-conditional-statements-in-r" class="level2">
-<h2>Advanced Conditional Statements in R</h2>
+<hr></section></section><section id="advanced-conditional-statements-in-r" class="level2"><h2 class="anchored" data-anchor-id="advanced-conditional-statements-in-r">Advanced Conditional Statements in R</h2>
 <p>In addition to the basic if-else statements and the variations mentioned above, there are more advanced conditional statements and techniques you can use in R. These advanced conditional statements can help you write more complex and expressive code. Here are some advanced conditional techniques in R:</p>
-<hr />
-</section>
-<section id="switch-statement" class="level2">
-<h2>Switch Statement</h2>
+<hr></section><section id="switch-statement" class="level2"><h2 class="anchored" data-anchor-id="switch-statement">Switch Statement</h2>
 <p>The switch statement allows you to select one of several code blocks to execute based on the value of an expression. It’s particularly useful when you have multiple cases to handle. Here’s an example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb10"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>day <span class="ot">&lt;-</span> <span class="st">&quot;Monday&quot;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="cf">switch</span>(</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  day,</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Monday&quot;</span> <span class="ot">=</span> <span class="st">&quot;It&#39;s the start of the week!&quot;</span>,</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Friday&quot;</span> <span class="ot">=</span> <span class="st">&quot;It&#39;s almost the weekend!&quot;</span>,</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Saturday&quot;</span> <span class="ot">=</span> <span class="st">&quot;It&#39;s the weekend!&quot;</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;Default message&quot;</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">day</span> <span class="op">&lt;-</span> <span class="st">"Monday"</span></span>
+<span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span> <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span><span class="op">(</span></span>
+<span>  <span class="va">day</span>,</span>
+<span>  <span class="st">"Monday"</span> <span class="op">=</span> <span class="st">"It's the start of the week!"</span>,</span>
+<span>  <span class="st">"Friday"</span> <span class="op">=</span> <span class="st">"It's almost the weekend!"</span>,</span>
+<span>  <span class="st">"Saturday"</span> <span class="op">=</span> <span class="st">"It's the weekend!"</span>,</span>
+<span>  <span class="st">"Default message"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;It&#39;s the start of the week!&quot;</code></pre>
+<pre><code>[1] "It's the start of the week!"</code></pre>
 </div>
 </div>
 <p>In this example, the switch statement assigns a message based on the value of the day variable.</p>
-<hr />
-</section>
-<section id="the-ifelse-function" class="level2">
-<h2>The ifelse Function</h2>
+<hr></section><section id="the-ifelse-function" class="level2"><h2 class="anchored" data-anchor-id="the-ifelse-function">The ifelse Function</h2>
 <p>The ifelse function is a vectorized version of the if-else statement, and it’s handy when you want to apply a condition to an entire vector. Here’s an example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>vector <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">15</span>, <span class="dv">20</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ifelse</span>(vector <span class="sc">&gt;</span> <span class="dv">10</span>, <span class="st">&quot;Greater than 10&quot;</span>, <span class="st">&quot;Less than or equal to 10&quot;</span>)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(result)</span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">vector</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">5</span>, <span class="fl">10</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span>
+<span><span class="va">result</span> <span class="op">&lt;-</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">vector</span> <span class="op">&gt;</span> <span class="fl">10</span>, <span class="st">"Greater than 10"</span>, <span class="st">"Less than or equal to 10"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">result</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Less than or equal to 10&quot; &quot;Less than or equal to 10&quot;
-[3] &quot;Greater than 10&quot;          &quot;Greater than 10&quot;         </code></pre>
+<pre><code>[1] "Less than or equal to 10" "Less than or equal to 10"
+[3] "Greater than 10"          "Greater than 10"         </code></pre>
 </div>
 </div>
 <p>The ifelse function applies the condition to each element in the vector.</p>
-<hr />
-</section>
-<section id="using-dplyrcase_when" class="level2">
-<h2>Using dplyr::case_when</h2>
+<hr></section><section id="using-dplyrcase_when" class="level2"><h2 class="anchored" data-anchor-id="using-dplyrcase_when">Using dplyr::case_when</h2>
 <p>In data manipulation tasks, you often need to create new variables based on complex conditions. The case_when function from the dplyr package is perfect for this purpose. It allows you to specify multiple conditions and their corresponding values concisely. Here’s an example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org">dplyr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
-Attaching package: &#39;dplyr&#39;</code></pre>
+Attaching package: 'dplyr'</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from &#39;package:stats&#39;:
+<pre><code>The following objects are masked from 'package:stats':
 
     filter, lag</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
-<pre><code>The following objects are masked from &#39;package:base&#39;:
+<pre><code>The following objects are masked from 'package:base':
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">grade =</span> <span class="fu">c</span>(<span class="dv">85</span>, <span class="dv">92</span>, <span class="dv">78</span>, <span class="dv">60</span>, <span class="dv">95</span>))</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">grade_category =</span> <span class="fu">case_when</span>(grade <span class="sc">&gt;=</span> <span class="dv">90</span> <span class="sc">~</span> <span class="st">&quot;A&quot;</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>                                    grade <span class="sc">&gt;=</span> <span class="dv">80</span> <span class="sc">~</span> <span class="st">&quot;B&quot;</span>,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>                                    grade <span class="sc">&gt;=</span> <span class="dv">70</span> <span class="sc">~</span> <span class="st">&quot;C&quot;</span>,</span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>                                    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">&quot;F&quot;</span>))</span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(data)</span></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span>grade <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">85</span>, <span class="fl">92</span>, <span class="fl">78</span>, <span class="fl">60</span>, <span class="fl">95</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">data</span> <span class="op">&lt;-</span> <span class="va">data</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>grade_category <span class="op">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/case_when.html">case_when</a></span><span class="op">(</span><span class="va">grade</span> <span class="op">&gt;=</span> <span class="fl">90</span> <span class="op">~</span> <span class="st">"A"</span>,</span>
+<span>                                    <span class="va">grade</span> <span class="op">&gt;=</span> <span class="fl">80</span> <span class="op">~</span> <span class="st">"B"</span>,</span>
+<span>                                    <span class="va">grade</span> <span class="op">&gt;=</span> <span class="fl">70</span> <span class="op">~</span> <span class="st">"C"</span>,</span>
+<span>                                    <span class="cn">TRUE</span> <span class="op">~</span> <span class="st">"F"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  grade grade_category
 1    85              B
@@ -802,91 +750,79 @@ Attaching package: &#39;dplyr&#39;</code></pre>
 </div>
 </div>
 <p>In this example, case_when assigns a grade category based on the values in the “grade” column.</p>
-<hr />
-</section>
-<section id="custom-functions" class="level2">
-<h2>Custom Functions</h2>
+<hr></section><section id="custom-functions" class="level2"><h2 class="anchored" data-anchor-id="custom-functions">Custom Functions</h2>
 <p>In more advanced scenarios, you may need to create custom functions that use complex conditional logic. This allows you to encapsulate your logic and make your code more modular and reusable. Here’s a simplified example:</p>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>calculate_discount <span class="ot">&lt;-</span> <span class="cf">function</span>(age, is_student) {</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (age <span class="sc">&lt;</span> <span class="dv">18</span>) {</span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fl">0.2</span>)  <span class="co"># 20% discount for minors</span></span>
-<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> <span class="cf">if</span> (age <span class="sc">&gt;=</span> <span class="dv">18</span> <span class="sc">&amp;&amp;</span> is_student) {</span>
-<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="fl">0.1</span>)  <span class="co"># 10% discount for students 18+</span></span>
-<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">return</span>(<span class="dv">0</span>)    <span class="co"># No discount for others</span></span>
-<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>discount <span class="ot">&lt;-</span> <span class="fu">calculate_discount</span>(<span class="dv">20</span>, <span class="cn">TRUE</span>)</span>
-<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">&quot;Discount percentage:&quot;</span>, discount <span class="sc">*</span> <span class="dv">100</span>, <span class="st">&quot;%&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">calculate_discount</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">age</span>, <span class="va">is_student</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">age</span> <span class="op">&lt;</span> <span class="fl">18</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">)</span>  <span class="co"># 20% discount for minors</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="kw">if</span> <span class="op">(</span><span class="va">age</span> <span class="op">&gt;=</span> <span class="fl">18</span> <span class="op">&amp;&amp;</span> <span class="va">is_student</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0.1</span><span class="op">)</span>  <span class="co"># 10% discount for students 18+</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="kw"><a href="https://rdrr.io/r/base/function.html">return</a></span><span class="op">(</span><span class="fl">0</span><span class="op">)</span>    <span class="co"># No discount for others</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span></span>
+<span></span>
+<span><span class="va">discount</span> <span class="op">&lt;-</span> <span class="fu">calculate_discount</span><span class="op">(</span><span class="fl">20</span>, <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/paste.html">paste</a></span><span class="op">(</span><span class="st">"Discount percentage:"</span>, <span class="va">discount</span> <span class="op">*</span> <span class="fl">100</span>, <span class="st">"%"</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;Discount percentage: 10 %&quot;</code></pre>
+<pre><code>[1] "Discount percentage: 10 %"</code></pre>
 </div>
 </div>
 <p>In this example, we’ve created a custom function calculate_discount that calculates discounts based on age and student status.</p>
 <p>These advanced conditional techniques in R offer flexibility and expressiveness, allowing you to handle complex decision-making scenarios in your code efficiently. Depending on your specific use case, you can choose the most appropriate approach to implement conditional logic in your R programs.</p>
-<hr />
-<blockquote>
-<blockquote>
+<hr>
+<blockquote class="blockquote">
+<blockquote class="blockquote">
 <p>Nested if-else statements can be used when you need to evaluate multiple conditions in a hierarchical or nested manner. Here’s how to work with 2 and 3 level nested if-else statements, along with alternative ways to handle complex scenarios in R.</p>
 </blockquote>
 </blockquote>
-<hr />
-</section>
-<section id="handling-2-level-nested-if-else-statements" class="level2">
-<h2>Handling 2-Level Nested If-Else Statements</h2>
+<hr></section><section id="handling-2-level-nested-if-else-statements" class="level2"><h2 class="anchored" data-anchor-id="handling-2-level-nested-if-else-statements">Handling 2-Level Nested If-Else Statements</h2>
 <p>Nested if-else statements involve using an if-else construct within another if-else block. This allows you to handle multiple conditions with varying levels of priority. Here’s an example of a 2-level nested if-else statement:</p>
 <div class="cell">
-<div class="sourceCode" id="cb22"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">20</span>) {</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is greater than y and greater than 20&quot;</span>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is greater than y but not greater than 20&quot;</span>)</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is not greater than y&quot;</span>)</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is greater than y and greater than 20"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is greater than y but not greater than 20"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is not greater than y"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;x is greater than y and greater than 20&quot;</code></pre>
+<pre><code>[1] "x is greater than y and greater than 20"</code></pre>
 </div>
 </div>
 <p>In this example, the outer if-else block checks if x is greater than y, and if it is, it enters the inner if-else block to check if x is greater than 20.</p>
-<hr />
-</section>
-<section id="handling-3-level-nested-if-else-statements" class="level2">
-<h2>Handling 3-Level Nested If-Else Statements</h2>
+<hr></section><section id="handling-3-level-nested-if-else-statements" class="level2"><h2 class="anchored" data-anchor-id="handling-3-level-nested-if-else-statements">Handling 3-Level Nested If-Else Statements</h2>
 <p>For even more complex scenarios, you can have 3-level nested if-else statements by adding another layer of conditional logic within the innermost block:</p>
 <div class="cell">
-<div class="sourceCode" id="cb24"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="dv">30</span></span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (x <span class="sc">&gt;</span> y) {</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (x <span class="sc">&gt;</span> <span class="dv">20</span>) {</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> (z <span class="sc">&gt;</span> <span class="dv">25</span>) {</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="st">&quot;x is greater than y, greater than 20, and z is greater than 25&quot;</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>    } <span class="cf">else</span> {</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>      <span class="fu">print</span>(<span class="st">&quot;x is greater than y, greater than 20, but z is not greater than 25&quot;</span>)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  } <span class="cf">else</span> {</span>
-<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="st">&quot;x is greater than y but not greater than 20&quot;</span>)</span>
-<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>} <span class="cf">else</span> {</span>
-<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">print</span>(<span class="st">&quot;x is not greater than y&quot;</span>)</span>
-<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">x</span> <span class="op">&lt;-</span> <span class="fl">25</span></span>
+<span><span class="va">y</span> <span class="op">&lt;-</span> <span class="fl">10</span></span>
+<span><span class="va">z</span> <span class="op">&lt;-</span> <span class="fl">30</span></span>
+<span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="va">y</span><span class="op">)</span> <span class="op">{</span></span>
+<span>  <span class="kw">if</span> <span class="op">(</span><span class="va">x</span> <span class="op">&gt;</span> <span class="fl">20</span><span class="op">)</span> <span class="op">{</span></span>
+<span>    <span class="kw">if</span> <span class="op">(</span><span class="va">z</span> <span class="op">&gt;</span> <span class="fl">25</span><span class="op">)</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is greater than y, greater than 20, and z is greater than 25"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>      <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is greater than y, greater than 20, but z is not greater than 25"</span><span class="op">)</span></span>
+<span>    <span class="op">}</span></span>
+<span>  <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is greater than y but not greater than 20"</span><span class="op">)</span></span>
+<span>  <span class="op">}</span></span>
+<span><span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span>  <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="st">"x is not greater than y"</span><span class="op">)</span></span>
+<span><span class="op">}</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] &quot;x is greater than y, greater than 20, and z is greater than 25&quot;</code></pre>
+<pre><code>[1] "x is greater than y, greater than 20, and z is greater than 25"</code></pre>
 </div>
 </div>
 <p>In this example, we’ve added an additional condition involving the variable z within the innermost if-else block.</p>
-<hr />
-</section>
-<section id="alternative-approaches" class="level2">
-<h2>Alternative Approaches</h2>
+<hr></section><section id="alternative-approaches" class="level2"><h2 class="anchored" data-anchor-id="alternative-approaches">Alternative Approaches</h2>
 <p>While nested if-else statements are useful for handling complex logic, they can become unwieldy and hard to read when you have many conditions. Here are some alternative approaches to handling complex scenarios:</p>
 <ul>
 <li><p>Switch Statements: We discussed the switch statement earlier. It can be a cleaner way to handle multiple conditions, especially when you have many cases to consider.</p></li>
@@ -895,18 +831,10 @@ Attaching package: &#39;dplyr&#39;</code></pre>
 <li><p>Vectorized Operations: In data manipulation tasks, consider using vectorized operations and functions like ifelse, case_when from the dplyr package, and other functions from the tidyverse ecosystem to handle complex conditions within data frames efficiently.</p></li>
 </ul>
 <p>Remember that the choice of approach depends on the specific requirements of your problem and the maintainability of your code. In some cases, using alternative techniques may lead to more concise and readable code, especially when dealing with multi-level nested conditions.</p>
-<hr />
-<p>visit the post <a href="../../posts/DataWrangling_R/datawrangle.html">Data Wrangling</a></p>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-next">Understanding Confidence Intervals in R</span> <span class="hidden" data-render-id="quarto-int-prev">Centrality Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">All Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2">Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-3">Anova Lm R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/Anova_lm_R/anova_lm.html">Introduction to ANOVA and Linear Models</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-4">Bioinfo with R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/bioinfo-with-R/bioinfoR.html">Getting Started with Bioinformatics in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-5">Biostatistics 0</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/biostatistics_0/biostat_intro.html">Introduction to Biostatistics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-6">Centrality R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/centrality_R/centrality.html">Centrality Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-7">ConditionalStatements R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/ConditionalStatements_R/conditionalstatements.html">Mastering Conditional Logic in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-8">ConfidenceI R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/confidenceI_R/confidenceinterval.html">Understanding Confidence Intervals in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-9">Cosine Similarity</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/cosine_similarity/cosinesimilarity.html">Cosine Similarity for Gene Expression</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-10">DataWrangling R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling_R/datawrangle.html">Data Wrangling Best Practices in R - Part 1</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-11">DataWrangling2 R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling2_R/datawrangle2.html">Data Wrangling Best Practices in R - Part 2</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-12">NMD</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/NMD/nmd.html">Understanding Nonsense-Mediated Decay (NMD)</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-13">PCA R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/PCA_R/pca.html">Principal Component Analysis in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-14">Regression Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/regression-bioinformatics/regression.html">Regression Analysis in Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-15">Set Operation</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/set_operation/set_operation.html">Understanding Set Operations</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-16">SignificanceValue</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/SignificanceValue/significancevalue.html">p-Values &amp; FDR in Biological Experiments</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-17">T Test R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/T_test_R/t_test.html">Basic Statistical Concepts in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-18">Variability R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/variability_R/variabilityR.html">Variability Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-19">Welcome</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/welcome/welcome.html">Welcome to Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Archive">Archive</span> <span class="hidden" data-render-id="quarto-int-navbar:/archive.html">/archive.html</span> <span class="hidden" data-render-id="quarto-int-navbar:https://twitter.com/bmustafa122">https://twitter.com/bmustafa122</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.linkedin.com/in/bmustafa1/">https://www.linkedin.com/in/bmustafa1/</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q">https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q</span> <span class="hidden" data-render-id="quarto-int-navbar:ORCID">ORCID</span> <span class="hidden" data-render-id="quarto-int-navbar:https://orcid.org/0000-0003-0865-7974">https://orcid.org/0000-0003-0865-7974</span> <span class="hidden" data-render-id="quarto-int-navbar:RG">RG</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.researchgate.net/profile/Bilal-Mustafa-5">https://www.researchgate.net/profile/Bilal-Mustafa-5</span> <span class="hidden" data-render-id="footer-center-/about.html">About</span> <span class="hidden" data-render-id="footer-center-https://orcid.org/0000-0003-0865-7974">ORCID</span> <span class="hidden" data-render-id="footer-center-https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</span> <span class="hidden" data-render-id="quarto-breadcrumbs-76b9c2f5e2ea8a61a0803dae4d42ca7f">All Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-5dc52ca9ffdc26147075682c92a0a853">Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-41f4e06cf2b1076a1ae42b392512c9da">ConditionalStatements R</span> <span class="hidden" data-render-id="quarto-breadcrumbs-0b98d17aac3b970def8d544e1ed6f738">Mastering Conditional Logic in R</span></p>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden" data-render-id="quarto-metatitle">Mastering Conditional Logic in R</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Conditional Logic in R: If-Else &amp; Beyond</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Mastering Conditional Logic in R</span> <span class="hidden" data-render-id="quarto-metasitename">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-twittercarddesc">Dive into if-else statements, nested conditions, and advanced logical operations for robust R programming.</span> <span class="hidden" data-render-id="quarto-ogcardddesc">Explore comprehensive examples of conditional structures—from simple if-else to complex vectorized logic—in R.</span></p>
-</div>
-</section>
+<hr>
 
-</main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1254,19 +1182,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   }
 });
 </script><script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
-</script><meta property="og:title" content="Mastering Conditional Logic in R">
-<meta property="og:description" content="Explore comprehensive examples of conditional structures—from simple if-else to complex vectorized logic—in R.">
-<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/image.jpg">
-<meta property="og:site-name" content="Bioinfo Guide Book">
-<meta property="og:image:alt" content="Thumbnail">
-<meta name="twitter:title" content="Conditional Logic in R: If-Else &amp; Beyond">
-<meta name="twitter:description" content="Dive into if-else statements, nested conditions, and advanced logical operations for robust R programming.">
-<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/image.jpg">
-<meta name="twitter:creator" content="@bmustafa122">
-<meta name="twitter:site" content="@bmustafa122">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="Thumbnail">
-</head><body class="nav-sidebar"><nav class="page-navigation"><div class="nav-page nav-page-previous">
+</script><nav class="page-navigation"><div class="nav-page nav-page-previous">
       <a href="../../posts/centrality_R/centrality.html" class="pagination-link">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Centrality Measures in R</span>
       </a>          
@@ -1276,16 +1192,16 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">Understanding Confidence Intervals in R</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav><!-- /content --><footer class="footer"><div class="nav-footer">
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
 <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
- About
-    </a>
+    <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122">
@@ -1306,14 +1222,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">
- ORCID
-    </a>
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">ORCID</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">
- RG
-    </a>
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
 </div>
@@ -1321,6 +1233,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
   </div>
-</footer><!-- mapmyvisitors --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
+</footer><!-- mapmyvisitors --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353">
+</script>
+
 
 </body></html>

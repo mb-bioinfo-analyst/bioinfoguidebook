@@ -7,7 +7,7 @@
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-21">
 <meta name="description" content="Part 2 of our R data-wrangling series dives into advanced techniques: reshaping data with pivoting, joining tables, string manipulation, and functional programming with purrr—complete with reproducible code examples.">
-<title>Data Wrangling Best Practices in R</title>
+<title>Data Wrangling Best Practices in R - Part 2</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -117,66 +117,59 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     "name": "Bilal Mustafa"
   }
 }
-
-
+</script>
+<meta property="og:title" content="Data Wrangling Best Practices in R | Part 2">
+<meta property="og:description" content="Learn advanced data-wrangling workflows in R—reshaping, merging, and string manipulation—through clear examples and best practices.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Advanced File Transformation &amp; Reshaping">
+<meta name="twitter:title" content="Data Wrangling Best Practices in R – Part 2">
+<meta name="twitter:description" content="Deepen your R data-wrangling skills with pivot, join, and string-processing workflows—practical code and tips included.">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/image.jpg">
+<meta name="twitter:creator" content="@bmustafa122">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Advanced File Transformation &amp; Reshaping">
 </head>
-
-<body>
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
-      <div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg navbar-dark "><div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/logo-no-background.png" alt="logo image" class="navbar-logo" />
-    </a>
-    <a class="navbar-brand" href="/index.html">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-no-background.png" alt="logo image" class="navbar-logo"></a>
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
-  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-  <li class="nav-item">
-    <a class="nav-link" href="/index.html" rel="" target="">
+<li class="nav-item">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/archive.html" rel="" target="">
+    <a class="nav-link" href="../../archive.html" rel="" target="">
  <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i 
-  class="bi bi-twitter" 
-  role="img" 
-  aria-label="twitter" 
->
+<ul class="navbar-nav navbar-nav-scroll ms-auto">
+<li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i 
-  class="bi bi-linkedin" 
-  role="img" 
-  aria-label="linkedin" 
->
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i 
-  class="bi bi-youtube" 
-  role="img" 
-  aria-label="youtube" 
->
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -189,369 +182,25 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
  <span class="menu-text">RG</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools">
+<div class="quarto-navbar-tools">
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    </nav><nav class="quarto-secondary-nav"><div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <h1 class="quarto-secondary-nav-title"></h1>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">All Posts</li><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/DataWrangling2_R/datawrangle2.html">DataWrangling2 R</a></li><li class="breadcrumb-item"><a href="../../posts/DataWrangling2_R/datawrangle2.html">Data Wrangling Best Practices in R - Part 2</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
-        <div class="mt-2 flex-shrink-0 align-items-center">
-        <div class="sidebar-search">
-        <div id="quarto-search" class="" title="Search"></div>
-        </div>
-        </div>
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
- <span class="menu-text">All Posts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
- <span class="menu-text">Posts</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">  
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
- <span class="menu-text">Anova Lm R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
- <span class="menu-text">Bioinfo with R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
- <span class="menu-text">Biostatistics 0</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to Biostatistics</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
- <span class="menu-text">Centrality R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Centrality Measures in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
- <span class="menu-text">ConditionalStatements R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Mastering Conditional Logic in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
- <span class="menu-text">ConfidenceI R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Confidence Intervals in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
- <span class="menu-text">Cosine Similarity</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
- <span class="menu-text">DataWrangling R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
- <span class="menu-text">DataWrangling2 R</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 show">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
- <span class="menu-text">NMD</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
- <span class="menu-text">PCA R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Principal Component Analysis in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
- <span class="menu-text">Regression Bioinformatics</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
- <span class="menu-text">Set Operation</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Understanding Set Operations</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
- <span class="menu-text">SignificanceValue</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">p-Values & FDR in Biological Experiments</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
- <span class="menu-text">T Test R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Basic Statistical Concepts in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false">
- <span class="menu-text">Variability R</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Variability Measures in R</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-          <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
- <span class="menu-text">Welcome</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="/posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-      </ul>
-  </li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-  <div class="quarto-title-banner">
+  </nav></header><!-- content --><header id="title-block-header" class="quarto-title-block default page-columns page-full"><div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">Data Wrangling Best Practices in R</h1>
+      <h1 class="title">Data Wrangling Best Practices in R - Part 2</h1>
             <p class="subtitle lead">Advanced File Transformation &amp; Reshaping – Part 2</p>
                   <div>
         <div class="description">
@@ -586,86 +235,398 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </div>
     
   
-  </header>
-<nav id="TOC" role="doc-toc">
-    <h2 id="toc-title">On this page</h2>
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto"><div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+ <span class="menu-text">All Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+ <span class="menu-text">Posts</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth2 show">
+<li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false">
+ <span class="menu-text">Anova Lm R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false">
+ <span class="menu-text">Bioinfo with R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false">
+ <span class="menu-text">Biostatistics 0</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction to Biostatistics</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false">
+ <span class="menu-text">Centrality R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Centrality Measures in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false">
+ <span class="menu-text">ConditionalStatements R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Mastering Conditional Logic in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false">
+ <span class="menu-text">ConfidenceI R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-8" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Confidence Intervals in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false">
+ <span class="menu-text">Cosine Similarity</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-9" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false">
+ <span class="menu-text">DataWrangling R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-10" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true">
+ <span class="menu-text">DataWrangling2 R</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-11" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 show">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false">
+ <span class="menu-text">NMD</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-12" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false">
+ <span class="menu-text">PCA R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-13" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Principal Component Analysis in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false">
+ <span class="menu-text">Regression Bioinformatics</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-14" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false">
+ <span class="menu-text">Set Operation</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-15" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Understanding Set Operations</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false">
+ <span class="menu-text">SignificanceValue</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-16" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">p-Values &amp; FDR in Biological Experiments</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false">
+ <span class="menu-text">T Test R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-17" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Basic Statistical Concepts in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false">
+ <span class="menu-text">Variability R</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-18" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Variability Measures in R</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+          <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false">
+ <span class="menu-text">Welcome</span></a>
+          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-19" aria-expanded="false" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">
+<li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
+  </div>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+      </ul>
+</li>
+    </ul>
+</div>
+</nav><div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction">Introduction:</a></li>
-  <li><a href="#reading-data" id="toc-reading-data"><strong>Reading Data</strong></a>
-  <ul>
-  <li><a href="#raw-input-data" id="toc-raw-input-data">Raw Input Data</a></li>
-  </ul></li>
-  <li><a href="#understand-your-data" id="toc-understand-your-data"><strong>Understand Your Data</strong></a></li>
-  <li><a href="#data-cleaning" id="toc-data-cleaning"><strong>Data Cleaning</strong></a>
-  <ul>
-  <li><a href="#handle-missing-values" id="toc-handle-missing-values"><strong>Handle Missing Values:</strong></a></li>
-  <li><a href="#manage-outliers" id="toc-manage-outliers"><strong>Manage Outliers</strong></a></li>
-  <li><a href="#correct-errors" id="toc-correct-errors"><strong>Correct Errors</strong></a></li>
-  </ul></li>
-  <li><a href="#data-transformation" id="toc-data-transformation"><strong>Data Transformation</strong></a>
-  <ul>
-  <li><a href="#use-tidy-data-principles" id="toc-use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></a></li>
-  <li><a href="#apply-data-type-conversions" id="toc-apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></a></li>
-  </ul></li>
-  <li><a href="#data-validation" id="toc-data-validation"><strong>Data Validation</strong></a>
-  <ul>
-  <li><a href="#perform-sanity-checks" id="toc-perform-sanity-checks"><strong>Perform Sanity Checks</strong></a></li>
-  <li><a href="#validate-data-integrity" id="toc-validate-data-integrity"><strong>Validate Data Integrity</strong></a></li>
-  <li><a href="#document-your-steps" id="toc-document-your-steps"><strong>Document Your Steps</strong></a></li>
-  </ul></li>
-  <li><a href="#conclusion" id="toc-conclusion"><strong>Conclusion</strong></a></li>
+<li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li>
+<a href="#reading-data" id="toc-reading-data" class="nav-link" data-scroll-target="#reading-data"><strong>Reading Data</strong></a>
+  <ul class="collapse">
+<li><a href="#raw-input-data" id="toc-raw-input-data" class="nav-link" data-scroll-target="#raw-input-data">Raw Input Data</a></li>
   </ul>
-</nav>
-<section id="introduction" class="level2">
-<h2>Introduction:</h2>
+</li>
+  <li><a href="#understand-your-data" id="toc-understand-your-data" class="nav-link" data-scroll-target="#understand-your-data"><strong>Understand Your Data</strong></a></li>
+  <li>
+<a href="#data-cleaning" id="toc-data-cleaning" class="nav-link" data-scroll-target="#data-cleaning"><strong>Data Cleaning</strong></a>
+  <ul class="collapse">
+<li><a href="#handle-missing-values" id="toc-handle-missing-values" class="nav-link" data-scroll-target="#handle-missing-values"><strong>Handle Missing Values:</strong></a></li>
+  <li><a href="#manage-outliers" id="toc-manage-outliers" class="nav-link" data-scroll-target="#manage-outliers"><strong>Manage Outliers</strong></a></li>
+  <li><a href="#correct-errors" id="toc-correct-errors" class="nav-link" data-scroll-target="#correct-errors"><strong>Correct Errors</strong></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#data-transformation" id="toc-data-transformation" class="nav-link" data-scroll-target="#data-transformation"><strong>Data Transformation</strong></a>
+  <ul class="collapse">
+<li><a href="#use-tidy-data-principles" id="toc-use-tidy-data-principles" class="nav-link" data-scroll-target="#use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></a></li>
+  <li><a href="#apply-data-type-conversions" id="toc-apply-data-type-conversions" class="nav-link" data-scroll-target="#apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></a></li>
+  </ul>
+</li>
+  <li>
+<a href="#data-validation" id="toc-data-validation" class="nav-link" data-scroll-target="#data-validation"><strong>Data Validation</strong></a>
+  <ul class="collapse">
+<li><a href="#perform-sanity-checks" id="toc-perform-sanity-checks" class="nav-link" data-scroll-target="#perform-sanity-checks"><strong>Perform Sanity Checks</strong></a></li>
+  <li><a href="#validate-data-integrity" id="toc-validate-data-integrity" class="nav-link" data-scroll-target="#validate-data-integrity"><strong>Validate Data Integrity</strong></a></li>
+  <li><a href="#document-your-steps" id="toc-document-your-steps" class="nav-link" data-scroll-target="#document-your-steps"><strong>Document Your Steps</strong></a></li>
+  </ul>
+</li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><strong>Conclusion</strong></a></li>
+  </ul></nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>Data wrangling is a crucial step in the data analysis process, and R provides a powerful set of tools and packages to help you clean, transform, and prepare your data for analysis. In this blog post, we will explore some best practices for effective data wrangling in R. Whether you are a beginner or an experienced data analyst, these tips will help you streamline your data preparation workflow and ensure the reliability of your analysis.</p>
 <p>Now continuing from the previous post (Best Practices for Data Wrangling in R - Part 1), we will use the airquality data from datasets library to further understand how data wrangling helps us to get the deeper and significant insights of our data.</p>
-<hr />
-</section>
-<section id="reading-data" class="level2">
-<h2><strong>Reading Data</strong></h2>
-<section id="raw-input-data" class="level3">
-<h3>Raw Input Data</h3>
+<hr></section><section id="reading-data" class="level2"><h2 class="anchored" data-anchor-id="reading-data"><strong>Reading Data</strong></h2>
+<section id="raw-input-data" class="level3"><h3 class="anchored" data-anchor-id="raw-input-data">Raw Input Data</h3>
 <p>Firstly read your data into R. For this exercise I will be using a simulated dataset.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode markdown cell-code"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(datasets)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(airquality)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr />
-</section>
-</section>
-<section id="understand-your-data" class="level2">
-<h2><strong>Understand Your Data</strong></h2>
-<p>It’s imperative to have a thorough understanding of your dataset before getting started with data wrangling. Knowing your data’s structure, the significance of each variable, and any potential problems or abnormalities is part of this. To obtain an understanding of the data you’re working with, start by analyzing it using functions like <code>head()</code>, <code>summary()</code>, and <code>str()</code>.</p>
+<hr></section></section><section id="understand-your-data" class="level2"><h2 class="anchored" data-anchor-id="understand-your-data"><strong>Understand Your Data</strong></h2>
+<p>It’s imperative to have a thorough understanding of your dataset before getting started with data wrangling. Knowing your data’s structure, the significance of each variable, and any potential problems or abnormalities is part of this. To obtain an understanding of the data you’re working with, start by analyzing it using functions like <code><a href="https://rdrr.io/r/utils/head.html">head()</a></code>, <code><a href="https://rdrr.io/r/base/summary.html">summary()</a></code>, and <code><a href="https://rdrr.io/r/utils/str.html">str()</a></code>.</p>
 <div class="cell">
-<div class="sourceCode" id="cb2"><pre class="sourceCode markdown cell-code"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Inspect the first few rows of a dataset</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(airquality)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code></pre></div>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 
 <div data-pagedtable="false">
-  <script data-pagedtable-source type="application/json">
+  <script data-pagedtable-source="" type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Ozone"],"name":[1],"type":["int"],"align":["right"]},{"label":["Solar.R"],"name":[2],"type":["int"],"align":["right"]},{"label":["Wind"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Temp"],"name":[4],"type":["int"],"align":["right"]},{"label":["Month"],"name":[5],"type":["int"],"align":["right"]},{"label":["Day"],"name":[6],"type":["int"],"align":["right"]}],"data":[{"1":"41","2":"190","3":"7.4","4":"67","5":"5","6":"1","_rn_":"1"},{"1":"36","2":"118","3":"8.0","4":"72","5":"5","6":"2","_rn_":"2"},{"1":"12","2":"149","3":"12.6","4":"74","5":"5","6":"3","_rn_":"3"},{"1":"18","2":"313","3":"11.5","4":"62","5":"5","6":"4","_rn_":"4"},{"1":"NA","2":"NA","3":"14.3","4":"56","5":"5","6":"5","_rn_":"5"},{"1":"28","2":"NA","3":"14.9","4":"66","5":"5","6":"6","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
   </script>
-<meta property="og:title" content="Data Wrangling Best Practices in R | Part 2">
-<meta property="og:description" content="Learn advanced data-wrangling workflows in R—reshaping, merging, and string manipulation—through clear examples and best practices.">
-<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/image.jpg">
-<meta property="og:site-name" content="Bioinfo Guide Book">
-<meta property="og:image:alt" content="Advanced File Transformation &amp; Reshaping">
-<meta name="twitter:title" content="Data Wrangling Best Practices in R – Part 2">
-<meta name="twitter:description" content="Deepen your R data-wrangling skills with pivot, join, and string-processing workflows—practical code and tips included.">
-<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/image.jpg">
-<meta name="twitter:creator" content="@bmustafa122">
-<meta name="twitter:site" content="@bmustafa122">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="Advanced File Transformation &amp; Reshaping">
-</head>
-<body class="nav-sidebar">
+</div>
+</div>
+</div>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Example: Get a summary of the dataset</span></span>
@@ -706,10 +667,9 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 <p>This will help you make informed decisions during the wrangling process.</p>
-<hr>
-<section id="data-cleaning" class="level2"><h2 data-anchor-id="data-cleaning"><strong>Data Cleaning</strong></h2>
+<hr></section><section id="data-cleaning" class="level2"><h2 class="anchored" data-anchor-id="data-cleaning"><strong>Data Cleaning</strong></h2>
 <p>Data cleaning involves checking the headers, handling missing values, outliers, and errors in your dataset. Here are some best practices for data cleaning in R:</p>
-<section id="handle-missing-values" class="level3"><h3 data-anchor-id="handle-missing-values"><strong>Handle Missing Values:</strong></h3>
+<section id="handle-missing-values" class="level3"><h3 class="anchored" data-anchor-id="handle-missing-values"><strong>Handle Missing Values:</strong></h3>
 <ul>
 <li><p>Identify missing values using functions like <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> or <code><a href="https://rdrr.io/r/stats/complete.cases.html">complete.cases()</a></code>.</p></li>
 <li><p>Decide whether to impute missing values, remove rows with missing data, or keep them, depending on the context.</p></li>
@@ -766,7 +726,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a><span class="co"># airquality_clean &lt;- airquality %&gt;% filter(!is.na(Ozone))</span></span>
 <span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="manage-outliers" class="level3"><h3 data-anchor-id="manage-outliers"><strong>Manage Outliers</strong></h3>
+<hr></section><section id="manage-outliers" class="level3"><h3 class="anchored" data-anchor-id="manage-outliers"><strong>Manage Outliers</strong></h3>
 <ul>
 <li><p>Visualize data using boxplots, histograms, or scatter plots to detect outliers.</p></li>
 <li><p>Consider using statistical methods or domain knowledge to handle outliers, such as winsorization or transformation.</p></li>
@@ -788,14 +748,14 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <p><img src="datawrangle2_files/figure-html/Boxplot of air wauality data set-1.png" class="img-fluid" alt="Boxplot of air wauality data set" width="672"></p>
 </div>
 </div>
-</section><section id="correct-errors" class="level3"><h3 data-anchor-id="correct-errors"><strong>Correct Errors</strong></h3>
+</section><section id="correct-errors" class="level3"><h3 class="anchored" data-anchor-id="correct-errors"><strong>Correct Errors</strong></h3>
 <ul>
 <li><p>Check for data entry errors and inconsistencies.</p></li>
 <li><p>Use data validation rules or regular expressions to identify and correct errors.</p></li>
 </ul>
-<hr></section></section><section id="data-transformation" class="level2"><h2 data-anchor-id="data-transformation"><strong>Data Transformation</strong></h2>
+<hr></section></section><section id="data-transformation" class="level2"><h2 class="anchored" data-anchor-id="data-transformation"><strong>Data Transformation</strong></h2>
 <p>To make your data acceptable for analysis, you must shape and reformat it through data transformation. The following are a few excellent practices for R’s data transformation:</p>
-<section id="use-tidy-data-principles" class="level3"><h3 data-anchor-id="use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></h3>
+<section id="use-tidy-data-principles" class="level3"><h3 class="anchored" data-anchor-id="use-tidy-data-principles"><strong>Use Tidy Data Principles</strong></h3>
 <ul>
 <li><p>Follow the principles of tidy data, where each variable is a column, each observation is a row, and each type of observational unit is a table.</p></li>
 <li><p>The <code>tidyr</code> package provides functions like <code>gather()</code> and <code>spread()</code> for reshaping data.</p></li>
@@ -817,7 +777,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-</section><section id="apply-data-type-conversions" class="level3"><h3 data-anchor-id="apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></h3>
+</section><section id="apply-data-type-conversions" class="level3"><h3 class="anchored" data-anchor-id="apply-data-type-conversions"><strong>Apply Data Type Conversions</strong></h3>
 <ul>
 <li><p>Ensure that variables have the correct data types (e.g., numeric, character, factor) for analysis.</p></li>
 <li><p>Use functions like <strong><code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code></strong>, <strong><code><a href="https://rdrr.io/r/base/character.html">as.character()</a></code></strong>, or <strong><code><a href="https://rdrr.io/r/base/factor.html">as.factor()</a></code></strong> to convert data types.</p></li>
@@ -838,9 +798,9 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<hr></section></section><section id="data-validation" class="level2"><h2 data-anchor-id="data-validation"><strong>Data Validation</strong></h2>
+<hr></section></section><section id="data-validation" class="level2"><h2 class="anchored" data-anchor-id="data-validation"><strong>Data Validation</strong></h2>
 <p>To ensure that your processed data satisfies the criteria of your study, validation is a crucial stage in the data wrangling process. Here are a few guidelines for using R’s data validation features.</p>
-<section id="perform-sanity-checks" class="level3"><h3 data-anchor-id="perform-sanity-checks"><strong>Perform Sanity Checks</strong></h3>
+<section id="perform-sanity-checks" class="level3"><h3 class="anchored" data-anchor-id="perform-sanity-checks"><strong>Perform Sanity Checks</strong></h3>
 <ul>
 <li>Check summary statistics, distributions, and relationships between variables to ensure they align with your expectations.</li>
 </ul>
@@ -866,20 +826,19 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
  Max.   :9.000   Max.   :31.00   Max.   :97.00  </code></pre>
 </div>
 </div>
-</section><section id="validate-data-integrity" class="level3"><h3 data-anchor-id="validate-data-integrity"><strong>Validate Data Integrity</strong></h3>
+</section><section id="validate-data-integrity" class="level3"><h3 class="anchored" data-anchor-id="validate-data-integrity"><strong>Validate Data Integrity</strong></h3>
 <ul>
 <li><p>Verify that data transformations have not introduced errors.</p></li>
 <li><p>Compare original and transformed data to identify discrepancies.</p></li>
-</ul></section><section id="document-your-steps" class="level3"><h3 data-anchor-id="document-your-steps"><strong>Document Your Steps</strong></h3>
+</ul></section><section id="document-your-steps" class="level3"><h3 class="anchored" data-anchor-id="document-your-steps"><strong>Document Your Steps</strong></h3>
 <p>For reproducibility and collaboration, it’s essential to record your data manipulation procedures. To write a narrative that details the choices you made while handling the data, think about utilizing R Markdown or Jupyter Notebooks. Make your work accessible and understandable to others by using code comments, explanations, and visualizations.</p>
-<hr></section></section><section id="conclusion" class="level2"><h2 data-anchor-id="conclusion"><strong>Conclusion</strong></h2>
+<hr></section></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion"><strong>Conclusion</strong></h2>
 <p>A crucial first step in data analysis is data wrangling; by using R’s best practices, you can speed up the process and guarantee the accuracy of your findings. You may improve the efficiency of your data wrangling workflow and provide more reliable analyses by comprehending your data, putting effective cleaning and transformation strategies into practice, testing your findings, and documenting your approach.</p>
 <p>Always tailor these best practices to your unique needs, keeping in mind that the individual methods and packages you use may vary depending on your dataset and research goals.</p>
 <hr>
-<p>visit the post <a href="../../posts/centrality_R/centrality.html">Descriptive Statistics - Centrality</a></p>
 
 
-</section><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section><a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1237,7 +1196,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         <span class="nav-page-text">Understanding Nonsense-Mediated Decay (NMD)</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
-</nav><!-- /content --><footer class="footer"><div class="nav-footer">
+</nav>
+</div> <!-- /content -->
+<footer class="footer"><div class="nav-footer">
     <div class="nav-footer-left">
       &nbsp;
     </div>   
@@ -1276,7 +1237,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       &nbsp;
     </div>
   </div>
-</footer><!-- mapmyvisitors --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
+</footer><!-- mapmyvisitors --><script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353">
+</script>
 
 
 </body></html>

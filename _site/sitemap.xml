@@ -2,82 +2,82 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bioinfoguidebook.netlify.app/about.html</loc>
-    <lastmod>2025-11-20T12:45:14.383Z</lastmod>
+    <lastmod>2025-11-20T15:28:58.725Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/archive.html</loc>
-    <lastmod>2025-11-20T12:45:17.461Z</lastmod>
+    <lastmod>2025-11-20T15:29:00.847Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/index.html</loc>
-    <lastmod>2025-11-20T12:45:21.171Z</lastmod>
+    <lastmod>2025-11-20T15:37:27.779Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/anova_lm.html</loc>
-    <lastmod>2025-11-20T12:45:24.397Z</lastmod>
+    <lastmod>2025-11-20T15:29:11.182Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/bioinfo-with-R/bioinfoR.html</loc>
-    <lastmod>2025-11-20T12:45:31.815Z</lastmod>
+    <lastmod>2025-11-20T15:29:36.995Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/biostatistics_0/biostat_intro.html</loc>
-    <lastmod>2025-11-20T12:45:35.292Z</lastmod>
+    <lastmod>2025-11-20T15:37:51.827Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/centrality_R/centrality.html</loc>
-    <lastmod>2025-11-20T12:45:38.524Z</lastmod>
+    <lastmod>2025-11-20T15:29:53.175Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/ConditionalStatements_R/conditionalstatements.html</loc>
-    <lastmod>2025-11-20T12:45:42.359Z</lastmod>
+    <lastmod>2025-11-20T15:30:02.128Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/confidenceI_R/confidenceinterval.html</loc>
-    <lastmod>2025-11-20T12:45:49.143Z</lastmod>
+    <lastmod>2025-11-20T15:30:12.651Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/cosine_similarity/cosinesimilarity.html</loc>
-    <lastmod>2025-11-20T12:45:51.387Z</lastmod>
+    <lastmod>2025-11-20T15:30:16.311Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling2_R/datawrangle2.html</loc>
-    <lastmod>2025-11-20T12:45:56.159Z</lastmod>
+    <lastmod>2025-11-20T15:30:25.591Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/DataWrangling_R/datawrangle.html</loc>
-    <lastmod>2025-11-20T12:45:59.995Z</lastmod>
+    <lastmod>2025-11-20T15:30:32.816Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/NMD/nmd.html</loc>
-    <lastmod>2025-11-20T12:46:01.991Z</lastmod>
+    <lastmod>2025-11-20T15:30:35.062Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/PCA_R/pca.html</loc>
-    <lastmod>2025-11-20T12:46:07.246Z</lastmod>
+    <lastmod>2025-11-20T15:30:42.740Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/regression-bioinformatics/regression.html</loc>
-    <lastmod>2025-11-20T12:46:12.128Z</lastmod>
+    <lastmod>2025-11-20T15:30:48.458Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/set_operation/set_operation.html</loc>
-    <lastmod>2025-11-20T12:46:14.255Z</lastmod>
+    <lastmod>2025-11-20T15:30:50.571Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/SignificanceValue/significancevalue.html</loc>
-    <lastmod>2025-11-20T12:46:16.991Z</lastmod>
+    <lastmod>2025-11-20T15:30:52.625Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/T_test_R/t_test.html</loc>
-    <lastmod>2025-11-20T12:46:24.391Z</lastmod>
+    <lastmod>2025-11-20T15:31:02.808Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/variability_R/variabilityR.html</loc>
-    <lastmod>2025-11-20T12:46:28.289Z</lastmod>
+    <lastmod>2025-11-20T15:31:08.747Z</lastmod>
   </url>
   <url>
     <loc>https://bioinfoguidebook.netlify.app/posts/welcome/welcome.html</loc>
-    <lastmod>2025-11-20T12:46:30.311Z</lastmod>
+    <lastmod>2025-11-20T15:31:10.494Z</lastmod>
   </url>
 </urlset>

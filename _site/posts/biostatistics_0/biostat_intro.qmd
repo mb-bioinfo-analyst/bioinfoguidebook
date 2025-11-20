@@ -45,21 +45,21 @@ format:
     code-copy: true
 ---
 
-# What Is Biostatistics?
+## What Is Biostatistics?
 
 Biostatistics is the branch of statistics that applies statistical reasoning, methods, and tools to biological and health-related problems.
 
 In simple terms, biostatistics turns biological data into understanding.
 It helps researchers summarize information, test hypotheses, and make conclusions that are scientifically and ethically sound.
 
-## Biostatistics connects:
+### Biostatistics connects:
 
 -   Biology → the study of life
 
 -   Statistics → the science of data\
     to draw reliable conclusions about living systems.
 
-## Example Scenarios
+### Example Scenarios
 
 -   Estimating the average blood pressure in a population.
 
@@ -71,12 +71,12 @@ It helps researchers summarize information, test hypotheses, and make conclusion
 
 Each of these examples involves data, variability, and uncertainty --- all core to biostatistics.
 
-## The Role of Biostatistics in Research
+### The Role of Biostatistics in Research
 
 Biostatistics supports every stage of scientific inquiry:
 
 | Stage                  | Purpose                                     | Example                                    |
-|------------------|----------------------------|---------------------------|
+|-------------------|---------------------------|--------------------------|
 | **Study Design**       | Plan how to collect and compare data        | Randomized control trial design            |
 | **Data Collection**    | Ensure representative and unbiased sampling | Clinical data, lab assays                  |
 | **Data Visualization** | Display trends and patterns                 | Boxplots, histograms                       |
@@ -110,9 +110,10 @@ annotate("text", x = 1.6, y = 0.9, label = "Genes\nCells\nOrganisms", size = 4.2
 annotate("text", x = 0.5, y = 0, label = "Biostatistics\n(Application of Statistics to Biology)", size = 4.5, fontface = "bold") +
 coord_fixed(xlim = c(-1.5, 2.5), ylim = c(-1.5, 1.5)) +
 theme_void()
+
 ```
 
-## Why Biostatistics Matters
+### Why Biostatistics Matters
 
 1.  Understanding Variability
 
@@ -160,7 +161,7 @@ A -> B -> C -> D -> E
 
 ```
 
-## Key Takeaways
+### Key Takeaways
 
 -   Biostatistics bridges biology and data science.
 
@@ -170,7 +171,7 @@ A -> B -> C -> D -> E
 
 -   In an era of "big data," the ability to think statistically is essential for every biologist.
 
-## Further Reading
+### Further Reading
 
 -   Motulsky, H.
     (2018).

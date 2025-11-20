@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2024-08-15">
 <meta name="description" content="Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.">
 
-<title>Bioinfo Guide Book – Introduction to ANOVA and Linear Models</title>
+<title>Introduction to ANOVA and Linear Models</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -130,66 +130,65 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     "name": "Bilal Mustafa"
   }
 }
+</script>
 
 
+<meta property="og:title" content="Introduction to ANOVA &amp; Linear Models | Bioinfo Guide Book">
+<meta property="og:description" content="In-depth tutorial on performing ANOVA and fitting linear regression models in R— complete with diagnostics and interpretation.">
+<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/image.jpg">
+<meta property="og:site-name" content="Bioinfo Guide Book">
+<meta property="og:image:alt" content="Diagram of ANOVA and linear regression in R">
+<meta name="twitter:title" content="Intro to ANOVA &amp; Linear Models in R">
+<meta name="twitter:description" content="A step-by-step guide to ANOVA and linear regression analysis in R, with code you can copy &amp; run yourself.">
+<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/image.jpg">
+<meta name="twitter:creator" content="@bmustafa122">
+<meta name="twitter:site" content="@bmustafa122">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="Diagram of ANOVA and linear regression in R">
 </head>
 
-<body>
+<body class="nav-sidebar floating nav-fixed">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a href="/index.html" class="navbar-brand navbar-brand-logo">
-    <img src="/logo-no-background.png" alt="logo image" class="navbar-logo" />
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../logo-no-background.png" alt="logo image" class="navbar-logo">
     </a>
-    <a class="navbar-brand" href="/index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Bioinfo Guide Book</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-  aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation"
-  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="/index.html" rel="" target="">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="/archive.html" rel="" target="">
+    <a class="nav-link" href="../../archive.html" rel="" target="">
  <span class="menu-text">Archive</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i 
-  class="bi bi-twitter" 
-  role="img" 
-  aria-label="twitter" 
->
+    <a class="nav-link" href="https://twitter.com/bmustafa122" rel="" target=""><i class="bi bi-twitter" role="img" aria-label="twitter">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i 
-  class="bi bi-linkedin" 
-  role="img" 
-  aria-label="linkedin" 
->
+    <a class="nav-link" href="https://www.linkedin.com/in/bmustafa1/" rel="" target=""><i class="bi bi-linkedin" role="img" aria-label="linkedin">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i 
-  class="bi bi-youtube" 
-  role="img" 
-  aria-label="youtube" 
->
+    <a class="nav-link" href="https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q" rel="" target=""><i class="bi bi-youtube" role="img" aria-label="youtube">
 </i> 
  <span class="menu-text"></span></a>
   </li>  
@@ -210,16 +209,11 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </nav>
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn"
-      data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <h1 class="quarto-secondary-nav-title"></h1>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" 
-      aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation"
-      onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">All Posts</li><li class="breadcrumb-item">Posts</li><li class="breadcrumb-item"><a href="../../posts/Anova_lm_R/anova_lm.html">Anova Lm R</a></li><li class="breadcrumb-item"><a href="../../posts/Anova_lm_R/anova_lm.html">Introduction to ANOVA and Linear Models</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
@@ -228,7 +222,45 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Introduction to ANOVA and Linear Models</h1>
+            <p class="subtitle lead">A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R</p>
+                  <div>
+        <div class="description">
+          <p>Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.</p>
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Statistics</div>
+                <div class="quarto-category">Data Analysis</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Bilal Mustafa </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">August 15, 2024</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -267,7 +299,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth3 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link active">
+  <a href="../../posts/Anova_lm_R/anova_lm.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Introduction to ANOVA and Linear Models</span></a>
   </div>
 </li>
@@ -284,7 +316,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/bioinfo-with-R/bioinfoR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Getting Started with Bioinformatics in R</span></a>
   </div>
 </li>
@@ -301,7 +333,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/biostatistics_0/biostat_intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Introduction to Biostatistics</span></a>
   </div>
 </li>
@@ -318,7 +350,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/centrality_R/centrality.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Centrality Measures in R</span></a>
   </div>
 </li>
@@ -335,7 +367,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/ConditionalStatements_R/conditionalstatements.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Mastering Conditional Logic in R</span></a>
   </div>
 </li>
@@ -352,7 +384,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/confidenceI_R/confidenceinterval.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Confidence Intervals in R</span></a>
   </div>
 </li>
@@ -369,7 +401,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-9" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/cosine_similarity/cosinesimilarity.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Cosine Similarity for Gene Expression</span></a>
   </div>
 </li>
@@ -386,7 +418,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-10" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DataWrangling_R/datawrangle.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Wrangling Best Practices in R - Part 1</span></a>
   </div>
 </li>
@@ -403,7 +435,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-11" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/DataWrangling2_R/datawrangle2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Data Wrangling Best Practices in R - Part 2</span></a>
   </div>
 </li>
@@ -420,7 +452,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-12" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/NMD/nmd.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Nonsense-Mediated Decay (NMD)</span></a>
   </div>
 </li>
@@ -437,7 +469,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-13" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/PCA_R/pca.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Principal Component Analysis in R</span></a>
   </div>
 </li>
@@ -454,7 +486,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-14" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/regression-bioinformatics/regression.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Regression Analysis in Bioinformatics</span></a>
   </div>
 </li>
@@ -471,7 +503,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-15" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/set_operation/set_operation.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Understanding Set Operations</span></a>
   </div>
 </li>
@@ -488,8 +520,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-16" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">p-Values & FDR in Biological Experiments</span></a>
+  <a href="../../posts/SignificanceValue/significancevalue.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">p-Values &amp; FDR in Biological Experiments</span></a>
   </div>
 </li>
       </ul>
@@ -505,7 +537,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-17" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/T_test_R/t_test.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Basic Statistical Concepts in R</span></a>
   </div>
 </li>
@@ -522,7 +554,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-18" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/variability_R/variabilityR.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Variability Measures in R</span></a>
   </div>
 </li>
@@ -539,7 +571,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
       <ul id="quarto-sidebar-section-19" class="collapse list-unstyled sidebar-section depth3 ">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="/posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
+  <a href="../../posts/welcome/welcome.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Welcome to Bioinfo Guide Book</span></a>
   </div>
 </li>
@@ -552,165 +584,127 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" ></div>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <div id="quarto-toc-target"></div>
-    </div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
-
-
-<header id="title-block-header" class="quarto-title-block default">
-  <div class="quarto-title-banner">
-    <div class="quarto-title column-body">
-      <h1 class="title">Introduction to ANOVA and Linear Models</h1>
-            <p class="subtitle lead">A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R</p>
-                  <div>
-        <div class="description">
-          <p>Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.</p>
-        </div>
-      </div>
-                          <div class="quarto-categories">
-                <div class="quarto-category">Statistics</div>
-                <div class="quarto-category">Data Analysis</div>
-              </div>
-                  </div>
-  </div>
-    
-  
-  <div class="quarto-title-meta">
-
-      <div>
-      <div class="quarto-title-meta-heading">Author</div>
-      <div class="quarto-title-meta-contents">
-               <p>Bilal Mustafa </p>
-            </div>
-    </div>
-      
-      <div>
-      <div class="quarto-title-meta-heading">Published</div>
-      <div class="quarto-title-meta-contents">
-        <p class="date">August 15, 2024</p>
-      </div>
-    </div>
-    
-      
-    </div>
-    
-  
-  </header>
-<nav id="TOC" role="doc-toc">
+        <nav id="TOC" role="doc-toc" class="toc-active">
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction">Introduction:</a></li>
-  <li><a href="#who-should-read-this" id="toc-who-should-read-this">Who Should Read This:</a></li>
-  <li><a href="#a-brief-look-at-anova" id="toc-a-brief-look-at-anova">A Brief Look at ANOVA</a>
-  <ul>
-  <li><a href="#what-is-the-anova" id="toc-what-is-the-anova">What is the ANOVA?</a></li>
-  <li><a href="#types-of-anova" id="toc-types-of-anova">Types of ANOVA:</a></li>
-  <li><a href="#anova-why-use-it" id="toc-anova-why-use-it">ANOVA: Why Use It?</a></li>
-  <li><a href="#one-way-anova" id="toc-one-way-anova">One-way ANOVA</a>
-  <ul>
-  <li><a href="#structure" id="toc-structure">Structure:</a></li>
-  <li><a href="#what-anova-is-based-on-basic-assumptions" id="toc-what-anova-is-based-on-basic-assumptions">What ANOVA Is Based On (Basic Assumptions)</a></li>
-  <li><a href="#anova-example-case-study" id="toc-anova-example-case-study">ANOVA Example Case Study</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a></li>
+  <li><a href="#who-should-read-this" id="toc-who-should-read-this" class="nav-link" data-scroll-target="#who-should-read-this">Who Should Read This:</a></li>
+  <li><a href="#a-brief-look-at-anova" id="toc-a-brief-look-at-anova" class="nav-link" data-scroll-target="#a-brief-look-at-anova">A Brief Look at ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#what-is-the-anova" id="toc-what-is-the-anova" class="nav-link" data-scroll-target="#what-is-the-anova">What is the ANOVA?</a></li>
+  <li><a href="#types-of-anova" id="toc-types-of-anova" class="nav-link" data-scroll-target="#types-of-anova">Types of ANOVA:</a></li>
+  <li><a href="#anova-why-use-it" id="toc-anova-why-use-it" class="nav-link" data-scroll-target="#anova-why-use-it">ANOVA: Why Use It?</a></li>
+  <li><a href="#one-way-anova" id="toc-one-way-anova" class="nav-link" data-scroll-target="#one-way-anova">One-way ANOVA</a>
+  <ul class="collapse">
+  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure:</a></li>
+  <li><a href="#what-anova-is-based-on-basic-assumptions" id="toc-what-anova-is-based-on-basic-assumptions" class="nav-link" data-scroll-target="#what-anova-is-based-on-basic-assumptions">What ANOVA Is Based On (Basic Assumptions)</a></li>
+  <li><a href="#anova-example-case-study" id="toc-anova-example-case-study" class="nav-link" data-scroll-target="#anova-example-case-study">ANOVA Example Case Study</a></li>
   </ul></li>
-  <li><a href="#anova-vs.-linear-modeling" id="toc-anova-vs.-linear-modeling">ANOVA vs. Linear Modeling</a>
-  <ul>
-  <li><a href="#anova" id="toc-anova">ANOVA</a></li>
-  <li><a href="#linear-modeling" id="toc-linear-modeling">Linear Modeling</a></li>
-  <li><a href="#side-by-side-comparison" id="toc-side-by-side-comparison">Side-by-Side Comparison</a></li>
+  <li><a href="#anova-vs.-linear-modeling" id="toc-anova-vs.-linear-modeling" class="nav-link" data-scroll-target="#anova-vs.-linear-modeling">ANOVA vs.&nbsp;Linear Modeling</a>
+  <ul class="collapse">
+  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova">ANOVA</a></li>
+  <li><a href="#linear-modeling" id="toc-linear-modeling" class="nav-link" data-scroll-target="#linear-modeling">Linear Modeling</a></li>
+  <li><a href="#side-by-side-comparison" id="toc-side-by-side-comparison" class="nav-link" data-scroll-target="#side-by-side-comparison">Side-by-Side Comparison</a></li>
   </ul></li>
-  <li><a href="#analysis-with-linear-modeling" id="toc-analysis-with-linear-modeling">Analysis with Linear Modeling</a>
-  <ul>
-  <li><a href="#diagnostic-plots" id="toc-diagnostic-plots">Diagnostic Plots</a></li>
-  <li><a href="#conclusion" id="toc-conclusion">Conclusion</a></li>
+  <li><a href="#analysis-with-linear-modeling" id="toc-analysis-with-linear-modeling" class="nav-link" data-scroll-target="#analysis-with-linear-modeling">Analysis with Linear Modeling</a>
+  <ul class="collapse">
+  <li><a href="#diagnostic-plots" id="toc-diagnostic-plots" class="nav-link" data-scroll-target="#diagnostic-plots">Diagnostic Plots</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#resources-references" id="toc-resources-references">Resources &amp; References:</a></li>
+  <li><a href="#resources-references" id="toc-resources-references" class="nav-link" data-scroll-target="#resources-references">Resources &amp; References:</a></li>
   </ul>
 </nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
 <section id="introduction" class="level1">
 <h1>Introduction:</h1>
 <p>It is very important to know how different groups compare and how factors affect each other when you are doing data analysis. One of the most important statistical methods we can use to test these differences and interactions is Analysis of Variance (ANOVA). This post will explain what ANOVA and Linear Models are and how to use them in R. You will also get to use real datasets to practice.</p>
-<hr />
+<hr>
 </section>
 <section id="who-should-read-this" class="level1">
 <h1>Who Should Read This:</h1>
 <p>This blog post is for people who are new to or already know a little about R and want to learn how to do and understand ANOVA and Linear Models. This guide will give you useful skills to improve your data analysis skills, no matter if you are a student, researcher, or data scientist.</p>
-<hr />
+<hr>
 </section>
 <section id="a-brief-look-at-anova" class="level1">
 <h1>A Brief Look at ANOVA</h1>
 <section id="what-is-the-anova" class="level2">
-<h2>What is the ANOVA?</h2>
+<h2 class="anchored" data-anchor-id="what-is-the-anova">What is the ANOVA?</h2>
 <p>One way to use statistics is to compare the means of three or more groups and see if at least one of them is significantly different from the others. This is called analysis of variance (ANOVA). A lot of people use it in business, biology, and the social sciences.</p>
-<hr />
+<hr>
 </section>
 <section id="types-of-anova" class="level2">
-<h2>Types of ANOVA:</h2>
+<h2 class="anchored" data-anchor-id="types-of-anova">Types of ANOVA:</h2>
 <ol type="1">
-<li>With one-way ANOVA, you can see if there are any differences in the means of three or more groups that are not linked to each other.<br />
+<li>With one-way ANOVA, you can see if there are any differences in the means of three or more groups that are not linked to each other.<br>
 </li>
-<li>Two-Way ANOVA looks at how two independent factors affect a dependent variable, taking into account the effects that happen when the variables interact.<br />
+<li>Two-Way ANOVA looks at how two independent factors affect a dependent variable, taking into account the effects that happen when the variables interact.<br>
 </li>
-<li>Measurements Taken More Than Once ANOVA is used to compare two or more sets of data from the same subject in different ways.<br />
+<li>Measurements Taken More Than Once ANOVA is used to compare two or more sets of data from the same subject in different ways.<br>
 </li>
-<li>Multiple dependent variables can be used in multivariate ANOVA (MANOVA), which lets you test the effects on a single result.<br />
+<li>Multiple dependent variables can be used in multivariate ANOVA (MANOVA), which lets you test the effects on a single result.<br>
 </li>
 </ol>
 </section>
 <section id="anova-why-use-it" class="level2">
-<h2>ANOVA: Why Use It?</h2>
+<h2 class="anchored" data-anchor-id="anova-why-use-it">ANOVA: Why Use It?</h2>
 <p>When you want to find out if different conditions, treatments, or interventions lead to different results, ANOVA is very helpful. It gives a statistical way to figure out if changes in data are caused by real effects or by random variation.</p>
-<hr />
+<hr>
 </section>
 <section id="one-way-anova" class="level2">
-<h2>One-way ANOVA</h2>
+<h2 class="anchored" data-anchor-id="one-way-anova">One-way ANOVA</h2>
 <p>The One-Way ANOVA checks if there are statistically significant changes between the means of three or more separate groups that are not related to each other.</p>
 <section id="structure" class="level3">
-<h3>Structure:</h3>
+<h3 class="anchored" data-anchor-id="structure">Structure:</h3>
 <ul>
-<li>You can think of an independent variable as a category variable with two or more levels, like Fertilizer A, B, and C.<br />
+<li>You can think of an independent variable as a category variable with two or more levels, like Fertilizer A, B, and C.<br>
 </li>
-<li>Dependent Variable: An result variable that changes over time, like plant growth or test scores.<br />
+<li>Dependent Variable: An result variable that changes over time, like plant growth or test scores.<br>
 </li>
 </ul>
-<p>Let’s say you want to see how three different fertilizers (Fertilizer A, B, and C) affect plant growth (in centimeters). ANOVA helps you figure out if these fertilizers make a big difference in the growth.<br />
+<p>Let’s say you want to see how three different fertilizers (Fertilizer A, B, and C) affect plant growth (in centimeters). ANOVA helps you figure out if these fertilizers make a big difference in the growth.<br>
 </p>
-<p><span style="color:red;">Important Points:</span><br />
+<p><span style="color:red;">Important Points:</span><br>
 </p>
 <ul>
-<li>The null hypothesis (H₀) says that all group means are the same.<br />
+<li>The null hypothesis (H₀) says that all group means are the same.<br>
 </li>
-<li>The other idea is that the mean of at least one group is not the same.<br />
+<li>The other idea is that the mean of at least one group is not the same.<br>
 </li>
-<li>We reject the null hypothesis if the p-value is less than the significance level, which is usually 0.05. This means that there is a significant difference between the groups.<br />
+<li>We reject the null hypothesis if the p-value is less than the significance level, which is usually 0.05. This means that there is a significant difference between the groups.<br>
 </li>
 </ul>
 </section>
 <section id="what-anova-is-based-on-basic-assumptions" class="level3">
-<h3>What ANOVA Is Based On (Basic Assumptions)</h3>
+<h3 class="anchored" data-anchor-id="what-anova-is-based-on-basic-assumptions">What ANOVA Is Based On (Basic Assumptions)</h3>
 <p>Some conditions must be met before ANOVA can be performed:</p>
 <ul>
-<li>Random and Unrelated Observations: The data should come from groups that were chosen at random and are unrelated to each other.<br />
+<li>Random and Unrelated Observations: The data should come from groups that were chosen at random and are unrelated to each other.<br>
 </li>
-<li>Normality: The data in each group should be spread out in a way that is similar to the normal distribution. This assumption is not as important if you have a large sample size.<br />
+<li>Normality: The data in each group should be spread out in a way that is similar to the normal distribution. This assumption is not as important if you have a large sample size.<br>
 </li>
-<li>The differences between the groups should be about the same. This is called homogeneity of variation.<br />
+<li>The differences between the groups should be about the same. This is called homogeneity of variation.<br>
 </li>
 </ul>
 <p><strong>Note:</strong> The assumptions of normality and homogeneity of variance can be loosened (made lenient) a bit when sample size is big.</p>
-<hr />
+<hr>
 </section>
 <section id="anova-example-case-study" class="level3">
-<h3>ANOVA Example Case Study</h3>
+<h3 class="anchored" data-anchor-id="anova-example-case-study">ANOVA Example Case Study</h3>
 <p>Let’s use the PlantGrowth dataset to show an example. This dataset has data on how plants grew in different treatment groups. We want to know if the plant growth in these groups is very different from that in the other groups.</p>
 <div class="cell">
-<div class="sourceCode" id="cb1"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.2     ✔ readr     2.1.5
@@ -719,15 +713,16 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+✖ purrr::%||%()   masks base::%||%()
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
 </div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the PlantGrowth dataset</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;PlantGrowth&quot;</span>)</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the PlantGrowth dataset</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(<span class="st">"PlantGrowth"</span>)</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows of the dataset</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PlantGrowth)</span></code></pre></div>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(PlantGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  weight group
 1   4.17  ctrl
@@ -740,10 +735,10 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 <p>First, we load the tidyverse package, which has tools for working with and showing data. Next, we load the PlantGrowth dataset to start looking into it.</p>
 <section id="data-exploration" class="level4">
-<h4>Data Exploration</h4>
+<h4 class="anchored" data-anchor-id="data-exploration">Data Exploration</h4>
 <div class="cell">
-<div class="sourceCode" id="cb5"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics for the dataset</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PlantGrowth)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics for the dataset</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PlantGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     weight       group   
  Min.   :3.590   ctrl:10  
@@ -753,17 +748,17 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
  3rd Qu.:5.530            
  Max.   :6.310            </code></pre>
 </div>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the structure of the dataset</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(PlantGrowth)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Check the structure of the dataset</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(PlantGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>&#39;data.frame&#39;:   30 obs. of  2 variables:
+<pre><code>'data.frame':   30 obs. of  2 variables:
  $ weight: num  4.17 5.58 5.18 6.11 4.5 4.61 5.17 4.53 5.33 5.14 ...
- $ group : Factor w/ 3 levels &quot;ctrl&quot;,&quot;trt1&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+ $ group : Factor w/ 3 levels "ctrl","trt1",..: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
 </div>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of observations in each group</span></span>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the number of observations in each group</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>PlantGrowth <span class="sc">%&gt;%</span></span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(group) <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code></pre></div>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">count =</span> <span class="fu">n</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 3 × 2
   group count
@@ -776,49 +771,49 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <p>To get a sense of the whole dataset, we use simple methods like summary() and str(). Sorting the data by treatment group helps us see how it is spread out across the different groups.</p>
 </section>
 <section id="visualization" class="level4">
-<h4>Visualization</h4>
+<h4 class="anchored" data-anchor-id="visualization">Visualization</h4>
 <div class="cell">
-<div class="sourceCode" id="cb11"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of plant weight by group</span></span>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of plant weight by group</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>PlantGrowth <span class="sc">%&gt;%</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> weight, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>() <span class="sc">+</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_summary</span>(</span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">fun =</span> mean,</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">&quot;point&quot;</span>,</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">geom =</span> <span class="st">"point"</span>,</span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">shape =</span> <span class="dv">23</span>,</span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">size =</span> <span class="dv">3</span>,</span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">&quot;black&quot;</span>,</span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">&quot;white&quot;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"black"</span>,</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"white"</span></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">&quot;Plant Weight by Treatment Group&quot;</span>,</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">&quot;Treatment Group&quot;</span>,</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">&quot;Weight&quot;</span>) <span class="sc">+</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Plant Weight by Treatment Group"</span>,</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Treatment Group"</span>,</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Weight"</span>) <span class="sc">+</span></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="anova_lm_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" alt="Boxplot of plant weight by group" width="672" /></p>
+<p><img src="anova_lm_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid" alt="Boxplot of plant weight by group" width="672"></p>
 </div>
 </div>
 <p>This boxplot shows how the plant weights changed in the different treatment groups. Find places where the boxes meet or clear gaps between them to see how the groups compare.</p>
 </section>
 <section id="testing-assumptions" class="level4">
-<h4>Testing Assumptions</h4>
+<h4 class="anchored" data-anchor-id="testing-assumptions">Testing Assumptions</h4>
 <p><strong>Equality of Variances</strong></p>
 <div class="cell">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bartlet Test of homogeneity of variances</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bartlet Test of homogeneity of variances</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">bartlett.test</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
     Bartlett test of homogeneity of variances
 
 data:  weight by group
-Bartlett&#39;s K-squared = 2.8786, df = 2, p-value = 0.2371</code></pre>
+Bartlett's K-squared = 2.8786, df = 2, p-value = 0.2371</code></pre>
 </div>
 </div>
 <p>The Bartlett test checks to see if the differences between groups are the same. If the p-value is not significant, it means that the assumption of homogeneity of differences is true.</p>
 <p><strong>Normality of the Data</strong></p>
 <div class="cell">
-<div class="sourceCode" id="cb14"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapiro-Wilk test for each group</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(PlantGrowth<span class="sc">$</span>weight, PlantGrowth<span class="sc">$</span>group, shapiro.test)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Shapiro-Wilk test for each group</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">by</span>(PlantGrowth<span class="sc">$</span>weight, PlantGrowth<span class="sc">$</span>group, shapiro.test)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>PlantGrowth$group: ctrl
 
@@ -847,31 +842,31 @@ W = 0.94101, p-value = 0.5643</code></pre>
 <p>To see if the data in each group is normal, the Shapiro-Wilk test is used. If the p-value is more than 0.05, it means that the data is probably pretty normal.</p>
 </section>
 <section id="anova-in-r" class="level4">
-<h4>ANOVA in R</h4>
+<h4 class="anchored" data-anchor-id="anova-in-r">ANOVA in R</h4>
 <div class="cell">
-<div class="sourceCode" id="cb16"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform ANOVA</span></span>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform ANOVA</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the ANOVA table</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>            Df Sum Sq Mean Sq F value Pr(&gt;F)  
 group        2  3.766  1.8832   4.846 0.0159 *
 Residuals   27 10.492  0.3886                 
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 </div>
 <p>There is an ANOVA table that shows the F-statistic and the p-value. If the p-value is less than 0.05, it means that there is a substantial distinction in the plant weights between the treatment groups.</p>
 </section>
 <section id="post-hoc-tests-tukeys-hsd" class="level4">
-<h4>Post-Hoc Tests (Tukey’s HSD)</h4>
+<h4 class="anchored" data-anchor-id="post-hoc-tests-tukeys-hsd">Post-Hoc Tests (Tukey’s HSD)</h4>
 <div class="cell">
-<div class="sourceCode" id="cb18"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Tukey&#39;s HSD Test</span></span>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Tukey's HSD Test</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(anova_result)</span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the Tukey HSD result</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>tukey_result</span></code></pre></div>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>tukey_result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  Tukey multiple comparisons of means
     95% family-wise confidence level
@@ -887,46 +882,46 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </div>
 </section>
 <section id="visualization-1" class="level4">
-<h4>Visualization</h4>
+<h4 class="anchored" data-anchor-id="visualization-1">Visualization</h4>
 <div class="cell">
-<div class="sourceCode" id="cb20"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Tukey&#39;s HSD results</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Tukey's HSD results</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="anova_lm_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" alt="Visualize Tukey&#39;s HSD results" width="672" /></p>
+<p><img src="anova_lm_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid" alt="Visualize Tukey's HSD results" width="672"></p>
 </div>
 </div>
 <p>If the ANOVA shows that there are significant differences, Tukey’s HSD test helps figure out which groups are different. The plot shows these similarities graphically by showing which pairs of groups are very different from each other.</p>
-<hr />
+<hr>
 </section>
 </section>
 </section>
 <section id="anova-vs.-linear-modeling" class="level2">
-<h2>ANOVA vs. Linear Modeling</h2>
+<h2 class="anchored" data-anchor-id="anova-vs.-linear-modeling">ANOVA vs.&nbsp;Linear Modeling</h2>
 <section id="anova" class="level3">
-<h3>ANOVA</h3>
+<h3 class="anchored" data-anchor-id="anova">ANOVA</h3>
 <ul>
-<li>Purpose: Compares group means to test if there are significant differences.<br />
+<li>Purpose: Compares group means to test if there are significant differences.<br>
 </li>
-<li>Limitations: Focuses only on categorical independent variables.<br />
+<li>Limitations: Focuses only on categorical independent variables.<br>
 </li>
 </ul>
 </section>
 <section id="linear-modeling" class="level3">
-<h3>Linear Modeling</h3>
+<h3 class="anchored" data-anchor-id="linear-modeling">Linear Modeling</h3>
 <ul>
-<li>Purpose: Examines the relationship between the dependent variable and multiple predictors (both categorical and continuous).<br />
+<li>Purpose: Examines the relationship between the dependent variable and multiple predictors (both categorical and continuous).<br>
 </li>
-<li>Advantages: Provides detailed estimates of the effects and allows for more flexibility in analysis.<br />
+<li>Advantages: Provides detailed estimates of the effects and allows for more flexibility in analysis.<br>
 </li>
 </ul>
 </section>
 <section id="side-by-side-comparison" class="level3">
-<h3>Side-by-Side Comparison</h3>
-<table>
+<h3 class="anchored" data-anchor-id="side-by-side-comparison">Side-by-Side Comparison</h3>
+<table class="table">
 <colgroup>
-<col style="width: 22%" />
-<col style="width: 34%" />
-<col style="width: 43%" />
+<col style="width: 22%">
+<col style="width: 34%">
+<col style="width: 43%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -956,13 +951,13 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </section>
 </section>
 <section id="analysis-with-linear-modeling" class="level2">
-<h2>Analysis with Linear Modeling</h2>
+<h2 class="anchored" data-anchor-id="analysis-with-linear-modeling">Analysis with Linear Modeling</h2>
 <div class="cell">
-<div class="sourceCode" id="cb21"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear model</span></span>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear model</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lm_result <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth)</span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the summary of the linear model</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_result)</span></code></pre></div>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(lm_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -978,7 +973,7 @@ Coefficients:
 grouptrt1    -0.3710     0.2788  -1.331   0.1944    
 grouptrt2     0.4940     0.2788   1.772   0.0877 .  
 ---
-Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
 Residual standard error: 0.6234 on 27 degrees of freedom
 Multiple R-squared:  0.2641,    Adjusted R-squared:  0.2096 
@@ -987,54 +982,49 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
 </div>
 <p>The linear model gives you factors that show how each treatment group changed the plant weight, along with p-values that you can use to see how important these changes are.</p>
 <section id="diagnostic-plots" class="level3">
-<h3>Diagnostic Plots</h3>
+<h3 class="anchored" data-anchor-id="diagnostic-plots">Diagnostic Plots</h3>
 <div class="cell">
-<div class="sourceCode" id="cb23"><pre class="sourceCode r cell-code"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plots for the linear model</span></span>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plots for the linear model</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># Arrange plots in a 2x2 grid</span></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_result)</span></code></pre></div>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(lm_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<p><img src="anova_lm_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" alt="Diagnostic plots for the linear model" width="672" /></p>
+<p><img src="anova_lm_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid" alt="Diagnostic plots for the linear model" width="672"></p>
 </div>
 </div>
 <p>You can use diagnostic plots to make sure that the linear model’s assumptions are met, like that the residuals are normal and that the model is linear. You might not be able to trust the model’s results if these assumptions are voilated.</p>
-<hr />
+<hr>
 </section>
 <section id="conclusion" class="level3">
-<h3>Conclusion</h3>
+<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
 <ul>
-<li>ANOVA helps determine if there are significant differences between group means.<br />
+<li>ANOVA helps determine if there are significant differences between group means.<br>
 </li>
-<li>Linear Modeling provides more flexibility and detailed information about the relationships between variables.<br />
+<li>Linear Modeling provides more flexibility and detailed information about the relationships between variables.<br>
 </li>
 </ul>
 <p>Use your own samples to test these methods. Try these statistical methods out in different situations and see how they can help you find insights in your data.</p>
-<hr />
+<hr>
 </section>
 </section>
 </section>
 <section id="resources-references" class="level1">
 <h1>Resources &amp; References:</h1>
 <ul>
-<li>Davies, T. M. (2016). The Book of R: A First Course in Programming and Statistics. San Francisco: No Starch Press.<br />
+<li>Davies, T. M. (2016). The Book of R: A First Course in Programming and Statistics. San Francisco: No Starch Press.<br>
 </li>
-<li>R for Data Science - Comprehensive guide to using R for data analysis.<br />
+<li>R for Data Science - Comprehensive guide to using R for data analysis.<br>
 </li>
-<li>Statistics with R Specialization - Coursera course for learning statistics using R. <a href="https://www.coursera.org/specializations/statistics">External Link</a><br />
+<li>Statistics with R Specialization - Coursera course for learning statistics using R. <a href="https://www.coursera.org/specializations/statistics">External Link</a><br>
 </li>
 </ul>
 <p>Have questions or feedback? Leave a comment below or reach out to us on social media. We’re here to help you on your data analysis journey!</p>
-<hr />
-<p>visit the post <a href="../../posts/significancevalue/significancevalue.html">Significance Value - p-Values</a></p>
-<div id="quarto-navigation-envelope" class="hidden">
-<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-next">Getting Started with Bioinformatics in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-1">All Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-2">Posts</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-3">Anova Lm R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/Anova_lm_R/anova_lm.html">Introduction to ANOVA and Linear Models</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-4">Bioinfo with R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/bioinfo-with-R/bioinfoR.html">Getting Started with Bioinformatics in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-5">Biostatistics 0</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/biostatistics_0/biostat_intro.html">Introduction to Biostatistics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-6">Centrality R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/centrality_R/centrality.html">Centrality Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-7">ConditionalStatements R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/ConditionalStatements_R/conditionalstatements.html">Mastering Conditional Logic in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-8">ConfidenceI R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/confidenceI_R/confidenceinterval.html">Understanding Confidence Intervals in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-9">Cosine Similarity</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/cosine_similarity/cosinesimilarity.html">Cosine Similarity for Gene Expression</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-10">DataWrangling R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling_R/datawrangle.html">Data Wrangling Best Practices in R - Part 1</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-11">DataWrangling2 R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/DataWrangling2_R/datawrangle2.html">Data Wrangling Best Practices in R - Part 2</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-12">NMD</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/NMD/nmd.html">Understanding Nonsense-Mediated Decay (NMD)</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-13">PCA R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/PCA_R/pca.html">Principal Component Analysis in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-14">Regression Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/regression-bioinformatics/regression.html">Regression Analysis in Bioinformatics</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-15">Set Operation</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/set_operation/set_operation.html">Understanding Set Operations</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-16">SignificanceValue</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/SignificanceValue/significancevalue.html">p-Values &amp; FDR in Biological Experiments</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-17">T Test R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/T_test_R/t_test.html">Basic Statistical Concepts in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-18">Variability R</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/variability_R/variabilityR.html">Variability Measures in R</span> <span class="hidden" data-render-id="quarto-int-sidebar:quarto-sidebar-section-19">Welcome</span> <span class="hidden" data-render-id="quarto-int-sidebar:/posts/welcome/welcome.html">Welcome to Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-int-navbar:Home">Home</span> <span class="hidden" data-render-id="quarto-int-navbar:/index.html">/index.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Archive">Archive</span> <span class="hidden" data-render-id="quarto-int-navbar:/archive.html">/archive.html</span> <span class="hidden" data-render-id="quarto-int-navbar:https://twitter.com/bmustafa122">https://twitter.com/bmustafa122</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.linkedin.com/in/bmustafa1/">https://www.linkedin.com/in/bmustafa1/</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q">https://www.youtube.com/channel/UCNc11E_DSmaRMZRDfjczl4Q</span> <span class="hidden" data-render-id="quarto-int-navbar:ORCID">ORCID</span> <span class="hidden" data-render-id="quarto-int-navbar:https://orcid.org/0000-0003-0865-7974">https://orcid.org/0000-0003-0865-7974</span> <span class="hidden" data-render-id="quarto-int-navbar:RG">RG</span> <span class="hidden" data-render-id="quarto-int-navbar:https://www.researchgate.net/profile/Bilal-Mustafa-5">https://www.researchgate.net/profile/Bilal-Mustafa-5</span> <span class="hidden" data-render-id="footer-center-/about.html">About</span> <span class="hidden" data-render-id="footer-center-https://orcid.org/0000-0003-0865-7974">ORCID</span> <span class="hidden" data-render-id="footer-center-https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</span> <span class="hidden" data-render-id="quarto-breadcrumbs-76b9c2f5e2ea8a61a0803dae4d42ca7f">All Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-5dc52ca9ffdc26147075682c92a0a853">Posts</span> <span class="hidden" data-render-id="quarto-breadcrumbs-30dd1f9e3aaca13bc1fd47ffa0f82613">Anova Lm R</span> <span class="hidden" data-render-id="quarto-breadcrumbs-0fdf01dc33aef30e1a8b2f817908c32b">Introduction to ANOVA and Linear Models</span></p>
-</div>
-<div id="quarto-meta-markdown" class="hidden">
-<p><span class="hidden" data-render-id="quarto-metatitle">Introduction to ANOVA and Linear Models</span> <span class="hidden" data-render-id="quarto-twittercardtitle">Intro to ANOVA &amp; Linear Models in R</span> <span class="hidden" data-render-id="quarto-ogcardtitle">Introduction to ANOVA &amp; Linear Models | Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-metasitename">Bioinfo Guide Book</span> <span class="hidden" data-render-id="quarto-twittercarddesc">A step-by-step guide to ANOVA and linear regression analysis in R, with code you can copy &amp; run yourself.</span> <span class="hidden" data-render-id="quarto-ogcardddesc">In-depth tutorial on performing ANOVA and fitting linear regression models in R— complete with diagnostics and interpretation.</span></p>
-</div>
+<hr>
+
+
 </section>
 
-</main> <!-- /main -->
-<script id = "quarto-html-after-body" type="application/javascript">
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -1384,19 +1374,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <script src="https://utteranc.es/client.js" repo="mb-bioinfo-analyst/blogComments" issue-term="pathname" theme="github-light" crossorigin="anonymous" async="">
 </script>
-<meta property="og:title" content="Introduction to ANOVA &amp; Linear Models | Bioinfo Guide Book">
-<meta property="og:description" content="In-depth tutorial on performing ANOVA and fitting linear regression models in R— complete with diagnostics and interpretation.">
-<meta property="og:image" content="https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/image.jpg">
-<meta property="og:site-name" content="Bioinfo Guide Book">
-<meta property="og:image:alt" content="Diagram of ANOVA and linear regression in R">
-<meta name="twitter:title" content="Intro to ANOVA &amp; Linear Models in R">
-<meta name="twitter:description" content="A step-by-step guide to ANOVA and linear regression analysis in R, with code you can copy &amp; run yourself.">
-<meta name="twitter:image" content="https://bioinfoguidebook.netlify.app/posts/Anova_lm_R/image.jpg">
-<meta name="twitter:creator" content="@bmustafa122">
-<meta name="twitter:site" content="@bmustafa122">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image:alt" content="Diagram of ANOVA and linear regression in R">
-</head><body class="nav-sidebar"><nav class="page-navigation">
+<nav class="page-navigation">
   <div class="nav-page nav-page-previous">
   </div>
   <div class="nav-page nav-page-next">
@@ -1405,7 +1383,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>
   </div>
 </nav>
- <!-- /content -->
+</div> <!-- /content -->
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
@@ -1414,9 +1392,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     <div class="nav-footer-center">
       <ul class="footer-items list-unstyled">
     <li class="nav-item">
-    <a class="nav-link" href="../../about.html">
- About
-    </a>
+    <a class="nav-link" href="../../about.html">About</a>
   </li>  
     <li class="nav-item compact">
     <a class="nav-link" href="https://twitter.com/bmustafa122">
@@ -1437,14 +1413,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">
- ORCID
-    </a>
+    <a class="nav-link" href="https://orcid.org/0000-0003-0865-7974">ORCID</a>
   </li>  
     <li class="nav-item">
-    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">
- RG
-    </a>
+    <a class="nav-link" href="https://www.researchgate.net/profile/Bilal-Mustafa-5">RG</a>
   </li>  
 </ul>
     </div>
@@ -1453,9 +1425,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
-
 <!-- mapmyvisitors -->
-<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353"></script>
+<script type="text/javascript" id="mapmyvisitors" src="https://mapmyvisitors.com/map.js?cl=080808&amp;w=206&amp;t=tt&amp;d=G0zIcogsyp17GLJKF0_Q4AT2VMurdDNaFbmKgV3l2a4&amp;co=ffffff&amp;ct=808080&amp;cmo=3acc3a&amp;cmn=ff5353">
+</script>
 
 
 
