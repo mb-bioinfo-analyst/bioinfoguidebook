@@ -1,6 +1,6 @@
 ---
 title: "Bioinfo Guide Book"
-description: "Bioinfo Guide Book is a free, open-access online resource offering step-by-step tutorials, code examples, and reference materials in bioinformatics, genomics, and computational biology using R and python."
+description: "Bioinfo Guide Book is a free resource with step-by-step tutorials, code examples, and reference materials in bioinformatics using R and Python."
 listing:
   contents: posts
   fields: [image, date, title, author, reading-time]

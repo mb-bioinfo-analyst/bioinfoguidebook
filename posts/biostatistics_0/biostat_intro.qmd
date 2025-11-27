@@ -5,12 +5,8 @@ subtitle: "A Beginner’s Guide to the Science of Data in Life Sciences"
 author: "Bilal Mustafa"
 date: "2025-11-12"
 
-description: >
-  An accessible introduction to biostatistics, explaining what it is, why it matters, 
-  and how statistical thinking supports biological and biomedical research.
-
+description: "An accessible introduction to biostatistics, explaining what it is, why it matters, and how statistical thinking supports biological and biomedical research."
 #slug: "intro-to-biostats"
-
 categories: [biostatistics, statistics, data-science, biology]
 
 tags: [biostatistics, data analysis, introduction, tutorials]
@@ -86,6 +82,7 @@ Biostatistics supports every stage of scientific inquiry:
 ```{r}
 #| label: fig-statistics-biostatistics
 #| fig-cap: "Statistics deals with data in general, while biostatistics applies those principles to living systems."
+#| fig-alt:  "statistics figure"
 #| out-width: "80%"
 #| echo: false
 #| message: false
@@ -135,6 +132,7 @@ Good statistical design avoids wasted resources and unnecessary use of animals o
 ```{r}
 #| label: fig-data-to-decision
 #| fig-cap: "The biostatistical process: turning raw data into meaningful biological conclusions."
+#| fig-alt:  "data to decision"
 #| out-width: "90%"
 #| echo: false
 #| message: false

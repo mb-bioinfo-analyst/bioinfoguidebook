@@ -5,11 +5,7 @@ subtitle: "Overview of Descriptive Measures, Hypothesis Testing & Visualization"
 author: "Bilal Mustafa"    
 date: "2024-08-14"     
 #slug: "basic-statistical-concepts-in-r"
-description: >
-  An introductory guide to fundamental statistical concepts in R.
-  Learn how to compute descriptive measures, conduct t-tests,
-  construct confidence intervals, and create informative visualizations
-  with practical R code examples.
+description: "Introductory guide to core statistical concepts in R, including descriptive stats, t-tests, confidence intervals, and visualizations with R code."
 categories: [Statistics, R Programming, Data Analysis, Descriptive Statistics]
 tags: [Descriptive Statistics, Hypothesis Testing, T-Test, Confidence Intervals, Data Visualization, Beginners Guide, Quantitative Analysis, Statistical Methods]
 image: "image.jpg"
@@ -38,7 +34,7 @@ format:
     code-copy: true
 ---
 
-# Introduction:
+## Introduction:
 
 Statistics are a very important part of data analysis because they turn raw data into ideas that can be used.
 Statistical tools can help you make smart choices whether you're summarizing data, seeing patterns, or testing theories.
@@ -47,7 +43,7 @@ It focuses on t-tests, data visualization, and descriptive statistics, all while
 
 ------------------------------------------------------------------------
 
-# Dataset: mtcars
+## Dataset: mtcars
 
 We will use the mtcars dataset that comes with R for this guide.
 There are factors like miles per gallon (mpg), number of cylinders, horsepower, and weight for 32 different car models in this dataset.
@@ -63,7 +59,7 @@ head(mtcars)
 
 ------------------------------------------------------------------------
 
-# Getting to Know the Data
+## Getting to Know the Data
 
 It's important to understand the material we're working with before we start the analysis.
 The following factors are in the mtcars dataset:
@@ -76,7 +72,7 @@ The following factors are in the mtcars dataset:
 
 ------------------------------------------------------------------------
 
-# Descriptive Statistics
+## Descriptive Statistics
 
 Descriptive statistics give an overview of the shape, central trend, and dispersion of a dataset's distribution.
 Let's figure out some important numbers that describe mpg, hp, and wt.
@@ -91,7 +87,7 @@ That is, the cars in this group get about 20.09 miles per gallon on average, wit
 
 ------------------------------------------------------------------------
 
-# Data Visualization
+## Data Visualization
 
 Visualizing data is an important part of figuring out how it is spread out and how different factors are related.
 To look into the mtcars collection, we'll make a number of plots.
@@ -112,7 +108,7 @@ boxplot(mpg ~ am, data = mtcars, main = "MPG by Transmission Type", xlab = "Tran
 
 ------------------------------------------------------------------------
 
-# Comparing Means with T-Tests
+## Comparing Means with T-Tests
 
 You can compare the means of different groups very well with T-tests.
 One-Sample, Independent Two-Sample, and Paired t-tests are the three main types of t-tests.
@@ -120,7 +116,7 @@ Let's use the mtcars dataset to look into each type.
 
 ------------------------------------------------------------------------
 
-## One-Sample T-Test
+### One-Sample T-Test
 
 One-Sample T-Test checks if the mean of a single sample is the same as a number that is already known.
 We might want to see if the mtcars dataset's average miles per gallon (mpg) is significantly different from 20 mpg.
@@ -134,7 +130,7 @@ print(t_test_one_sample)
 The main idea (H₀) here is that the average mpg is 20.
 If the p-value is less than the level of significance, which is usually 0.05, we disagree with the null hypothesis.
 
-## Independent Two-Sample T-Test
+### Independent Two-Sample T-Test
 
 When you use the Independent Two-Sample T-Test, you compare the means of two separate groups.
 Let's look at how many miles per gallon cars with automatic (am = 0) and manual (am = 1) engines get.
@@ -149,7 +145,7 @@ What does H₀ mean?
 It means that there is no change in the average mpg between the two types of transmission.
 There is a difference between the groups if the p-value is significant.
 
-## Paired T-Test
+### Paired T-Test
 
 The Paired T-Test looks at how the means of the same group of people changed over time.
 Even though mtcars doesn't have a built-in matched structure, let's say we want to compare the mpg of two identical cars before and after a change.
@@ -171,7 +167,7 @@ If the p-value is significant, it means that the change made a meaningful differ
 
 ------------------------------------------------------------------------
 
-# Conclusion
+## Conclusion
 
 Using the mtcars dataset, this guide has shown you how to use basic statistical ideas in R.
 We began with summary statistics, made a graph of the data, and used different t-tests to compare means.
@@ -180,7 +176,7 @@ As you learn more advanced statistical methods, keep in mind that these basic sk
 
 ------------------------------------------------------------------------
 
-# Resources & References:
+## Resources & References:
 
 1.  **"R for Data Science"** by Garrett Grolemund and Hadley Wickham
 

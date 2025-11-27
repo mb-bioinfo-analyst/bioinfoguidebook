@@ -7,11 +7,9 @@ date: "2024-03-30"
 categories: [NMD, Nonsense Mediated Decay, Bioinformatics]
 tags: [NMD, mRNA Surveillance, RNA Biology]
 #slug: "nonsense-mediated-decay-nmd"
-description: >
-  A practical guide to studying nonsense-mediated mRNA decay (NMD).
-  Learn the biological mechanism, and NMD events.
+description: "A practical guide to studying nonsense-mediated mRNA decay (NMD). Learn the biological mechanism, and NMD events."
 image: "nonsense_mediated_decay_with_legend.gif"
-image-alt: Thumbnail animation
+image-alt: "Thumbnail animation"
 twitter-card:
   title: "NMD Analysis in R: Mechanisms & Workflows"
   description: >
@@ -34,7 +32,7 @@ format:
     fig-align: center
 ---
 
-# Introduction:
+## Introduction:
 
 Gene expression is a highly controlled process in cells that converts information stored in DNA into functional proteins.
 This regulation is essential for maintaining correct cellular function and responding to external stimuli.
@@ -56,13 +54,13 @@ This post attempts to offer a thorough comprehension of the essential mRNA monit
 
 ------------------------------------------------------------------------
 
-# What is NMD?
+## What is NMD?
 
 The process of NMD is an mRNA monitoring mechanism that is widely conserved in eukaryotic cells.
 It serves a vital function in preserving the integrity of the cellular transcriptome.
 The principal role of NMD is to detect and break down mRNA transcripts that encompass PTCs, sometimes referred to as nonsense mutations.
 
-## The NMD process
+### The NMD process
 
 The phenomenon of NMD can be summarized by a series of fundamental stages:
 
@@ -78,7 +76,7 @@ The phenomenon of NMD can be summarized by a series of fundamental stages:
 4.  **mRNA Degradation**: When a transcript is considered faulty because of the presence of a PTC, it is specifically targeted for degradation by the cellular machinery responsible for RNA degradation.
     The degradation process entails the recruitment of exonucleases that facilitate the degradation of mRNA starting from its 3' end, ultimately resulting in its degradation.
 
-## The NMD pathway involves several key players.
+### The NMD pathway involves several key players.
 
 The Nonsense-Mediated Decay pathway involves the participation of various crucial components.
 
@@ -99,11 +97,11 @@ NMD is a crucial process of mRNA surveillance that plays a vital role in ensurin
 
 ------------------------------------------------------------------------
 
-# Mechanisms and Regulation of NMD
+## Mechanisms and Regulation of NMD
 
 The NMD pathway is an intricate mRNA surveillance process that encompasses various biochemical processes and regulatory elements to guarantee its effectiveness and precision.
 
-## Mechanisms at the molecular level of NMD
+### Mechanisms at the molecular level of NMD
 
 NMD can be succinctly described by the molecular mechanisms involved:
 
@@ -124,7 +122,7 @@ NMD can be succinctly described by the molecular mechanisms involved:
 5.  **mRNA degradation** occurs when the aberrant mRNA transcript is targeted by the NMD machinery and then undergoes degradation through cellular RNA degradation pathways.
     The recruitment of exonucleases to the mRNA molecule results in its breakdown via the 3' end, ultimately leading to its clearance from the cell.
 
-## NMD Efficiency Regulation
+### NMD Efficiency Regulation
 
 The effectiveness and specificity of Nonsense-Mediated Decay are influenced by various circumstances.
 
@@ -138,7 +136,7 @@ The effectiveness and specificity of Nonsense-Mediated Decay are influenced by v
 
 These factors have the potential to affect the efficiency of NMD.The recruitment of Upf proteins and the beginning of NMD are facilitated by ribosome stalling events occurring at PTCs.
 
-## The function of NMD in Post-transcriptional Gene Regulation
+### The function of NMD in Post-transcriptional Gene Regulation
 
 NMD not only serves as a quality control mechanism, but also plays a function in post-transcriptional gene regulation by impacting the stability and abundance of mRNA.
 NMD has the ability to modulate the cellular transcriptome and proteome by targeting transcripts containing PTCs for degradation, hence regulating the expression of certain genes.
@@ -148,7 +146,7 @@ Comprehending these mechanisms and regulatory cues is crucial in order to deciph
 
 ------------------------------------------------------------------------
 
-# Applications and Implications of NMD
+## Applications and Implications of NMD
 
 The utilization of NMD in biological research and clinical medicine is extensive, as it provides significant contributions to the understanding of gene expression regulation, cause of disease, and therapeutic advancement.
 
@@ -181,7 +179,7 @@ Through the utilisation of NMD, scientists can enhance our comprehension of gene
 
 ------------------------------------------------------------------------
 
-# NMD Detection and Analysis Tools
+## NMD Detection and Analysis Tools
 
 Specialized instruments and methodologies are necessary for the detection and analysis of NMD activity in biological systems.
 Scholars employ a diverse range of experimental and computational methodologies to examine the processes, regulation, and functional implications of NMDs.
@@ -216,7 +214,7 @@ This set of tools offers significant contributions to our comprehension of the p
 
 ------------------------------------------------------------------------
 
-# Conclusion
+## Conclusion
 
 The NMD pathway is an essential mechanism for monitoring mRNA activity, which is crucial for preserving physiological equilibrium.
 Its primary function is to detect and break down abnormal mRNA transcripts that contain PTCs.

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-10">
-<meta name="description" content="A hands-on tutorial on computing and interpreting central tendency measures in R. Learn how to calculate the arithmetic mean, median, mode, geometric mean, and harmonic mean—and decide which measure best summarizes your data.">
+<meta name="description" content="A hands-on tutorial on computing and interpreting central tendency measures in R.">
 <title>Centrality Measures in R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -204,7 +204,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">Calculating and Comparing Mean, Median, Mode, and Advanced Averages</p>
                   <div>
         <div class="description">
-          <p>A hands-on tutorial on computing and interpreting central tendency measures in R. Learn how to calculate the arithmetic mean, median, mode, geometric mean, and harmonic mean—and decide which measure best summarizes your data.</p>
+          A hands-on tutorial on computing and interpreting central tendency measures in R.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -577,11 +577,11 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>Descriptive statistics are an essential element of data analysis, offering concise descriptions of the sample and measures. These summaries serve as the foundation for further investigating allowing researchers and analysts to better comprehend the data’s distribution, central tendency, and variability. In bioinformatics, where data sets can be large and complicated, descriptive statistics aid in simplifying and making sense of the underlying patterns. In this post, we’ll look at the key measures of centrality—mean, median, mode, geometric mean, and harmonic mean—and discuss their significance and how to calculate them with R.</p>
 <p>Measures of centrality characterize a data set’s central point, providing information about where the majority of data points congregate. Let’s look at each of these measures.</p>
 <hr>
-<section id="mean" class="level2"><h2 class="anchored" data-anchor-id="mean">Mean</h2>
+<section id="mean" class="level3"><h3 class="anchored" data-anchor-id="mean">Mean</h3>
 <p>The mean, or average, is the most widely used metric of centrality. It is calculated by adding all of the data entries and dividing by the number of entries. The mean is extremely sensitive to outliers, making it unreliable for skewed distributions. In R, you may calculate the mean using the mean() function.</p>
 <div class="cell">
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/seq.html">seq</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">200</span>, <span class="fl">5</span><span class="op">)</span></span>
@@ -591,7 +591,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <pre><code>[1] 105</code></pre>
 </div>
 </div>
-<hr></section><section id="median" class="level2"><h2 class="anchored" data-anchor-id="median">Median</h2>
+<hr></section><section id="median" class="level3"><h3 class="anchored" data-anchor-id="median">Median</h3>
 <p>The median is the middle value of the collected data, whether presented in ascending or descending order. It is especially effective with skewed distributions because it is unaffected by outliers. If the number of observations is odd, the median is simply the middle value. If the number of observations is even, the median is calculated as the average of the two middle numbers. In R, the median is calculated using the median() function.</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">median_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span></span>
@@ -601,7 +601,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 <p>For example, if your data set has an odd number of entries, such as {3, 5, 7}, the median is 5. If it has an even number of entries, such as {3, 5, 7, 9}, the median would be the average of 5 and 7, which is 6.</p>
-<hr></section><section id="mode" class="level2"><h2 class="anchored" data-anchor-id="mode">Mode</h2>
+<hr></section><section id="mode" class="level3"><h3 class="anchored" data-anchor-id="mode">Mode</h3>
 <p>The mode is the value that occurs the most frequently in a data set. It is the only measure of centrality that is applicable to nominal data (data that can be classified but not sorted). Unlike mean and median, a data set may have multiple modes, or none if all values are unique. In R, the mode is not computed directly by a single function, however it may be found using the following code:</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">mode_value</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/numeric.html">as.numeric</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html">names</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/sort.html">sort</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span>, decreasing <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">]</span><span class="op">)</span><span class="op">)</span></span>
@@ -610,7 +610,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <pre><code>[1] 10</code></pre>
 </div>
 </div>
-<hr></section><section id="geometric-mean" class="level2"><h2 class="anchored" data-anchor-id="geometric-mean">Geometric mean</h2>
+<hr></section><section id="geometric-mean" class="level3"><h3 class="anchored" data-anchor-id="geometric-mean">Geometric mean</h3>
 <p>The geometric mean is used to deal with data that has been multiplied or divided, such as growth rates. It is calculated by multiplying all of the numbers together and then getting the nth root (n being the total number of values). This measure is less impacted by large outliers than the mean. In R, the geometric mean can be calculated by combining the exp() and mean() functions:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">geometric_mean</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">log</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span>
@@ -619,7 +619,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <pre><code>[1] 84.62014</code></pre>
 </div>
 </div>
-<hr></section><section id="harmonic-mean" class="level2"><h2 class="anchored" data-anchor-id="harmonic-mean">Harmonic mean</h2>
+<hr></section><section id="harmonic-mean" class="level3"><h3 class="anchored" data-anchor-id="harmonic-mean">Harmonic mean</h3>
 <p>The harmonic mean is very useful in circumstances requiring average rates, such as average speeds or ratios. It is calculated by taking the reciprocal of the arithmetic mean of the data points’ reciprocals. The harmonic mean is always the lowest of the three means (arithmetic, geometric, and harmonic), and it is highly influenced by small values. In R, it may be calculated like this:</p>
 <div class="cell">
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">harmonic_mean</span> <span class="op">&lt;-</span> <span class="fl">1</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="fl">1</span> <span class="op">/</span> <span class="va">data</span><span class="op">)</span></span>
@@ -628,7 +628,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <pre><code>[1] 59.47764</code></pre>
 </div>
 </div>
-<hr></section></section><section id="notes-on-measures-of-centrality" class="level1"><h1>Notes on Measures of Centrality</h1>
+<hr></section></section><section id="notes-on-measures-of-centrality" class="level2"><h2 class="anchored" data-anchor-id="notes-on-measures-of-centrality">Notes on Measures of Centrality</h2>
 <p>Choosing the appropriate measure of centrality depends on the nature of your data and the specific questions you’re addressing. The mean provides a simple average but is sensitive to outliers. The median is more robust in the presence of skewed data, while the mode is best for categorical data. The geometric mean is ideal for multiplicative processes, and the harmonic mean is crucial when averaging rates. Understanding these measures and how to compute them in R will enhance your ability to summarize and interpret data effectively.</p>
 <hr>
 

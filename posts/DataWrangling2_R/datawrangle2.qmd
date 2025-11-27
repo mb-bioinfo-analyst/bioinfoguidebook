@@ -5,10 +5,7 @@ subtitle: "Advanced File Transformation & Reshaping – Part 2"
 author: "Bilal Mustafa"
 date: "2023-09-21"
 #slug: "data-wrangling-best-practices-part-2"
-description: >
-  Part 2 of our R data-wrangling series dives into advanced techniques:
-  reshaping data with pivoting, joining tables, string manipulation, and
-  functional programming with purrr—complete with reproducible code examples.
+description: "Part 2 of the R data-wrangling series, covering advanced techniques such as pivoting, joining tables, string manipulation, and functional programming with purrr."
 categories: [R, Data Wrangling]
 tags: [pivot_longer, pivot_wider, joins, dplyr, tidyr, stringr, purrr, tidyverse, data transformation, R programming]
 image: "image.jpg"

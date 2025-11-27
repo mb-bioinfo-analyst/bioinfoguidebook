@@ -5,10 +5,7 @@ subtitle: "Interpreting p-Values, Adjusted p-Values & False Discovery Rate in R"
 author: "Bilal Mustafa"
 date: "2025-03-05"
 #slug: "p-values-adjusted-fdr-biological-experiments"
-description: >
-  A detailed guide to computing and interpreting p-values, adjusted p-values,
-  and the False Discovery Rate (FDR) in biological experiments.
-  
+description: "A detailed guide to computing and interpreting p-values, adjusted p-values, and the False Discovery Rate (FDR) in biological experiments."
 categories: [Statistics, Data Analysis]
 tags: [p-values, adjusted p-values, FDR, multiple testing, Benjamini–Hochberg, R Programming, hypothesis testing, biological experiments]
 image: "image.jpg"
@@ -30,7 +27,7 @@ open-graph:
   image-alt: "Open Graph image for p-values and FDR guide"
 ---
 
-# Introduction:
+## Introduction:
 
 In order to interpret the outcomes of biological experiments, statistical analyses are essential.
 Scientists can ascertain whether the patterns they see are real signals or just the result of pure chance by employing statistical tools.
@@ -39,7 +36,7 @@ Researchers and readers of scientific studies can assess the validity of the rep
 
 ------------------------------------------------------------------------
 
-## The Role of p-values:
+### The Role of p-values:
 
 The p-value is frequently used to express the likelihood that data would be at least as extreme as those observed in the event that there were no true underlying effect---a scenario known as the "null hypothesis" being true.
 A small p-value indicates that it would be extremely uncommon to observe such a large difference if the drug actually had no effect at all, for instance, if your experiment demonstrates a strong difference---for instance, a discernible increase in the growth rate of cells treated with a new drug compared to a control group.
@@ -53,7 +50,7 @@ In order to determine whether the effect of a medication or intervention is both
 
 ------------------------------------------------------------------------
 
-## Why We Need Adjusted p-values?
+### Why We Need Adjusted p-values?
 
 Many biological disciplines, especially proteomics, genomics, and other high-throughput investigations, routinely perform thousands or even millions of statistical tests.
 In a gene expression experiment, for example, you could track changes in the expression levels of thousands of genes.
@@ -72,7 +69,7 @@ To be more inclusive and prevent missing a potentially useful lead, you could al
 
 ------------------------------------------------------------------------
 
-## The Significance of the False Discovery Rate (FDR):
+### The Significance of the False Discovery Rate (FDR):
 
 Though it is worth emphasizing separately, the idea of the false discovery rate (FDR) is closely related to adjusted p-values.
 In essence, the FDR calculates the expected percentage of results that are false positives but are classified as "significant.".
@@ -83,7 +80,7 @@ Researchers may examine tens of thousands of genetic variants simultaneously in 
 They risk being overloaded with false positives if the FDR is not controlled, squandering time and money searching for mutations that eventually have no effect on the illness.
 Scientists can more successfully focus on the genetic alterations that are actually deserving of more research by choosing a realistic FDR threshold, such as 0.01, 0.05, or 0.1, depending on the project's error tolerance.
 
-## Choosing Cutoff Points: A Balance Between Strictness and Exploration
+### Choosing Cutoff Points: A Balance Between Strictness and Exploration
 
 Selecting a threshold to apply when analyzing FDR and p-values can be difficult.
 While an overly stringent threshold may deter researchers from making untrue claims, it may also obscure important discoveries.
@@ -99,7 +96,7 @@ This is similar to adjusted p-values, FDR, and p-value thresholds.
 
 ------------------------------------------------------------------------
 
-## Putting It All Together:
+### Putting It All Together:
 
 In conclusion, the false discovery rate, adjusted p-values, and p-values provide a system of checks and balances that assist researchers in appropriately interpreting the findings of their experiments.
 The p-value, which is a crucial starting point but can be deceptive if numerous tests are conducted, shows whether an observed effect is likely to be real or the result of random chance.

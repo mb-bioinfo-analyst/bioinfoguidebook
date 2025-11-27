@@ -5,10 +5,7 @@ subtitle: "Calculating Variance, SD, IQR & Coefficient of Variation"
 author: "Bilal Mustafa"   
 date: "2024-08-11"    
 #slug: "variability-measures-in-r"
-description: >
-  A hands-on guide to measuring variability in R. Learn to compute variance,
-  standard deviation, interquartile range, and coefficient of variation—
-  complete with code examples and visualizations.
+description: "Hands-on guide to measuring variability in R, including variance, standard deviation, interquartile range, and coefficient of variation with R code."
 categories: [Statistics, Data Analysis, Descriptive Statistics]    
 tags: [R Programming, Data Analysis, Variability, Variance, Standard Deviation, Interquartile Range, Coefficient of Variation, Statistical Measures]
 image: "image.jpg"
@@ -36,7 +33,7 @@ format:
     code-copy: true
 ---
 
-# Introduction:
+## Introduction:
 
 In our previous post, we looked into measures of centrality, which help identify the central point of a data set.
 However, recognizing the central tendency is insufficient to properly explain the distribution of your data.
@@ -48,7 +45,7 @@ These measures are critical for understanding the spread of the distribution, si
 
 ------------------------------------------------------------------------
 
-## Range
+### Range
 
 The range is the most basic measure of variability.
 It is calculated as the difference between the dataset's highest and lowest values.
@@ -64,7 +61,7 @@ range_value <- diff(range_values)
 
 ------------------------------------------------------------------------
 
-## Interquartile range (IQR)
+### Interquartile range (IQR)
 
 The Interquartile Range (IQR) is a measure of the distribution of the middle 50% of data.
 It is computed by subtracting the 75th percentile (Q3) from the 25th percentile (Q1).
@@ -78,7 +75,7 @@ iqr_value <- IQR(data)
 
 ------------------------------------------------------------------------
 
-## Variance
+### Variance
 
 Variance represents the average squared deviation of each data point from the mean.
 It provides information on the degree of spread in the data, with higher variances suggesting greater spread.
@@ -92,7 +89,7 @@ variance_value <- var(data)
 
 ------------------------------------------------------------------------
 
-## Standard deviation
+### Standard deviation
 
 Standard deviation is the square root of variance and measures each data point's average distance from the mean.
 It is one of the most commonly used measures of variability since it is expressed in the same units as the data, making it easier to read than variance.
@@ -106,7 +103,7 @@ sd_value <- sd(data)
 
 ------------------------------------------------------------------------
 
-## Standard Error
+### Standard Error
 
 The Standard Error (SE) computes the standard deviation of the sample mean from the population mean.
 It gives an estimate of how much the sample mean is likely to differ from the true population mean, given repeated sampling.
@@ -121,7 +118,7 @@ se_value <- sd(data) / sqrt(length(data))
 
 ------------------------------------------------------------------------
 
-# Notes on Measures of Variability
+## Notes on Measures of Variability
 
 Understanding measures of variability is critical for comprehending the distribution and spread of your data.
 While centrality metrics indicate where the majority of data points are located, variability measures indicate how widely distributed those data points are around the central value.

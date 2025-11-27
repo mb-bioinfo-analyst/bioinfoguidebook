@@ -5,11 +5,7 @@ subtitle: "Implement If-Else, Nested Logic & Vectorized Conditions"
 author: "Bilal Mustafa"
 date: "2023-09-07"
 #slug: "mastering-conditional-logic-r"
-description: >
-  A comprehensive tutorial on conditional programming in R. Learn how to use
-  if-else statements, nested logic, switch functions, and vectorized operations
-  to write clean, efficient code.
-
+description: "A tutorial on conditional programming in R. Learn how to use if-else statements, nested logic, and switch functions to write clean, efficient code."
 categories: [R, Programming, Conditional Statement]
 tags: [Conditional Logic, If-Else, Nested If, Switch, Vectorized Operations]
 

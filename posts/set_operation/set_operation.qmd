@@ -5,10 +5,7 @@ subtitle: "Conceptual Overview of Set Operations"
 author: "Bilal Mustafa"
 date: "2025-07-18"
 #slug: "intro-to-set-operations"
-description: >
-  A conceptual overview of set operations. Learn the definitions, properties,
-  and relationships of union, intersection, difference, and symmetric difference
-  using illustrative examples and Venn diagrams.
+description: "Conceptual overview of set operations, union, intersection, difference and symmetric difference, using simple examples and Venn diagrams."
 # Categories are higher-level; tags allow for more detailed filtering/search
 categories: [Statistics, Data Analysis]
 tags: [Set Theory, union, intersect, setdiff, symmetric difference, Venn Diagram, R Programming, Vector Operations]
@@ -31,7 +28,7 @@ open-graph:
   image-alt: "Open Graph image for set operations guide"
 ---
 
-# Introduction:
+## Introduction:
 
 Set theory serves as a foundation for many fields of mathematics and data analysis.
 Understanding sets and their operations is critical for a wide range of scientific and computational applications.
@@ -43,7 +40,7 @@ By the end, you should have a good idea of what each operation represents.
 
 ------------------------------------------------------------------------
 
-# Union
+## Union
 
 ![Figure: Venn diagram illustrating the union of two sets A and B. The shaded region represents A∪B, which includes any element that lies in either set (or both sets).](unions.png){fig-alt="Figure of unions representation"}
 
@@ -87,7 +84,7 @@ In practice, the union joins two sets into a single larger set that has all of t
 
 ------------------------------------------------------------------------
 
-# Intersection
+## Intersection
 
 ![Figure: Venn diagram for the intersection of A and B. The shaded region (where the circles overlap) represents A∩B, containing elements that both sets have in common.](Intersections.png){fig-alt="Figure of intersections representation"}
 
@@ -126,7 +123,7 @@ Importantly, any intersection $A \cap B$ will always be a subset of each set $A$
 
 ------------------------------------------------------------------------
 
-# Difference (Relative Complement)
+## Difference (Relative Complement)
 
 ![Figure: Venn diagram for the difference A−B (also denoted A∖B). The shaded area is the part of set A that lies outside set B, representing elements in A that are not in B](Difference.png){fig-alt="Figure of Differences representation"}
 
@@ -170,7 +167,7 @@ The difference operation is also known as the *relative complement* of $B$ in $A
 
 ------------------------------------------------------------------------
 
-# Symmetric Difference
+## Symmetric Difference
 
 ![Figure: Venn diagram for the symmetric difference of A and B. The shaded regions represent A△B, which includes elements in either set but not in the overlap. Equivalently, it is everything in A or B except the intersection.](symmetericDifference.png){fig-alt="Figure of Differences representation"}
 
@@ -218,7 +215,7 @@ In summary, $A\triangle B$ yields precisely those elements that belong to one se
 
 ------------------------------------------------------------------------
 
-# Subset and Superset
+## Subset and Superset
 
 A **subset** describes the relationship between two sets rather than creating a new one.
 Set $A$ is a subset of set $B$ (written $A \subseteq B$) if **every** element of $A$ is also in $B$.
@@ -256,7 +253,7 @@ These identities follow directly from the definitions of union and intersection.
 
 ------------------------------------------------------------------------
 
-# Complement
+## Complement
 
 In set theory, a **complement** is defined as all elements that are not part of a set, relative to a **universal set** $U$, which represents the complete collection under consideration.
 The complement of $A$ (denoted $A^c$, also written $A'$ or $\overline{A}$) is the set of all elements in $U$ that are not in $A$.
@@ -309,7 +306,7 @@ Complements thus invert membership and, combined with union and intersection, co
 
 ------------------------------------------------------------------------
 
-# Closing teaser
+## Closing teaser
 
 While we have explored these set operations in abstract mathematical terms, they are far from being purely theoretical.
 When combined with real-world data, they become extremely effective tools.
@@ -320,7 +317,7 @@ Stay tuned!
 
 ------------------------------------------------------------------------
 
-# References
+## References
 
 Number Analytics.
 Set theory definitions and properties.

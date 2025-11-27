@@ -5,10 +5,7 @@ subtitle: "Efficient File Reading, Cleaning & Transformation Workflows"
 author: "Bilal Mustafa"
 date: "2023-09-19"
 #slug: "data-wrangling-best-practices-part-1"
-description: >
-  Part 1 of a series on data wrangling in R: learn efficient file reading,
-  data cleaning, and initial transformation techniques using readr, dplyr, and
-  tidyr—complete with reproducible code examples.
+description: "Part 1 of a data-wrangling series in R, covering efficient file reading, data cleaning, and essential transformations using readr, dplyr, and tidyr."
 categories: [R, Data Wrangling]
 tags: [file reading, data cleaning, data transformation, dplyr, tidyr, tidyverse, R programming]
 image: "image.jpg"
@@ -35,7 +32,7 @@ format:
     code-copy: true
 ---
 
-# Introduction:
+## Introduction:
 
 The process of data wrangling is crucial to data analysis.
 Your raw data must be cleaned up and transformed into an analysis-ready format.
@@ -44,9 +41,9 @@ We will go over these best practices in detail in this blog article, starting wi
 
 ------------------------------------------------------------------------
 
-## **Reading Data from a File**
+### **Reading Data from a File**
 
-### **1. Choose the Right File Format**
+#### **1. Choose the Right File Format**
 
 You must first read your data into R before you can begin manipulating it.
 The type of data you have will determine which file format you use.
@@ -68,7 +65,7 @@ data <- read_excel("your_data.xlsx")
 
 ------------------------------------------------------------------------
 
-### **2. Check for Missing Values**
+#### **2. Check for Missing Values**
 
 After importing your data, the following step is to look for any missing values.
 Analyses that are skewed or erroneous can result from missing data.
@@ -84,7 +81,7 @@ sum(is.na(data))
 
 ------------------------------------------------------------------------
 
-### **3. Set Correct Data Types**
+#### **3. Set Correct Data Types**
 
 Make sure the column data types are adequate for your analysis.
 When importing data, R occasionally assigns the incorrect data types.
@@ -103,13 +100,13 @@ data$date_column <- as.Date(data$date_column, format = "%Y-%m-%d")
 
 ------------------------------------------------------------------------
 
-## **Simulating Data**
+### **Simulating Data**
 
 A useful exercise for testing your data wrangling abilities and analytical pipelines is simulating data.
 To verify your code, you can make synthetic datasets with well-known features.
 Although R provides a number of additional methods for producing data with different distributions, the `rnorm()` function is frequently used to produce random normal data.
 
-### **1. Set a Seed for Reproducibility**
+#### **1. Set a Seed for Reproducibility**
 
 To ensure that your simulated data is reproducible, set a random seed using the `set.seed()` function.
 This will make your results consistent across runs.z
@@ -124,7 +121,7 @@ set.seed(123)
 
 ------------------------------------------------------------------------
 
-### **2. Create Simulated Data**
+#### **2. Create Simulated Data**
 
 Let's create a simple simulated dataset with two variables, `x` and `y`, following a normal distribution.
 
@@ -141,7 +138,7 @@ simulated_data <- data.frame(x, y)
 
 ------------------------------------------------------------------------
 
-## **Wrapping Up**
+### **Wrapping Up**
 
 Data wrangling is a crucial step in the data analysis process, and following best practices is essential for ensuring the quality and integrity of your data.
 In this blog post, we covered the initial steps of reading data from a file and simulating data for testing purposes.

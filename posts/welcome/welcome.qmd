@@ -5,10 +5,7 @@ subtitle: "Your Go-To Resource for Bioinformatics Tutorials & References"
 author: "Bilal Mustafa"
 date: "2023-07-26"
 #slug: "welcome"
-description: >
-  An introduction to Bioinfo Guide Book: a free, open-access site offering
-  step-by-step bioinformatics tutorials, reproducible R & python code
-  examples, and reference materials for students and researchers.
+description: "Bioinfo Guide Book, a free open-access resource offering step-by-step bioinformatics tutorials, reproducible R and Python code, and reference materials."
 categories: [Welcome]
 tags: [introduction, overview, bioinformatics guide, tutorials, resources]
 image: "profile.png"

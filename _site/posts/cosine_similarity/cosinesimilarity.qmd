@@ -5,10 +5,7 @@ subtitle: "Comparing Gene Expression Profiles in R with Cosine Metrics"
 author: "Bilal Mustafa"
 date: "2024-02-18"
 #slug: "cosine-similarity-gene-expression"
-description: >
-  Learn how to compare gene expression profiles using cosine similarity in R.
-  This tutorial covers data preprocessing, computing similarity metrics, and
-  interpreting results with code examples and visualizations.
+description: "Learn how to compare gene expression profiles using cosine similarity in R, including data preprocessing, similarity computation, and view result."
 categories: [R, Cosine Similarity, Bioinformatics]
 tags: [gene expression, cosine similarity, similarity metrics, R programming, data analysis, omics, bioinformatics]
 image: "cosine_similarity_animation.gif"
@@ -37,7 +34,7 @@ format:
     fig-align: center
 ---
 
-# Introduction:
+## Introduction:
 
 Understanding the connections between different elements, including genes, proteins, and biological samples, is essential to deciphering the intricate workings of living beings in the broad field of biological sciences.
 In biological study, cosine similarity, a mathematical notion with broad applications across various domains, emerges as a potent tool that provides insights into molecular connections, functional linkages, and evolutionary patterns.
@@ -54,7 +51,7 @@ We'll look at how cosine similarity is used in biological sciences in this post,
 
 ------------------------------------------------------------------------
 
-# What is Cosine Similarity?
+## What is Cosine Similarity?
 
 Although cosine similarity seems complicated at first, it's actually very easy to understand, especially when presented in an approachable way for beginners.
 
@@ -90,7 +87,7 @@ This can be observed from the following animation,
 
 ------------------------------------------------------------------------
 
-# How Does Cosine Similarity Work in Biological Analysis?
+## How Does Cosine Similarity Work in Biological Analysis?
 
 A closer examination of gene expression patterns under various treatment or condition scenarios is necessary to comprehend the operation of cosine similarity in the context of biological investigation, especially in Differential Expression Gene (DEG) studies.
 Assume you are researching how various medication regimens affect the expression of certain genes in cancer cells.
@@ -118,7 +115,7 @@ In this instance, the cosine similarity score between Treatment A and Treatment 
 
 ------------------------------------------------------------------------
 
-# Applications of Cosine Similarity in Biological Analysis:
+## Applications of Cosine Similarity in Biological Analysis:
 
 Despite having its roots in mathematics and computer science, cosine similarity has a wide range of uses in biological investigation, especially when interpreting high-dimensional data like gene expression profiles.
 Let's examine the biological applications of cosine similarity;
@@ -145,7 +142,7 @@ Additionally, the identification of novel therapeutic targets or bio-markers for
 
 ------------------------------------------------------------------------
 
-# Advantages of Cosine Similarity in Biological Analysis:
+## Advantages of Cosine Similarity in Biological Analysis:
 
 When evaluating biological data, cosine similarity is the method of choice due to its many benefits, especially when it comes to gene expression research and other omics investigations.
 following are a few of these benefits and their implications for biological research;
@@ -174,7 +171,7 @@ This characteristic makes it possible to compute gene expression patterns accura
 
 ------------------------------------------------------------------------
 
-# Limitations of Cosine Similarity in Biological Analysis:
+## Limitations of Cosine Similarity in Biological Analysis:
 
 While there are many benefits to using cosine similarity in biological data analysis, it's crucial to be aware of its limitations in order to ensure proper interpretation and insightful conclusions.
 In the context of biological analysis, cosine similarity has the following significant limitations;
@@ -204,7 +201,7 @@ To lessen the impact of data sparsity on cosine similarity analysis, careful eva
 
 ------------------------------------------------------------------------
 
-# Conclusion
+## Conclusion
 
 To sum up, cosine similarity is a useful quantitative metric in biological research, especially in the context of Differential Expression Gene (DEG) investigations, since it allows evaluation of the degree of similarity between gene expression patterns under various conditions or treatments.
 Researchers can find treatments with similar effects on gene expression by focusing on the direction of changes in gene expression rather than specific expression levels.

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2025-07-18">
-<meta name="description" content="A conceptual overview of set operations. Learn the definitions, properties, and relationships of union, intersection, difference, and symmetric difference using illustrative examples and Venn diagrams.">
+<meta name="description" content="Conceptual overview of set operations, union, intersection, difference and symmetric difference, using simple examples and Venn diagrams.">
 
 <title>Understanding Set Operations</title>
 <style>
@@ -202,7 +202,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">Conceptual Overview of Set Operations</p>
                   <div>
         <div class="description">
-          <p>A conceptual overview of set operations. Learn the definitions, properties, and relationships of union, intersection, difference, and symmetric difference using illustrative examples and Venn diagrams.</p>
+          Conceptual overview of set operations, union, intersection, difference and symmetric difference, using simple examples and Venn diagrams.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -582,13 +582,13 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction:</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>Set theory serves as a foundation for many fields of mathematics and data analysis. Understanding sets and their operations is critical for a wide range of scientific and computational applications. In this post, we will define the essential set operations in abstract terms: union, intersection, difference, symmetric difference, subset, and complement. We’ll describe each operation using standard notation and basic examples (mathematical notation for precision). Venn diagrams are a valuable visual tool throughout, demonstrating how various operations combine or relate sets. By the end, you should have a good idea of what each operation represents. (In Part II, we will look at how these abstract procedures may be applied to real biological data; a hint is provided at the conclusion!)</p>
 <hr>
 </section>
-<section id="union" class="level1">
-<h1>Union</h1>
+<section id="union" class="level2">
+<h2 class="anchored" data-anchor-id="union">Union</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="unions.png" class="img-fluid figure-img" alt="Figure of unions representation"></p>
@@ -620,8 +620,8 @@ A \cup (B \cup C) = (A \cup B) \cup C.
 <p>In practice, the union joins two sets into a single larger set that has all of their unique components.</p>
 <hr>
 </section>
-<section id="intersection" class="level1">
-<h1>Intersection</h1>
+<section id="intersection" class="level2">
+<h2 class="anchored" data-anchor-id="intersection">Intersection</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Intersections.png" class="img-fluid figure-img" alt="Figure of intersections representation"></p>
@@ -649,8 +649,8 @@ A \cap B = B \cap A.
 <p>Importantly, any intersection <span class="math inline">\(A \cap B\)</span> will always be a subset of each set <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span>, capturing exactly what the two sets share.</p>
 <hr>
 </section>
-<section id="difference-relative-complement" class="level1">
-<h1>Difference (Relative Complement)</h1>
+<section id="difference-relative-complement" class="level2">
+<h2 class="anchored" data-anchor-id="difference-relative-complement">Difference (Relative Complement)</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="Difference.png" class="img-fluid figure-img" alt="Figure of Differences representation"></p>
@@ -684,8 +684,8 @@ B - A = \{f\},
 </ul>
 <hr>
 </section>
-<section id="symmetric-difference" class="level1">
-<h1>Symmetric Difference</h1>
+<section id="symmetric-difference" class="level2">
+<h2 class="anchored" data-anchor-id="symmetric-difference">Symmetric Difference</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="symmetericDifference.png" class="img-fluid figure-img" alt="Figure of Differences representation"></p>
@@ -729,8 +729,8 @@ A\triangle (B\triangle C) = (A\triangle B)\triangle C.
 <p>In summary, <span class="math inline">\(A\triangle B\)</span> yields precisely those elements that belong to one set or the other, but not to their intersection.</p>
 <hr>
 </section>
-<section id="subset-and-superset" class="level1">
-<h1>Subset and Superset</h1>
+<section id="subset-and-superset" class="level2">
+<h2 class="anchored" data-anchor-id="subset-and-superset">Subset and Superset</h2>
 <p>A <strong>subset</strong> describes the relationship between two sets rather than creating a new one. Set <span class="math inline">\(A\)</span> is a subset of set <span class="math inline">\(B\)</span> (written <span class="math inline">\(A \subseteq B\)</span>) if <strong>every</strong> element of <span class="math inline">\(A\)</span> is also in <span class="math inline">\(B\)</span>. In logical form:</p>
 <p><span class="math display">\[
 A \subseteq B \quad\Longleftrightarrow\quad \forall x,\; (x \in A \implies x \in B).
@@ -751,8 +751,8 @@ A \cap B = A,
 <p>since adding a smaller set to a larger one brings nothing new, and their overlap is exactly the smaller set. These identities follow directly from the definitions of union and intersection.</p>
 <hr>
 </section>
-<section id="complement" class="level1">
-<h1>Complement</h1>
+<section id="complement" class="level2">
+<h2 class="anchored" data-anchor-id="complement">Complement</h2>
 <p>In set theory, a <strong>complement</strong> is defined as all elements that are not part of a set, relative to a <strong>universal set</strong> <span class="math inline">\(U\)</span>, which represents the complete collection under consideration. The complement of <span class="math inline">\(A\)</span> (denoted <span class="math inline">\(A^c\)</span>, also written <span class="math inline">\(A'\)</span> or <span class="math inline">\(\overline{A}\)</span>) is the set of all elements in <span class="math inline">\(U\)</span> that are not in <span class="math inline">\(A\)</span>. In formula terms:</p>
 <p><span class="math display">\[
 A^c = U - A \;=\; \{\,x \mid x \in U \text{ and } x \notin A\}.
@@ -790,13 +790,13 @@ A \cap A^c = \varnothing.
 <p>These identities follow directly from the logic of “not (A or B)” versus “not A and not B,” and vice versa. Complements thus invert membership and, combined with union and intersection, complete the basic algebra of sets.</p>
 <hr>
 </section>
-<section id="closing-teaser" class="level1">
-<h1>Closing teaser</h1>
+<section id="closing-teaser" class="level2">
+<h2 class="anchored" data-anchor-id="closing-teaser">Closing teaser</h2>
 <p>While we have explored these set operations in abstract mathematical terms, they are far from being purely theoretical. When combined with real-world data, they become extremely effective tools. In biology, for example, set operations may be used to compare groups of genes or proteins: the intersection of two gene lists may reveal common genes associated with two conditions, a difference may isolate unique genes expressed only in one experiment, and a union may combine all genes discovered in multiple studies. Subsets can form hierarchies such as species within a genus, whereas complements can represent “everything not in a given list” (for example, all genes except those in a specific pathway). These biological applications (and others) will be discussed in Part II, where we will see set operations used to make sense of complex biological data. Stay tuned!</p>
 <hr>
 </section>
-<section id="references" class="level1">
-<h1>References</h1>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
 <p>Number Analytics. Set theory definitions and properties. Retrieved July 16, 2025, from https://numberanalytics.com</p>
 <p>MathMonks. Comprehensive guide to set operations. Retrieved July 16, 2025, from https://mathmonks.com</p>
 <hr>

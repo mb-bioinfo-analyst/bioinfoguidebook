@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-19">
-<meta name="description" content="Part 1 of a series on data wrangling in R: learn efficient file reading, data cleaning, and initial transformation techniques using readr, dplyr, and tidyr—complete with reproducible code examples.">
+<meta name="description" content="Part 1 of a data-wrangling series in R, covering efficient file reading, data cleaning, and essential transformations using readr, dplyr, and tidyr.">
 <title>Data Wrangling Best Practices in R - Part 1</title>
 <style>
 code{white-space: pre-wrap;}
@@ -204,7 +204,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">Efficient File Reading, Cleaning &amp; Transformation Workflows</p>
                   <div>
         <div class="description">
-          <p>Part 1 of a series on data wrangling in R: learn efficient file reading, data cleaning, and initial transformation techniques using readr, dplyr, and tidyr—complete with reproducible code examples.</p>
+          Part 1 of a data-wrangling series in R, covering efficient file reading, data cleaning, and essential transformations using readr, dplyr, and tidyr.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -566,32 +566,19 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <li>
 <a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction:</a>
   <ul class="collapse">
-<li>
-<a href="#reading-data-from-a-file" id="toc-reading-data-from-a-file" class="nav-link" data-scroll-target="#reading-data-from-a-file"><strong>Reading Data from a File</strong></a>
-  <ul class="collapse">
-<li><a href="#choose-the-right-file-format" id="toc-choose-the-right-file-format" class="nav-link" data-scroll-target="#choose-the-right-file-format"><strong>1. Choose the Right File Format</strong></a></li>
-  <li><a href="#check-for-missing-values" id="toc-check-for-missing-values" class="nav-link" data-scroll-target="#check-for-missing-values"><strong>2. Check for Missing Values</strong></a></li>
-  <li><a href="#set-correct-data-types" id="toc-set-correct-data-types" class="nav-link" data-scroll-target="#set-correct-data-types"><strong>3. Set Correct Data Types</strong></a></li>
-  </ul>
-</li>
-  <li>
-<a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><strong>Simulating Data</strong></a>
-  <ul class="collapse">
-<li><a href="#set-a-seed-for-reproducibility" id="toc-set-a-seed-for-reproducibility" class="nav-link" data-scroll-target="#set-a-seed-for-reproducibility"><strong>1. Set a Seed for Reproducibility</strong></a></li>
-  <li><a href="#create-simulated-data" id="toc-create-simulated-data" class="nav-link" data-scroll-target="#create-simulated-data"><strong>2. Create Simulated Data</strong></a></li>
-  </ul>
-</li>
+<li><a href="#reading-data-from-a-file" id="toc-reading-data-from-a-file" class="nav-link" data-scroll-target="#reading-data-from-a-file"><strong>Reading Data from a File</strong></a></li>
+  <li><a href="#simulating-data" id="toc-simulating-data" class="nav-link" data-scroll-target="#simulating-data"><strong>Simulating Data</strong></a></li>
   <li><a href="#wrapping-up" id="toc-wrapping-up" class="nav-link" data-scroll-target="#wrapping-up"><strong>Wrapping Up</strong></a></li>
   </ul>
 </li>
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>The process of data wrangling is crucial to data analysis. Your raw data must be cleaned up and transformed into an analysis-ready format. There are a number of best practices you can adhere to in R, a robust and flexible language for data analysis, to ensure successful and efficient data wrangling. We will go over these best practices in detail in this blog article, starting with reading data from a file and simulating data for our examples.</p>
 <hr>
-<section id="reading-data-from-a-file" class="level2"><h2 class="anchored" data-anchor-id="reading-data-from-a-file"><strong>Reading Data from a File</strong></h2>
-<section id="choose-the-right-file-format" class="level3"><h3 class="anchored" data-anchor-id="choose-the-right-file-format"><strong>1. Choose the Right File Format</strong></h3>
+<section id="reading-data-from-a-file" class="level3"><h3 class="anchored" data-anchor-id="reading-data-from-a-file"><strong>Reading Data from a File</strong></h3>
+<section id="choose-the-right-file-format" class="level4"><h4 class="anchored" data-anchor-id="choose-the-right-file-format"><strong>1. Choose the Right File Format</strong></h4>
 <p>You must first read your data into R before you can begin manipulating it. The type of data you have will determine which file format you use. CSV, Excel, and other text-based file types are frequently used to store data. To import data from these formats into R, use functions like <code><a href="https://rdrr.io/r/utils/read.table.html">read.csv()</a></code>, <code><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel()</a></code>, or <code><a href="https://rdrr.io/r/utils/read.table.html">read.table()</a></code>. When using these routines, be sure to supply the correct file location and format settings.</p>
 <p>Let’s look at an example:</p>
 <div class="cell">
@@ -602,14 +589,14 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://readxl.tidyverse.org">readxl</a></span><span class="op">)</span></span>
 <span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://readxl.tidyverse.org/reference/read_excel.html">read_excel</a></span><span class="op">(</span><span class="st">"your_data.xlsx"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="check-for-missing-values" class="level3"><h3 class="anchored" data-anchor-id="check-for-missing-values"><strong>2. Check for Missing Values</strong></h3>
+<hr></section><section id="check-for-missing-values" class="level4"><h4 class="anchored" data-anchor-id="check-for-missing-values"><strong>2. Check for Missing Values</strong></h4>
 <p>After importing your data, the following step is to look for any missing values. Analyses that are skewed or erroneous can result from missing data. The <code><a href="https://rdrr.io/r/base/sum.html">sum()</a></code> method can be used to count them, and the <code><a href="https://rdrr.io/r/base/NA.html">is.na()</a></code> function can be used to identify missing values.</p>
 <p>Let’s see an example:</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Check for missing values in the entire dataset</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/NA.html">is.na</a></span><span class="op">(</span><span class="va">data</span><span class="op">)</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="set-correct-data-types" class="level3"><h3 class="anchored" data-anchor-id="set-correct-data-types"><strong>3. Set Correct Data Types</strong></h3>
+<hr></section><section id="set-correct-data-types" class="level4"><h4 class="anchored" data-anchor-id="set-correct-data-types"><strong>3. Set Correct Data Types</strong></h4>
 <p>Make sure the column data types are adequate for your analysis. When importing data, R occasionally assigns the incorrect data types. To change a column’s data type, use a function like <code><a href="https://rdrr.io/r/base/numeric.html">as.numeric()</a></code>, <code><a href="https://rdrr.io/r/base/integer.html">as.integer()</a></code>, or <code><a href="https://rdrr.io/r/base/as.Date.html">as.Date()</a></code>.</p>
 <p>Here’s an example:</p>
 <div class="cell">
@@ -619,16 +606,16 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <span><span class="co"># Convert a column to date</span></span>
 <span><span class="va">data</span><span class="op">$</span><span class="va">date_column</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">data</span><span class="op">$</span><span class="va">date_column</span>, format <span class="op">=</span> <span class="st">"%Y-%m-%d"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section></section><section id="simulating-data" class="level2"><h2 class="anchored" data-anchor-id="simulating-data"><strong>Simulating Data</strong></h2>
+<hr></section></section><section id="simulating-data" class="level3"><h3 class="anchored" data-anchor-id="simulating-data"><strong>Simulating Data</strong></h3>
 <p>A useful exercise for testing your data wrangling abilities and analytical pipelines is simulating data. To verify your code, you can make synthetic datasets with well-known features. Although R provides a number of additional methods for producing data with different distributions, the <code><a href="https://rdrr.io/r/stats/Normal.html">rnorm()</a></code> function is frequently used to produce random normal data.</p>
-<section id="set-a-seed-for-reproducibility" class="level3"><h3 class="anchored" data-anchor-id="set-a-seed-for-reproducibility"><strong>1. Set a Seed for Reproducibility</strong></h3>
+<section id="set-a-seed-for-reproducibility" class="level4"><h4 class="anchored" data-anchor-id="set-a-seed-for-reproducibility"><strong>1. Set a Seed for Reproducibility</strong></h4>
 <p>To ensure that your simulated data is reproducible, set a random seed using the <code><a href="https://rdrr.io/r/base/Random.html">set.seed()</a></code> function. This will make your results consistent across runs.z</p>
 <p>Here’s an example:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Set a random seed for reproducibility</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Random.html">set.seed</a></span><span class="op">(</span><span class="fl">123</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="create-simulated-data" class="level3"><h3 class="anchored" data-anchor-id="create-simulated-data"><strong>2. Create Simulated Data</strong></h3>
+<hr></section><section id="create-simulated-data" class="level4"><h4 class="anchored" data-anchor-id="create-simulated-data"><strong>2. Create Simulated Data</strong></h4>
 <p>Let’s create a simple simulated dataset with two variables, <code>x</code> and <code>y</code>, following a normal distribution.</p>
 <div class="cell">
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create simulated data</span></span>
@@ -639,7 +626,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <span><span class="co"># Create a data frame</span></span>
 <span><span class="va">simulated_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html">data.frame</a></span><span class="op">(</span><span class="va">x</span>, <span class="va">y</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section></section><section id="wrapping-up" class="level2"><h2 class="anchored" data-anchor-id="wrapping-up"><strong>Wrapping Up</strong></h2>
+<hr></section></section><section id="wrapping-up" class="level3"><h3 class="anchored" data-anchor-id="wrapping-up"><strong>Wrapping Up</strong></h3>
 <p>Data wrangling is a crucial step in the data analysis process, and following best practices is essential for ensuring the quality and integrity of your data. In this blog post, we covered the initial steps of reading data from a file and simulating data for testing purposes. Stay tuned for our next installment, where we will delve deeper into advanced data wrangling techniques in R. Until then, happy data wrangling!</p>
 <hr>
 

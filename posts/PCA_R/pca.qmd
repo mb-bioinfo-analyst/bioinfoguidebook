@@ -5,11 +5,7 @@ subtitle: "Dimensionality Reduction & Feature Engineering with PCA"
 author: "Bilal Mustafa"
 date: "2023-09-24"
 #slug: "principal-component-analysis-r"
-description: >
-  A practical guide to using Principal Component Analysis (PCA) in R for
-  dimensionality reduction and feature engineering. Learn how to preprocess data,
-  compute principal components, interpret scree plots, and visualize PCA results
-  with reproducible code examples.
+description: "Practical guide to performing PCA in R for dimensionality reduction, including data preprocessing, computing components, interpreting scree plots, and visualizing results."
 categories: [R, PCA, Feature Engineering, Dimentionality Reduction]
 tags: [PCA, Feature Engineering, Principal Components, Data Analysis, Machine Learning, Dimensionality Reduction, R Programming]
 image: "image.jpg"
@@ -49,9 +45,9 @@ In order to achieve this, PCA converts the initial data into a new coordinate sy
 
 ------------------------------------------------------------------------
 
-# Basic Concepts
+## Basic Concepts
 
-## Data Preparation
+### Data Preparation
 
 You normally begin with a dataset that comprises numerous variables or features before applying PCA.
 These traits, measures, or characteristics of the data points you're evaluating could be considered as these features.
@@ -60,7 +56,7 @@ This stage makes sure that each feature is given the same weight in the analysis
 
 ------------------------------------------------------------------------
 
-## Covariance Matrix
+### Covariance Matrix
 
 The covariance matrix of the standardized data is computed first in PCA.
 The associations between each pair of variables in your dataset are summarized in the covariance matrix.
@@ -69,7 +65,7 @@ While a negative covariance suggests they move in the opposite directions, a pos
 
 ------------------------------------------------------------------------
 
-## Eigenvalues and Eigenvectors
+### Eigenvalues and Eigenvectors
 
 The next step in PCA is to compute the eigenvalues and eigenvectors of the covariance matrix.
 
@@ -82,7 +78,7 @@ The next step in PCA is to compute the eigenvalues and eigenvectors of the covar
 
 ------------------------------------------------------------------------
 
-## Principal Components
+### Principal Components
 
 The principal components are linear combinations of the original features.
 Each principal component is formed by multiplying each feature by a weight (the corresponding eigenvector) and summing these weighted values.
@@ -92,7 +88,7 @@ Each following component collects less information than PC1, yet they are orthog
 
 ------------------------------------------------------------------------
 
-## Explained Variance Ratio
+### Explained Variance Ratio
 
 The explained variance ratio can be used to determine how much variance each principal component captures.
 It indicates how much of the total variation in the data is explained by each major component.
@@ -100,21 +96,21 @@ A cumulative explained variance plot is typically used to determine how many pri
 
 ------------------------------------------------------------------------
 
-## Dimensionality Reduction
+### Dimensionality Reduction
 
 You can decide how many principal components to keep based on the cumulative explained variance and your desired degree of kept information (for example, retaining 95% of the variance).
 Data analysis, visualization, and modeling can be made simpler by reducing the number of dimensions by eliminating less significant elements/components.
 
 ------------------------------------------------------------------------
 
-## Reconstruction
+### Reconstruction
 
 You can use the retained principal components to project your data back into the original feature space if you choose to reduce the dimensionality.
 This helps you analyze the findings in light of your original data.
 
 ------------------------------------------------------------------------
 
-## Applications
+### Applications
 
 PCA is used in various fields, including:
 
@@ -125,18 +121,18 @@ PCA is used in various fields, including:
 
 ------------------------------------------------------------------------
 
-## Takeaway Note
+### Takeaway Note
 
 In summary, PCA is a potent method for dimensionality reduction that enables you to better understand your data by changing it into a form that is easier to read.
 It is frequently used in machine learning and data analysis to streamline complex datasets and make them easier to handle for additional/downstream analysis.
 
 ------------------------------------------------------------------------
 
-# Practical Example: PCA in R
+## Practical Example: PCA in R
 
 We'll use a sample dataset to illustrate the process, but you can apply PCA to your own data with similar steps.
 
-### Step 1: Load and Preprocess Data
+#### Step 1: Load and Preprocess Data
 
 In this example, we'll use the built-in "iris" dataset in R.
 However, for your real-world projects, you should load your data into a dataframe and preprocess it, including scaling if necessary.
@@ -212,7 +208,7 @@ for (i in 1:4) {
 
 ```
 
-### Step 2: Perform PCA
+#### Step 2: Perform PCA
 
 Now, let's perform PCA on our standardized data.
 
@@ -223,7 +219,7 @@ pca_result <- prcomp(scaled_features)
 
 ```
 
-### Step 3: Analyze Results
+#### Step 3: Analyze Results
 
 You can now explore the results of the PCA, such as the variance explained by each principal component and their contributions.
 
@@ -239,7 +235,7 @@ barplot(variance_explained, names.arg = c("PC1", "PC2", "PC3", "PC4"),
 
 ```
 
-### Step 4: Interpretation
+#### Step 4: Interpretation
 
 Interpret the results by considering the variance explained by each principal component.
 You can choose a threshold (e.g., retaining 95% variance) to determine how many principal components to keep for further analysis.
@@ -258,7 +254,7 @@ The biplot above presents the data points projected onto the PC1 and PC2 axes, a
 Additionally, you'll see arrows indicating the contributions of the original features to PC1 and PC2.
 The length and direction of these arrows provide insights into which features have the most influence on each principal component.
 
-### Conclusion
+#### Conclusion
 
 Principal Component Analysis (PCA) is a powerful technique for dimensionality reduction, noise reduction, and data visualization in data analysis.
 In this blog post, we've explored the core concepts of PCA and provided a hands-on example using R.
@@ -266,12 +262,12 @@ By incorporating PCA into your data analysis toolkit, you can gain deeper insigh
 
 ------------------------------------------------------------------------
 
-## Packages used for PCA analysis in R
+### Packages used for PCA analysis in R
 
 Here's a table of some popular R packages commonly used for Principal Component Analysis (PCA) along with links to their respective documentation:
 
 | Package Name | Description                                                      | URL                                                                                                                                     |
-|:-----------------|:-----------------|:-----------------------------------|
+|:------------------|:------------------|:----------------------------------|
 | `prcomp`     | Part of the `stats` package, used for PCA.                       | [Documentation](https://stat.ethz.ch/R-manual/R-devel/library/stats/html/prcomp.html)                                                   |
 | `PCAtools`   | Comprehensive PCA toolkit with visualization and analysis tools. | [GitHub](https://github.com/kevinblighe/PCAtools) [bioconductor](https://www.bioconductor.org/packages/release/bioc/html/PCAtools.html) |
 | `FactoMineR` | Provides PCA, multiple correspondence analysis, and more.        | [CRAN](https://cran.r-project.org/package=FactoMineR)                                                                                   |

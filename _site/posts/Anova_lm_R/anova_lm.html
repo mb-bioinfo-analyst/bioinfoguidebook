@@ -8,7 +8,7 @@
 
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-15">
-<meta name="description" content="Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.">
+<meta name="description" content="Learn one-way and two-way ANOVA and linear regression in R, including hypothesis testing, model diagnostics, interpretation, and code examples.">
 
 <title>Introduction to ANOVA and Linear Models</title>
 <style>
@@ -229,7 +229,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">A Practical Guide to Hypothesis Testing, Model Diagnostics, and Interpretation in R</p>
                   <div>
         <div class="description">
-          <p>Learn how to perform one-way and two-way ANOVA and fit linear regression models in R. This tutorial covers hypothesis testing, model diagnostics, and interpretation— complete with working code examples and visualizations.</p>
+          Learn one-way and two-way ANOVA and linear regression in R, including hypothesis testing, model diagnostics, interpretation, and code examples.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -598,23 +598,9 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   <li><a href="#what-is-the-anova" id="toc-what-is-the-anova" class="nav-link" data-scroll-target="#what-is-the-anova">What is the ANOVA?</a></li>
   <li><a href="#types-of-anova" id="toc-types-of-anova" class="nav-link" data-scroll-target="#types-of-anova">Types of ANOVA:</a></li>
   <li><a href="#anova-why-use-it" id="toc-anova-why-use-it" class="nav-link" data-scroll-target="#anova-why-use-it">ANOVA: Why Use It?</a></li>
-  <li><a href="#one-way-anova" id="toc-one-way-anova" class="nav-link" data-scroll-target="#one-way-anova">One-way ANOVA</a>
-  <ul class="collapse">
-  <li><a href="#structure" id="toc-structure" class="nav-link" data-scroll-target="#structure">Structure:</a></li>
-  <li><a href="#what-anova-is-based-on-basic-assumptions" id="toc-what-anova-is-based-on-basic-assumptions" class="nav-link" data-scroll-target="#what-anova-is-based-on-basic-assumptions">What ANOVA Is Based On (Basic Assumptions)</a></li>
-  <li><a href="#anova-example-case-study" id="toc-anova-example-case-study" class="nav-link" data-scroll-target="#anova-example-case-study">ANOVA Example Case Study</a></li>
-  </ul></li>
-  <li><a href="#anova-vs.-linear-modeling" id="toc-anova-vs.-linear-modeling" class="nav-link" data-scroll-target="#anova-vs.-linear-modeling">ANOVA vs.&nbsp;Linear Modeling</a>
-  <ul class="collapse">
-  <li><a href="#anova" id="toc-anova" class="nav-link" data-scroll-target="#anova">ANOVA</a></li>
-  <li><a href="#linear-modeling" id="toc-linear-modeling" class="nav-link" data-scroll-target="#linear-modeling">Linear Modeling</a></li>
-  <li><a href="#side-by-side-comparison" id="toc-side-by-side-comparison" class="nav-link" data-scroll-target="#side-by-side-comparison">Side-by-Side Comparison</a></li>
-  </ul></li>
-  <li><a href="#analysis-with-linear-modeling" id="toc-analysis-with-linear-modeling" class="nav-link" data-scroll-target="#analysis-with-linear-modeling">Analysis with Linear Modeling</a>
-  <ul class="collapse">
-  <li><a href="#diagnostic-plots" id="toc-diagnostic-plots" class="nav-link" data-scroll-target="#diagnostic-plots">Diagnostic Plots</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  </ul></li>
+  <li><a href="#one-way-anova" id="toc-one-way-anova" class="nav-link" data-scroll-target="#one-way-anova">One-way ANOVA</a></li>
+  <li><a href="#anova-vs.-linear-modeling" id="toc-anova-vs.-linear-modeling" class="nav-link" data-scroll-target="#anova-vs.-linear-modeling">ANOVA vs.&nbsp;Linear Modeling</a></li>
+  <li><a href="#analysis-with-linear-modeling" id="toc-analysis-with-linear-modeling" class="nav-link" data-scroll-target="#analysis-with-linear-modeling">Analysis with Linear Modeling</a></li>
   </ul></li>
   <li><a href="#resources-references" id="toc-resources-references" class="nav-link" data-scroll-target="#resources-references">Resources &amp; References:</a></li>
   </ul>
@@ -626,25 +612,25 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 
 
 
-<section id="introduction" class="level1">
-<h1>Introduction:</h1>
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>It is very important to know how different groups compare and how factors affect each other when you are doing data analysis. One of the most important statistical methods we can use to test these differences and interactions is Analysis of Variance (ANOVA). This post will explain what ANOVA and Linear Models are and how to use them in R. You will also get to use real datasets to practice.</p>
 <hr>
 </section>
-<section id="who-should-read-this" class="level1">
-<h1>Who Should Read This:</h1>
+<section id="who-should-read-this" class="level2">
+<h2 class="anchored" data-anchor-id="who-should-read-this">Who Should Read This:</h2>
 <p>This blog post is for people who are new to or already know a little about R and want to learn how to do and understand ANOVA and Linear Models. This guide will give you useful skills to improve your data analysis skills, no matter if you are a student, researcher, or data scientist.</p>
 <hr>
 </section>
-<section id="a-brief-look-at-anova" class="level1">
-<h1>A Brief Look at ANOVA</h1>
-<section id="what-is-the-anova" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-the-anova">What is the ANOVA?</h2>
+<section id="a-brief-look-at-anova" class="level2">
+<h2 class="anchored" data-anchor-id="a-brief-look-at-anova">A Brief Look at ANOVA</h2>
+<section id="what-is-the-anova" class="level3">
+<h3 class="anchored" data-anchor-id="what-is-the-anova">What is the ANOVA?</h3>
 <p>One way to use statistics is to compare the means of three or more groups and see if at least one of them is significantly different from the others. This is called analysis of variance (ANOVA). A lot of people use it in business, biology, and the social sciences.</p>
 <hr>
 </section>
-<section id="types-of-anova" class="level2">
-<h2 class="anchored" data-anchor-id="types-of-anova">Types of ANOVA:</h2>
+<section id="types-of-anova" class="level3">
+<h3 class="anchored" data-anchor-id="types-of-anova">Types of ANOVA:</h3>
 <ol type="1">
 <li>With one-way ANOVA, you can see if there are any differences in the means of three or more groups that are not linked to each other.<br>
 </li>
@@ -656,16 +642,16 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </li>
 </ol>
 </section>
-<section id="anova-why-use-it" class="level2">
-<h2 class="anchored" data-anchor-id="anova-why-use-it">ANOVA: Why Use It?</h2>
+<section id="anova-why-use-it" class="level3">
+<h3 class="anchored" data-anchor-id="anova-why-use-it">ANOVA: Why Use It?</h3>
 <p>When you want to find out if different conditions, treatments, or interventions lead to different results, ANOVA is very helpful. It gives a statistical way to figure out if changes in data are caused by real effects or by random variation.</p>
 <hr>
 </section>
-<section id="one-way-anova" class="level2">
-<h2 class="anchored" data-anchor-id="one-way-anova">One-way ANOVA</h2>
+<section id="one-way-anova" class="level3">
+<h3 class="anchored" data-anchor-id="one-way-anova">One-way ANOVA</h3>
 <p>The One-Way ANOVA checks if there are statistically significant changes between the means of three or more separate groups that are not related to each other.</p>
-<section id="structure" class="level3">
-<h3 class="anchored" data-anchor-id="structure">Structure:</h3>
+<section id="structure" class="level4">
+<h4 class="anchored" data-anchor-id="structure">Structure:</h4>
 <ul>
 <li>You can think of an independent variable as a category variable with two or more levels, like Fertilizer A, B, and C.<br>
 </li>
@@ -685,8 +671,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </li>
 </ul>
 </section>
-<section id="what-anova-is-based-on-basic-assumptions" class="level3">
-<h3 class="anchored" data-anchor-id="what-anova-is-based-on-basic-assumptions">What ANOVA Is Based On (Basic Assumptions)</h3>
+<section id="what-anova-is-based-on-basic-assumptions" class="level4">
+<h4 class="anchored" data-anchor-id="what-anova-is-based-on-basic-assumptions">What ANOVA Is Based On (Basic Assumptions)</h4>
 <p>Some conditions must be met before ANOVA can be performed:</p>
 <ul>
 <li>Random and Unrelated Observations: The data should come from groups that were chosen at random and are unrelated to each other.<br>
@@ -699,8 +685,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <p><strong>Note:</strong> The assumptions of normality and homogeneity of variance can be loosened (made lenient) a bit when sample size is big.</p>
 <hr>
 </section>
-<section id="anova-example-case-study" class="level3">
-<h3 class="anchored" data-anchor-id="anova-example-case-study">ANOVA Example Case Study</h3>
+<section id="anova-example-case-study" class="level4">
+<h4 class="anchored" data-anchor-id="anova-example-case-study">ANOVA Example Case Study</h4>
 <p>Let’s use the PlantGrowth dataset to show an example. This dataset has data on how plants grew in different treatment groups. We want to know if the plant growth in these groups is very different from that in the other groups.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the tidyverse package</span></span>
@@ -713,7 +699,6 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 ✔ lubridate 1.9.3     ✔ tidyr     1.3.0
 ✔ purrr     1.0.2     
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ purrr::%||%()   masks base::%||%()
 ✖ dplyr::filter() masks stats::filter()
 ✖ dplyr::lag()    masks stats::lag()
 ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
@@ -734,8 +719,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 <p>First, we load the tidyverse package, which has tools for working with and showing data. Next, we load the PlantGrowth dataset to start looking into it.</p>
-<section id="data-exploration" class="level4">
-<h4 class="anchored" data-anchor-id="data-exploration">Data Exploration</h4>
+<section id="data-exploration" class="level5">
+<h5 class="anchored" data-anchor-id="data-exploration">Data Exploration</h5>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics for the dataset</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(PlantGrowth)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -770,8 +755,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 <p>To get a sense of the whole dataset, we use simple methods like summary() and str(). Sorting the data by treatment group helps us see how it is spread out across the different groups.</p>
 </section>
-<section id="visualization" class="level4">
-<h4 class="anchored" data-anchor-id="visualization">Visualization</h4>
+<section id="visualization" class="level5">
+<h5 class="anchored" data-anchor-id="visualization">Visualization</h5>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Boxplot of plant weight by group</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>PlantGrowth <span class="sc">%&gt;%</span></span>
@@ -795,8 +780,8 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 <p>This boxplot shows how the plant weights changed in the different treatment groups. Find places where the boxes meet or clear gaps between them to see how the groups compare.</p>
 </section>
-<section id="testing-assumptions" class="level4">
-<h4 class="anchored" data-anchor-id="testing-assumptions">Testing Assumptions</h4>
+<section id="testing-assumptions" class="level5">
+<h5 class="anchored" data-anchor-id="testing-assumptions">Testing Assumptions</h5>
 <p><strong>Equality of Variances</strong></p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Bartlet Test of homogeneity of variances</span></span>
@@ -841,8 +826,8 @@ W = 0.94101, p-value = 0.5643</code></pre>
 </div>
 <p>To see if the data in each group is normal, the Shapiro-Wilk test is used. If the p-value is more than 0.05, it means that the data is probably pretty normal.</p>
 </section>
-<section id="anova-in-r" class="level4">
-<h4 class="anchored" data-anchor-id="anova-in-r">ANOVA in R</h4>
+<section id="anova-in-r" class="level5">
+<h5 class="anchored" data-anchor-id="anova-in-r">ANOVA in R</h5>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform ANOVA</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth)</span>
@@ -859,8 +844,8 @@ Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1</code></pre>
 </div>
 <p>There is an ANOVA table that shows the F-statistic and the p-value. If the p-value is less than 0.05, it means that there is a substantial distinction in the plant weights between the treatment groups.</p>
 </section>
-<section id="post-hoc-tests-tukeys-hsd" class="level4">
-<h4 class="anchored" data-anchor-id="post-hoc-tests-tukeys-hsd">Post-Hoc Tests (Tukey’s HSD)</h4>
+<section id="post-hoc-tests-tukeys-hsd" class="level5">
+<h5 class="anchored" data-anchor-id="post-hoc-tests-tukeys-hsd">Post-Hoc Tests (Tukey’s HSD)</h5>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform Tukey's HSD Test</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>tukey_result <span class="ot">&lt;-</span> <span class="fu">TukeyHSD</span>(anova_result)</span>
@@ -881,8 +866,8 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </div>
 </div>
 </section>
-<section id="visualization-1" class="level4">
-<h4 class="anchored" data-anchor-id="visualization-1">Visualization</h4>
+<section id="visualization-1" class="level5">
+<h5 class="anchored" data-anchor-id="visualization-1">Visualization</h5>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualize Tukey's HSD results</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(tukey_result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -895,10 +880,10 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </section>
 </section>
 </section>
-<section id="anova-vs.-linear-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="anova-vs.-linear-modeling">ANOVA vs.&nbsp;Linear Modeling</h2>
-<section id="anova" class="level3">
-<h3 class="anchored" data-anchor-id="anova">ANOVA</h3>
+<section id="anova-vs.-linear-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="anova-vs.-linear-modeling">ANOVA vs.&nbsp;Linear Modeling</h3>
+<section id="anova" class="level4">
+<h4 class="anchored" data-anchor-id="anova">ANOVA</h4>
 <ul>
 <li>Purpose: Compares group means to test if there are significant differences.<br>
 </li>
@@ -906,8 +891,8 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </li>
 </ul>
 </section>
-<section id="linear-modeling" class="level3">
-<h3 class="anchored" data-anchor-id="linear-modeling">Linear Modeling</h3>
+<section id="linear-modeling" class="level4">
+<h4 class="anchored" data-anchor-id="linear-modeling">Linear Modeling</h4>
 <ul>
 <li>Purpose: Examines the relationship between the dependent variable and multiple predictors (both categorical and continuous).<br>
 </li>
@@ -915,13 +900,13 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </li>
 </ul>
 </section>
-<section id="side-by-side-comparison" class="level3">
-<h3 class="anchored" data-anchor-id="side-by-side-comparison">Side-by-Side Comparison</h3>
+<section id="side-by-side-comparison" class="level4">
+<h4 class="anchored" data-anchor-id="side-by-side-comparison">Side-by-Side Comparison</h4>
 <table class="table">
 <colgroup>
-<col style="width: 22%">
-<col style="width: 34%">
-<col style="width: 43%">
+<col style="width: 25%">
+<col style="width: 33%">
+<col style="width: 41%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -950,8 +935,8 @@ trt2-trt1  0.865  0.1737839 1.5562161 0.0120064</code></pre>
 </table>
 </section>
 </section>
-<section id="analysis-with-linear-modeling" class="level2">
-<h2 class="anchored" data-anchor-id="analysis-with-linear-modeling">Analysis with Linear Modeling</h2>
+<section id="analysis-with-linear-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="analysis-with-linear-modeling">Analysis with Linear Modeling</h3>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fit a linear model</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>lm_result <span class="ot">&lt;-</span> <span class="fu">lm</span>(weight <span class="sc">~</span> group, <span class="at">data =</span> PlantGrowth)</span>
@@ -981,8 +966,8 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
 </div>
 </div>
 <p>The linear model gives you factors that show how each treatment group changed the plant weight, along with p-values that you can use to see how important these changes are.</p>
-<section id="diagnostic-plots" class="level3">
-<h3 class="anchored" data-anchor-id="diagnostic-plots">Diagnostic Plots</h3>
+<section id="diagnostic-plots" class="level4">
+<h4 class="anchored" data-anchor-id="diagnostic-plots">Diagnostic Plots</h4>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Diagnostic plots for the linear model</span></span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>))  <span class="co"># Arrange plots in a 2x2 grid</span></span>
@@ -994,8 +979,8 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
 <p>You can use diagnostic plots to make sure that the linear model’s assumptions are met, like that the residuals are normal and that the model is linear. You might not be able to trust the model’s results if these assumptions are voilated.</p>
 <hr>
 </section>
-<section id="conclusion" class="level3">
-<h3 class="anchored" data-anchor-id="conclusion">Conclusion</h3>
+<section id="conclusion" class="level4">
+<h4 class="anchored" data-anchor-id="conclusion">Conclusion</h4>
 <ul>
 <li>ANOVA helps determine if there are significant differences between group means.<br>
 </li>
@@ -1007,8 +992,8 @@ F-statistic: 4.846 on 2 and 27 DF,  p-value: 0.01591</code></pre>
 </section>
 </section>
 </section>
-<section id="resources-references" class="level1">
-<h1>Resources &amp; References:</h1>
+<section id="resources-references" class="level2">
+<h2 class="anchored" data-anchor-id="resources-references">Resources &amp; References:</h2>
 <ul>
 <li>Davies, T. M. (2016). The Book of R: A First Course in Programming and Statistics. San Francisco: No Starch Press.<br>
 </li>

@@ -5,10 +5,7 @@ subtitle: "Applying Regression to Decode Biological Data Patterns"
 author: "Bilal Mustafa"
 date: "2023-09-07"
 #slug: "regression-analysis-bioinformatics"
-description: >
-  Explore how regression techniques can uncover relationships in biological
-  datasets. Learn to fit and interpret linear, multiple, and logistic regression
-  models.
+description: "Learn how regression techniques reveal relationships in biological data, including fitting and interpreting linear, multiple, and logistic models."
 categories: [Regression, Bioinformatics, Statistical Modeling]
 tags: [Regression Analysis, Linear Regression, Multiple Regression, Logistic Regression, Model Diagnostics, R Programming, Data Visualization, Biological Data]
 image: "image.jpg"

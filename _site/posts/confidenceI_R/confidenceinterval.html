@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-12">
-<meta name="description" content="A comprehensive tutorial on computing and interpreting confidence intervals in R. Learn how to calculate z‐ and t‐based intervals, visualize confidence bounds, and determine sample sizes for precise estimates with practical code examples.">
+<meta name="description" content="Comprehensive guide to computing and interpreting confidence intervals in R, including z- and t-based methods, visualization, and sample size estimation.">
 <title>Understanding Confidence Intervals in R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -204,7 +204,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">Calculating and Visualizing Precision Bounds for Mean Estimates</p>
                   <div>
         <div class="description">
-          <p>A comprehensive tutorial on computing and interpreting confidence intervals in R. Learn how to calculate z‐ and t‐based intervals, visualize confidence bounds, and determine sample sizes for precise estimates with practical code examples.</p>
+          Comprehensive guide to computing and interpreting confidence intervals in R, including z- and t-based methods, visualization, and sample size estimation.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -576,11 +576,11 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>In previous sections, we looked at measures of centrality and variability, which are important for summarizing data. However, when drawing conclusions about a population based on sample data, it is critical to measure the uncertainty of such estimates. Confidence intervals define a range of values within which the true population parameter is predicted to fall, providing insight into the accuracy of your estimations. In this post, we’ll look at how to use R to construct confidence intervals for a variety of data types, including simple vectors, grouped data, nominal data, and multinomials.</p>
 <p>A confidence interval is a set of values calculated from sample data that are likely to contain the population parameter at a given degree of confidence (typically 95%). The breadth of the confidence interval measures the precision of the estimate; narrower intervals indicate more precise estimations.</p>
 <hr>
-<section id="confidence-intervals-for-simple-vectors" class="level2"><h2 class="anchored" data-anchor-id="confidence-intervals-for-simple-vectors">Confidence Intervals for Simple Vectors</h2>
+<section id="confidence-intervals-for-simple-vectors" class="level3"><h3 class="anchored" data-anchor-id="confidence-intervals-for-simple-vectors">Confidence Intervals for Simple Vectors</h3>
 <p>The confidence interval for a simple vector (a single set of numeric values) is derived using the standard error of the mean. Assuming normal distribution, a 95% confidence interval may be calculated as:</p>
 <p><span class="math inline">\(CI = \bar{x} \pm Z \times SE\)</span></p>
 <p>Where 𝑥ˉxˉ is the sample mean, 𝑍 Z is the critical value from the standard normal distribution (1.96 for 95% confidence), and SE is the standard error. In R, you can compute this as follows:</p>
@@ -597,7 +597,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <pre><code>[1]  87.10773 122.89227</code></pre>
 </div>
 </div>
-<hr></section><section id="confidence-intervals-for-grouped-data" class="level2"><h2 class="anchored" data-anchor-id="confidence-intervals-for-grouped-data">Confidence Intervals for Grouped Data</h2>
+<hr></section><section id="confidence-intervals-for-grouped-data" class="level3"><h3 class="anchored" data-anchor-id="confidence-intervals-for-grouped-data">Confidence Intervals for Grouped Data</h3>
 <p>For grouped data (data divided into categories or groups), you may want to generate confidence intervals for each group’s mean. This entails determining the mean, standard error, and confidence intervals independently for each group. In R, this may be done using the tapply() function and the same steps as above:</p>
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Create example data</span></span>
@@ -621,7 +621,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<hr></section><section id="confidence-intervals-for-nominal-data" class="level2"><h2 class="anchored" data-anchor-id="confidence-intervals-for-nominal-data">Confidence Intervals for Nominal Data</h2>
+<hr></section><section id="confidence-intervals-for-nominal-data" class="level3"><h3 class="anchored" data-anchor-id="confidence-intervals-for-nominal-data">Confidence Intervals for Nominal Data</h3>
 <p>Nominal data are categories that lack intrinsic ordering (e.g., gender, eye color). Use the binomial distribution to construct confidence intervals for proportions in nominal data. For example, to determine the confidence interval for the proportion of a specific category, you can use the following R code:</p>
 <div class="cell">
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Category1"</span>, <span class="st">"Category2"</span>, <span class="st">"Category1"</span>, <span class="st">"Category3"</span>, <span class="st">"Category1"</span>, </span>
@@ -638,7 +638,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <pre><code>[1] 0.1900968 0.8099032</code></pre>
 </div>
 </div>
-<hr></section><section id="confidence-intervals-for-multinomial-data" class="level2"><h2 class="anchored" data-anchor-id="confidence-intervals-for-multinomial-data">Confidence Intervals for Multinomial Data</h2>
+<hr></section><section id="confidence-intervals-for-multinomial-data" class="level3"><h3 class="anchored" data-anchor-id="confidence-intervals-for-multinomial-data">Confidence Intervals for Multinomial Data</h3>
 <p>Multinomial data contain several categories, with each observation falling into one of several possible categories. Because all categories must be considered at the same time in multinomial data, confidence intervals for proportions might become more complex. One popular method is to use the DescTools package, which includes functions for calculating multinomial confidence intervals:</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="va">data</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Category1"</span>, <span class="st">"Category2"</span>, <span class="st">"Category1"</span>, <span class="st">"Category3"</span>, <span class="st">"Category1"</span>, </span>
@@ -658,7 +658,7 @@ Category3 0.2    0.0 0.5715862</code></pre>
 </div>
 </div>
 <p>This package calculates the confidence intervals for the proportion of each category in the multinomial data set.</p>
-<hr></section></section><section id="notes-on-confidence-intervals" class="level1"><h1>Notes on Confidence Intervals</h1>
+<hr></section></section><section id="notes-on-confidence-intervals" class="level2"><h2 class="anchored" data-anchor-id="notes-on-confidence-intervals">Notes on Confidence Intervals</h2>
 <p>Confidence intervals are a critical tool in descriptive statistics, allowing you to quantify the uncertainty of your estimates and providing a range within which the true population parameter is likely to fall. Whether you’re working with simple numeric data, grouped data, or categorical data, understanding how to compute and interpret confidence intervals using R will enhance the accuracy and reliability of your data analysis.</p>
 <hr>
 

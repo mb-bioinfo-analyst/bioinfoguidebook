@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2023-09-07">
-<meta name="description" content="A beginner’s guide to installing and configuring R for bioinformatics, understanding essential R syntax, and executing your first example workflows with practical code snippets and tips.">
+<meta name="description" content="Beginner’s guide to installing and configuring R for bioinformatics, learning essential R syntax, and running your first example workflows.">
 <title>Getting Started with Bioinformatics in R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -204,7 +204,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">Install R, learn basic syntax, and run your first bioinformatics workflows</p>
                   <div>
         <div class="description">
-          <p>A beginner’s guide to installing and configuring R for bioinformatics, understanding essential R syntax, and executing your first example workflows with practical code snippets and tips.</p>
+          Beginner’s guide to installing and configuring R for bioinformatics, learning essential R syntax, and running your first example workflows.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -579,9 +579,9 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Bioinformatics is a rapidly evolving field that combines biology and computer science to analyze and interpret biological data. R, a powerful and versatile programming language, is widely used in bioinformatics for its data analysis and visualization capabilities. In this blog post, we will explore the fundamentals of bioinformatics in R, including how to set up your environment, understand basic syntax, and provide practical examples to get you started on your bioinformatics journey.</p>
-<hr></section><section id="setting-up-your-environment" class="level1"><h1>Setting Up Your Environment</h1>
+<hr></section><section id="setting-up-your-environment" class="level2"><h2 class="anchored" data-anchor-id="setting-up-your-environment">Setting Up Your Environment</h2>
 <p>Before diving into bioinformatics in R, you need to set up your environment. Here are the essential steps:</p>
 <ul>
 <li><p><strong>Install R</strong>: If you haven’t already, download and install R from the official website (https://cran.r-project.org/).</p></li>
@@ -600,7 +600,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </ul>
 <p>Installing packages in R is a crucial step for adding additional functionality to your R environment. Bioconductor is a specialized repository of R packages and tools for bioinformatics and computational biology. Below, I’ll provide you with information on how to install packages in R and specifically how to install Bioconductor packages.</p>
 <hr>
-<section id="installing-packages-in-r" class="level2"><h2 class="anchored" data-anchor-id="installing-packages-in-r">Installing Packages in R</h2>
+<section id="installing-packages-in-r" class="level3"><h3 class="anchored" data-anchor-id="installing-packages-in-r">Installing Packages in R</h3>
 <p>You can install packages in R using the install.packages() function. Here’s how to do it:</p>
 <ul>
 <li>
@@ -622,7 +622,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <div class="cell">
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="installing-bioconductor-packages" class="level2"><h2 class="anchored" data-anchor-id="installing-bioconductor-packages">Installing Bioconductor Packages</h2>
+<hr></section><section id="installing-bioconductor-packages" class="level3"><h3 class="anchored" data-anchor-id="installing-bioconductor-packages">Installing Bioconductor Packages</h3>
 <p>Bioconductor is a specialized repository for bioinformatics packages in R. To install Bioconductor and Bioconductor packages, follow these steps:</p>
 <ul>
 <li>
@@ -655,14 +655,14 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/thelovelab/DESeq2">DESeq2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org">stringr</a></span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="checking-installed-packages" class="level2"><h2 class="anchored" data-anchor-id="checking-installed-packages">Checking Installed Packages</h2>
+<hr></section><section id="checking-installed-packages" class="level3"><h3 class="anchored" data-anchor-id="checking-installed-packages">Checking Installed Packages</h3>
 <p>To check which packages are currently installed in your R environment, you can use the installed.packages() function:</p>
 <div class="cell">
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/installed.packages.html">installed.packages</a></span><span class="op">(</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p>This will provide a list of all installed packages along with their versions and other information.</p>
 <p>That’s it! You now have the information you need to install both standard CRAN packages and Bioconductor packages in R. Installing the right packages can greatly expand the capabilities of R for bioinformatics and other data analysis tasks.</p>
-<hr></section></section><section id="basic-syntax-in-r-for-bioinformatics" class="level1"><h1>Basic Syntax in R for Bioinformatics</h1>
+<hr></section></section><section id="basic-syntax-in-r-for-bioinformatics" class="level2"><h2 class="anchored" data-anchor-id="basic-syntax-in-r-for-bioinformatics">Basic Syntax in R for Bioinformatics</h2>
 <p>R has a straightforward syntax that is easy to learn. Here are some basic concepts and syntax rules to keep in mind:</p>
 <ul>
 <li>
@@ -707,7 +707,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <li><p><strong>Functions</strong>: R has a vast library of functions that you can use to perform various operations. For example, to calculate the mean of a vector x, you can use mean(x).</p></li>
 <li><p><strong>Control Structures</strong>: R supports control structures like if-else statements and loops (e.g., for and while) for more complex operations.</p></li>
 </ul>
-<hr></section><section id="examples-in-bioinformatics" class="level1"><h1>Examples in Bioinformatics</h1>
+<hr></section><section id="examples-in-bioinformatics" class="level2"><h2 class="anchored" data-anchor-id="examples-in-bioinformatics">Examples in Bioinformatics</h2>
 <p>Let’s explore some practical examples of bioinformatics tasks in R:</p>
 <p>Example 1: DNA Sequence Analysis</p>
 <div class="cell">
@@ -753,7 +753,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <span>                 color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribution of Sequence Lengths"</span>, x <span class="op">=</span> <span class="st">"Length"</span>, y <span class="op">=</span> <span class="st">"Frequency"</span><span class="op">)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<hr></section><section id="conclusion" class="level1"><h1>Conclusion</h1>
+<hr></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>R is a powerful tool for bioinformatics, providing a wide range of packages and functions to analyze and visualize biological data. In this blog post, we covered the basics of setting up your environment, understanding basic syntax, and provided practical examples to get you started. With these fundamentals in hand, you can delve deeper into the world of bioinformatics and tackle more complex biological data analysis tasks.</p>
 <hr>
 

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 <meta name="author" content="Bilal Mustafa">
 <meta name="dcterms.date" content="2024-08-14">
-<meta name="description" content="An introductory guide to fundamental statistical concepts in R. Learn how to compute descriptive measures, conduct t-tests, construct confidence intervals, and create informative visualizations with practical R code examples.">
+<meta name="description" content="Introductory guide to core statistical concepts in R, including descriptive stats, t-tests, confidence intervals, and visualizations with R code.">
 <title>Basic Statistical Concepts in R</title>
 <style>
 code{white-space: pre-wrap;}
@@ -204,7 +204,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
             <p class="subtitle lead">Overview of Descriptive Measures, Hypothesis Testing &amp; Visualization</p>
                   <div>
         <div class="description">
-          <p>An introductory guide to fundamental statistical concepts in R. Learn how to compute descriptive measures, conduct t-tests, construct confidence intervals, and create informative visualizations with practical R code examples.</p>
+          Introductory guide to core statistical concepts in R, including descriptive stats, t-tests, confidence intervals, and visualizations with R code.
         </div>
       </div>
                           <div class="quarto-categories">
@@ -583,9 +583,9 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
   </ul></nav>
     </div>
 <!-- main -->
-<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level1"><h1>Introduction:</h1>
+<main class="content quarto-banner-title-block" id="quarto-document-content"><section id="introduction" class="level2"><h2 class="anchored" data-anchor-id="introduction">Introduction:</h2>
 <p>Statistics are a very important part of data analysis because they turn raw data into ideas that can be used. Statistical tools can help you make smart choices whether you’re summarizing data, seeing patterns, or testing theories. This guide teaches you basic statistical ideas using R. It focuses on t-tests, data visualization, and descriptive statistics, all while using a single dataset.</p>
-<hr></section><section id="dataset-mtcars" class="level1"><h1>Dataset: mtcars</h1>
+<hr></section><section id="dataset-mtcars" class="level2"><h2 class="anchored" data-anchor-id="dataset-mtcars">Dataset: mtcars</h2>
 <p>We will use the mtcars dataset that comes with R for this guide. There are factors like miles per gallon (mpg), number of cylinders, horsepower, and weight for 32 different car models in this dataset. This dataset is great for learning about basic statistical ideas and trying hypotheses.</p>
 <p>First, let’s quickly look at the dataset:</p>
 <div class="cell">
@@ -601,7 +601,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 </div>
-<hr></section><section id="getting-to-know-the-data" class="level1"><h1>Getting to Know the Data</h1>
+<hr></section><section id="getting-to-know-the-data" class="level2"><h2 class="anchored" data-anchor-id="getting-to-know-the-data">Getting to Know the Data</h2>
 <p>It’s important to understand the material we’re working with before we start the analysis. The following factors are in the mtcars dataset:</p>
 <ul>
 <li>mpg: Miles per gallon</li>
@@ -610,7 +610,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <li>wt: Weight (1000 lbs)</li>
 <li>am: Transmission (0 = automatic, 1 = manual)</li>
 </ul>
-<hr></section><section id="descriptive-statistics" class="level1"><h1>Descriptive Statistics</h1>
+<hr></section><section id="descriptive-statistics" class="level2"><h2 class="anchored" data-anchor-id="descriptive-statistics">Descriptive Statistics</h2>
 <p>Descriptive statistics give an overview of the shape, central trend, and dispersion of a dataset’s distribution. Let’s figure out some important numbers that describe mpg, hp, and wt.</p>
 <div class="cell">
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Calculate descriptive statistics</span></span>
@@ -626,7 +626,7 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 </div>
 </div>
 <p>As you can see, this summary shows the mean, median, minimum, maximum, and quartiles for each measure. That is, the cars in this group get about 20.09 miles per gallon on average, with a range of 10.4 to 33.9.</p>
-<hr></section><section id="data-visualization" class="level1"><h1>Data Visualization</h1>
+<hr></section><section id="data-visualization" class="level2"><h2 class="anchored" data-anchor-id="data-visualization">Data Visualization</h2>
 <p>Visualizing data is an important part of figuring out how it is spread out and how different factors are related. To look into the mtcars collection, we’ll make a number of plots.</p>
 <ol type="1">
 <li>Histogram of mpg A histogram shows how a single numerical value is spread out.</li>
@@ -648,10 +648,10 @@ gtag('config', 'G-WVW2JZXF40', { 'anonymize_ip': true});
 <p><img src="t_test_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid" alt="Boxplot of mpg by transmission type" width="672"></p>
 </div>
 </div>
-<hr></section><section id="comparing-means-with-t-tests" class="level1"><h1>Comparing Means with T-Tests</h1>
+<hr></section><section id="comparing-means-with-t-tests" class="level2"><h2 class="anchored" data-anchor-id="comparing-means-with-t-tests">Comparing Means with T-Tests</h2>
 <p>You can compare the means of different groups very well with T-tests. One-Sample, Independent Two-Sample, and Paired t-tests are the three main types of t-tests. Let’s use the mtcars dataset to look into each type.</p>
 <hr>
-<section id="one-sample-t-test" class="level2"><h2 class="anchored" data-anchor-id="one-sample-t-test">One-Sample T-Test</h2>
+<section id="one-sample-t-test" class="level3"><h3 class="anchored" data-anchor-id="one-sample-t-test">One-Sample T-Test</h3>
 <p>One-Sample T-Test checks if the mean of a single sample is the same as a number that is already known. We might want to see if the mtcars dataset’s average miles per gallon (mpg) is significantly different from 20 mpg.</p>
 <div class="cell">
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># One-sample t-test</span></span>
@@ -672,7 +672,7 @@ mean of x
 </div>
 </div>
 <p>The main idea (H₀) here is that the average mpg is 20. If the p-value is less than the level of significance, which is usually 0.05, we disagree with the null hypothesis.</p>
-</section><section id="independent-two-sample-t-test" class="level2"><h2 class="anchored" data-anchor-id="independent-two-sample-t-test">Independent Two-Sample T-Test</h2>
+</section><section id="independent-two-sample-t-test" class="level3"><h3 class="anchored" data-anchor-id="independent-two-sample-t-test">Independent Two-Sample T-Test</h3>
 <p>When you use the Independent Two-Sample T-Test, you compare the means of two separate groups. Let’s look at how many miles per gallon cars with automatic (am = 0) and manual (am = 1) engines get.</p>
 <div class="cell">
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Independent Two-Sample T-Test</span></span>
@@ -693,7 +693,7 @@ mean in group 0 mean in group 1
 </div>
 </div>
 <p>What does H₀ mean? It means that there is no change in the average mpg between the two types of transmission. There is a difference between the groups if the p-value is significant.</p>
-</section><section id="paired-t-test" class="level2"><h2 class="anchored" data-anchor-id="paired-t-test">Paired T-Test</h2>
+</section><section id="paired-t-test" class="level3"><h3 class="anchored" data-anchor-id="paired-t-test">Paired T-Test</h3>
 <p>The Paired T-Test looks at how the means of the same group of people changed over time. Even though mtcars doesn’t have a built-in matched structure, let’s say we want to compare the mpg of two identical cars before and after a change. We don’t have this data, so let’s make it up to show what we mean.</p>
 <div class="cell">
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="co"># Simulating mpg before and after modification</span></span>
@@ -719,9 +719,9 @@ mean difference
 </div>
 </div>
 <p>There is no difference in mpg before and after the change, which is the null hypothesis (H₀). If the p-value is significant, it means that the change made a meaningful difference.</p>
-<hr></section></section><section id="conclusion" class="level1"><h1>Conclusion</h1>
+<hr></section></section><section id="conclusion" class="level2"><h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
 <p>Using the mtcars dataset, this guide has shown you how to use basic statistical ideas in R. We began with summary statistics, made a graph of the data, and used different t-tests to compare means. These tools give you a solid base for looking at data and coming to useful conclusions. As you learn more advanced statistical methods, keep in mind that these basic skills will still help you a lot as you go through your data analysis experience.</p>
-<hr></section><section id="resources-references" class="level1"><h1>Resources &amp; References:</h1>
+<hr></section><section id="resources-references" class="level2"><h2 class="anchored" data-anchor-id="resources-references">Resources &amp; References:</h2>
 <ol type="1">
 <li>
 <p><strong>“R for Data Science”</strong> by Garrett Grolemund and Hadley Wickham</p>

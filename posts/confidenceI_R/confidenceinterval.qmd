@@ -5,10 +5,7 @@ subtitle: "Calculating and Visualizing Precision Bounds for Mean Estimates"
 author: "Bilal Mustafa"   
 date: "2024-08-12"    
 slug: "understanding-confidence-intervals"
-description: >
-  A comprehensive tutorial on computing and interpreting confidence intervals in R.
-  Learn how to calculate z‐ and t‐based intervals, visualize confidence bounds,
-  and determine sample sizes for precise estimates with practical code examples.
+description: "Comprehensive guide to computing and interpreting confidence intervals in R, including z- and t-based methods, visualization, and sample size estimation."
 categories: [Statistics, Descriptive Statistics]
 tags: [R Programming, Confidence Intervals, Hypothesis Testing, T-Test, Data Visualization, Precision Estimation, Quantitative Analysis, Beginners Guide]   
 image: "image.jpg"
@@ -34,7 +31,7 @@ format:
     code-copy: true
 ---
 
-# Introduction:
+## Introduction:
 
 In previous sections, we looked at measures of centrality and variability, which are important for summarizing data.
 However, when drawing conclusions about a population based on sample data, it is critical to measure the uncertainty of such estimates.
@@ -46,7 +43,7 @@ The breadth of the confidence interval measures the precision of the estimate; n
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals for Simple Vectors
+### Confidence Intervals for Simple Vectors
 
 The confidence interval for a simple vector (a single set of numeric values) is derived using the standard error of the mean.
 Assuming normal distribution, a 95% confidence interval may be calculated as:
@@ -69,7 +66,7 @@ ci
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals for Grouped Data
+### Confidence Intervals for Grouped Data
 
 For grouped data (data divided into categories or groups), you may want to generate confidence intervals for each group's mean.
 This entails determining the mean, standard error, and confidence intervals independently for each group.
@@ -93,7 +90,7 @@ ci
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals for Nominal Data
+### Confidence Intervals for Nominal Data
 
 Nominal data are categories that lack intrinsic ordering (e.g., gender, eye color).
 Use the binomial distribution to construct confidence intervals for proportions in nominal data.
@@ -114,7 +111,7 @@ ci
 
 ------------------------------------------------------------------------
 
-## Confidence Intervals for Multinomial Data
+### Confidence Intervals for Multinomial Data
 
 Multinomial data contain several categories, with each observation falling into one of several possible categories.
 Because all categories must be considered at the same time in multinomial data, confidence intervals for proportions might become more complex.
@@ -137,11 +134,9 @@ This package calculates the confidence intervals for the proportion of each cate
 
 ------------------------------------------------------------------------
 
-# Notes on Confidence Intervals
+## Notes on Confidence Intervals
 
 Confidence intervals are a critical tool in descriptive statistics, allowing you to quantify the uncertainty of your estimates and providing a range within which the true population parameter is likely to fall.
 Whether you're working with simple numeric data, grouped data, or categorical data, understanding how to compute and interpret confidence intervals using R will enhance the accuracy and reliability of your data analysis.
 
 ------------------------------------------------------------------------
-
-

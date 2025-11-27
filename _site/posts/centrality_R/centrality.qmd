@@ -7,11 +7,7 @@ author: "Bilal Mustafa"
 date: "2024-08-10"
 #slug: "understanding-centrality-key-measures"
 
-description: >
-  A hands-on tutorial on computing and interpreting central tendency measures 
-  in R. Learn how to calculate the arithmetic mean, median, mode, geometric mean, 
-  and harmonic mean—and decide which measure best summarizes your data.
-
+description: "A hands-on tutorial on computing and interpreting central tendency measures in R."
 # High-level grouping for site navigation
 categories: [Statistics, Descriptive Statistics]
 
@@ -48,7 +44,7 @@ format:
     code-copy: true
 ---
 
-# Introduction:
+## Introduction:
 
 Descriptive statistics are an essential element of data analysis, offering concise descriptions of the sample and measures.
 These summaries serve as the foundation for further investigating allowing researchers and analysts to better comprehend the data's distribution, central tendency, and variability.
@@ -60,7 +56,7 @@ Let's look at each of these measures.
 
 ------------------------------------------------------------------------
 
-## Mean
+### Mean
 
 The mean, or average, is the most widely used metric of centrality.
 It is calculated by adding all of the data entries and dividing by the number of entries.
@@ -75,7 +71,7 @@ mean_value
 
 ------------------------------------------------------------------------
 
-## Median
+### Median
 
 The median is the middle value of the collected data, whether presented in ascending or descending order.
 It is especially effective with skewed distributions because it is unaffected by outliers.
@@ -94,7 +90,7 @@ If it has an even number of entries, such as {3, 5, 7, 9}, the median would be t
 
 ------------------------------------------------------------------------
 
-## Mode
+### Mode
 
 The mode is the value that occurs the most frequently in a data set.
 It is the only measure of centrality that is applicable to nominal data (data that can be classified but not sorted).
@@ -108,7 +104,7 @@ mode_value
 
 ------------------------------------------------------------------------
 
-## Geometric mean
+### Geometric mean
 
 The geometric mean is used to deal with data that has been multiplied or divided, such as growth rates.
 It is calculated by multiplying all of the numbers together and then getting the nth root (n being the total number of values).
@@ -122,7 +118,7 @@ geometric_mean
 
 ------------------------------------------------------------------------
 
-## Harmonic mean
+### Harmonic mean
 
 The harmonic mean is very useful in circumstances requiring average rates, such as average speeds or ratios.
 It is calculated by taking the reciprocal of the arithmetic mean of the data points' reciprocals.
@@ -136,7 +132,7 @@ harmonic_mean
 
 ------------------------------------------------------------------------
 
-# Notes on Measures of Centrality
+## Notes on Measures of Centrality
 
 Choosing the appropriate measure of centrality depends on the nature of your data and the specific questions you're addressing.
 The mean provides a simple average but is sensitive to outliers.

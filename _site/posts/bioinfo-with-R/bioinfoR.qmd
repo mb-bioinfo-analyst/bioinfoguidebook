@@ -5,11 +5,7 @@ subtitle: "Install R, learn basic syntax, and run your first bioinformatics work
 author: "Bilal Mustafa"
 date: "2023-09-07"
 #slug: "getting-started-bioinformatics-r-setup-syntax-examples"
-description: >
-  A beginner’s guide to installing and configuring R for bioinformatics,
-  understanding essential R syntax, and executing your first example workflows
-  with practical code snippets and tips.
-
+description: "Beginner’s guide to installing and configuring R for bioinformatics, learning essential R syntax, and running your first example workflows."
 # Categories vs. tags
 categories: [R, setup, bioinformatics]
 
@@ -45,7 +41,7 @@ format:
     code-copy: true
 ---
 
-# Introduction
+## Introduction
 
 Bioinformatics is a rapidly evolving field that combines biology and computer science to analyze and interpret biological data.
 R, a powerful and versatile programming language, is widely used in bioinformatics for its data analysis and visualization capabilities.
@@ -53,7 +49,7 @@ In this blog post, we will explore the fundamentals of bioinformatics in R, incl
 
 ------------------------------------------------------------------------
 
-# Setting Up Your Environment
+## Setting Up Your Environment
 
 Before diving into bioinformatics in R, you need to set up your environment.
 Here are the essential steps:
@@ -83,7 +79,7 @@ Below, I'll provide you with information on how to install packages in R and spe
 
 ------------------------------------------------------------------------
 
-## Installing Packages in R
+### Installing Packages in R
 
 You can install packages in R using the install.packages() function.
 Here's how to do it:
@@ -114,7 +110,7 @@ library(ggplot2)
 
 ------------------------------------------------------------------------
 
-## Installing Bioconductor Packages
+### Installing Bioconductor Packages
 
 Bioconductor is a specialized repository for bioinformatics packages in R.
 To install Bioconductor and Bioconductor packages, follow these steps:
@@ -159,7 +155,7 @@ library(stringr)
 
 ------------------------------------------------------------------------
 
-## Checking Installed Packages
+### Checking Installed Packages
 
 To check which packages are currently installed in your R environment, you can use the installed.packages() function:
 
@@ -175,7 +171,7 @@ Installing the right packages can greatly expand the capabilities of R for bioin
 
 ------------------------------------------------------------------------
 
-# Basic Syntax in R for Bioinformatics
+## Basic Syntax in R for Bioinformatics
 
 R has a straightforward syntax that is easy to learn.
 Here are some basic concepts and syntax rules to keep in mind:
@@ -239,7 +235,7 @@ However, it's essential to be aware of the context in which you are using these 
 
 ------------------------------------------------------------------------
 
-# Examples in Bioinformatics
+## Examples in Bioinformatics
 
 Let's explore some practical examples of bioinformatics tasks in R:
 
@@ -294,7 +290,7 @@ ggplot(data.frame(Length = seq_lengths), aes(x = Length)) +
 
 ------------------------------------------------------------------------
 
-# Conclusion
+## Conclusion
 
 R is a powerful tool for bioinformatics, providing a wide range of packages and functions to analyze and visualize biological data.
 In this blog post, we covered the basics of setting up your environment, understanding basic syntax, and provided practical examples to get you started.
