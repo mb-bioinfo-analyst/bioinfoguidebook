@@ -1,5 +1,6 @@
 ---
 title: "Archive"
+description: "This is the archive of all the posts published in Bioinfo Guide Book"
 page-layout: full
 listing:
   contents: posts/**/*.qmd

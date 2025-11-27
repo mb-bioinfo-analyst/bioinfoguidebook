@@ -44,19 +44,19 @@ We're thrilled to have you join us here at Bioinfo Guide Book, where we're dedic
 
 ![](profile.png){fig-alt="Logo image"}
 
-# What is Bioinformatics?
+## What is Bioinformatics?
 
 Bioinformatics is the fusion of biology and information technology, a field where the digital and biological worlds intersect.
 It's where researchers, scientists, and data enthusiasts come together to decipher the complex code of life itself.
 From DNA sequencing to protein structure prediction, from genomics to personalized medicine, bioinformatics plays a pivotal role in advancing our understanding of the biological universe.
 
-# Why Bioinfo Guide Book?
+## Why Bioinfo Guide Book?
 
 At Bioinfo Guide Book, our mission is to demystify the world of bioinformatics.
 We understand that the field can seem intimidating, with its complex algorithms, mountains of data, and ever-evolving technologies.
 However, we believe that with the right guidance and a passion for discovery, anyone can navigate this captivating landscape.
 
-# What to Expect?
+## What to Expect?
 
 Here at Bioinfo Guide Book, you can expect a treasure trove of content tailored to both newcomers and seasoned bioinformatics professionals:
 

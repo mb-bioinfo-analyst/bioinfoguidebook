@@ -1,6 +1,8 @@
 ---
 title: "About"
+description: "A little info about the author of Bioinfo Guide Book"
 image: Bilal.jpg
+image-alt: "profile picture"
 toc: false
         
 about:
